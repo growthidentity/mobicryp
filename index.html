@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="MobiCryp - Crypto Minting Platform">
+    <title>MobiCryp | Crypto Minting Platform</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper.js for Slideshow -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    
+    <!-- Particles.js for animated background -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Fix for layout */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        :root {
+            --primary-color: #0C2256;
+            --secondary-color: #163375;
+            --accent-color: #00D1FF;
+            --gold-color: #FFB800;
+            --royal-purple: #7B4DFF;
+            --vibrant-green: #36F1CD;
+            --text-color: #fff;
+            --text-dark-color: #333;
+            --warning-color: #FF4C4C;
+            --success-color: #2ED47A;
+            --gradient-blue: linear-gradient(135deg, #00D1FF 0%, #1E54E5 100%);
+            --gradient-gold: linear-gradient(135deg, #FFB800 0%, #FF8A00 100%);
+            --gradient-purple: linear-gradient(135deg, #7B4DFF 0%, #FF4DED 100%);
+            --box-shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --box-shadow-strong: 0 15px 45px rgba(0, 0, 0, 0.25);
+            --border-radius-sm: 8px;
+            --border-radius-md: 15px;
+            --border-radius-lg: 25px;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+        }
+        
+        /* Slide Container */
+        .swiper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .swiper-slide {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        
+        /* Circuit animation background */
+        .circuit-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0C2256 0%, #1A3B89 100%);
+            z-index: 0;
+        }
+        
+        .circuit-background:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lR3JhZGllbnQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NWFkZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDBjOWZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxwYXRoIGQ9Ik0wIDEwVjVIMTVWMEgzMFYyMEg1MFYzMFYwSDEwMFYyMEg3NVYxMDBINTBWNjBIMEwxMCA5MEwwIDEwMFYxMCIgc3Ryb2tlPSJ1cmwoI2xpbmVHcmFkaWVudCkiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0wIDQwSDMwVjEwSDQwVjUwSDYwVjcwSDgwVjMwSDkwVjEwSDEwMFY5MEg4MFY2MEg2MFY5MEgzMFY4MEgxMFY0MCIgc3Ryb2tlPSJ1cmwoI2xpbmVHcmFkaWVudCkiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+Cjwvc3ZnPg==');
+            background-size: 300px 300px;
+            background-position: center;
+            animation: circuitFlow 20s linear infinite;
+        }
+        
+        .circuit-background:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 209, 255, 0.1) 0%, rgba(0, 209, 255, 0) 70%);
+        }
+        
+        /* Crypto watermark background */
+        .crypto-watermark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSIjZjBmMGYwIiBkPSJNNTAgNWw0MS44NSA3Mi41TDggNzcuNSA1MCA1em0wIDEwbDMxLjg5IDU1LjI1TDE4LjExIDY1IDUwIDE1eiIvPjwvc3ZnPg==');
+            background-size: 200px 200px;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        @keyframes circuitFlow {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 300px 300px;
+            }
+        }
+        
+        /* Slide Content */
+        .slide-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        
+        .slide-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+            transform: scale(0.65);
+            transform-origin: center center;
+        }
+        
+        /* Typography */
+        .slide-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            text-shadow: 0 0 15px rgba(66,138,255,0.5);
+        }
+        
+        .slide-tagline {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+        }
+        
+        .disclaimer-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--warning-color);
+        }
+        
+        .disclaimer-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0.8rem auto 0;
+        }
+        
+        .section-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Card Styles */
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-md);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--box-shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-strong);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .info-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .gold-card {
+            background: linear-gradient(145deg, rgba(255, 184, 0, 0.05) 0%, rgba(255, 138, 0, 0.05) 100%);
+            border: 1px solid rgba(255, 184, 0, 0.1);
+        }
+        
+        .gold-card h3 {
+            color: var(--gold-color);
+        }
+        
+        .purple-card {
+            background: linear-gradient(145deg, rgba(123, 77, 255, 0.05) 0%, rgba(255, 77, 237, 0.05) 100%);
+            border: 1px solid rgba(123, 77, 255, 0.1);
+        }
+        
+        .purple-card h3 {
+            color: var(--royal-purple);
+        }
+        
+        .blue-card {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.05) 0%, rgba(30, 84, 229, 0.05) 100%);
+            border: 1px solid rgba(0, 209, 255, 0.1);
+        }
+        
+        /* Navigation controls */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--accent-color);
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--accent-color);
+        }
+        
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 100;
+        }
+        
+        /* Animation for elements */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5rem 0 !important;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.7rem !important;
+        }
+        
+        table td, table th {
+            padding: 0.2rem !important;
+            font-size: 0.7rem !important;
+        }
+        
+        /* Make tables fit */
+        .complex-table-container {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 0.5rem !important;
+            border-radius: var(--border-radius-sm);
+        }
+
+        /* Added styles for new slides */
+        
+        /* Minting Booster Slide Styles */
+        .boost-tabs {
+            width: 100%;
+            background: rgba(12, 34, 86, 0.4);
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow-soft);
+            border: 1px solid rgba(0, 209, 255, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .boost-tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .boost-tab-btn {
+            background: rgba(22, 51, 117, 0.5);
+            color: var(--text-color);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            border-radius: var(--border-radius-sm);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .boost-tab-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-color) 0%, rgba(30, 84, 229, 0.7) 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .boost-tab-btn:hover, .boost-tab-btn.active {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .boost-tab-btn:hover:before, .boost-tab-btn.active:before {
+            opacity: 1;
+        }
+        
+        .boost-tab-content {
+            position: relative;
+        }
+        
+        .boost-tab-pane {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .boost-tab-pane.active {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .boost-visual {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .boost-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: rgba(12, 34, 86, 0.3);
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .boost-table thead {
+            background: rgba(0, 209, 255, 0.1);
+        }
+        
+        .boost-table th {
+            padding: 1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 209, 255, 0.2);
+        }
+        
+        .boost-table td {
+            padding: 0.8rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+        
+        .boost-row {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .boost-row:hover {
+            background-color: rgba(0, 209, 255, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .boost-row.max-boost {
+            background: linear-gradient(90deg, rgba(123, 77, 255, 0.1) 0%, rgba(255, 184, 0, 0.1) 100%);
+            font-weight: 700;
+        }
+        
+        .boost-row.max-boost td {
+            color: var(--gold-color);
+        }
+        
+        .highlight-value {
+            font-weight: 700;
+            color: var(--accent-color);
+            background: rgba(0, 209, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .accent-text {
+            color: var(--gold-color);
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+        }
+        
+        .boost-meter-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 3rem 0 1.5rem;
+            position: relative;
+        }
+        
+        .boost-meter {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .boost-meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--gold-color) 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.5);
+        }
+        
+        .boost-meter-step {
+            position: absolute;
+            transform: translateX(-50%);
+        }
+        
+        .boost-step-marker {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(0, 209, 255, 0.5);
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .boost-step-label {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+        
+        .boost-meter-step[data-boost="0.33"] { left: 0; }
+        .boost-meter-step[data-boost="1"], .boost-meter-step[data-boost="8"] { left: 33.33%; }
+        .boost-meter-step[data-boost="5"], .boost-meter-step[data-boost="30"] { left: 50%; }
+        .boost-meter-step[data-boost="10"], .boost-meter-step[data-boost="50"] { left: 75%; }
+        .boost-meter-step[data-boost="100"] { left: 100%; }
+        
+        .boost-explainer .info-card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .boost-icon {
+            font-size: 1.5rem;
+            color: var(--gold-color);
+            margin-right: 1rem;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255, 184, 0, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
+        }
+        
+        .boost-footer {
+            margin-top: 1rem;
+        }
+        
+        .boost-footer .info-card {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .boost-footer .info-card i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .boost-footer .info-card p {
+            margin: 0;
+        }
+        
+        /* Bonus Structure Slide Styles */
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .bonus-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+        
+        .bonus-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .bonus-icon-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .blue-card .bonus-icon-container {
+            background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.2) 100%);
+        }
+        
+        .purple-card .bonus-icon-container {
+            background: linear-gradient(135deg, rgba(123, 77, 255, 0.2) 0%, rgba(255, 77, 237, 0.2) 100%);
+        }
+        
+        .gold-card .bonus-icon-container {
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 138, 0, 0.2) 100%);
+        }
+        
+        .royalty-card {
+            background: linear-gradient(145deg, rgba(50, 22, 80, 0.4) 0%, rgba(90, 35, 130, 0.4) 100%);
+            border: 1px solid rgba(123, 77, 255, 0.2);
+        }
+        
+        .royalty-card .bonus-icon-container {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 138, 0, 0.3) 100%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .royalty-card i {
+            color: gold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+        
+        .bonus-card i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+        
+        .purple-card i {
+            color: var(--royal-purple);
+        }
+        
+        .gold-card i {
+            color: var(--gold-color);
+        }
+        
+        .bonus-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .blue-card .bonus-value {
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+        }
+        
+        .purple-card .bonus-value {
+            color: var(--royal-purple);
+            text-shadow: 0 0 10px rgba(123, 77, 255, 0.5);
+        }
+        
+        .gold-card .bonus-value {
+            color: var(--gold-color);
+            text-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+        }
+        
+        .royalty-card .bonus-value {
+            color: gold;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+        
+        .bonus-details {
+            margin-top: auto;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius-sm);
+            padding: 0.8rem;
+        }
+        
+        .bonus-detail-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bonus-detail-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .detail-value {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        /* Level Bonus Table */
+        .level-bonus-table {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .level-bonus-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .level-bonus-table th {
+            background: rgba(255, 184, 0, 0.1);
+            font-weight: 600;
+            color: var(--gold-color);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        
+        .level-bonus-table td {
+            padding: 0.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+        }
+        
+        .level-bonus-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Bonus Summary */
+        .bonus-summary {
+            margin-top: 2rem;
+        }
+        
+        .glow-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            animation: borderGlow 3s infinite alternate;
+            padding: 1.5rem;
+        }
+        
+        @keyframes borderGlow {
+            0% { border-color: rgba(0, 209, 255, 0.2); }
+            50% { border-color: rgba(123, 77, 255, 0.2); }
+            100% { border-color: rgba(255, 184, 0, 0.2); }
+        }
+        
+        .glow-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            animation: iconGlow 3s infinite alternate;
+        }
+        
+        @keyframes iconGlow {
+            0% { color: var(--accent-color); text-shadow: 0 0 10px rgba(0, 209, 255, 0.5); }
+            50% { color: var(--royal-purple); text-shadow: 0 0 10px rgba(123, 77, 255, 0.5); }
+            100% { color: var(--gold-color); text-shadow: 0 0 10px rgba(255, 184, 0, 0.5); }
+        }
+        
+        .summary-content {
+            flex: 1;
+        }
+        
+        .summary-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .summary-content p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <!-- Your existing intro slides would go here -->
+
+            <!-- Minting Booster Slide -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="crypto-watermark"></div>
+                
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Boost Your Earnings with Team Volume</h2>
+                        <p class="section-description">Accelerate your minting speed based on your direct business volume</p>
+                        
+                        <div class="boost-tabs">
+                            <div class="boost-tab-buttons">
+                                <button class="boost-tab-btn active" data-target="self-minting">Self-Minting</button>
+                                <button class="boost-tab-btn" data-target="auto-minting">Auto-Minting</button>
+                            </div>
+                            
+                            <div class="boost-tab-content">
+                                <!-- Self-Minting Tab -->
+                                <div id="self-minting" class="boost-tab-pane active">
+                                    <div class="complex-table-container">
+                                        <table class="boost-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Direct Business</th>
+                                                    <th>Minting Speed</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="boost-row">
+                                                    <td>No Investment</td>
+                                                    <td><span class="highlight-value">0.33%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>5X</td>
+                                                    <td><span class="highlight-value">0.4%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>10X</td>
+                                                    <td><span class="highlight-value">0.5%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>15X</td>
+                                                    <td><span class="highlight-value">0.6%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>20X</td>
+                                                    <td><span class="highlight-value">0.7%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>25X</td>
+                                                    <td><span class="highlight-value">0.8%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>30X</td>
+                                                    <td><span class="highlight-value">1%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>35X</td>
+                                                    <td><span class="highlight-value">2%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>40X</td>
+                                                    <td><span class="highlight-value">3%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>45X</td>
+                                                    <td><span class="highlight-value">4%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>50X</td>
+                                                    <td><span class="highlight-value">5%</span> daily</td>
+                                                </tr>
+                                                <tr class="boost-row max-boost">
+                                                    <td>100X</td>
+                                                    <td><span class="highlight-value">10%</span> daily</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="boost-visual">
+                                        <div class="boost-meter-container">
+                                            <div class="boost-meter">
+                                                <div class="boost-meter-step" data-boost="0.33">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">0.33%</div>
+                                                </div>
+                                                <div class="boost-meter-step" data-boost="1">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">1%</div>
+                                                </div>
+                                                <div class="boost-meter-step" data-boost="5">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">5%</div>
+                                                </div>
+                                                <div class="boost-meter-step" data-boost="10">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">10%</div>
+                                                </div>
+                                            </div>
+                                            <div class="boost-meter-fill" style="width: 10%;"></div>
+                                        </div>
+                                        <div class="boost-explainer">
+                                            <div class="info-card">
+                                                <i class="fas fa-lightbulb boost-icon"></i>
+                                                <p>Build your team volume to accelerate your daily returns up to <span class="accent-text">10% daily</span>.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Auto-Minting Tab -->
+                                <div id="auto-minting" class="boost-tab-pane">
+                                    <div class="complex-table-container">
+                                        <table class="boost-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Direct Business</th>
+                                                    <th>Minting Speed</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="boost-row">
+                                                    <td>No Investment</td>
+                                                    <td><span class="highlight-value">8%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>5X</td>
+                                                    <td><span class="highlight-value">9%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>10X</td>
+                                                    <td><span class="highlight-value">10%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>15X</td>
+                                                    <td><span class="highlight-value">15%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>20X</td>
+                                                    <td><span class="highlight-value">20%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>25X</td>
+                                                    <td><span class="highlight-value">25%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>30X</td>
+                                                    <td><span class="highlight-value">30%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>35X</td>
+                                                    <td><span class="highlight-value">35%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>40X</td>
+                                                    <td><span class="highlight-value">40%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>45X</td>
+                                                    <td><span class="highlight-value">45%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row">
+                                                    <td>50X</td>
+                                                    <td><span class="highlight-value">50%</span> monthly</td>
+                                                </tr>
+                                                <tr class="boost-row max-boost">
+                                                    <td>100X</td>
+                                                    <td><span class="highlight-value">100%</span> monthly</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="boost-visual">
+                                        <div class="boost-meter-container">
+                                            <div class="boost-meter">
+                                                <div class="boost-meter-step" data-boost="8">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">8%</div>
+                                                </div>
+                                                <div class="boost-meter-step" data-boost="30">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">30%</div>
+                                                </div>
+                                                <div class="boost-meter-step" data-boost="50">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">50%</div>
+                                                </div>
+                                                <div class="boost-meter-step" data-boost="100">
+                                                    <div class="boost-step-marker"></div>
+                                                    <div class="boost-step-label">100%</div>
+                                                </div>
+                                            </div>
+                                            <div class="boost-meter-fill" style="width: 10%;"></div>
+                                        </div>
+                                        <div class="boost-explainer">
+                                            <div class="info-card">
+                                                <i class="fas fa-lightbulb boost-icon"></i>
+                                                <p>Grow your team volume to maximize your monthly returns up to <span class="accent-text">100% monthly</span>.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="boost-footer">
+                            <div class="info-card blue-card">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Direct Business refers to the total hub value purchased by your personally referred members.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bonus Structure Slide -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="crypto-watermark"></div>
+                
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Mobicryp Bonus Buffet</h2>
+                        <p class="section-description">Multiple streams of income to maximize your earnings</p>
+                        
+                        <div class="bonus-grid">
+                            <!-- Direct Income Bonus Card -->
+                            <div class="info-card blue-card bonus-card">
+                                <div class="bonus-icon-container">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <h3>Direct Income</h3>
+                                <div class="bonus-value">10%</div>
+                                <p>Earn 10% of Hub amount on each direct referral you bring to the platform.</p>
+                                <div class="bonus-details">
+                                    <div class="bonus-detail-item">
+                                        <span class="detail-label">Paid:</span>
+                                        <span class="detail-value">Instantly</span>
+                                    </div>
+                                    <div class="bonus-detail-item">
+                                        <span class="detail-label">Example:</span>
+                                        <span class="detail-value">$1000 Hub = $100 Bonus</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Community Building Bonus Card -->
+                            <div class="info-card purple-card bonus-card">
+                                <div class="bonus-icon-container">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Community Building</h3>
+                                <div class="bonus-value">10%</div>
+                                <p>Receive 10% matching bonus from Left & Right team volume in binary structure.</p>
+                                <div class="bonus-details">
+                                    <div class="bonus-detail-item">
+                                        <span class="detail-label">Paid:</span>
+                                        <span class="detail-value">Daily</span>
+                                    </div>
+                                    <div class="bonus-detail-item">
+                                        <span class="detail-label">Structure:</span>
+                                        <span class="detail-value">Binary (Left & Right)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Level Minting Bonus Card -->
+                            <div class="info-card gold-card bonus-card">
+                                <div class="bonus-icon-container">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <h3>Level Minting Bonus</h3>
+                                <div class="bonus-value">Up to 30%</div>
+                                <p>Earn bonuses from 10 levels deep in your organization.</p>
+                                
+                                <div class="level-bonus-table">
+                                    <div class="complex-table-container">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Level</th>
+                                                    <th>Bonus %</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>1</td><td>10%</td></tr>
+                                                <tr><td>2</td><td>5%</td></tr>
+                                                <tr><td>3</td><td>3%</td></tr>
+                                                <tr><td>4</td><td>3%</td></tr>
+                                                <tr><td>5</td><td>2%</td></tr>
+                                                <tr><td>6</td><td>2%</td></tr>
+                                                <tr><td>7</td><td>2%</td></tr>
+                                                <tr><td>8</td><td>1%</td></tr>
+                                                <tr><td>9</td><td>1%</td></tr>
+                                                <tr><td>10</td><td>1%</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Royalty Bonus Card -->
+                            <div class="info-card royalty-card bonus-card">
+                                <div class="bonus-icon-container">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3>Royalty Bonus</h3>
+                                <div class="bonus-value">22%</div>
+                                <p>22% royalty pool distributed among top ranks based on performance and leadership.</p>
+                                <div class="bonus-details">
+                                    <div class="bonus-detail-item">
+                                        <span class="detail-label">Eligibility:</span>
+                                        <span class="detail-value">Gold rank & above</span>
+                                    </div>
+                                    <div class="bonus-detail-item">
+                                        <span class="detail-label">Distribution:</span>
+                                        <span class="detail-value">Based on rank & volume</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bonus-summary">
+                            <div class="info-card glow-card">
+                                <i class="fas fa-calculator"></i>
+                                <div class="summary-content">
+                                    <h4>Total Bonus Potential</h4>
+                                    <p>By leveraging all bonus structures, you can earn multiple times your investment through Mobicryp's comprehensive reward system.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            <!-- Rank & Rewards Slide -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="crypto-watermark"></div>
+                
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Rise Through Ranks, Earn Bigger Rewards</h2>
+                        <p class="section-description">Achieve higher ranks based on team volume and unlock exclusive rewards</p>
+                        
+                        <div class="rank-carousel-container">
+                            <div class="rank-carousel-controls">
+                                <button class="rank-carousel-arrow prev">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="rank-categories">
+                                    <span class="rank-category" data-category="starter">Starter</span>
+                                    <span class="rank-category" data-category="advanced">Advanced</span>
+                                    <span class="rank-category active" data-category="premium">Premium</span>
+                                    <span class="rank-category" data-category="elite">Elite</span>
+                                </div>
+                                <button class="rank-carousel-arrow next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="rank-carousel">
+                                <!-- Beginner Rank -->
+                                <div class="info-card starter-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                        <h3 class="rank-name">Beginner</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$1,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$50</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Access to basic training</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Referral program access</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Star Rank -->
+                                <div class="info-card starter-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <h3 class="rank-name">Star</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$2,500</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$100</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Enhanced support access</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Special training webinars</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Iron Rank -->
+                                <div class="info-card starter-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <h3 class="rank-name">Iron</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$5,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$200</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Weekly strategy calls</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Exclusive community access</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bronze Rank -->
+                                <div class="info-card advanced-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge">
+                                            <i class="fas fa-medal"></i>
+                                        </div>
+                                        <h3 class="rank-name">Bronze</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$10,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$500</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Leadership training</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Priority support</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Copper Rank -->
+                                <div class="info-card advanced-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge">
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                        <h3 class="rank-name">Copper</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$25,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$1,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>One-on-one mentorship</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Enhanced marketing tools</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Silver Rank -->
+                                <div class="info-card advanced-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <h3 class="rank-name">Silver</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$50,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$2,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Regional event recognition</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Silver leadership badge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Gold Rank -->
+                                <div class="info-card premium-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge gold">
+                                            <i class="fas fa-trophy"></i>
+                                        </div>
+                                        <h3 class="rank-name">Gold</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$100,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$5,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item special">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>+10% on hub purchases</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Royalty pool access</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>VIP event invitations</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Platinum Rank -->
+                                <div class="info-card premium-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge platinum">
+                                            <i class="fas fa-gem"></i>
+                                        </div>
+                                        <h3 class="rank-name">Platinum</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$250,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$10,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item special">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>+2% from Gold ranks</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Luxury travel incentives</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Leadership council access</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Titanium Rank -->
+                                <div class="info-card premium-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge titanium">
+                                            <i class="fas fa-rocket"></i>
+                                        </div>
+                                        <h3 class="rank-name">Titanium</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$500,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$20,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item special">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>+2% from Platinum ranks</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Global summit invitation</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Executive strategy sessions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Diamond Rank -->
+                                <div class="info-card elite-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge diamond">
+                                            <i class="fas fa-diamond"></i>
+                                        </div>
+                                        <h3 class="rank-name">Diamond</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$1,000,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$50,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item special">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>+2% from Titanium ranks</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Exclusive Diamond Club</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Company advisory board</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Solitaire Rank -->
+                                <div class="info-card elite-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge solitaire">
+                                            <i class="fas fa-sun"></i>
+                                        </div>
+                                        <h3 class="rank-name">Solitaire</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$2,500,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$100,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item special">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>+2% from Diamond ranks</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Luxury car program</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Private mastermind events</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Immortal Rank -->
+                                <div class="info-card elite-rank rank-card">
+                                    <div class="rank-header">
+                                        <div class="rank-badge immortal">
+                                            <i class="fas fa-fire"></i>
+                                        </div>
+                                        <h3 class="rank-name">Immortal</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$5,000,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$200,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item special">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>+2% from Solitaire ranks</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Profit sharing opportunities</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Elite global retreats</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Emperor Rank -->
+                                <div class="info-card elite-rank emperor-rank rank-card">
+                                    <div class="rank-crown"></div>
+                                    <div class="rank-header">
+                                        <div class="rank-badge emperor">
+                                            <i class="fas fa-crown"></i>
+                                        </div>
+                                        <h3 class="rank-name">Emperor</h3>
+                                    </div>
+                                    <div class="rank-requirements">
+                                        <div class="requirement-item">
+                                            <span class="requirement-label">Business Volume:</span>
+                                            <span class="requirement-value">$10,000,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-reward">
+                                        <div class="reward-amount">$300,000</div>
+                                        <div class="reward-label">One-time Reward</div>
+                                    </div>
+                                    <div class="rank-extra-rewards">
+                                        <div class="extra-reward">
+                                            <i class="fas fa-home"></i>
+                                            <span>Dubai Villa</span>
+                                        </div>
+                                    </div>
+                                    <div class="rank-extra-benefits">
+                                        <div class="benefit-item special">
+                                            <i class="fas fa-plus-circle"></i>
+                                            <span>+2% from Immortal ranks</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Legacy status recognition</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Exclusive Emperor perks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rank-note">
+                            <div class="info-card">
+                                <i class="fas fa-info-circle"></i>
+                                <p>All rank rewards are one-time qualifications. Business Volume is calculated from your entire team structure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Power of 4 Slide -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="crypto-watermark"></div>
+                
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">The Power of 4 Plan</h2>
+                        <p class="section-description">How a small investment can scale exponentially through team duplication</p>
+                        
+                        <div class="power4-container">
+                            <div class="power4-intro">
+                                <div class="info-card blue-card">
+                                    <h3>Start Small, Grow Big</h3>
+                                    <p>See how a user investing in a $55 Hub + $300 top-up can scale through the power of duplication, creating exponential team growth and earnings.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="power4-grid">
+                                <div class="power4-level">
+                                    <div class="power4-level-header">
+                                        <div class="level-badge">
+                                            <span>You</span>
+                                        </div>
+                                        <div class="level-multiplier">1</div>
+                                    </div>
+                                    <div class="power4-level-content">
+                                        <div class="power4-icon-container">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div class="power4-details">
+                                            <div class="power4-hub">$55 Hub</div>
+                                            <div class="power4-topup">$300 Top-up</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-connector">
+                                    <div class="connector-line"></div>
+                                    <div class="connector-arrow">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-level">
+                                    <div class="power4-level-header">
+                                        <div class="level-badge">
+                                            <span>Level 1</span>
+                                        </div>
+                                        <div class="level-multiplier">4</div>
+                                    </div>
+                                    <div class="power4-level-content">
+                                        <div class="power4-icon-grid">
+                                            <div class="power4-icon-container small">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="power4-icon-container small">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="power4-icon-container small">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="power4-icon-container small">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="power4-stats">
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Total Hubs</div>
+                                                <div class="stats-value">4</div>
+                                            </div>
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Volume</div>
+                                                <div class="stats-value">$1,420</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-connector">
+                                    <div class="connector-line"></div>
+                                    <div class="connector-arrow">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-level">
+                                    <div class="power4-level-header">
+                                        <div class="level-badge">
+                                            <span>Level 2</span>
+                                        </div>
+                                        <div class="level-multiplier">16</div>
+                                    </div>
+                                    <div class="power4-level-content">
+                                        <div class="power4-icon-grid large">
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-users"></i>
+                                                <span class="cluster-count">4</span>
+                                            </div>
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-users"></i>
+                                                <span class="cluster-count">4</span>
+                                            </div>
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-users"></i>
+                                                <span class="cluster-count">4</span>
+                                            </div>
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-users"></i>
+                                                <span class="cluster-count">4</span>
+                                            </div>
+                                        </div>
+                                        <div class="power4-stats">
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Total Hubs</div>
+                                                <div class="stats-value">16</div>
+                                            </div>
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Volume</div>
+                                                <div class="stats-value">$5,680</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-connector">
+                                    <div class="connector-line"></div>
+                                    <div class="connector-arrow">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-level">
+                                    <div class="power4-level-header">
+                                        <div class="level-badge">
+                                            <span>Level 3</span>
+                                        </div>
+                                        <div class="level-multiplier">64</div>
+                                    </div>
+                                    <div class="power4-level-content">
+                                        <div class="power4-icon-grid large">
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-user-friends"></i>
+                                                <span class="cluster-count">16</span>
+                                            </div>
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-user-friends"></i>
+                                                <span class="cluster-count">16</span>
+                                            </div>
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-user-friends"></i>
+                                                <span class="cluster-count">16</span>
+                                            </div>
+                                            <div class="power4-icon-cluster">
+                                                <i class="fas fa-user-friends"></i>
+                                                <span class="cluster-count">16</span>
+                                            </div>
+                                        </div>
+                                        <div class="power4-stats">
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Total Hubs</div>
+                                                <div class="stats-value">64</div>
+                                            </div>
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Volume</div>
+                                                <div class="stats-value">$22,720</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-connector">
+                                    <div class="connector-line"></div>
+                                    <div class="connector-arrow">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-level">
+                                    <div class="power4-level-header">
+                                        <div class="level-badge highlight">
+                                            <span>Level 4</span>
+                                        </div>
+                                        <div class="level-multiplier highlight">256</div>
+                                    </div>
+                                    <div class="power4-level-content">
+                                        <div class="power4-icon-grid large">
+                                            <div class="power4-icon-cluster large">
+                                                <i class="fas fa-users-cog"></i>
+                                                <span class="cluster-count">64</span>
+                                            </div>
+                                            <div class="power4-icon-cluster large">
+                                                <i class="fas fa-users-cog"></i>
+                                                <span class="cluster-count">64</span>
+                                            </div>
+                                            <div class="power4-icon-cluster large">
+                                                <i class="fas fa-users-cog"></i>
+                                                <span class="cluster-count">64</span>
+                                            </div>
+                                            <div class="power4-icon-cluster large">
+                                                <i class="fas fa-users-cog"></i>
+                                                <span class="cluster-count">64</span>
+                                            </div>
+                                        </div>
+                                        <div class="power4-stats highlight">
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Total Hubs</div>
+                                                <div class="stats-value">256</div>
+                                            </div>
+                                            <div class="power4-stats-item">
+                                                <div class="stats-label">Volume</div>
+                                                <div class="stats-value">$90,880</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="power4-summary">
+                                <div class="power4-roi-card">
+                                    <div class="roi-header">
+                                        <h3>Earnings Simulation</h3>
+                                        <div class="roi-badge">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                    </div>
+                                    <div class="roi-content">
+                                        <div class="roi-stats">
+                                            <div class="roi-item">
+                                                <div class="roi-label">Direct Income (10%)</div>
+                                                <div class="roi-value">$9,088</div>
+                                            </div>
+                                            <div class="roi-item">
+                                                <div class="roi-label">Level Bonus</div>
+                                                <div class="roi-value">$6,817</div>
+                                            </div>
+                                            <div class="roi-item">
+                                                <div class="roi-label">Community Bonus</div>
+                                                <div class="roi-value">$4,544</div>
+                                            </div>
+                                            <div class="roi-total">
+                                                <div class="roi-label">Total Potential</div>
+                                                <div class="roi-value">$20,449</div>
+                                            </div>
+                                        </div>
+                                        <div class="roi-multiplier">
+                                            <div class="multiplier-label">Return Multiplier</div>
+                                            <div class="multiplier-value">57.8x</div>
+                                            <div class="multiplier-caption">Your $355 investment</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="power4-disclaimer">
+                                    <div class="info-card">
+                                        <i class="fas fa-info-circle"></i>
+                                        <p>This example is for illustration purposes only. Actual results will vary based on team performance and market conditions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            <!-- Upcoming Products Slide -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="crypto-watermark"></div>
+                
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">What's Next in the Mobicryp Ecosystem?</h2>
+                        <p class="section-description">Our roadmap of innovative products and services coming soon</p>
+                        
+                        <div class="products-grid">
+                            <!-- Staking Model Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Staking Model</h3>
+                                    <p class="product-description">Lock your assets and earn passive income with competitive APY rates.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- NFT Platform Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">NFT Platform</h3>
+                                    <p class="product-description">Create, buy, sell and trade unique digital assets in our NFT marketplace.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Exchange Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Exchange</h3>
+                                    <p class="product-description">Trade cryptocurrencies with low fees and advanced trading features.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Gaming Platform Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Gaming Platform</h3>
+                                    <p class="product-description">Play-to-earn games with real rewards in the Mobicryp gaming ecosystem.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Utility Wallet Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Utility Wallet</h3>
+                                    <p class="product-description">Store, send, and receive cryptocurrencies with enhanced security features.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Blockchain Lottery Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-ticket-alt"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Blockchain Lottery</h3>
+                                    <p class="product-description">Transparent, provably fair lottery system built on blockchain technology.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- POS Payment Solution Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">POS Payment Solution</h3>
+                                    <p class="product-description">Accept crypto payments in retail stores with our point-of-sale solution.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- E-Commerce Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">E-Commerce</h3>
+                                    <p class="product-description">Shop online with crypto in our integrated e-commerce marketplace.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Video Dating Product -->
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="product-title">Video Dating</h3>
+                                    <p class="product-description">Connect with others through secure, blockchain-verified video dating.</p>
+                                </div>
+                                <div class="product-overlay"></div>
+                                <div class="product-coming-soon">
+                                    <span>Coming Soon</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="products-footer">
+                            <div class="info-card">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <p>Products will be rolled out according to our development roadmap. Stay updated through our official channels for release dates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust & Support Slide -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="crypto-watermark"></div>
+                
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">We're With You All the Way</h2>
+                        <p class="section-description">Comprehensive support and proven credibility for your peace of mind</p>
+                        
+                        <div class="trust-container">
+                            <div class="trust-columns">
+                                <!-- Support Column -->
+                                <div class="trust-column">
+                                    <div class="trust-heading">
+                                        <div class="trust-icon">
+                                            <i class="fas fa-headset"></i>
+                                        </div>
+                                        <h3 class="trust-title">Continuous Support</h3>
+                                    </div>
+                                    
+                                    <div class="support-items">
+                                        <!-- Zoom Calls Support Item -->
+                                        <div class="support-item">
+                                            <div class="support-icon">
+                                                <i class="fas fa-video"></i>
+                                            </div>
+                                            <div class="support-content">
+                                                <h4 class="support-title">Zoom Calls</h4>
+                                                <p class="support-description">Regular training and Q&A sessions to keep you informed and engaged.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Mentorship Support Item -->
+                                        <div class="support-item">
+                                            <div class="support-icon">
+                                                <i class="fas fa-user-tie"></i>
+                                            </div>
+                                            <div class="support-content">
+                                                <h4 class="support-title">Mentorship</h4>
+                                                <p class="support-description">One-on-one guidance from experienced leaders to accelerate your growth.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- FLC Support Item -->
+                                        <div class="support-item">
+                                            <div class="support-icon">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                            <div class="support-content">
+                                                <h4 class="support-title">Fintech Leadership Conclave</h4>
+                                                <p class="support-description">Exclusive events to network with industry leaders and top performers.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Telegram Support Item -->
+                                        <div class="support-item">
+                                            <div class="support-icon">
+                                                <i class="fab fa-telegram-plane"></i>
+                                            </div>
+                                            <div class="support-content">
+                                                <h4 class="support-title">Telegram Support</h4>
+                                                <p class="support-description">24/7 access to our support team through dedicated Telegram channels.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Trust Column -->
+                                <div class="trust-column">
+                                    <div class="trust-heading">
+                                        <div class="trust-icon">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <h3 class="trust-title">Building Trust</h3>
+                                    </div>
+                                    
+                                    <div class="trust-items">
+                                        <!-- ISO Certified Trust Item -->
+                                        <div class="trust-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-certificate"></i>
+                                            </div>
+                                            <div class="badge-content">
+                                                <h4 class="badge-title">ISO Certified</h4>
+                                                <p class="badge-description">Meeting international standards for quality management systems.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Legally Incorporated Trust Item -->
+                                        <div class="trust-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-landmark"></i>
+                                            </div>
+                                            <div class="badge-content">
+                                                <h4 class="badge-title">Legally Incorporated</h4>
+                                                <p class="badge-description">Properly registered business entity with full regulatory compliance.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Transparent Ledger Trust Item -->
+                                        <div class="trust-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-file-invoice"></i>
+                                            </div>
+                                            <div class="badge-content">
+                                                <h4 class="badge-title">Transparent Ledger</h4>
+                                                <p class="badge-description">Clear record-keeping and open transactions for maximum transparency.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- TRDO Ecosystem Trust Item -->
+                                        <div class="trust-badge-item">
+                                            <div class="badge-icon">
+                                                <i class="fas fa-globe"></i>
+                                            </div>
+                                            <div class="badge-content">
+                                                <h4 class="badge-title">TRDO Ecosystem</h4>
+                                                <p class="badge-description">Part of a comprehensive ecosystem of fintech and blockchain solutions.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="trust-team-section">
+                                <div class="team-header">
+                                    <div class="team-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <h3 class="team-title">Meet Our Global Team</h3>
+                                </div>
+                                <div class="team-image-placeholder">
+                                    <div class="placeholder-content">
+                                        <i class="fas fa-users"></i>
+                                        <p>Team Image Placeholder</p>
+                                    </div>
+                                </div>
+                                <div class="team-caption">
+                                    <p>Expert professionals dedicated to your success in the Mobicryp journey</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-section">
+                                <div class="contact-card">
+                                    <div class="contact-header">
+                                        <h3>Get In Touch</h3>
+                                        <div class="contact-divider"></div>
+                                    </div>
+                                    <div class="contact-methods">
+                                        <div class="contact-method">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>support@mobicryp.com</span>
+                                        </div>
+                                        <div class="contact-method">
+                                            <i class="fas fa-globe"></i>
+                                            <span>www.mobicryp.com</span>
+                                        </div>
+                                        <div class="contact-method">
+                                            <i class="fab fa-telegram-plane"></i>
+                                            <span>t.me/MobicrypOfficial</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your existing closing slides would go here -->
+
+        </div>
+        
+        <!-- Slide Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        
+        <!-- Slide Pagination -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- Slide Counter -->
+        <div class="slide-counter"><span id="currentSlide">1</span>/<span id="totalSlides">29</span></div>
+    </div>
+    
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Swiper
+            const swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+                loop: false,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                speed: 500,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                on: {
+                    slideChange: function() {
+                        document.getElementById('currentSlide').textContent = this.activeIndex + 1;
+                    },
+                    init: function() {
+                        document.getElementById('totalSlides').textContent = this.slides.length;
+                    }
+                }
+            });
+            
+            // Keyboard Navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    swiper.slideNext();
+                } else if (e.key === 'ArrowLeft') {
+                    swiper.slidePrev();
+                }
+            });
+            
+            // Minting Booster Tab Functionality
+            function initBoostTabs() {
+                const tabButtons = document.querySelectorAll('.boost-tab-btn');
+                const tabPanes = document.querySelectorAll('.boost-tab-pane');
+                
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons and panes
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabPanes.forEach(pane => pane.classList.remove('active'));
+                        
+                        // Add active class to clicked button and corresponding pane
+                        this.classList.add('active');
+                        const target = this.getAttribute('data-target');
+                        document.getElementById(target).classList.add('active');
+                    });
+                });
+                
+                // Boost meter animation
+                setTimeout(function() {
+                    document.querySelectorAll('.boost-meter-fill').forEach(meter => {
+                        meter.style.width = '75%';
+                    });
+                }, 500);
+            }
+            
+            // Rank & Rewards Carousel Functionality
+            function initRankCarousel() {
+                // Horizontal scrolling with buttons
+                const carousel = document.querySelector('.rank-carousel');
+                const prevButton = document.querySelector('.rank-carousel-arrow.prev');
+                const nextButton = document.querySelector('.rank-carousel-arrow.next');
+                const cardWidth = 280 + 24; // card width + gap
+                
+                if (prevButton && nextButton && carousel) {
+                    prevButton.addEventListener('click', function() {
+                        carousel.scrollBy({ left: -cardWidth * 3, behavior: 'smooth' });
+                    });
+                    
+                    nextButton.addEventListener('click', function() {
+                        carousel.scrollBy({ left: cardWidth * 3, behavior: 'smooth' });
+                    });
+                }
+                
+                // Category filtering
+                const categories = document.querySelectorAll('.rank-category');
+                const rankCards = document.querySelectorAll('.rank-card');
+                
+                categories.forEach(category => {
+                    category.addEventListener('click', function() {
+                        // Remove active class from all categories
+                        categories.forEach(cat => cat.classList.remove('active'));
+                        
+                        // Add active class to clicked category
+                        this.classList.add('active');
+                        
+                        const targetCategory = this.getAttribute('data-category');
+                        
+                        // Scroll to the first card of selected category
+                        const targetCard = document.querySelector(`.${targetCategory}-rank`);
+                        if (targetCard) {
+                            const scrollPosition = targetCard.offsetLeft - carousel.offsetLeft;
+                            carousel.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+                        }
+                    });
+                });
+            }
+            
+            // Initialize all new slide functionality
+            initBoostTabs();
+            initRankCarousel();
+        });
+    </script>
+</body>
+</html>
