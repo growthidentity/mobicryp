@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: mobicryp-slideshow
+    runtime: static
+    buildCommand: null
+    staticPublishPath: .
+    envVars:
+      - key: CACHE_CONTROL
+        value: max-age=3600
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
