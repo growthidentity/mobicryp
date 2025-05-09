@@ -7,17 +7,17 @@ services:
     pullRequestPreviewsEnabled: true
     envVars:
       - key: CACHE_CONTROL
-        value: max-age=3600
+        value: no-cache, no-store, must-revalidate
     headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /*
+        name: Pragma
+        value: no-cache
+      - path: /*
+        name: Expires
+        value: "0"
       - path: /*
         name: X-Frame-Options
         value: DENY
-      - path: /css/*
-        name: Cache-Control
-        value: public, max-age=31536000, immutable
-      - path: /js/*
-        name: Cache-Control
-        value: public, max-age=31536000, immutable
-      - path: /images/*
-        name: Cache-Control
-        value: public, max-age=31536000, immutable
