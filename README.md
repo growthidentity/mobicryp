@@ -1,19 +1,22 @@
-# MobiCryp Slideshow
+# MobiCryp Slideshow - Eric Worre Style
 
-A responsive, interactive presentation for MobiCryp's crypto minting platform featuring detailed information on minting boosts, bonus structures, ranks, rewards, and more.
+A powerful, visually-stunning slideshow presentation for MobiCryp designed in the Eric Worre style to create emotional impact and drive conversions. This presentation uses dramatic visuals, compelling storytelling, and clear value propositions to engage viewers.
 
 ![MobiCryp Logo](./images/mobicryp-logo.svg)
 
 ## Overview
 
-This slideshow is a comprehensive presentation for the MobiCryp platform, showcasing key features and benefits through an interactive slideshow experience. The presentation includes:
+This slideshow is a comprehensive 38-slide presentation for the MobiCryp platform, showcasing key features and benefits through an emotional, vision-driven narrative in the Eric Worre style. The presentation includes:
 
-- **Minting Booster Slide**: Self-Minting and Auto-Minting boost rates
-- **Bonus Structure Slide**: Four different bonus types and their benefits
-- **Rank & Rewards Slide**: 13 ranks with detailed requirements and rewards
-- **Power of 4 Slide**: Team duplication model with ROI calculations
-- **Upcoming Products Slide**: Nine future products in the MobiCryp ecosystem
-- **Trust & Support Slide**: Company credentials and support options
+- **The Problem & Solution**: Identifying financial challenges and introducing MobiCryp
+- **Minting System**: Self-Minting and Auto-Minting options with detailed ROI structures
+- **Bonus Structure**: Four different bonus types and their benefits
+- **Rank & Rewards**: 13 ranks with detailed requirements and rewards
+- **Achievement System**: Recognition and rewards for different achievement levels
+- **Community Showcase**: Global network of successful minters and their stories
+- **Security Features**: Advanced blockchain security protections for investors
+- **Vision & Roadmap**: Future development plans and project milestones
+- **Call to Action**: Clear steps to begin the MobiCryp journey
 
 ## Technologies Used
 
