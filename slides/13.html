@@ -21,47 +21,103 @@
             margin-bottom: 2rem;
         }
         
-        .progress {
-            transition: width 1.5s ease-in-out;
+        .booster-section {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        @keyframes progressGrow1 {
-            from { width: 0; }
-            to { width: 25%; }
+        .booster-title {
+            background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
         
-        @keyframes progressGrow2 {
-            from { width: 0; }
-            to { width: 40%; }
+        .minting-type {
+            background: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            max-width: 400px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.4rem;
+            text-transform: uppercase;
         }
         
-        @keyframes progressGrow3 {
-            from { width: 0; }
-            to { width: 70%; }
+        .rate-table {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
         }
         
-        @keyframes progressGrow4 {
-            from { width: 0; }
-            to { width: 100%; }
+        .rate-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background: #f8b93a;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            color: #0d1b33;
         }
         
-        .progress-bar-1 {
-            animation: progressGrow1 1.5s ease-out forwards;
+        .rate-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-align: center;
         }
         
-        .progress-bar-2 {
-            animation: progressGrow2 1.5s ease-out forwards;
-            animation-delay: 0.3s;
+        .rate-header-column {
+            flex: 1;
         }
         
-        .progress-bar-3 {
-            animation: progressGrow3 1.5s ease-out forwards;
-            animation-delay: 0.6s;
+        .rate-period {
+            font-size: 0.7rem;
+            opacity: 0.8;
         }
         
-        .progress-bar-4 {
-            animation: progressGrow4 1.5s ease-out forwards;
-            animation-delay: 0.9s;
+        .rate-values {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .rate-values-column {
+            flex: 1;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .rate-values-column div {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .rate-values-column div:last-child {
+            margin-bottom: 0;
+        }
+        
+        .note {
+            text-align: center;
+            font-style: italic;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -78,107 +134,157 @@
     <!-- Main slide content -->
     <div class="slide-container">
         <div class="slide-content premium-slide">
-            <h2 class="section-title premium-text">Boost Your Minting Speed</h2>
-            <p class="section-description">Accelerate your earnings based on your direct business volume</p>
-            
-            <div class="flex-row" style="gap: 3rem; margin-top: 3rem;">
-                <div class="flex-column" style="flex: 1;">
-                    <div class="premium-card shine-container" style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); margin-bottom: 2rem;">
-                        <h3 class="premium-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-color);">
-                            <i class="fas fa-hand-point-right" style="margin-right: 0.5rem;"></i>
-                            Self Minting Booster
-                        </h3>
-                        <p style="margin-bottom: 1.5rem;">Increase minting per day from 0.33% to as high as 10% based on team performance</p>
+            <!-- Self Minting Booster Section -->
+            <div class="booster-section">
+                <h2 class="booster-title">Minting Booster</h2>
+                <div class="minting-type">Self Minting</div>
+                
+                <div class="rate-table">
+                    <!-- Left Card: Initial Rates -->
+                    <div class="rate-card">
+                        <div class="rate-header">
+                            <div class="rate-header-column">
+                                Minting<br>Speed<br>
+                                <span class="rate-period">(Daily)</span>
+                            </div>
+                            <div class="rate-header-column">
+                                Direct<br>Business
+                            </div>
+                        </div>
                         
-                        <!-- Visual Element -->
-                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 1.5rem;">
-                            <div style="position: relative; text-align: center; padding: 0.5rem 1.5rem; background: rgba(0, 209, 255, 0.15); border-radius: 50px; margin-right: 1rem;">
-                                <span style="font-weight: 600; color: var(--accent-color);">0.33%</span>
+                        <div class="rate-values">
+                            <div class="rate-values-column">
+                                <div>0.33%</div>
+                                <div>0.4%</div>
+                                <div>0.5%</div>
+                                <div>0.6%</div>
+                                <div>0.7%</div>
+                                <div>0.8%</div>
                             </div>
-                            <div style="flex-grow: 1; height: 2px; background: linear-gradient(to right, var(--accent-color), rgba(30, 84, 229, 0.7)); position: relative;">
-                                <i class="fas fa-chevron-right" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); color: rgba(30, 84, 229, 0.7);"></i>
-                            </div>
-                            <div style="position: relative; text-align: center; padding: 0.5rem 1.5rem; background: rgba(30, 84, 229, 0.15); border-radius: 50px; margin-left: 1rem;">
-                                <span style="font-weight: 600; color: var(--accent-color);">10%</span>
+                            <div class="rate-values-column">
+                                <div>No Investment</div>
+                                <div>5X</div>
+                                <div>10X</div>
+                                <div>15X</div>
+                                <div>20X</div>
+                                <div>25X</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="premium-card shine-container premium-float" style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3);">
-                        <h3 class="premium-text" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-color);">
-                            <i class="fas fa-robot" style="margin-right: 0.5rem;"></i>
-                            Auto Minting Booster
-                        </h3>
-                        <p style="margin-bottom: 1.5rem;">Increase minting per month from 8% to as high as 100% based on team performance</p>
+                    <!-- Right Card: Higher Rates -->
+                    <div class="rate-card">
+                        <div class="rate-header">
+                            <div class="rate-header-column">
+                                Minting<br>Speed<br>
+                                <span class="rate-period">(Daily)</span>
+                            </div>
+                            <div class="rate-header-column">
+                                Direct<br>Business
+                            </div>
+                        </div>
                         
-                        <!-- Visual Element -->
-                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 1.5rem;">
-                            <div style="position: relative; text-align: center; padding: 0.5rem 1.5rem; background: rgba(0, 209, 255, 0.15); border-radius: 50px; margin-right: 1rem;">
-                                <span style="font-weight: 600; color: var(--accent-color);">8%</span>
+                        <div class="rate-values">
+                            <div class="rate-values-column">
+                                <div>1%</div>
+                                <div>2%</div>
+                                <div>3%</div>
+                                <div>4%</div>
+                                <div>5%</div>
+                                <div>10%</div>
                             </div>
-                            <div style="flex-grow: 1; height: 2px; background: linear-gradient(to right, var(--accent-color), rgba(30, 84, 229, 0.7)); position: relative;">
-                                <i class="fas fa-chevron-right" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); color: rgba(30, 84, 229, 0.7);"></i>
-                            </div>
-                            <div style="position: relative; text-align: center; padding: 0.5rem 1.5rem; background: rgba(30, 84, 229, 0.15); border-radius: 50px; margin-left: 1rem;">
-                                <span style="font-weight: 600; color: var(--accent-color);">100%</span>
+                            <div class="rate-values-column">
+                                <div>30X</div>
+                                <div>35X</div>
+                                <div>40X</div>
+                                <div>45X</div>
+                                <div>50X</div>
+                                <div>100X</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="flex-column" style="flex: 1.5;">
-                    <div class="premium-card shine-container" style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3);">
-                        <h3 class="premium-text" style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-color); text-align: center;">Volume Requirements & Rates</h3>
-                        
-                        <div style="margin-bottom: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span>5x Volume</span>
-                                <span>Self: 1.00% | Auto: 20%</span>
+                <div class="note">
+                    Users will have to initiate minting every 12 hours to avail maximum minting benefit.
+                    <br>Self minting speed can be increased up to 10% per day based on the direct business criteria in usdt.
+                </div>
+            </div>
+            
+            <!-- Auto Minting Booster Section -->
+            <div class="booster-section" style="border-bottom: none; margin-bottom: 1.5rem; padding-bottom: 0;">
+                <h2 class="booster-title">Minting Booster</h2>
+                <div class="minting-type" style="background: var(--gold-color);">Auto Minting</div>
+                
+                <div class="rate-table">
+                    <!-- Left Card: Initial Rates -->
+                    <div class="rate-card">
+                        <div class="rate-header">
+                            <div class="rate-header-column">
+                                Minting<br>Speed<br>
+                                <span class="rate-period">(Monthly)</span>
                             </div>
-                            <div class="premium-progress-container" style="height: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden;">
-                                <div class="progress-bar-1 premium-progress-bar" style="width: 0; height: 100%; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));"></div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-bottom: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span>10x Volume</span>
-                                <span>Self: 2.00% | Auto: 40%</span>
-                            </div>
-                            <div class="premium-progress-container" style="height: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden;">
-                                <div class="progress-bar-2 premium-progress-bar" style="width: 0; height: 100%; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));"></div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-bottom: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span>50x Volume</span>
-                                <span>Self: 5.00% | Auto: 80%</span>
-                            </div>
-                            <div class="premium-progress-container" style="height: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden;">
-                                <div class="progress-bar-3 premium-progress-bar" style="width: 0; height: 100%; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));"></div>
+                            <div class="rate-header-column">
+                                Direct<br>Business
                             </div>
                         </div>
                         
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span>100x Volume</span>
-                                <span>Self: 10.00% | Auto: 100%</span>
+                        <div class="rate-values">
+                            <div class="rate-values-column">
+                                <div>8%</div>
+                                <div>9%</div>
+                                <div>10%</div>
+                                <div>15%</div>
+                                <div>20%</div>
+                                <div>25%</div>
                             </div>
-                            <div class="premium-progress-container" style="height: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 6px; overflow: hidden;">
-                                <div class="progress-bar-4 premium-progress-bar" style="width: 0; height: 100%; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));"></div>
+                            <div class="rate-values-column">
+                                <div>No Investment</div>
+                                <div>5X</div>
+                                <div>10X</div>
+                                <div>15X</div>
+                                <div>20X</div>
+                                <div>25X</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Card: Higher Rates -->
+                    <div class="rate-card">
+                        <div class="rate-header">
+                            <div class="rate-header-column">
+                                Minting<br>Speed<br>
+                                <span class="rate-period">(Monthly)</span>
+                            </div>
+                            <div class="rate-header-column">
+                                Direct<br>Business
                             </div>
                         </div>
                         
-                        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7; font-style: italic; text-align: center;">
-                            Business Volume = Total TRDO value of personally referred team members and their hub sizes
-                        </p>
+                        <div class="rate-values">
+                            <div class="rate-values-column">
+                                <div>30%</div>
+                                <div>35%</div>
+                                <div>40%</div>
+                                <div>45%</div>
+                                <div>50%</div>
+                                <div>100%</div>
+                            </div>
+                            <div class="rate-values-column">
+                                <div>30X</div>
+                                <div>35X</div>
+                                <div>40X</div>
+                                <div>45X</div>
+                                <div>50X</div>
+                                <div>100X</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Additional Explanation Box -->
-            <div class="premium-card shine-container" style="max-width: 900px; margin: 3rem auto 1rem auto; background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <!-- Additional Information Box -->
+            <div class="premium-card shine-container" style="max-width: 900px; margin: 0 auto 1rem auto; background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
                 <h3 class="premium-text" style="margin-top: 0; color: var(--accent-color); text-align: center;">How The Booster Works</h3>
                 
                 <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem;">
@@ -229,32 +335,6 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to restart animations
-            function restartAnimations() {
-                const progressBars = document.querySelectorAll('.progress-bar-1, .progress-bar-2, .progress-bar-3, .progress-bar-4');
-                progressBars.forEach(bar => {
-                    bar.style.animation = 'none';
-                    setTimeout(() => {
-                        if (bar.classList.contains('progress-bar-1')) {
-                            bar.style.animation = 'progressGrow1 1.5s ease-out forwards';
-                        } else if (bar.classList.contains('progress-bar-2')) {
-                            bar.style.animation = 'progressGrow2 1.5s ease-out forwards 0.3s';
-                        } else if (bar.classList.contains('progress-bar-3')) {
-                            bar.style.animation = 'progressGrow3 1.5s ease-out forwards 0.6s';
-                        } else if (bar.classList.contains('progress-bar-4')) {
-                            bar.style.animation = 'progressGrow4 1.5s ease-out forwards 0.9s';
-                        }
-                    }, 10);
-                });
-            }
-            
-            // Run on page load
-            restartAnimations();
-        });
-    </script>
     <script src="premium.js"></script>
 </body>
 </html>
