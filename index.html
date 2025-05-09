@@ -755,10 +755,7 @@
     <!-- Particles background -->
     <div id="particles-js"></div>
     
-    <!-- Enhanced Slide Counter -->
-    <div class="slide-counter" style="position: fixed; top: 20px; right: 20px; background: rgba(0, 0, 0, 0.8); padding: 12px 20px; border-radius: 30px; font-size: 1.2rem; z-index: 1000; color: white; font-weight: bold; box-shadow: 0 0 20px rgba(0, 209, 255, 0.4); border: 1px solid rgba(0, 209, 255, 0.3);">
-        Slide <span id="currentSlide" style="color: var(--accent-color);">1</span> of <span id="totalSlides" style="color: var(--accent-color);">38</span>
-    </div>
+    <!-- Slide counter removed -->
     
     <!-- Swiper Container -->
     <div class="swiper">
@@ -3027,9 +3024,7 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Slide 10: Self vs Auto Minting -->
-            
+
             <!-- Slide 11: SELF VS AUTO MINTING -->
             <div class="swiper-slide">
                 <div class="circuit-background"></div>
@@ -5748,20 +5743,13 @@
                     nextSlideMessage: 'Next slide',
                 },
                 
-                // Update slide counter
+                // Simplified slide handling without logging or counter updates
                 on: {
                     slideChange: function() {
-                        console.log("Slide changed to index: " + this.activeIndex + " (slide " + (this.activeIndex + 1) + " of " + this.slides.length + ")");
-                        document.getElementById('currentSlide').textContent = this.activeIndex + 1;
+                        // Empty handler
                     },
                     init: function() {
-                        console.log("Swiper initialized with " + this.slides.length + " slides");
-                        document.getElementById('totalSlides').textContent = this.slides.length;
-
-                        // Check each slide
-                        for (let i = 0; i < this.slides.length; i++) {
-                            console.log("Slide " + (i+1) + " is found with class: " + this.slides[i].className);
-                        }
+                        // Empty initialization
                     }
                 }
             });
