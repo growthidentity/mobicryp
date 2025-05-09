@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - The World Has Changed</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -32,15 +33,15 @@
     <!-- Header with navigation -->
     <header class="header">
         <div class="logo">MobiCryp</div>
-        <div class="slide-counter">Slide 1 of 39</div>
+        <div class="slide-counter">Slide 01 of 39</div>
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content" style="background: linear-gradient(145deg, rgba(0, 20, 40, 0.85) 0%, rgba(0, 10, 30, 0.95) 100%);">
+        <div class="slide-content premium-slide" style="background: linear-gradient(145deg, rgba(0, 20, 40, 0.85) 0%, rgba(0, 10, 30, 0.95) 100%);">
             <!-- Background decorative elements -->
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; opacity: 0.15; z-index: 0;">
                 <div style="position: absolute; width: 300px; height: 300px; top: 50%; left: 30%; transform: translate(-50%, -50%);">
@@ -56,12 +57,13 @@
 
             <!-- Main content -->
             <div style="position: relative; z-index: 1; text-align: center;">
-                <h1 class="section-title slide-title">THE WORLD HAS CHANGED</h1>
+                <h1 class="section-title premium-text slide-title">THE WORLD HAS CHANGED</h1>
 
-                <div style="width: 80px; height: 4px; background: linear-gradient(to right, transparent, var(--accent-color), transparent); margin: 0 auto 2.5rem;"></div>
+                <div class="premium-divider" style="width: 80px; height: 4px; background: linear-gradient(to right, transparent, var(--accent-color), transparent); margin: 0 auto 2.5rem;"></div>
 
-                <p class="section-description" style="font-size: 1.8rem; max-width: 800px; margin: 0 auto; line-height: 1.6; animation: fadeIn 2s;">
+                <p class="section-description shine-container premium-float" style="font-size: 1.8rem; max-width: 800px; margin: 0 auto; line-height: 1.6; animation: fadeIn 2s;">
                     The rules of wealth have changed — <span style="color: var(--accent-color); font-weight: 600;">the question is, have you?</span>
+                    <div class="shine-effect"></div>
                 </p>
             </div>
 
@@ -73,19 +75,20 @@
             
             <!-- Navigation buttons -->
             <div class="navigation" style="margin-top: 5rem;">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="javascript:void(0)" class="nav-button disabled" id="prev-button">
+                    <a href="javascript:void(0)" class="nav-button premium-button disabled" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="02.html" class="nav-button" id="next-button">
+                    <a href="02.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="premium.js"></script>
 </body>
 </html>

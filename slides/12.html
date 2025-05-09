@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - Self vs Auto Minting</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -35,17 +36,17 @@
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content">
-            <h2 class="section-title">Self vs Auto Minting</h2>
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">Self vs Auto Minting</h2>
             <p class="section-description">Choose the minting approach that best fits your lifestyle</p>
             
             <div class="flex-row" style="gap: 3rem; margin-top: 3rem;">
                 <div class="flex-column">
-                    <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2.5rem; border: 1px solid rgba(0, 209, 255, 0.3); position: relative; height: 100%; transform: perspective(1000px) rotateY(-5deg); transition: all 0.4s ease;">
+                    <div class="premium-card shine-container" style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2.5rem; border: 1px solid rgba(0, 209, 255, 0.3); position: relative; height: 100%; transform: perspective(1000px) rotateY(-5deg); transition: all 0.4s ease;">
                         <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0, 209, 255, 0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(20px); z-index: 0;"></div>
                         <div style="text-align: center; margin-bottom: 2rem;">
                             <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(0, 209, 255, 0.1); border: 2px solid rgba(0, 209, 255, 0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
@@ -89,7 +90,7 @@
                 </div>
                 
                 <div class="flex-column">
-                    <div style="background: linear-gradient(145deg, rgba(255, 184, 0, 0.1) 0%, rgba(255, 138, 0, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2.5rem; border: 1px solid rgba(255, 184, 0, 0.3); position: relative; height: 100%; transform: perspective(1000px) rotateY(5deg); transition: all 0.4s ease;">
+                    <div class="premium-card shine-container premium-float" style="background: linear-gradient(145deg, rgba(255, 184, 0, 0.1) 0%, rgba(255, 138, 0, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2.5rem; border: 1px solid rgba(255, 184, 0, 0.3); position: relative; height: 100%; transform: perspective(1000px) rotateY(5deg); transition: all 0.4s ease;">
                         <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(255, 184, 0, 0.15) 0%, transparent 70%); border-radius: 50%; filter: blur(20px); z-index: 0;"></div>
                         <div style="text-align: center; margin-bottom: 2rem;">
                             <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(255, 184, 0, 0.1); border: 2px solid rgba(255, 184, 0, 0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto;">
@@ -135,12 +136,12 @@
             
             <!-- Comparison Table -->
             <div style="max-width: 800px; margin: 3rem auto;">
-                <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <h3 style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: white;">Which Option Is Right For You?</h3>
+                <div class="premium-card shine-container" style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 class="premium-text" style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: white;">Which Option Is Right For You?</h3>
                     
                     <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
-                        <div style="flex: 1; min-width: 300px; padding: 1rem; background: rgba(0, 209, 255, 0.05); border: 1px solid rgba(0, 209, 255, 0.1); border-radius: var(--border-radius);">
-                            <h4 style="margin-top: 0; color: var(--accent-color);">Choose Self Minting If You:</h4>
+                        <div class="premium-card shine-container" style="flex: 1; min-width: 300px; padding: 1rem; background: rgba(0, 209, 255, 0.05); border: 1px solid rgba(0, 209, 255, 0.1); border-radius: var(--border-radius);">
+                            <h4 class="premium-text" style="margin-top: 0; color: var(--accent-color);">Choose Self Minting If You:</h4>
                             <ul style="padding-left: 1.5rem; margin-bottom: 0;">
                                 <li>Want to maximize your daily potential returns</li>
                                 <li>Can log in consistently at least once per day</li>
@@ -149,8 +150,8 @@
                             </ul>
                         </div>
                         
-                        <div style="flex: 1; min-width: 300px; padding: 1rem; background: rgba(255, 184, 0, 0.05); border: 1px solid rgba(255, 184, 0, 0.1); border-radius: var(--border-radius);">
-                            <h4 style="margin-top: 0; color: var(--gold-color);">Choose Auto Minting If You:</h4>
+                        <div class="premium-card shine-container" style="flex: 1; min-width: 300px; padding: 1rem; background: rgba(255, 184, 0, 0.05); border: 1px solid rgba(255, 184, 0, 0.1); border-radius: var(--border-radius);">
+                            <h4 class="premium-text" style="margin-top: 0; color: var(--gold-color);">Choose Auto Minting If You:</h4>
                             <ul style="padding-left: 1.5rem; margin-bottom: 0;">
                                 <li>Prefer a hands-off, passive investment</li>
                                 <li>Have a busy schedule or travel frequently</li>
@@ -166,19 +167,20 @@
             
             <!-- Navigation buttons -->
             <div class="navigation">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="11.html" class="nav-button" id="prev-button">
+                    <a href="11.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="13.html" class="nav-button" id="next-button">
+                    <a href="13.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="premium.js"></script>
 </body>
 </html>

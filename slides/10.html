@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - How the ROI Works</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -56,16 +57,16 @@
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content">
-            <h2 class="section-title">HOW THE ROI WORKS</h2>
-            <p class="section-description">Understanding your return on investment options with real-time visualization</p>
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">HOW THE ROI WORKS</h2>
+            <p class="section-description shine-container premium-float">Understanding your return on investment options with real-time visualization<div class="shine-effect"></div></p>
 
             <!-- ROI Animation Container -->
-            <div style="position: relative; max-width: 1000px; margin: 2rem auto; background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.2); overflow: hidden; min-height: 450px;">
+            <div class="premium-card" style="position: relative; max-width: 1000px; margin: 2rem auto; background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.2); overflow: hidden; min-height: 450px;">
 
                 <!-- Background Grid -->
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CiAgPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSJub25lIj48L3JlY3Q+CiAgPHBhdGggZD0iTTAgMEw0MCAwTDQwIDQwTDAgNDBaIiBzdHJva2U9InJnYmEoMCwgMjA5LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPjwvcGF0aD4KPC9zdmc+'); opacity: 0.5; z-index: 0;"></div>
@@ -74,7 +75,7 @@
                 <div style="display: flex; flex-wrap: wrap; gap: 3rem; position: relative; z-index: 1;">
 
                     <!-- Left: Self Minting -->
-                    <div class="roi-option">
+                    <div class="roi-option premium-float">
                         <div style="text-align: center; margin-bottom: 2rem;">
                             <div style="display: inline-block; background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(0, 150, 200, 0.1) 100%); padding: 0.7rem 2rem; border-radius: 50px; border: 1px solid rgba(0, 209, 255, 0.2);">
                                 <h3 style="margin: 0; color: var(--accent-color); font-size: 1.4rem; font-weight: 700;">SELF MINTING</h3>
@@ -125,7 +126,7 @@
                     </div>
 
                     <!-- Right: Auto Minting -->
-                    <div class="roi-option">
+                    <div class="roi-option premium-float">
                         <div style="text-align: center; margin-bottom: 2rem;">
                             <div style="display: inline-block; background: linear-gradient(145deg, rgba(255, 184, 0, 0.15) 0%, rgba(200, 150, 0, 0.1) 100%); padding: 0.7rem 2rem; border-radius: 50px; border: 1px solid rgba(255, 184, 0, 0.2);">
                                 <h3 style="margin: 0; color: var(--gold-color); font-size: 1.4rem; font-weight: 700;">AUTO MINTING</h3>
@@ -180,7 +181,8 @@
 
                 <!-- ROI Key Points -->
                 <div style="margin-top: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    <div style="display: inline-block; background: rgba(0, 0, 0, 0.3); padding: 1rem 2rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="shine-container" style="display: inline-block; background: rgba(0, 0, 0, 0.3); padding: 1rem 2rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div class="shine-effect"></div>
                         <p style="margin: 0; color: var(--text-secondary); font-size: 1.1rem;">
                             <span style="color: white; font-weight: 600;">Both options offer the same 250% ROI</span> - choose based on your preference for speed vs. convenience
                         </p>
@@ -215,19 +217,20 @@
             
             <!-- Navigation buttons -->
             <div class="navigation">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="09.html" class="nav-button" id="prev-button">
+                    <a href="09.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="11.html" class="nav-button" id="next-button">
+                    <a href="11.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="premium.js"></script>
 </body>
 </html>

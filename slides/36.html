@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Built For Security</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .security-features-container {
+            max-width: 900px;
+            margin: 2rem auto 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .security-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .security-feature {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .feature-glow {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(0, 209, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(15px);
+        }
+        
+        .feature-icon-container {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.1);
+            border: 2px solid rgba(0, 209, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .feature-icon {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            text-align: center;
+        }
+        
+        .feature-description {
+            text-align: center;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+        
+        .container-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
+        .delay-4 { transition-delay: 0.7s; }
+        
+        @media (max-width: 768px) {
+            .security-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .security-feature {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 36 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">BUILT FOR SECURITY</h2>
+            <p class="section-description">Your investment protected by advanced security measures</p>
+            
+            <div class="security-features-container" id="security-container">
+                <!-- First row of security features -->
+                <div class="security-row">
+                    <!-- Security Feature 1 -->
+                    <div class="security-feature" id="feature-1">
+                        <div class="feature-glow"></div>
+                        <div class="feature-icon-container">
+                            <i class="fas fa-lock feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">Blockchain Technology</h3>
+                        <p class="feature-description">All transactions are recorded on the blockchain, ensuring transparent and immutable record-keeping that can't be altered or corrupted.</p>
+                    </div>
+
+                    <!-- Security Feature 2 -->
+                    <div class="security-feature" id="feature-2">
+                        <div class="feature-glow"></div>
+                        <div class="feature-icon-container">
+                            <i class="fas fa-shield-alt feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">Multi-Factor Authentication</h3>
+                        <p class="feature-description">Your account is protected with advanced authentication methods, including email verification, SMS codes, and Google Authenticator support.</p>
+                    </div>
+                </div>
+
+                <!-- Second row of security features -->
+                <div class="security-row">
+                    <!-- Security Feature 3 -->
+                    <div class="security-feature" id="feature-3">
+                        <div class="feature-glow"></div>
+                        <div class="feature-icon-container">
+                            <i class="fas fa-user-check feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">KYC Verification</h3>
+                        <p class="feature-description">Know Your Customer procedures ensure all members are verified, creating a trusted environment and preventing fraudulent activity.</p>
+                    </div>
+
+                    <!-- Security Feature 4 -->
+                    <div class="security-feature" id="feature-4">
+                        <div class="feature-glow"></div>
+                        <div class="feature-icon-container">
+                            <i class="fas fa-code feature-icon"></i>
+                        </div>
+                        <h3 class="feature-title">Smart Contract Security</h3>
+                        <p class="feature-description">Our smart contracts are audited by top security firms, ensuring that the code governing your funds operates exactly as intended.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="35.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="37.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements
+            const securityContainer = document.getElementById('security-container');
+            const feature1 = document.getElementById('feature-1');
+            const feature2 = document.getElementById('feature-2');
+            const feature3 = document.getElementById('feature-3');
+            const feature4 = document.getElementById('feature-4');
+            
+            // Function to animate all elements
+            function animateElements() {
+                // Animate container
+                setTimeout(() => {
+                    securityContainer.classList.add('container-visible');
+                    
+                    // Animate features
+                    setTimeout(() => {
+                        feature1.classList.add('feature-visible', 'delay-1');
+                    }, 200);
+                    
+                    setTimeout(() => {
+                        feature2.classList.add('feature-visible', 'delay-2');
+                    }, 400);
+                    
+                    setTimeout(() => {
+                        feature3.classList.add('feature-visible', 'delay-3');
+                    }, 600);
+                    
+                    setTimeout(() => {
+                        feature4.classList.add('feature-visible', 'delay-4');
+                    }, 800);
+                }, 300);
+            }
+            
+            // Function to reset animations
+            function resetAnimations() {
+                // Reset all elements
+                securityContainer.classList.remove('container-visible');
+                feature1.classList.remove('feature-visible', 'delay-1');
+                feature2.classList.remove('feature-visible', 'delay-2');
+                feature3.classList.remove('feature-visible', 'delay-3');
+                feature4.classList.remove('feature-visible', 'delay-4');
+                
+                // Force reflow
+                void securityContainer.offsetWidth;
+                void feature1.offsetWidth;
+                void feature2.offsetWidth;
+                void feature3.offsetWidth;
+                void feature4.offsetWidth;
+            }
+            
+            // Initial animation
+            animateElements();
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    resetAnimations();
+                    animateElements();
+                }
+            });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>

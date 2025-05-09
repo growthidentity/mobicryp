@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - Community Binary Bonus</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -247,12 +248,12 @@
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content">
-            <h2 class="section-title">Community Binary Bonus</h2>
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">Community Binary Bonus</h2>
             <p class="section-description">Earn 10% on matching leg volume <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 2 OF 4)</span></p>
             
             <div style="display: flex; margin-top: 3rem; gap: 3rem; flex-wrap: wrap;">
@@ -327,32 +328,32 @@
                 
                 <!-- Description and features -->
                 <div style="flex: 1; display: flex; flex-direction: column; gap: 1rem; min-width: 300px;">
-                    <div class="feature-box">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;">
+                    <div class="feature-box premium-card shine-container">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
                             <i class="fas fa-percentage" style="margin-right: 0.5rem;"></i>
                             Matching 10% Bonus
                         </h3>
                         <p>Earn 10% of the volume in your weaker leg</p>
                     </div>
                     
-                    <div class="feature-box">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;">
+                    <div class="feature-box premium-card shine-container">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
                             <i class="fas fa-recycle" style="margin-right: 0.5rem;"></i>
                             Volume Clearing
                         </h3>
                         <p>After paying bonus, matching volume is cleared from both legs</p>
                     </div>
                     
-                    <div class="feature-box">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;">
+                    <div class="feature-box premium-card shine-container">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
                             <i class="fas fa-forward" style="margin-right: 0.5rem;"></i>
                             Excess Carryover
                         </h3>
                         <p>Excess volume on stronger leg carries over to next calculation period</p>
                     </div>
                     
-                    <div class="feature-box">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;">
+                    <div class="feature-box premium-card shine-container">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
                             <i class="fas fa-users" style="margin-right: 0.5rem;"></i>
                             Spillover Advantage
                         </h3>
@@ -363,8 +364,8 @@
             
             <!-- Binary Bonus Example -->
             <div style="max-width: 800px; margin: 3rem auto 1rem;">
-                <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--accent-color); text-align: center;">How Binary Bonus Works - Example</h3>
+                <div class="premium-card shine-container" style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--accent-color); text-align: center;" class="premium-text">How Binary Bonus Works - Example</h3>
                     
                     <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem;">
                         <div style="flex: 1; min-width: 300px;">
@@ -413,19 +414,20 @@
             
             <!-- Navigation buttons -->
             <div class="navigation">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="14.html" class="nav-button" id="prev-button">
+                    <a href="14.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="16.html" class="nav-button" id="next-button">
+                    <a href="16.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="premium.js"></script>
 </body>
 </html>

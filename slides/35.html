@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Join Our Global Community</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .community-container {
+            position: relative;
+            max-width: 900px;
+            margin: 2rem auto;
+            min-height: 350px;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .world-map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #002040;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .world-map::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 209, 255, 0.2) 0%, transparent 70%);
+        }
+        
+        .stats-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem;
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            min-width: 200px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .benefits-section {
+            position: relative;
+            z-index: 1;
+            padding: 0 2rem 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            transition-delay: 0.8s;
+        }
+        
+        .benefits-title {
+            font-size: 1.5rem;
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .benefit-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.5s ease;
+        }
+        
+        .benefit-icon {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+        }
+        
+        .container-appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .benefits-appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .benefit-appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+        .delay-4 { transition-delay: 0.8s; }
+        .delay-5 { transition-delay: 1.0s; }
+        .delay-6 { transition-delay: 1.2s; }
+        
+        @media (max-width: 768px) {
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 35 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">JOIN OUR GLOBAL COMMUNITY</h2>
+            <p class="section-description">Connect with a worldwide network of MobiCryp minters</p>
+
+            <div class="community-container" id="community-container">
+                <!-- World Map Background -->
+                <div class="world-map"></div>
+
+                <!-- Community Stats -->
+                <div class="stats-container">
+                    <!-- Stat 1: Countries -->
+                    <div class="stat-card" id="stat-1">
+                        <div class="stat-number">50+</div>
+                        <p class="stat-label">Countries</p>
+                    </div>
+
+                    <!-- Stat 2: Active Minters -->
+                    <div class="stat-card" id="stat-2">
+                        <div class="stat-number">10k+</div>
+                        <p class="stat-label">Active Minters</p>
+                    </div>
+
+                    <!-- Stat 3: Monthly Minted -->
+                    <div class="stat-card" id="stat-3">
+                        <div class="stat-number">$5M+</div>
+                        <p class="stat-label">Monthly Minted</p>
+                    </div>
+                </div>
+
+                <!-- Community Benefits -->
+                <div class="benefits-section" id="benefits-section">
+                    <h3 class="benefits-title">Community Benefits</h3>
+
+                    <div class="benefits-grid">
+                        <!-- Benefit 1: Training & Resources -->
+                        <div class="benefit-item" id="benefit-1">
+                            <i class="fas fa-graduation-cap benefit-icon"></i>
+                            <div>Training & Resources</div>
+                        </div>
+
+                        <!-- Benefit 2: 24/7 Support -->
+                        <div class="benefit-item" id="benefit-2">
+                            <i class="fas fa-headset benefit-icon"></i>
+                            <div>24/7 Support</div>
+                        </div>
+
+                        <!-- Benefit 3: Networking Events -->
+                        <div class="benefit-item" id="benefit-3">
+                            <i class="fas fa-handshake benefit-icon"></i>
+                            <div>Networking Events</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="34.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="36.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements
+            const communityContainer = document.getElementById('community-container');
+            const stat1 = document.getElementById('stat-1');
+            const stat2 = document.getElementById('stat-2');
+            const stat3 = document.getElementById('stat-3');
+            const benefitsSection = document.getElementById('benefits-section');
+            const benefit1 = document.getElementById('benefit-1');
+            const benefit2 = document.getElementById('benefit-2');
+            const benefit3 = document.getElementById('benefit-3');
+            
+            // Animate container
+            setTimeout(() => {
+                communityContainer.classList.add('container-appear');
+                
+                // Animate stats
+                setTimeout(() => {
+                    stat1.classList.add('stat-appear', 'delay-1');
+                }, 300);
+                
+                setTimeout(() => {
+                    stat2.classList.add('stat-appear', 'delay-2');
+                }, 500);
+                
+                setTimeout(() => {
+                    stat3.classList.add('stat-appear', 'delay-3');
+                }, 700);
+                
+                // Animate benefits section
+                setTimeout(() => {
+                    benefitsSection.classList.add('benefits-appear');
+                    
+                    // Animate benefits
+                    setTimeout(() => {
+                        benefit1.classList.add('benefit-appear', 'delay-4');
+                    }, 300);
+                    
+                    setTimeout(() => {
+                        benefit2.classList.add('benefit-appear', 'delay-5');
+                    }, 500);
+                    
+                    setTimeout(() => {
+                        benefit3.classList.add('benefit-appear', 'delay-6');
+                    }, 700);
+                }, 900);
+            }, 300);
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset all elements
+                    communityContainer.classList.remove('container-appear');
+                    stat1.classList.remove('stat-appear', 'delay-1');
+                    stat2.classList.remove('stat-appear', 'delay-2');
+                    stat3.classList.remove('stat-appear', 'delay-3');
+                    benefitsSection.classList.remove('benefits-appear');
+                    benefit1.classList.remove('benefit-appear', 'delay-4');
+                    benefit2.classList.remove('benefit-appear', 'delay-5');
+                    benefit3.classList.remove('benefit-appear', 'delay-6');
+                    
+                    // Force reflow
+                    void communityContainer.offsetWidth;
+                    void stat1.offsetWidth;
+                    void stat2.offsetWidth;
+                    void stat3.offsetWidth;
+                    void benefitsSection.offsetWidth;
+                    void benefit1.offsetWidth;
+                    void benefit2.offsetWidth;
+                    void benefit3.offsetWidth;
+                    
+                    // Re-animate
+                    setTimeout(() => {
+                        communityContainer.classList.add('container-appear');
+                        
+                        // Animate stats
+                        setTimeout(() => {
+                            stat1.classList.add('stat-appear', 'delay-1');
+                        }, 300);
+                        
+                        setTimeout(() => {
+                            stat2.classList.add('stat-appear', 'delay-2');
+                        }, 500);
+                        
+                        setTimeout(() => {
+                            stat3.classList.add('stat-appear', 'delay-3');
+                        }, 700);
+                        
+                        // Animate benefits section
+                        setTimeout(() => {
+                            benefitsSection.classList.add('benefits-appear');
+                            
+                            // Animate benefits
+                            setTimeout(() => {
+                                benefit1.classList.add('benefit-appear', 'delay-4');
+                            }, 300);
+                            
+                            setTimeout(() => {
+                                benefit2.classList.add('benefit-appear', 'delay-5');
+                            }, 500);
+                            
+                            setTimeout(() => {
+                                benefit3.classList.add('benefit-appear', 'delay-6');
+                            }, 700);
+                        }, 900);
+                    }, 300);
+                }
+            });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>

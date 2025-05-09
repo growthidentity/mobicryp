@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - Our Mission</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -12,22 +13,22 @@
     <!-- Header with navigation -->
     <header class="header">
         <div class="logo">MobiCryp</div>
-        <div class="slide-counter">Slide 6 of 39</div>
+        <div class="slide-counter">Slide 06 of 39</div>
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content" style="background: linear-gradient(145deg, rgba(30, 20, 60, 0.75) 0%, rgba(10, 10, 40, 0.85) 100%);">
+        <div class="slide-content premium-slide" style="background: linear-gradient(145deg, rgba(30, 20, 60, 0.75) 0%, rgba(10, 10, 40, 0.85) 100%);">
             <!-- Spotlight Effect Background -->
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(123, 77, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%); z-index: 0;"></div>
 
             <div style="position: relative; z-index: 1; text-align: center;">
-                <h2 class="section-title" style="margin-bottom: 1.5rem; font-size: 3rem; text-shadow: 0 0 20px rgba(123, 77, 255, 0.5);">THE MISSION IS CLEAR</h2>
+                <h2 class="section-title premium-text" style="margin-bottom: 1.5rem; font-size: 3rem; text-shadow: 0 0 20px rgba(123, 77, 255, 0.5);">THE MISSION IS CLEAR</h2>
 
-                <div style="width: 80px; height: 3px; background: linear-gradient(to right, transparent, var(--royal-purple), transparent); margin: 0 auto 3rem;"></div>
+                <div class="premium-divider" style="width: 80px; height: 3px; background: linear-gradient(to right, transparent, var(--royal-purple), transparent); margin: 0 auto 3rem;"></div>
 
                 <!-- Mission Statement -->
                 <div style="margin: 0 auto 4rem; max-width: 820px; position: relative;">
@@ -99,19 +100,20 @@
             
             <!-- Navigation buttons -->
             <div class="navigation">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="05.html" class="nav-button" id="prev-button">
+                    <a href="05.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="07.html" class="nav-button" id="next-button">
+                    <a href="07.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="premium.js"></script>
 </body>
 </html>

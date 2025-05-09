@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - Why MobiCryp Works</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -12,23 +13,23 @@
     <!-- Header with navigation -->
     <header class="header">
         <div class="logo">MobiCryp</div>
-        <div class="slide-counter">Slide 7 of 39</div>
+        <div class="slide-counter">Slide 07 of 39</div>
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content">
-            <h2 class="section-title">WHY MOBICRYP WORKS</h2>
-            <p class="section-description">A solutions-focused approach designed specifically to solve today's financial challenges</p>
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">WHY MOBICRYP WORKS</h2>
+            <p class="section-description shine-container premium-float">A solutions-focused approach designed specifically to solve today's financial challenges<div class="shine-effect"></div></p>
 
             <!-- Two-Column Comparison -->
             <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1100px; margin: 2rem auto; gap: 3rem;">
 
                 <!-- Left Column - Problems -->
-                <div style="flex: 1; min-width: 300px; position: relative; margin-bottom: 2rem;">
+                <div class="premium-card" style="flex: 1; min-width: 300px; position: relative; margin-bottom: 2rem;">
                     <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: rgba(255, 0, 0, 0.15); color: white; font-weight: 600; padding: 0.4rem 1.5rem; border-radius: 30px; font-size: 0.9rem; white-space: nowrap; z-index: 1;">
                         <i class="fas fa-times-circle" style="color: #ff5555; margin-right: 0.5rem;"></i>
                         PROBLEMS WITH OLD SYSTEMS
@@ -77,7 +78,7 @@
                 </div>
 
                 <!-- Right Column - Solutions -->
-                <div style="flex: 1; min-width: 300px; position: relative; margin-bottom: 2rem;">
+                <div class="premium-card" style="flex: 1; min-width: 300px; position: relative; margin-bottom: 2rem;">
                     <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: rgba(54, 241, 205, 0.15); color: white; font-weight: 600; padding: 0.4rem 1.5rem; border-radius: 30px; font-size: 0.9rem; white-space: nowrap; z-index: 1;">
                         <i class="fas fa-check-circle" style="color: var(--vibrant-green); margin-right: 0.5rem;"></i>
                         MOBICRYP SOLUTIONS
@@ -127,7 +128,8 @@
             </div>
 
             <!-- Bottom Summary -->
-            <div style="margin: 1rem auto 0; max-width: 800px; background: linear-gradient(145deg, rgba(54, 241, 205, 0.1) 0%, rgba(54, 241, 205, 0.05) 100%); padding: 1.2rem; border-radius: 15px; text-align: center; border: 1px solid rgba(54, 241, 205, 0.15);">
+            <div class="premium-card shine-container" style="margin: 1rem auto 0; max-width: 800px; background: linear-gradient(145deg, rgba(54, 241, 205, 0.1) 0%, rgba(54, 241, 205, 0.05) 100%); padding: 1.2rem; border-radius: 15px; text-align: center; border: 1px solid rgba(54, 241, 205, 0.15);">
+                <div class="shine-effect"></div>
                 <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">
                     A <span style="color: var(--vibrant-green); font-weight: 600;">proven system</span> that's helped over 100,000 people worldwide earn daily passive income
                 </p>
@@ -135,19 +137,20 @@
             
             <!-- Navigation buttons -->
             <div class="navigation">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="06.html" class="nav-button" id="prev-button">
+                    <a href="06.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="08.html" class="nav-button" id="next-button">
+                    <a href="08.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="premium.js"></script>
 </body>
 </html>

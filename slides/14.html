@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - Direct Bonus</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -189,18 +190,18 @@
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content">
-            <h2 class="section-title">Direct Bonus</h2>
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">Direct Bonus</h2>
             <p class="section-description">Earn 10% from every direct referral <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 1 OF 4)</span></p>
             
             <div style="display: flex; justify-content: center; margin: 3rem 0;">
                 <div class="network-diagram">
                     <!-- Central user icon -->
-                    <div class="user-icon central-user">
+                    <div class="user-icon central-user shine-container premium-float">
                         <i class="fas fa-user" style="font-size: 3rem; color: var(--accent-color);"></i>
                     </div>
                     
@@ -235,24 +236,24 @@
             </div>
             
             <div style="display: flex; justify-content: space-between; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
-                <div class="feature-box">
-                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                <div class="feature-box premium-card shine-container">
+                    <h3 class="premium-text" style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
                         <i class="fas fa-money-bill-wave" style="margin-right: 0.5rem;"></i>
                         Immediate 10% Commission
                     </h3>
                     <p>For every person directly referred who purchases a hub</p>
                 </div>
                 
-                <div class="feature-box">
-                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                <div class="feature-box premium-card shine-container">
+                    <h3 class="premium-text" style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
                         <i class="fas fa-calculator" style="margin-right: 0.5rem;"></i>
                         Example Calculation
                     </h3>
                     <p>When referral buys a $1,000 Hub, you receive $100 commission (10%)</p>
                 </div>
                 
-                <div class="feature-box">
-                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                <div class="feature-box premium-card shine-container premium-float">
+                    <h3 class="premium-text" style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
                         <i class="fas fa-infinity" style="margin-right: 0.5rem;"></i>
                         Unlimited Potential
                     </h3>
@@ -262,8 +263,8 @@
             
             <!-- Additional Benefits Box -->
             <div style="max-width: 800px; margin: 3rem auto 0;">
-                <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <h3 style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: white;">Key Benefits of Direct Bonus</h3>
+                <div class="premium-card shine-container" style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 class="premium-text" style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: white;">Key Benefits of Direct Bonus</h3>
                     
                     <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
                         <div style="flex: 1; min-width: 200px;">
@@ -307,14 +308,14 @@
             
             <!-- Navigation buttons -->
             <div class="navigation">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="13.html" class="nav-button" id="prev-button">
+                    <a href="13.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="15.html" class="nav-button" id="next-button">
+                    <a href="15.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -349,5 +350,6 @@
             restartAnimations();
         });
     </script>
+    <script src="premium.js"></script>
 </body>
 </html>

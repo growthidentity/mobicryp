@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp - HUBs Calculator</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -465,12 +466,12 @@
     </header>
 
     <!-- Background elements -->
-    <div class="circuit-background"></div>
+    <div class="circuit-background premium-circuit-background"></div>
 
     <!-- Main slide content -->
     <div class="slide-container">
-        <div class="slide-content">
-            <h2 class="section-title">MobiCryp HUBs Calculator</h2>
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">MobiCryp HUBs Calculator</h2>
             <p class="section-description">Choose your hub package and minting type</p>
 
             <!-- Tab Navigation -->
@@ -484,7 +485,7 @@
             <div class="tab-content" id="info-content">
                 <div class="minting-types">
                     <!-- Self Minting Card -->
-                    <div class="minting-type-card self-card">
+                    <div class="minting-type-card self-card premium-card shine-container">
                         <div class="minting-type-header">
                             <div class="minting-type-icon self-icon">
                                 <i class="fas fa-hand-point-right"></i>
@@ -529,7 +530,7 @@
                     </div>
                     
                     <!-- Auto Minting Card -->
-                    <div class="minting-type-card auto-card">
+                    <div class="minting-type-card auto-card premium-card shine-container premium-float">
                         <div class="minting-type-header">
                             <div class="minting-type-icon auto-icon">
                                 <i class="fas fa-robot"></i>
@@ -574,10 +575,10 @@
             <!-- Packages View -->
             <div class="tab-content active" id="packages-content">
                 <!-- Hub explanation -->
-                <div class="hub-info-box">
+                <div class="hub-info-box premium-card">
                     <i class="fas fa-server"></i>
                     <div class="hub-info-box-content">
-                        <h4>What is a MobiCryp HUB?</h4>
+                        <h4 class="premium-text">What is a MobiCryp HUB?</h4>
                         <p>A HUB is your personal crypto minting node that runs on MobiCryp's infrastructure. Think of it as your digital money factory that generates returns through stablecoin minting and arbitrage. The HUB price (in TRDO) is a one-time subscription fee that determines your USDT capacity.</p>
                         <p style="margin-top: 10px; font-style: italic; color: rgba(255, 255, 255, 0.7);">Important: The HUB itself is an expense (subscription). Your ROI is generated only from the USDT amount you mint, not from the HUB price.</p>
                     </div>
@@ -668,8 +669,8 @@
                 
                 <div class="calculator-container">
                     <!-- Input Card -->
-                    <div class="input-card">
-                        <h3 class="card-title">Calculate Your Returns</h3>
+                    <div class="input-card premium-card shine-container">
+                        <h3 class="card-title premium-text">Calculate Your Returns</h3>
                         
                         <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem;">
                             <p><strong style="color: var(--gold-color);">Remember:</strong> HUB price is a one-time subscription expense. Your ROI is calculated only on the USDT amount you mint, not on the HUB purchase price.</p>
@@ -750,8 +751,8 @@
                     </div>
                     
                     <!-- Results Card -->
-                    <div class="results-card">
-                        <h3 class="results-title">Estimated Returns</h3>
+                    <div class="results-card premium-card shine-container">
+                        <h3 class="results-title premium-text">Estimated Returns</h3>
                         
                         <div id="selfMintingResults">
                             <div class="result-group">
@@ -935,19 +936,20 @@
             
             <!-- Navigation buttons -->
             <div class="navigation">
-                <a href="index.html" class="nav-button home-button">
+                <a href="index.html" class="nav-button premium-button home-button">
                     <i class="fas fa-home"></i> All Slides
                 </a>
                 <div style="display: flex; gap: 10px;">
-                    <a href="10.html" class="nav-button" id="prev-button">
+                    <a href="10.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="12.html" class="nav-button" id="next-button">
+                    <a href="12.html" class="nav-button premium-button premium-cta" id="next-button">
                         Next <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="premium.js"></script>
 </body>
 </html>
