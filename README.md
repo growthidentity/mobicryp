@@ -1,17 +1,59 @@
 # MobiCryp Slideshow
 
-A responsive, interactive presentation for MobiCryp's crypto minting platform.
+A responsive, interactive presentation for MobiCryp's crypto minting platform featuring detailed information on minting boosts, bonus structures, ranks, rewards, and more.
 
-## Getting Started
+![MobiCryp Logo](./images/mobicryp-logo.svg)
 
-This slideshow is ready to be deployed to a hosting service like Render.com for free.
+## Overview
 
-## Files
+This slideshow is a comprehensive presentation for the MobiCryp platform, showcasing key features and benefits through an interactive slideshow experience. The presentation includes:
 
-- `index.html` - The complete slideshow with all slides
-- `additional-styles.css` - Additional styles for new slides
+- **Minting Booster Slide**: Self-Minting and Auto-Minting boost rates
+- **Bonus Structure Slide**: Four different bonus types and their benefits
+- **Rank & Rewards Slide**: 13 ranks with detailed requirements and rewards
+- **Power of 4 Slide**: Team duplication model with ROI calculations
+- **Upcoming Products Slide**: Nine future products in the MobiCryp ecosystem
+- **Trust & Support Slide**: Company credentials and support options
 
-## GitHub Setup Instructions
+## Technologies Used
+
+- HTML5, CSS3, and JavaScript
+- Swiper.js for the slideshow functionality
+- Responsive design for all devices
+- Animated transitions and visual effects
+- Font Awesome for high-quality icons
+
+## Project Structure
+
+```
+mobicryp-slideshow/
+├── css/
+│   └── styles.css         # Comprehensive styles for all slides
+├── js/
+│   └── main.js            # JavaScript functionality
+├── images/
+│   └── mobicryp-logo.svg  # MobiCryp logo
+├── index.html             # Main slideshow with all slides
+├── README.md              # Project documentation
+├── render.yaml            # Render.com deployment configuration
+└── .gitignore             # Git ignore file
+```
+
+## Setup and Deployment
+
+### Local Development
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/mobicryp-slideshow.git
+   cd mobicryp-slideshow
+   ```
+
+2. Open `index.html` in your browser to view the slideshow.
+
+3. Make any desired changes to the content or styles.
+
+### GitHub Setup Instructions
 
 1. Create a new repository on GitHub:
    - Go to https://github.com/new
@@ -26,7 +68,9 @@ This slideshow is ready to be deployed to a hosting service like Render.com for 
    git push -u origin main
    ```
 
-## Render.com Deployment
+### Render.com Deployment
+
+The `render.yaml` file is already configured for easy deployment:
 
 1. Create a Render account at https://render.com/
 2. Click "New" → "Static Site"
@@ -42,15 +86,36 @@ Your slideshow will be available at a URL like `https://mobicryp-slideshow.onren
 
 ## Customization
 
-To customize the slideshow:
-1. Edit the `index.html` file to update content
-2. Modify styles in `additional-styles.css` for visual changes
-3. Commit and push changes to GitHub
-4. Render will automatically redeploy your site
+### Updating Content
+
+- Edit `index.html` to update content for any slide
+- Add new images to the `images/` directory
+- Update slide titles, descriptions, and values as needed
+
+### Styling Changes
+
+- All styles are in `css/styles.css`, organized by sections:
+  - Common components and layout
+  - Individual slide styles
+  - Responsive design rules
+
+### JavaScript Functionality
+
+- Core functionality like navigation is in `js/main.js`
+- Slide-specific interactivity like tabs and carousels
 
 ## Features
 
-- Responsive design for all devices
+- Swipe navigation on mobile devices
+- Keyboard arrow key navigation
 - Interactive elements like tabs and carousels
 - Animated transitions and visual effects
-- Complete presentation for MobiCryp's platform
+- Responsive design for all screen sizes
+
+## License
+
+Copyright © 2024 MobiCryp. All Rights Reserved.
+
+## Contact
+
+For questions or support, please contact [your contact information].
