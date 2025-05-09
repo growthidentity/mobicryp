@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Network Developer</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .diamond-color {
+            color: #b9f2ff;
+        }
+        
+        .diamond-bg {
+            background: linear-gradient(145deg, #b9f2ff, #89c6d7);
+        }
+        
+        .diamond-bg-light {
+            background: rgba(185, 242, 255, 0.2);
+        }
+        
+        .diamond-bg-medium {
+            background: linear-gradient(135deg, rgba(185, 242, 255, 0.7), rgba(137, 198, 215, 0.7));
+        }
+        
+        .diamond-border {
+            border: 1px solid rgba(185, 242, 255, 0.3);
+        }
+        
+        .diamond-border-bottom {
+            border-bottom: 1px solid rgba(185, 242, 255, 0.2);
+        }
+        
+        .gem-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 209, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .gem-icon:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(0, 209, 255, 0.4);
+        }
+        
+        .requirement-box {
+            display: inline-block;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            border: 1px solid rgba(185, 242, 255, 0.3);
+            margin-bottom: 2.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .requirement-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(185, 242, 255, 0.2);
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease;
+        }
+        
+        .requirement-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .benefit-card {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border: 1px solid rgba(185, 242, 255, 0.2);
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease;
+        }
+        
+        .benefit-icon {
+            min-width: 40px;
+            height: 40px;
+            background: rgba(185, 242, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .income-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border: 1px solid rgba(185, 242, 255, 0.2);
+            text-align: center;
+            max-width: 500px;
+            margin-top: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+        
+        @media (max-width: 768px) {
+            .benefits-flex {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 24 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2 class="section-title">Network Developer</h2>
+            <p class="section-description">The <span style="color: #b9f2ff; font-weight: 700;">Diamond Rank</span> rewards building a large, sustainable network</p>
+            
+            <div style="display: flex; justify-content: center; margin: 2rem auto;">
+                <div style="text-align: center; max-width: 800px;">
+                    <!-- Diamond icon -->
+                    <div class="gem-icon diamond-bg" id="diamond-icon">
+                        <i class="fas fa-gem" style="color: white; font-size: 4rem;"></i>
+                    </div>
+                    
+                    <!-- Diamond requirements -->
+                    <div class="requirement-box" id="requirements-box">
+                        <h3 style="font-size: 1.6rem; color: #b9f2ff; margin-bottom: 1rem;">Diamond Requirements</h3>
+                        
+                        <div class="requirement-item" id="req-1">
+                            <div style="font-size: 1.1rem; color: #b9f2ff; font-weight: 600; margin-bottom: 0.5rem;">Organization Volume</div>
+                            <p style="margin: 0; font-size: 1.5rem; font-weight: 700;">$1,000,000</p>
+                        </div>
+                        
+                        <div class="requirement-item" id="req-2">
+                            <div style="font-size: 1.1rem; color: #b9f2ff; font-weight: 600; margin-bottom: 0.5rem;">Team Structure</div>
+                            <p style="margin: 0;">At least 3 Platinum leaders in your organization</p>
+                        </div>
+                        
+                        <div class="requirement-item" id="req-3">
+                            <div style="font-size: 1.1rem; color: #b9f2ff; font-weight: 600; margin-bottom: 0.5rem;">Royalty Rate</div>
+                            <p style="margin: 0; font-size: 1.5rem; font-weight: 700;">16% Commission</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Diamond rewards -->
+                    <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(185, 242, 255, 0.3);" id="rewards-box">
+                        <h3 style="font-size: 1.6rem; color: #b9f2ff; margin-bottom: 1.5rem;">Diamond Rewards</h3>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;" class="benefits-flex">
+                            <div class="benefit-card" id="benefit-1">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-money-bill-wave" style="color: #b9f2ff; font-size: 1rem;"></i>
+                                    </div>
+                                    <h4 style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #b9f2ff;">$50,000 Cash Bonus</h4>
+                                </div>
+                                <p style="margin: 0 0 0 4rem; line-height: 1.5;">One-time achievement bonus upon reaching Diamond rank</p>
+                            </div>
+                            
+                            <div class="benefit-card" id="benefit-2">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-globe" style="color: #b9f2ff; font-size: 1rem;"></i>
+                                    </div>
+                                    <h4 style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #b9f2ff;">Global Recognition</h4>
+                                </div>
+                                <p style="margin: 0 0 0 4rem; line-height: 1.5;">Featured in company events and promotional materials</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: center;">
+                            <div class="income-box" id="income-box">
+                                <p style="margin: 0 0 0.8rem; font-size: 1.1rem; color: #b9f2ff; font-weight: 600;">Estimated Monthly Income at Diamond Rank</p>
+                                <p style="margin: 0; font-size: 2rem; font-weight: 700; color: white;">$100,000+ Per Month</p>
+                                <p style="margin: 0.5rem 0 0; opacity: 0.7; font-size: 0.9rem;">Results vary based on team structure and activity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="23.html" class="nav-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="25.html" class="nav-button" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate diamond icon
+            setTimeout(() => {
+                document.getElementById('diamond-icon').classList.add('fade-in-up');
+            }, 300);
+            
+            // Animate requirements box
+            setTimeout(() => {
+                document.getElementById('requirements-box').classList.add('fade-in-up');
+                
+                // Animate individual requirements
+                setTimeout(() => {
+                    document.getElementById('req-1').classList.add('fade-in-up', 'delay-1');
+                }, 200);
+                
+                setTimeout(() => {
+                    document.getElementById('req-2').classList.add('fade-in-up', 'delay-2');
+                }, 400);
+                
+                setTimeout(() => {
+                    document.getElementById('req-3').classList.add('fade-in-up', 'delay-3');
+                }, 600);
+            }, 600);
+            
+            // Animate rewards section
+            setTimeout(() => {
+                document.getElementById('rewards-box').classList.add('fade-in-up');
+                
+                // Animate benefit cards
+                setTimeout(() => {
+                    document.getElementById('benefit-1').classList.add('fade-in-up', 'delay-1');
+                }, 200);
+                
+                setTimeout(() => {
+                    document.getElementById('benefit-2').classList.add('fade-in-up', 'delay-2');
+                }, 400);
+                
+                setTimeout(() => {
+                    document.getElementById('income-box').classList.add('fade-in-up', 'delay-3');
+                }, 600);
+            }, 900);
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset diamond icon
+                    const diamondIcon = document.getElementById('diamond-icon');
+                    diamondIcon.classList.remove('fade-in-up');
+                    void diamondIcon.offsetWidth; // Force reflow
+                    
+                    // Reset requirements box
+                    const requirementsBox = document.getElementById('requirements-box');
+                    requirementsBox.classList.remove('fade-in-up');
+                    void requirementsBox.offsetWidth;
+                    
+                    // Reset individual requirements
+                    const req1 = document.getElementById('req-1');
+                    const req2 = document.getElementById('req-2');
+                    const req3 = document.getElementById('req-3');
+                    req1.classList.remove('fade-in-up', 'delay-1');
+                    req2.classList.remove('fade-in-up', 'delay-2');
+                    req3.classList.remove('fade-in-up', 'delay-3');
+                    void req1.offsetWidth;
+                    void req2.offsetWidth;
+                    void req3.offsetWidth;
+                    
+                    // Reset rewards box
+                    const rewardsBox = document.getElementById('rewards-box');
+                    rewardsBox.classList.remove('fade-in-up');
+                    void rewardsBox.offsetWidth;
+                    
+                    // Reset benefit cards
+                    const benefit1 = document.getElementById('benefit-1');
+                    const benefit2 = document.getElementById('benefit-2');
+                    benefit1.classList.remove('fade-in-up', 'delay-1');
+                    benefit2.classList.remove('fade-in-up', 'delay-2');
+                    void benefit1.offsetWidth;
+                    void benefit2.offsetWidth;
+                    
+                    // Reset income box
+                    const incomeBox = document.getElementById('income-box');
+                    incomeBox.classList.remove('fade-in-up', 'delay-3');
+                    void incomeBox.offsetWidth;
+                    
+                    // Re-apply animations with slight delay
+                    setTimeout(() => {
+                        // Animate diamond icon
+                        diamondIcon.classList.add('fade-in-up');
+                        
+                        // Animate requirements box
+                        setTimeout(() => {
+                            requirementsBox.classList.add('fade-in-up');
+                            
+                            // Animate individual requirements
+                            setTimeout(() => {
+                                req1.classList.add('fade-in-up', 'delay-1');
+                            }, 200);
+                            
+                            setTimeout(() => {
+                                req2.classList.add('fade-in-up', 'delay-2');
+                            }, 400);
+                            
+                            setTimeout(() => {
+                                req3.classList.add('fade-in-up', 'delay-3');
+                            }, 600);
+                        }, 300);
+                        
+                        // Animate rewards section
+                        setTimeout(() => {
+                            rewardsBox.classList.add('fade-in-up');
+                            
+                            // Animate benefit cards
+                            setTimeout(() => {
+                                benefit1.classList.add('fade-in-up', 'delay-1');
+                            }, 200);
+                            
+                            setTimeout(() => {
+                                benefit2.classList.add('fade-in-up', 'delay-2');
+                            }, 400);
+                            
+                            setTimeout(() => {
+                                incomeBox.classList.add('fade-in-up', 'delay-3');
+                            }, 600);
+                        }, 600);
+                    }, 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
