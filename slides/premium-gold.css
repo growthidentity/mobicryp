@@ -1,5 +1,120 @@
 /* Import the gold theme */
-@import url('gold-theme.css');
+/* Override CSS variables with gold theme */
+:root {
+    --background-color: #ffffff !important;
+    --background-secondary: #f8f8f8 !important;
+    --text-primary: #333333 !important;
+    --text-secondary: #666666 !important;
+    --accent-color: #d4af37 !important; /* Classic gold */
+    --accent-light: #f5e7a0 !important;  /* Light gold */
+    --accent-dark: #aa8c2c !important;   /* Dark gold */
+    --secondary-color: #b08d57 !important; /* Bronze/copper accent */
+    --border-radius: 8px !important;
+    --border-radius-lg: 12px !important;
+    --shadow-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Override body styles */
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Override slide content */
+.slide-content {
+    background-color: var(--background-color) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    box-shadow: 0 15px 35px var(--shadow-color) !important;
+}
+
+/* Override circuit background */
+.circuit-background {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(212, 175, 55, 0.07)' fill-rule='evenodd'/%3E%3C/svg%3E") !important;
+    opacity: 0.5 !important;
+}
+
+/* Style overrides for premium elements */
+.premium-text {
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+}
+
+.section-title {
+    color: var(--accent-color) !important;
+}
+
+.section-description {
+    color: var(--text-secondary) !important;
+}
+
+.nav-button {
+    background: var(--background-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--accent-color) !important;
+}
+
+.nav-button:hover {
+    background-color: var(--accent-light) !important;
+    color: var(--accent-dark) !important;
+}
+
+.premium-button {
+    background: var(--background-secondary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--accent-color) !important;
+}
+
+.premium-button:hover {
+    background-color: var(--accent-light) !important;
+    border-color: var(--accent-dark) !important;
+}
+
+.premium-cta {
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.premium-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 248, 248, 0.9) 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Make sure gold theme is applied to all content */
+table, tr, td, th {
+    background-color: var(--background-color) !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+th {
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)) !important;
+    color: white !important;
+}
+
+/* Override any existing dark background */
+.premium-slide, .slide-content {
+    background: var(--background-color) !important;
+}
+
+/* Force gold color on elements that are specifically styled */
+[style*="color: #00d1ff"] {
+    color: var(--accent-color) !important;
+}
+
+[style*="color: var(--accent-color)"] {
+    color: var(--accent-color) !important;
+}
+
+[style*="background: rgba(0, 209, 255"] {
+    background: rgba(212, 175, 55, 0.2) !important;
+}
+
+[style*="border: 1px solid rgba(0, 209, 255"] {
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
 
 /* Override specific premium styles to use gold */
 .premium-slide {
