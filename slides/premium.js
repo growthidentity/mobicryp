@@ -62,12 +62,16 @@ function initializeAnimations() {
         el.style.animationDelay = `${delay}s`;
     });
     
-    // Add shine effect to all elements with .shine-container class
+    // Add shine effect to all elements with .shine-container class, but only to important ones
     document.querySelectorAll('.shine-container').forEach((container, index) => {
-        const shineEl = document.createElement('div');
-        shineEl.classList.add('shine-effect');
-        shineEl.style.setProperty('--shine-delay', `${index * 0.5}s`);
-        container.appendChild(shineEl);
+        // Only add shine to about 1 in 3 elements to reduce the overall effect
+        if (index % 3 === 0 || container.classList.contains('premium-card') ||
+            container.tagName === 'H1' || container.tagName === 'H2') {
+            const shineEl = document.createElement('div');
+            shineEl.classList.add('shine-effect');
+            shineEl.style.setProperty('--shine-delay', `${index * 2}s`); // More spacing between animations
+            container.appendChild(shineEl);
+        }
     });
 }
 
@@ -136,20 +140,23 @@ function initializeTypingEffect() {
  * Add shine effects to cards and important elements
  */
 function addShineEffects() {
-    // Add shine effect to premium cards if they don't already have it
+    // Add shine effect to premium cards if they don't already have it but only to some cards
+    let cardCount = 0;
     document.querySelectorAll('.premium-card, .rank-card, .benefit-card').forEach(card => {
-        if (!card.querySelector('.shine-effect')) {
+        // Only add shine to about 1 in 4 cards to reduce visual noise
+        if (cardCount % 4 === 0 && !card.querySelector('.shine-effect')) {
             card.classList.add('shine-container');
-            
+
             const shineEl = document.createElement('div');
             shineEl.classList.add('shine-effect');
-            
-            // Random delay for shine effect
-            const delay = Math.random() * 5; // 0-5s delay
+
+            // Longer random delay for shine effect
+            const delay = 5 + (Math.random() * 15); // 5-20s delay
             shineEl.style.setProperty('--shine-delay', `${delay}s`);
-            
+
             card.appendChild(shineEl);
         }
+        cardCount++;
     });
 }
 
