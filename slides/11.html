@@ -581,6 +581,9 @@
                         <h4 class="premium-text">What is a MobiCryp HUB?</h4>
                         <p>A HUB is your personal crypto minting node that runs on MobiCryp's infrastructure. Think of it as your digital money factory that generates returns through stablecoin minting and arbitrage. The HUB price (in TRDO) is a one-time subscription fee that determines your USDT capacity.</p>
                         <p style="margin-top: 10px; font-style: italic; color: rgba(255, 255, 255, 0.7);">Important: The HUB itself is an expense (subscription). Your ROI is generated only from the USDT amount you mint, not from the HUB price.</p>
+                        <p style="margin-top: 10px; background: rgba(0, 209, 255, 0.1); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(0, 209, 255, 0.2);">
+                            <strong style="color: var(--accent-color);"><i class="fas fa-exclamation-circle"></i> Activation Requirement:</strong> To activate a HUB, you must mint a minimum of 3x the HUB price. For example, a 55 USDT HUB requires at least 165 USDT of minting.
+                        </p>
                     </div>
                 </div>
                 
@@ -589,60 +592,74 @@
                         <thead>
                             <tr>
                                 <th><i class="fas fa-check-circle check-mark"></i>Hub Price (TRDO)</th>
+                                <th>Min Minting Required (3x)</th>
                                 <th>Max USDT Capacity</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="hub-name">55 USDT</td>
+                                <td style="color: var(--accent-color);">165 USDT</td>
                                 <td class="hub-capacity">300 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">110 USDT</td>
+                                <td style="color: var(--accent-color);">330 USDT</td>
                                 <td class="hub-capacity">600 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">275 USDT</td>
+                                <td style="color: var(--accent-color);">825 USDT</td>
                                 <td class="hub-capacity">1,500 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">550 USDT</td>
+                                <td style="color: var(--accent-color);">1,650 USDT</td>
                                 <td class="hub-capacity">3,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">1,100 USDT</td>
+                                <td style="color: var(--accent-color);">3,300 USDT</td>
                                 <td class="hub-capacity">6,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">2,750 USDT</td>
+                                <td style="color: var(--accent-color);">8,250 USDT</td>
                                 <td class="hub-capacity">15,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">5,500 USDT</td>
+                                <td style="color: var(--accent-color);">16,500 USDT</td>
                                 <td class="hub-capacity">30,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">11,000 USDT</td>
+                                <td style="color: var(--accent-color);">33,000 USDT</td>
                                 <td class="hub-capacity">60,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">27,500 USDT</td>
+                                <td style="color: var(--accent-color);">82,500 USDT</td>
                                 <td class="hub-capacity">150,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">55,000 USDT</td>
+                                <td style="color: var(--accent-color);">165,000 USDT</td>
                                 <td class="hub-capacity">300,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">110,000 USDT</td>
+                                <td style="color: var(--accent-color);">330,000 USDT</td>
                                 <td class="hub-capacity">600,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">550,000 USDT</td>
+                                <td style="color: var(--accent-color);">1,650,000 USDT</td>
                                 <td class="hub-capacity">5,000,000 USDT</td>
                             </tr>
                             <tr>
                                 <td class="hub-name">1,100,000 USDT</td>
+                                <td style="color: var(--accent-color);">3,300,000 USDT</td>
                                 <td class="hub-capacity">10,000,000 USDT</td>
                             </tr>
                         </tbody>
@@ -703,10 +720,13 @@
                         <div class="input-group">
                             <label for="amount-slider">Minting Amount: <span id="amount-display">300</span> USDT</label>
                             <div class="slider-container">
-                                <input type="range" id="amount-slider" class="amount-slider" min="10" value="300" max="300" step="10">
+                                <input type="range" id="amount-slider" class="amount-slider" min="165" value="300" max="300" step="10">
                                 <div class="slider-labels">
-                                    <span class="slider-min">Min: 10</span>
+                                    <span class="slider-min">Min: 165</span>
                                     <span class="slider-max">Max: <span id="slider-max-value">300</span></span>
+                                </div>
+                                <div style="margin-top: 8px; font-size: 0.85rem; color: var(--accent-color); text-align: center;">
+                                    <i class="fas fa-info-circle"></i> Minimum minting amount is 3x your HUB price
                                 </div>
                             </div>
                         </div>
@@ -881,19 +901,35 @@
                     hubSelect.addEventListener('change', function() {
                         const hubIndex = parseInt(this.value.replace('hub', '')) - 1;
                         const [price, capacity] = hubData[hubIndex];
-                        
+
                         // Update HUB info
                         hubPrice.textContent = price;
                         hubPriceAuto.textContent = price;
                         maxCapacity.textContent = capacity;
                         maxCapacityAuto.textContent = capacity;
-                        
-                        // Update slider max value
+
+                        // Calculate minimum minting amount (3x hub price)
+                        const minMintingAmount = price * 3;
+                        // Ensure minimum amount doesn't exceed capacity
+                        const actualMinAmount = Math.min(minMintingAmount, capacity);
+
+                        // Update slider min and max values
+                        amountSlider.min = actualMinAmount;
                         amountSlider.max = capacity;
-                        amountSlider.value = capacity;
-                        amountDisplay.textContent = capacity;
+
+                        // Set slider to minimum if current value is less than minimum
+                        if (parseInt(amountSlider.value) < actualMinAmount) {
+                            amountSlider.value = actualMinAmount;
+                            amountDisplay.textContent = actualMinAmount;
+                        } else {
+                            amountSlider.value = capacity;
+                            amountDisplay.textContent = capacity;
+                        }
+
+                        // Update slider min-max display
+                        document.querySelector('.slider-min').textContent = `Min: ${actualMinAmount}`;
                         sliderMaxValue.textContent = capacity;
-                        
+
                         updateCalculations();
                     });
                     
@@ -929,6 +965,15 @@
                         document.getElementById('total-profit-auto').textContent = totalProfit.toFixed(0);
                     }
                     
+                    // Set initial minimum amount based on selected hub
+                    const initialHubIndex = parseInt(hubSelect.value.replace('hub', '')) - 1;
+                    const [initialPrice, initialCapacity] = hubData[initialHubIndex];
+                    const initialMinAmount = Math.min(initialPrice * 3, initialCapacity);
+
+                    // Update slider min value and min display
+                    amountSlider.min = initialMinAmount;
+                    document.querySelector('.slider-min').textContent = `Min: ${initialMinAmount}`;
+
                     // Initialize calculations
                     updateCalculations();
                 });
