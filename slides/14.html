@@ -12,142 +12,143 @@
         .network-diagram {
             position: relative;
             width: 700px;
-            height: 320px;
+            height: 400px;
             margin: 0 auto;
+            overflow: visible;
         }
         
-        .user-icon {
+        .diagram-circle {
             position: absolute;
             border-radius: 50%;
+            border: 2px solid rgba(30, 160, 210, 0.5);
+            background: rgba(0, 40, 60, 0.4);
+            z-index: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.4s ease;
         }
         
-        .central-user {
+        .center-circle {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 120px;
             height: 120px;
-            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.2) 100%);
-            border: 2px solid rgba(0, 209, 255, 0.5);
+            background: rgba(30, 84, 229, 0.2);
             z-index: 2;
         }
         
-        .referral-user {
-            width: 80px;
-            height: 80px;
-            background: rgba(0, 209, 255, 0.1);
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            z-index: 1;
+        .user-icon {
+            color: rgba(200, 200, 200, 0.9);
+            font-size: 38px;
         }
         
-        .user-badge {
-            position: absolute;
-            width: 50px;
-            text-align: center;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-            color: white;
-            border-radius: 15px;
-            padding: 5px 10px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            z-index: 2;
-            animation: pulse 2s infinite ease-in-out;
+        .center-icon {
+            color: #45c6ff;
+            font-size: 60px;
+        }
+        
+        .top-circle {
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 90px;
+        }
+        
+        .bottom-circle {
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 90px;
+        }
+        
+        .left-circle {
+            top: 50%;
+            left: 80px;
+            transform: translateY(-50%);
+            width: 90px;
+            height: 90px;
+        }
+        
+        .right-circle {
+            top: 50%;
+            right: 80px;
+            transform: translateY(-50%);
+            width: 90px;
+            height: 90px;
         }
         
         .connector-line {
             position: absolute;
-            width: 80px;
-            height: 1px;
-            background: rgba(0, 209, 255, 0.5);
+            background: #45c6ff;
             z-index: 0;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .vertical-line {
+            width: 2px;
+            height: 150px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
-        /* Positions for cross pattern */
-        .referral-1 {
-            top: 15%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .badge-1 {
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .line-1 {
-            top: 40%;
-            left: 50%;
-            width: 2px;
-            height: 60px;
-            transform: translateX(-50%);
-        }
-
-        .referral-2 {
-            top: 50%;
-            left: 15%;
-        }
-
-        .badge-2 {
-            top: 50%;
-            left: 30%;
-            transform: translateY(-50%);
-        }
-
-        .line-2 {
-            top: 50%;
-            left: 40%;
-            width: 80px;
+        .horizontal-line {
+            width: 150px;
             height: 2px;
+            top: 50%;
             transform: translateY(-50%);
         }
-
-        .referral-3 {
-            bottom: 15%;
+        
+        .top-line {
+            top: 140px;
+        }
+        
+        .bottom-line {
+            bottom: 210px;
+        }
+        
+        .left-line {
+            left: 170px;
+        }
+        
+        .right-line {
+            right: 170px;
+        }
+        
+        .percentage-badge {
+            position: absolute;
+            background: #45c6ff;
+            color: white;
+            border-radius: 20px;
+            padding: 6px 15px;
+            font-weight: bold;
+            font-size: 1rem;
+            z-index: 3;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .top-badge {
+            top: 120px;
             left: 50%;
             transform: translateX(-50%);
         }
-
-        .badge-3 {
-            bottom: 30%;
+        
+        .bottom-badge {
+            bottom: 170px;
             left: 50%;
             transform: translateX(-50%);
         }
-
-        .line-3 {
-            bottom: 40%;
-            left: 50%;
-            width: 2px;
-            height: 60px;
-            transform: translateX(-50%);
-        }
-
-        .referral-4 {
+        
+        .left-badge {
+            left: 140px;
             top: 50%;
-            right: 15%;
-        }
-
-        .badge-4 {
-            top: 50%;
-            right: 30%;
             transform: translateY(-50%);
         }
-
-        .line-4 {
+        
+        .right-badge {
+            right: 140px;
             top: 50%;
-            right: 40%;
-            width: 80px;
-            height: 2px;
             transform: translateY(-50%);
         }
         
@@ -166,27 +167,33 @@
         }
         
         /* Animation classes for delayed appearance */
-        .referral-1, .badge-1, .line-1 {
+        .diagram-fade-1 {
             animation: fadeIn 0.5s ease forwards;
             animation-delay: 0.3s;
             opacity: 0;
         }
         
-        .referral-2, .badge-2, .line-2 {
+        .diagram-fade-2 {
             animation: fadeIn 0.5s ease forwards;
             animation-delay: 0.6s;
             opacity: 0;
         }
         
-        .referral-3, .badge-3, .line-3 {
+        .diagram-fade-3 {
             animation: fadeIn 0.5s ease forwards;
             animation-delay: 0.9s;
             opacity: 0;
         }
         
-        .referral-4, .badge-4, .line-4 {
+        .diagram-fade-4 {
             animation: fadeIn 0.5s ease forwards;
             animation-delay: 1.2s;
+            opacity: 0;
+        }
+        
+        .diagram-fade-5 {
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 1.5s;
             opacity: 0;
         }
         
@@ -215,37 +222,37 @@
             <div style="display: flex; justify-content: center; margin: 3rem 0;">
                 <div class="network-diagram">
                     <!-- Central user icon -->
-                    <div class="user-icon central-user shine-container premium-float">
-                        <i class="fas fa-user-circle" style="font-size: 3.2rem; color: var(--accent-color);"></i>
+                    <div class="diagram-circle center-circle diagram-fade-1">
+                        <i class="fas fa-user-circle" style="font-size: 3.5rem; color: #45c6ff;"></i>
                     </div>
-
-                    <!-- Referral 1 (Top) -->
-                    <div class="user-icon referral-user referral-1">
-                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    
+                    <!-- Top user -->
+                    <div class="diagram-circle top-circle diagram-fade-2">
+                        <i class="fas fa-user user-icon"></i>
                     </div>
-                    <div class="user-badge badge-1">10%</div>
-                    <div class="connector-line line-1"></div>
-
-                    <!-- Referral 2 (Left) -->
-                    <div class="user-icon referral-user referral-2">
-                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    <div class="percentage-badge top-badge diagram-fade-2">10%</div>
+                    <div class="connector-line vertical-line top-line diagram-fade-2"></div>
+                    
+                    <!-- Left user -->
+                    <div class="diagram-circle left-circle diagram-fade-3">
+                        <i class="fas fa-user user-icon"></i>
                     </div>
-                    <div class="user-badge badge-2">10%</div>
-                    <div class="connector-line line-2"></div>
-
-                    <!-- Referral 3 (Bottom) -->
-                    <div class="user-icon referral-user referral-3">
-                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    <div class="percentage-badge left-badge diagram-fade-3">10%</div>
+                    <div class="connector-line horizontal-line left-line diagram-fade-3"></div>
+                    
+                    <!-- Bottom user -->
+                    <div class="diagram-circle bottom-circle diagram-fade-4">
+                        <i class="fas fa-user user-icon"></i>
                     </div>
-                    <div class="user-badge badge-3">10%</div>
-                    <div class="connector-line line-3"></div>
-
-                    <!-- Referral 4 (Right) -->
-                    <div class="user-icon referral-user referral-4">
-                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    <div class="percentage-badge bottom-badge diagram-fade-4">10%</div>
+                    <div class="connector-line vertical-line bottom-line diagram-fade-4"></div>
+                    
+                    <!-- Right user -->
+                    <div class="diagram-circle right-circle diagram-fade-5">
+                        <i class="fas fa-user user-icon"></i>
                     </div>
-                    <div class="user-badge badge-4">10%</div>
-                    <div class="connector-line line-4"></div>
+                    <div class="percentage-badge right-badge diagram-fade-5">10%</div>
+                    <div class="connector-line horizontal-line right-line diagram-fade-5"></div>
                 </div>
             </div>
             
@@ -340,20 +347,22 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const restartAnimations = () => {
-                const elements = document.querySelectorAll('.referral-1, .badge-1, .line-1, .referral-2, .badge-2, .line-2, .referral-3, .badge-3, .line-3, .referral-4, .badge-4, .line-4');
+                const elements = document.querySelectorAll('.diagram-fade-1, .diagram-fade-2, .diagram-fade-3, .diagram-fade-4, .diagram-fade-5');
                 
                 elements.forEach(el => {
                     el.style.animation = 'none';
                     void el.offsetWidth; // Trigger reflow
                     
-                    if (el.classList.contains('referral-1') || el.classList.contains('badge-1') || el.classList.contains('line-1')) {
+                    if (el.classList.contains('diagram-fade-1')) {
                         el.style.animation = 'fadeIn 0.5s ease forwards 0.3s';
-                    } else if (el.classList.contains('referral-2') || el.classList.contains('badge-2') || el.classList.contains('line-2')) {
+                    } else if (el.classList.contains('diagram-fade-2')) {
                         el.style.animation = 'fadeIn 0.5s ease forwards 0.6s';
-                    } else if (el.classList.contains('referral-3') || el.classList.contains('badge-3') || el.classList.contains('line-3')) {
+                    } else if (el.classList.contains('diagram-fade-3')) {
                         el.style.animation = 'fadeIn 0.5s ease forwards 0.9s';
-                    } else if (el.classList.contains('referral-4') || el.classList.contains('badge-4') || el.classList.contains('line-4')) {
+                    } else if (el.classList.contains('diagram-fade-4')) {
                         el.style.animation = 'fadeIn 0.5s ease forwards 1.2s';
+                    } else if (el.classList.contains('diagram-fade-5')) {
+                        el.style.animation = 'fadeIn 0.5s ease forwards 1.5s';
                     }
                     
                     el.style.opacity = '0';
