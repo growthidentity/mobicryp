@@ -2686,272 +2686,248 @@
                 </div>
             </div>
             
-            <!-- Slide 16: RANK OVERVIEW -->
+            <!-- Slide 16: RANK SYSTEM -->
             <div class="swiper-slide">
                 <div class="circuit-background"></div>
                 <div class="slide-container">
                     <div class="slide-content fade-in">
                         <h2 class="section-title">MobiCryp Rank System</h2>
-                        <p class="section-description">Clear rank progression with increasing rewards</p>
+                        <p class="section-description">Hub Business Volume Based Achievement Ranks</p>
                         
-                        <div style="margin: 1rem auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 900px;">
-                            <!-- Growth Ranks (Beginner to Silver) -->
-                            <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
-                                <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem; text-align: center;">
-                                    <i class="fas fa-award" style="margin-right: 0.5rem;"></i>
+                        <!-- Info Badge -->
+                        <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.15) 100%); border-radius: var(--border-radius-lg); padding: 0.8rem 1.2rem; border: 1px solid rgba(0, 209, 255, 0.3); max-width: 900px; margin: 0.5rem auto 1.5rem; text-align: center; font-size: 0.9rem;">
+                            <i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 0.5rem;"></i>
+                            Rank achievement is based on hub business volume with at least 50% on stronger leg and 50% across weaker legs.
+                        </div>
+                        
+                        <!-- Rank Ladder -->
+                        <div style="max-width: 850px; margin: 0 auto; background: linear-gradient(145deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(30, 84, 229, 0.3);">
+                            <!-- Progression Line -->
+                            <div style="position: relative; width: 4px; background: linear-gradient(to bottom, #8a8a8a, var(--accent-color), var(--secondary-color), #9932cc, #ff0000); height: 100%; position: absolute; left: 50%; transform: translateX(-50%); z-index: 0; border-radius: 2px; margin-top: 2.5rem;"></div>
+                            
+                            <!-- Growth Ranks -->
+                            <div style="position: relative; z-index: 1; margin-bottom: 1.5rem;">
+                                <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1.2rem; text-align: center; background: rgba(0, 0, 0, 0.3); padding: 0.6rem; border-radius: var(--border-radius);">
+                                    <i class="fas fa-arrow-up" style="margin-right: 0.5rem;"></i>
                                     Growth Ranks
                                 </h3>
-                                <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.7rem; align-items: center;">
+                                
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
                                     <!-- Beginner -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #8a8a8a, #4a4a4a); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-seedling" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Beginner</span>
+                                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #8a8a8a, #4a4a4a); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-seedling" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$50</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $1,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Beginner</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$50</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$1,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Star -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #9e9e9e, #5e5e5e); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-star" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Star</span>
+                                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #9e9e9e, #5e5e5e); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-star" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$100</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $2,500</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Star</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$100</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$2,500</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Iron -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #4f4f4f, #2f2f2f); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-bolt" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Iron</span>
+                                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #4f4f4f, #2f2f2f); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-bolt" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$200</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $5,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Iron</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$200</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$5,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Bronze -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #CD7F32, #E1A16B); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-medal" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Bronze</span>
+                                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #CD7F32, #E1A16B); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$500</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $10,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Bronze</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$500</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$10,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Copper -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #B87333, #DA9860); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-medal" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Copper</span>
+                                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #B87333, #DA9860); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$1,000</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $25,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Copper</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$1,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$25,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Silver -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #C0C0C0, #E5E4E2); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-medal" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Silver</span>
+                                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #C0C0C0, #E5E4E2); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
+                                        </div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Silver</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$2,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.6rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$50,000</div>
                                         </div>
                                     </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$2,000</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $50,000</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 1.2rem; text-align: center; font-size: 0.85rem;">
-                                    Growth ranks earn flat one-time bonuses upon achievement with no royalty commissions
                                 </div>
                             </div>
                             
-                            <!-- Leadership Ranks (Gold and above) -->
-                            <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
-                                <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem; text-align: center;">
+                            <!-- Royalty Ranks -->
+                            <div style="position: relative; z-index: 1; margin-top: 2.5rem;">
+                                <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1.2rem; text-align: center; background: rgba(0, 0, 0, 0.3); padding: 0.6rem; border-radius: var(--border-radius);">
                                     <i class="fas fa-crown" style="margin-right: 0.5rem;"></i>
-                                    Leadership Ranks
+                                    Royalty Ranks
                                 </h3>
-                                <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.7rem; align-items: center;">
+                                
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
                                     <!-- Gold -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #FFD700, #FFC000); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-medal" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Gold</span>
+                                    <div style="background: linear-gradient(145deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(255, 215, 0, 0.15); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #FFD700, #FFC000); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$5,000 + 10%</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $100,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Gold</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$5,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.4rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="color: var(--secondary-color); margin-bottom: 0.6rem; font-weight: bold;">10% Royalty</div>
+                                        <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--secondary-color); color: black; font-weight: bold; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 5px;">+10%</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$100,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Platinum -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #e5e4e2, #bebdbb); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-medal" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Platinum</span>
+                                    <div style="background: linear-gradient(145deg, rgba(229, 228, 226, 0.05) 0%, rgba(229, 228, 226, 0.1) 100%); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(229, 228, 226, 0.15); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #e5e4e2, #bebdbb); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$10,000 + 12%</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $250,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Platinum</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$10,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.4rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="color: var(--secondary-color); margin-bottom: 0.6rem; font-weight: bold;">12% Royalty</div>
+                                        <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--secondary-color); color: black; font-weight: bold; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 5px;">+2%</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$250,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Titanium -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(145deg, #878681, #565652); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-medal" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Titanium</span>
+                                    <div style="background: linear-gradient(145deg, rgba(135, 134, 129, 0.05) 0%, rgba(135, 134, 129, 0.1) 100%); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(135, 134, 129, 0.15); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(145deg, #878681, #565652); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$20,000 + 14%</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $500,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Titanium</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$20,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.4rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="color: var(--secondary-color); margin-bottom: 0.6rem; font-weight: bold;">14% Royalty</div>
+                                        <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--secondary-color); color: black; font-weight: bold; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 5px;">+2%</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$500,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Diamond -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #b9f2ff, #89c6d7); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-gem" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Diamond</span>
+                                    <div style="background: linear-gradient(145deg, rgba(185, 242, 255, 0.05) 0%, rgba(185, 242, 255, 0.1) 100%); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(185, 242, 255, 0.15); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #b9f2ff, #89c6d7); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-gem" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$50,000 + 16%</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $1,000,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Diamond</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$50,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.4rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="color: var(--secondary-color); margin-bottom: 0.6rem; font-weight: bold;">16% Royalty</div>
+                                        <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--secondary-color); color: black; font-weight: bold; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 5px;">+2%</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$1,000,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Solitaire -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #00c3ff, #0080ff); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-gem" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Solitaire</span>
+                                    <div style="background: linear-gradient(145deg, rgba(0, 195, 255, 0.05) 0%, rgba(0, 128, 255, 0.1) 100%); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(0, 195, 255, 0.15); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #00c3ff, #0080ff); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-gem" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$100,000 + 18%</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $2,000,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Solitaire</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$100,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.4rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="color: var(--secondary-color); margin-bottom: 0.6rem; font-weight: bold;">18% Royalty</div>
+                                        <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--secondary-color); color: black; font-weight: bold; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 5px;">+2%</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$2,000,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Immortal -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #9932cc, #800080); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-atom" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Immortal</span>
+                                    <div style="background: linear-gradient(145deg, rgba(153, 50, 204, 0.05) 0%, rgba(128, 0, 128, 0.1) 100%); border-radius: var(--border-radius); padding: 1rem; border: 1px solid rgba(153, 50, 204, 0.15); text-align: center; position: relative;">
+                                        <div style="width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #9932cc, #800080); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.1);">
+                                            <i class="fas fa-atom" style="color: white; font-size: 1.2rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$200,000 + 20%</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $5,000,000</div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Immortal</h4>
+                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem; margin-bottom: 0.2rem;">$200,000</div>
+                                        <div style="font-size: 0.85rem; margin-bottom: 0.4rem; opacity: 0.7;">One-Time Reward</div>
+                                        <div style="color: var(--secondary-color); margin-bottom: 0.6rem; font-weight: bold;">20% Royalty</div>
+                                        <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--secondary-color); color: black; font-weight: bold; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 5px;">+2%</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$5,000,000</div>
+                                        </div>
                                     </div>
                                     
                                     <!-- Emperor -->
-                                    <div>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #ff5500, #ff0000); display: flex; align-items: center; justify-content: center;">
-                                                <i class="fas fa-crown" style="color: white; font-size: 0.7rem;"></i>
-                                            </div>
-                                            <span style="font-weight: bold;">Emperor</span>
+                                    <div style="grid-column: span 3; background: linear-gradient(145deg, rgba(255, 85, 0, 0.05) 0%, rgba(255, 0, 0, 0.1) 100%); border-radius: var(--border-radius); padding: 1.2rem; border: 1px solid rgba(255, 85, 0, 0.15); text-align: center; position: relative; max-width: 380px; margin: 1rem auto 0;">
+                                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ff5500, #ff0000); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.7rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                            <i class="fas fa-crown" style="color: white; font-size: 1.8rem;"></i>
                                         </div>
-                                    </div>
-                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
-                                    <div>
-                                        <div style="font-weight: bold; color: var(--accent-color); text-align: right;">$300,000 + 22%</div>
-                                        <div style="font-size: 0.75rem; text-align: right;">Volume: $10,000,000</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 1.2rem; text-align: center; font-size: 0.85rem;">
-                                    Leadership ranks receive both one-time bonuses and ongoing royalty commissions
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Additional rewards -->
-                        <div style="margin: 1.5rem auto; max-width: 900px;">
-                            <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
-                                <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem; text-align: center;">
-                                    <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
-                                    Special Rewards for Higher Ranks
-                                </h3>
-                                
-                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
-                                    <div style="text-align: center;">
-                                        <div style="font-weight: bold;">Platinum</div>
-                                        <div style="color: var(--accent-color); margin-top: 0.3rem;">Smartphone</div>
-                                    </div>
-                                    
-                                    <div style="text-align: center;">
-                                        <div style="font-weight: bold;">Titanium</div>
-                                        <div style="color: var(--accent-color); margin-top: 0.3rem;">Luxury Watch Fund<br>$2,500</div>
-                                    </div>
-                                    
-                                    <div style="text-align: center;">
-                                        <div style="font-weight: bold;">Diamond</div>
-                                        <div style="color: var(--accent-color); margin-top: 0.3rem;">Gold Brick Fund<br>$12,500</div>
-                                    </div>
-                                    
-                                    <div style="text-align: center;">
-                                        <div style="font-weight: bold;">Solitaire</div>
-                                        <div style="color: var(--accent-color); margin-top: 0.3rem;">Luxury Car Fund<br>$25,000</div>
-                                    </div>
-                                    
-                                    <div style="text-align: center; grid-column: 2 / 3;">
-                                        <div style="font-weight: bold;">Immortal</div>
-                                        <div style="color: var(--accent-color); margin-top: 0.3rem;">Family Trip Fund<br>$50,000</div>
-                                    </div>
-                                    
-                                    <div style="text-align: center; grid-column: 3 / 5;">
-                                        <div style="font-weight: bold;">Emperor</div>
-                                        <div style="color: var(--accent-color); margin-top: 0.3rem;">Fully Paid Villa in Dubai</div>
+                                        <h4 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.6rem; color: white;">Emperor</h4>
+                                        <div style="margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; gap: 2rem;">
+                                            <div>
+                                                <div style="font-weight: bold; color: var(--accent-color); font-size: 1.3rem; margin-bottom: 0.2rem;">$300,000</div>
+                                                <div style="font-size: 0.85rem; opacity: 0.7;">One-Time Reward</div>
+                                            </div>
+                                            <div>
+                                                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                                                    <i class="fas fa-home" style="color: var(--accent-color); font-size: 1.3rem;"></i>
+                                                    <div style="font-weight: bold; color: var(--accent-color); font-size: 1.3rem;">Villa in Dubai</div>
+                                                </div>
+                                                <div style="font-size: 0.85rem; opacity: 0.7;">Fully Paid</div>
+                                            </div>
+                                        </div>
+                                        <div style="color: var(--secondary-color); margin-bottom: 0.6rem; font-weight: bold; font-size: 1.2rem;">22% Royalty</div>
+                                        <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: var(--secondary-color); color: black; font-weight: bold; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 5px;">+2%</div>
+                                        <div style="background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); padding: 0.4rem; border: 1px solid rgba(0, 209, 255, 0.2); max-width: 140px; margin: 0 auto;">
+                                            <span style="font-size: 0.8rem; opacity: 0.8;">Volume</span>
+                                            <div style="font-weight: bold; font-size: 0.9rem;">$10,000,000</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
