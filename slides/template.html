@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Slide Title</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide X of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2 class="section-title">SLIDE TITLE</h2>
+            <p class="section-description">Slide description goes here</p>
+            
+            <!-- Slide specific content goes here -->
+            <div class="slide-body">
+                
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="prev-slide.html" class="nav-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="next-slide.html" class="nav-button" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Any slide-specific JavaScript can go here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Disable previous button on first slide
+            if (window.location.pathname.includes('01.html')) {
+                document.getElementById('prev-button').classList.add('disabled');
+                document.getElementById('prev-button').href = 'javascript:void(0)';
+            }
+            
+            // Disable next button on last slide
+            if (window.location.pathname.includes('39.html')) {
+                document.getElementById('next-button').classList.add('disabled');
+                document.getElementById('next-button').href = 'javascript:void(0)';
+            }
+        });
+    </script>
+</body>
+</html>
