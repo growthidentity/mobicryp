@@ -20,784 +20,55 @@
     <!-- Particles.js for animated background -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     
-    <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        /* Fix for layout */
-        html, body {
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        :root {
-            --primary-color: #0C2256;
-            --secondary-color: #163375;
-            --accent-color: #00D1FF;
-            --gold-color: #FFB800;
-            --royal-purple: #7B4DFF;
-            --vibrant-green: #36F1CD;
-            --text-color: #fff;
-            --text-dark-color: #333;
-            --warning-color: #FF4C4C;
-            --success-color: #2ED47A;
-            --gradient-blue: linear-gradient(135deg, #00D1FF 0%, #1E54E5 100%);
-            --gradient-gold: linear-gradient(135deg, #FFB800 0%, #FF8A00 100%);
-            --gradient-purple: linear-gradient(135deg, #7B4DFF 0%, #FF4DED 100%);
-            --box-shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.15);
-            --box-shadow-strong: 0 15px 45px rgba(0, 0, 0, 0.25);
-            --border-radius-sm: 8px;
-            --border-radius-md: 15px;
-            --border-radius-lg: 25px;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--primary-color);
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: fixed;
-        }
-        
-        /* Slide Container */
-        .swiper {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .swiper-slide {
-            height: 100%;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-        }
-        
-        /* Circuit animation background */
-        .circuit-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0C2256 0%, #1A3B89 100%);
-            z-index: 0;
-        }
-        
-        .circuit-background:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.2;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lR3JhZGllbnQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NWFkZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDBjOWZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxwYXRoIGQ9Ik0wIDEwVjVIMTVWMEgzMFYyMEg1MFYzMFYwSDEwMFYyMEg3NVYxMDBINTBWNjBIMEwxMCA5MEwwIDEwMFYxMCIgc3Ryb2tlPSJ1cmwoI2xpbmVHcmFkaWVudCkiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0wIDQwSDMwVjEwSDQwVjUwSDYwVjcwSDgwVjMwSDkwVjEwSDEwMFY5MEg4MFY2MEg2MFY5MEgzMFY4MEgxMFY0MCIgc3Ryb2tlPSJ1cmwoI2xpbmVHcmFkaWVudCkiIHN0cm9rZS13aWR0aD0iMC41IiBmaWxsPSJub25lIi8+Cjwvc3ZnPg==');
-            background-size: 300px 300px;
-            background-position: center;
-            animation: circuitFlow 20s linear infinite;
-        }
-        
-        .circuit-background:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(0, 209, 255, 0.1) 0%, rgba(0, 209, 255, 0) 70%);
-        }
-        
-        /* Crypto watermark background */
-        .crypto-watermark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSIjZjBmMGYwIiBkPSJNNTAgNWw0MS44NSA3Mi41TDggNzcuNSA1MCA1em0wIDEwbDMxLjg5IDU1LjI1TDE4LjExIDY1IDUwIDE1eiIvPjwvc3ZnPg==');
-            background-size: 200px 200px;
-            background-position: center;
-            opacity: 0.05;
-            z-index: 0;
-        }
-        
-        @keyframes circuitFlow {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 300px 300px;
-            }
-        }
-        
-        /* Slide Content */
-        .slide-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            padding: 20px;
-        }
-        
-        .slide-content {
-            text-align: center;
-            z-index: 1;
-            max-width: 1100px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0;
-            overflow: hidden;
-            transform: scale(0.65);
-            transform-origin: center center;
-        }
-        
-        /* Typography */
-        .slide-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-            text-shadow: 0 0 15px rgba(66,138,255,0.5);
-        }
-        
-        .slide-tagline {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: var(--accent-color);
-            margin-bottom: 2rem;
-        }
-        
-        .disclaimer-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--warning-color);
-        }
-        
-        .disclaimer-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Section Titles */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-color);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--accent-color);
-            margin: 0.8rem auto 0;
-        }
-        
-        .section-description {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--accent-color);
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Card Styles */
-        .info-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: var(--border-radius-md);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: var(--box-shadow-soft);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-strong);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .info-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .info-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .gold-card {
-            background: linear-gradient(145deg, rgba(255, 184, 0, 0.05) 0%, rgba(255, 138, 0, 0.05) 100%);
-            border: 1px solid rgba(255, 184, 0, 0.1);
-        }
-        
-        .gold-card h3 {
-            color: var(--gold-color);
-        }
-        
-        .purple-card {
-            background: linear-gradient(145deg, rgba(123, 77, 255, 0.05) 0%, rgba(255, 77, 237, 0.05) 100%);
-            border: 1px solid rgba(123, 77, 255, 0.1);
-        }
-        
-        .purple-card h3 {
-            color: var(--royal-purple);
-        }
-        
-        .blue-card {
-            background: linear-gradient(145deg, rgba(0, 209, 255, 0.05) 0%, rgba(30, 84, 229, 0.05) 100%);
-            border: 1px solid rgba(0, 209, 255, 0.1);
-        }
-        
-        /* Navigation controls */
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: var(--accent-color);
-        }
-        
-        .swiper-pagination-bullet-active {
-            background: var(--accent-color);
-        }
-        
-        /* Slide counter */
-        .slide-counter {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            z-index: 100;
-        }
-        
-        /* Animation for elements */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-        
-        /* Table styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0.5rem 0 !important;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius-sm);
-            font-size: 0.7rem !important;
-        }
-        
-        table td, table th {
-            padding: 0.2rem !important;
-            font-size: 0.7rem !important;
-        }
-        
-        /* Make tables fit */
-        .complex-table-container {
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 0.5rem !important;
-            border-radius: var(--border-radius-sm);
-        }
-
-        /* Added styles for new slides */
-        
-        /* Minting Booster Slide Styles */
-        .boost-tabs {
-            width: 100%;
-            background: rgba(12, 34, 86, 0.4);
-            border-radius: var(--border-radius-md);
-            padding: 1.5rem;
-            box-shadow: var(--box-shadow-soft);
-            border: 1px solid rgba(0, 209, 255, 0.1);
-            margin-bottom: 1.5rem;
-        }
-        
-        .boost-tab-buttons {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 1rem;
-        }
-        
-        .boost-tab-btn {
-            background: rgba(22, 51, 117, 0.5);
-            color: var(--text-color);
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            border-radius: var(--border-radius-sm);
-            padding: 0.8rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .boost-tab-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-color) 0%, rgba(30, 84, 229, 0.7) 100%);
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.3s ease;
-        }
-        
-        .boost-tab-btn:hover, .boost-tab-btn.active {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border-color: var(--accent-color);
-        }
-        
-        .boost-tab-btn:hover:before, .boost-tab-btn.active:before {
-            opacity: 1;
-        }
-        
-        .boost-tab-content {
-            position: relative;
-        }
-        
-        .boost-tab-pane {
-            display: none;
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        .boost-tab-pane.active {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-        
-        .boost-visual {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 1rem;
-        }
-        
-        .boost-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: rgba(12, 34, 86, 0.3);
-            border-radius: var(--border-radius-sm);
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .boost-table thead {
-            background: rgba(0, 209, 255, 0.1);
-        }
-        
-        .boost-table th {
-            padding: 1rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 209, 255, 0.2);
-        }
-        
-        .boost-table td {
-            padding: 0.8rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-        }
-        
-        .boost-row {
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        
-        .boost-row:hover {
-            background-color: rgba(0, 209, 255, 0.05);
-            transform: translateX(5px);
-        }
-        
-        .boost-row.max-boost {
-            background: linear-gradient(90deg, rgba(123, 77, 255, 0.1) 0%, rgba(255, 184, 0, 0.1) 100%);
-            font-weight: 700;
-        }
-        
-        .boost-row.max-boost td {
-            color: var(--gold-color);
-        }
-        
-        .highlight-value {
-            font-weight: 700;
-            color: var(--accent-color);
-            background: rgba(0, 209, 255, 0.1);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-        }
-        
-        .accent-text {
-            color: var(--gold-color);
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
-        }
-        
-        .boost-meter-container {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin: 3rem 0 1.5rem;
-            position: relative;
-        }
-        
-        .boost-meter {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        
-        .boost-meter-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-color) 0%, var(--gold-color) 100%);
-            border-radius: 10px;
-            transition: width 1s ease;
-            box-shadow: 0 0 15px rgba(0, 209, 255, 0.5);
-        }
-        
-        .boost-meter-step {
-            position: absolute;
-            transform: translateX(-50%);
-        }
-        
-        .boost-step-marker {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(0, 209, 255, 0.5);
-            position: absolute;
-            top: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-        }
-        
-        .boost-step-label {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            white-space: nowrap;
-        }
-        
-        .boost-meter-step[data-boost="0.33"] { left: 0; }
-        .boost-meter-step[data-boost="1"], .boost-meter-step[data-boost="8"] { left: 33.33%; }
-        .boost-meter-step[data-boost="5"], .boost-meter-step[data-boost="30"] { left: 50%; }
-        .boost-meter-step[data-boost="10"], .boost-meter-step[data-boost="50"] { left: 75%; }
-        .boost-meter-step[data-boost="100"] { left: 100%; }
-        
-        .boost-explainer .info-card {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-        }
-        
-        .boost-icon {
-            font-size: 1.5rem;
-            color: var(--gold-color);
-            margin-right: 1rem;
-            animation: glow 2s infinite alternate;
-        }
-        
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px rgba(255, 184, 0, 0.5); }
-            100% { text-shadow: 0 0 20px rgba(255, 184, 0, 0.8); }
-        }
-        
-        .boost-footer {
-            margin-top: 1rem;
-        }
-        
-        .boost-footer .info-card {
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .boost-footer .info-card i {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-        }
-        
-        .boost-footer .info-card p {
-            margin: 0;
-        }
-        
-        /* Bonus Structure Slide Styles */
-        .bonus-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .bonus-card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem;
-        }
-        
-        .bonus-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .bonus-icon-container {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(0, 209, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .blue-card .bonus-icon-container {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.2) 100%);
-        }
-        
-        .purple-card .bonus-icon-container {
-            background: linear-gradient(135deg, rgba(123, 77, 255, 0.2) 0%, rgba(255, 77, 237, 0.2) 100%);
-        }
-        
-        .gold-card .bonus-icon-container {
-            background: linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 138, 0, 0.2) 100%);
-        }
-        
-        .royalty-card {
-            background: linear-gradient(145deg, rgba(50, 22, 80, 0.4) 0%, rgba(90, 35, 130, 0.4) 100%);
-            border: 1px solid rgba(123, 77, 255, 0.2);
-        }
-        
-        .royalty-card .bonus-icon-container {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 138, 0, 0.3) 100%);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-        
-        .royalty-card i {
-            color: gold;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-        
-        .bonus-card i {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-        }
-        
-        .purple-card i {
-            color: var(--royal-purple);
-        }
-        
-        .gold-card i {
-            color: var(--gold-color);
-        }
-        
-        .bonus-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .blue-card .bonus-value {
-            color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
-        }
-        
-        .purple-card .bonus-value {
-            color: var(--royal-purple);
-            text-shadow: 0 0 10px rgba(123, 77, 255, 0.5);
-        }
-        
-        .gold-card .bonus-value {
-            color: var(--gold-color);
-            text-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
-        }
-        
-        .royalty-card .bonus-value {
-            color: gold;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-        }
-        
-        .bonus-details {
-            margin-top: auto;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: var(--border-radius-sm);
-            padding: 0.8rem;
-        }
-        
-        .bonus-detail-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .bonus-detail-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .detail-label {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .detail-value {
-            font-weight: 500;
-            color: var(--text-color);
-        }
-        
-        /* Level Bonus Table */
-        .level-bonus-table {
-            width: 100%;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .level-bonus-table table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius-sm);
-        }
-        
-        .level-bonus-table th {
-            background: rgba(255, 184, 0, 0.1);
-            font-weight: 600;
-            color: var(--gold-color);
-            padding: 0.5rem;
-            text-align: center;
-        }
-        
-        .level-bonus-table td {
-            padding: 0.5rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-        }
-        
-        .level-bonus-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        /* Bonus Summary */
-        .bonus-summary {
-            margin-top: 2rem;
-        }
-        
-        .glow-card {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            animation: borderGlow 3s infinite alternate;
-            padding: 1.5rem;
-        }
-        
-        @keyframes borderGlow {
-            0% { border-color: rgba(0, 209, 255, 0.2); }
-            50% { border-color: rgba(123, 77, 255, 0.2); }
-            100% { border-color: rgba(255, 184, 0, 0.2); }
-        }
-        
-        .glow-card i {
-            font-size: 2rem;
-            color: var(--accent-color);
-            animation: iconGlow 3s infinite alternate;
-        }
-        
-        @keyframes iconGlow {
-            0% { color: var(--accent-color); text-shadow: 0 0 10px rgba(0, 209, 255, 0.5); }
-            50% { color: var(--royal-purple); text-shadow: 0 0 10px rgba(123, 77, 255, 0.5); }
-            100% { color: var(--gold-color); text-shadow: 0 0 10px rgba(255, 184, 0, 0.5); }
-        }
-        
-        .summary-content {
-            flex: 1;
-        }
-        
-        .summary-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-        }
-        
-        .summary-content p {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin: 0;
-        }
-    </style>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <!-- Your existing intro slides would go here -->
+            <!-- Intro Slide -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="crypto-watermark"></div>
+                
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <div class="logo-container">
+                            <div class="logo-glow"></div>
+                            <img src="images/mobicryp-logo.png" alt="MobiCryp Logo" class="logo">
+                        </div>
+                        
+                        <h1 class="slide-title">Welcome to MobiCryp</h1>
+                        <p class="slide-tagline">The Next-Generation Crypto Minting Platform</p>
+                        
+                        <div class="intro-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <h3 class="feature-title">Crypto Minting</h3>
+                                <p class="feature-description">Mint crypto with our revolutionary platform</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="feature-title">250% ROI</h3>
+                                <p class="feature-description">Earn up to 250% return on your investment</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="feature-title">Community</h3>
+                                <p class="feature-description">Join our growing global community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Minting Booster Slide -->
             <div class="swiper-slide">
@@ -805,7 +76,7 @@
                 <div class="crypto-watermark"></div>
                 
                 <div class="slide-container">
-                    <div class="slide-content fade-in">
+                    <div class="slide-content">
                         <h2 class="section-title">Boost Your Earnings with Team Volume</h2>
                         <p class="section-description">Accelerate your minting speed based on your direct business volume</p>
                         
@@ -818,7 +89,7 @@
                             <div class="boost-tab-content">
                                 <!-- Self-Minting Tab -->
                                 <div id="self-minting" class="boost-tab-pane active">
-                                    <div class="complex-table-container">
+                                    <div class="boost-table-container">
                                         <table class="boost-table">
                                             <thead>
                                                 <tr>
@@ -911,7 +182,7 @@
                                 
                                 <!-- Auto-Minting Tab -->
                                 <div id="auto-minting" class="boost-tab-pane">
-                                    <div class="complex-table-container">
+                                    <div class="boost-table-container">
                                         <table class="boost-table">
                                             <thead>
                                                 <tr>
@@ -1020,7 +291,7 @@
                 <div class="crypto-watermark"></div>
                 
                 <div class="slide-container">
-                    <div class="slide-content fade-in">
+                    <div class="slide-content">
                         <h2 class="section-title">Mobicryp Bonus Buffet</h2>
                         <p class="section-description">Multiple streams of income to maximize your earnings</p>
                         
@@ -1132,13 +403,15 @@
                         </div>
                     </div>
                 </div>
-            </div>            <!-- Rank & Rewards Slide -->
+            </div>
+
+            <!-- Rank & Rewards Slide -->
             <div class="swiper-slide">
                 <div class="circuit-background"></div>
                 <div class="crypto-watermark"></div>
                 
                 <div class="slide-container">
-                    <div class="slide-content fade-in">
+                    <div class="slide-content">
                         <h2 class="section-title">Rise Through Ranks, Earn Bigger Rewards</h2>
                         <p class="section-description">Achieve higher ranks based on team volume and unlock exclusive rewards</p>
                         
@@ -1602,7 +875,7 @@
                 <div class="crypto-watermark"></div>
                 
                 <div class="slide-container">
-                    <div class="slide-content fade-in">
+                    <div class="slide-content">
                         <h2 class="section-title">The Power of 4 Plan</h2>
                         <p class="section-description">How a small investment can scale exponentially through team duplication</p>
                         
@@ -1859,13 +1132,15 @@
                         </div>
                     </div>
                 </div>
-            </div>            <!-- Upcoming Products Slide -->
+            </div>
+
+            <!-- Upcoming Products Slide -->
             <div class="swiper-slide">
                 <div class="circuit-background"></div>
                 <div class="crypto-watermark"></div>
                 
                 <div class="slide-container">
-                    <div class="slide-content fade-in">
+                    <div class="slide-content">
                         <h2 class="section-title">What's Next in the Mobicryp Ecosystem?</h2>
                         <p class="section-description">Our roadmap of innovative products and services coming soon</p>
                         
@@ -2022,7 +1297,7 @@
                 <div class="crypto-watermark"></div>
                 
                 <div class="slide-container">
-                    <div class="slide-content fade-in">
+                    <div class="slide-content">
                         <h2 class="section-title">We're With You All the Way</h2>
                         <p class="section-description">Comprehensive support and proven credibility for your peace of mind</p>
                         
@@ -2185,9 +1460,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Your existing closing slides would go here -->
-
         </div>
         
         <!-- Slide Navigation -->
@@ -2198,122 +1470,13 @@
         <div class="swiper-pagination"></div>
         
         <!-- Slide Counter -->
-        <div class="slide-counter"><span id="currentSlide">1</span>/<span id="totalSlides">29</span></div>
+        <div class="slide-counter"><span id="currentSlide">1</span>/<span id="totalSlides">7</span></div>
     </div>
     
     <!-- Swiper.js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Swiper
-            const swiper = new Swiper('.swiper', {
-                direction: 'horizontal',
-                loop: false,
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true
-                },
-                speed: 500,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                },
-                on: {
-                    slideChange: function() {
-                        document.getElementById('currentSlide').textContent = this.activeIndex + 1;
-                    },
-                    init: function() {
-                        document.getElementById('totalSlides').textContent = this.slides.length;
-                    }
-                }
-            });
-            
-            // Keyboard Navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight') {
-                    swiper.slideNext();
-                } else if (e.key === 'ArrowLeft') {
-                    swiper.slidePrev();
-                }
-            });
-            
-            // Minting Booster Tab Functionality
-            function initBoostTabs() {
-                const tabButtons = document.querySelectorAll('.boost-tab-btn');
-                const tabPanes = document.querySelectorAll('.boost-tab-pane');
-                
-                tabButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        // Remove active class from all buttons and panes
-                        tabButtons.forEach(btn => btn.classList.remove('active'));
-                        tabPanes.forEach(pane => pane.classList.remove('active'));
-                        
-                        // Add active class to clicked button and corresponding pane
-                        this.classList.add('active');
-                        const target = this.getAttribute('data-target');
-                        document.getElementById(target).classList.add('active');
-                    });
-                });
-                
-                // Boost meter animation
-                setTimeout(function() {
-                    document.querySelectorAll('.boost-meter-fill').forEach(meter => {
-                        meter.style.width = '75%';
-                    });
-                }, 500);
-            }
-            
-            // Rank & Rewards Carousel Functionality
-            function initRankCarousel() {
-                // Horizontal scrolling with buttons
-                const carousel = document.querySelector('.rank-carousel');
-                const prevButton = document.querySelector('.rank-carousel-arrow.prev');
-                const nextButton = document.querySelector('.rank-carousel-arrow.next');
-                const cardWidth = 280 + 24; // card width + gap
-                
-                if (prevButton && nextButton && carousel) {
-                    prevButton.addEventListener('click', function() {
-                        carousel.scrollBy({ left: -cardWidth * 3, behavior: 'smooth' });
-                    });
-                    
-                    nextButton.addEventListener('click', function() {
-                        carousel.scrollBy({ left: cardWidth * 3, behavior: 'smooth' });
-                    });
-                }
-                
-                // Category filtering
-                const categories = document.querySelectorAll('.rank-category');
-                const rankCards = document.querySelectorAll('.rank-card');
-                
-                categories.forEach(category => {
-                    category.addEventListener('click', function() {
-                        // Remove active class from all categories
-                        categories.forEach(cat => cat.classList.remove('active'));
-                        
-                        // Add active class to clicked category
-                        this.classList.add('active');
-                        
-                        const targetCategory = this.getAttribute('data-category');
-                        
-                        // Scroll to the first card of selected category
-                        const targetCard = document.querySelector(`.${targetCategory}-rank`);
-                        if (targetCard) {
-                            const scrollPosition = targetCard.offsetLeft - carousel.offsetLeft;
-                            carousel.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-                        }
-                    });
-                });
-            }
-            
-            // Initialize all new slide functionality
-            initBoostTabs();
-            initRankCarousel();
-        });
-    </script>
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
 </body>
 </html>
