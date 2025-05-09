@@ -9,234 +9,347 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .binary-tree {
-            height: 400px;
-            position: relative;
+        /* Binary Tree Structure Styles */
+        .binary-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
+        .binary-tree {
+            position: relative;
+            height: 380px;
+            margin-bottom: 40px;
+        }
+        
+        /* User Node Styles */
         .node {
             position: absolute;
+            background: rgba(0, 209, 255, 0.15);
+            border: 2px solid rgba(0, 209, 255, 0.4);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
+            z-index: 10;
+            transition: all 0.3s ease;
         }
         
-        .node-main {
+        .node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 209, 255, 0.4);
+        }
+        
+        .node-you {
+            width: 100px;
+            height: 100px;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.2) 100%);
-            border: 2px solid rgba(0, 209, 255, 0.5);
-            z-index: 2;
         }
         
-        .node-level1 {
-            top: 180px;
+        .node-left, .node-right {
             width: 80px;
             height: 80px;
-            background: rgba(0, 209, 255, 0.1);
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            z-index: 1;
+            top: 200px;
         }
         
-        .node-level1-left {
-            left: 25%;
+        .node-left {
+            left: 30%;
             transform: translateX(-50%);
         }
         
-        .node-level1-right {
-            left: 75%;
+        .node-right {
+            right: 30%;
+            transform: translateX(50%);
+        }
+        
+        /* Node Icons and Labels */
+        .node-icon {
+            font-size: 2.5rem;
+            color: rgba(0, 209, 255, 0.9);
+        }
+        
+        .node-label {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
             transform: translateX(-50%);
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
         }
         
-        .node-level2 {
-            top: 320px;
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 209, 255, 0.1);
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            z-index: 1;
-        }
-        
-        .node-level2-1 {
-            left: 12.5%;
-            transform: translateX(-50%);
-        }
-        
-        .node-level2-2 {
-            left: 37.5%;
-            transform: translateX(-50%);
-        }
-        
-        .node-level2-3 {
-            left: 62.5%;
-            transform: translateX(-50%);
-        }
-        
-        .node-level2-4 {
-            left: 87.5%;
-            transform: translateX(-50%);
-        }
-        
+        /* Connector Lines */
         .connector {
             position: absolute;
-            height: 1px;
-            background: rgba(0, 209, 255, 0.5);
-            z-index: 0;
+            background: rgba(0, 209, 255, 0.4);
+            height: 2px;
+            z-index: 5;
         }
         
-        .connector-main-left {
-            top: 100px;
-            left: 50%;
+        .connector-left {
             width: 150px;
-            transform: translateX(-100%) rotate(30deg);
+            top: 70px;
+            left: 40%;
+            transform: rotate(45deg);
+            transform-origin: left;
         }
         
-        .connector-main-right {
-            top: 100px;
-            left: 50%;
+        .connector-right {
             width: 150px;
-            transform: rotate(-30deg);
+            top: 70px;
+            right: 40%;
+            transform: rotate(-45deg);
+            transform-origin: right;
         }
         
-        .connector-level1-left-1 {
-            top: 260px;
-            left: 25%;
-            width: 70px;
-            transform: translateX(-75%) rotate(30deg);
-        }
-        
-        .connector-level1-left-2 {
-            top: 260px;
-            left: 25%;
-            width: 70px;
-            transform: translateX(-25%) rotate(-30deg);
-        }
-        
-        .connector-level1-right-1 {
-            top: 260px;
-            left: 75%;
-            width: 70px;
-            transform: translateX(-75%) rotate(30deg);
-        }
-        
-        .connector-level1-right-2 {
-            top: 260px;
-            left: 75%;
-            width: 70px;
-            transform: translateX(-25%) rotate(-30deg);
-        }
-        
+        /* Leg Labels */
         .leg-label {
             position: absolute;
-            font-weight: bold;
+            top: 120px;
+            font-weight: 700;
             font-size: 1.2rem;
             color: var(--accent-color);
         }
         
-        .leg-label-left {
-            top: 140px;
-            left: 10%;
+        .leg-left {
+            left: 25%;
         }
         
-        .leg-label-right {
-            top: 140px;
-            right: 10%;
+        .leg-right {
+            right: 25%;
         }
         
+        /* Volume Badges */
         .volume-badge {
             position: absolute;
             background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
             color: white;
-            border-radius: 15px;
-            padding: 5px 10px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            z-index: 2;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 15;
         }
         
-        .volume-badge-left {
-            top: 240px;
-            left: 15%;
-            animation: fadeInLeft 1s ease-out forwards;
+        .volume-left {
+            left: 28%;
+            top: 250px;
+            transform: translateX(-50%);
+            animation: fadeInSlide 0.5s ease-out 0.2s forwards;
+            opacity: 0;
         }
         
-        .volume-badge-right {
-            top: 240px;
-            right: 15%;
-            animation: fadeInRight 1s ease-out forwards;
+        .volume-right {
+            right: 28%;
+            top: 250px;
+            transform: translateX(50%);
+            animation: fadeInSlide 0.5s ease-out 0.4s forwards;
+            opacity: 0;
         }
         
-        .feature-box {
-            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
-            border-radius: var(--border-radius-lg);
-            padding: 1.5rem;
+        /* Result Boxes */
+        .result-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .result-box {
+            background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 209, 255, 0.3);
-            margin-bottom: 1rem;
+            border-radius: 12px;
+            padding: 15px 25px;
+            min-width: 160px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         
-        .feature-box:hover {
+        .result-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-color: rgba(0, 209, 255, 0.5);
         }
         
-        /* Animation for tree */
-        @keyframes fadeInLeft {
+        .result-title {
+            color: var(--accent-color);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        /* Bonus Details Section */
+        .bonus-details {
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .detail-card {
+            flex: 1;
+            min-width: 260px;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .detail-title {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .detail-text {
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        /* Animations */
+        @keyframes fadeInSlide {
             from {
                 opacity: 0;
-                transform: translateX(-20px);
+                transform: translateY(10px) translateX(-50%);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0) translateX(-50%);
             }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1) translateX(-50%); }
+            50% { transform: scale(1.05) translateX(-50%); }
+            100% { transform: scale(1) translateX(-50%); }
+        }
+        
+        .node-you {
+            animation: pulse 3s infinite ease-in-out;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .binary-tree {
+                height: 300px;
+            }
+            
+            .node-you {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .node-left, .node-right {
+                width: 60px;
+                height: 60px;
+                top: 160px;
+            }
+            
+            .connector-left, .connector-right {
+                width: 100px;
+            }
+            
+            .volume-left {
+                left: 25%;
+                top: 200px;
+            }
+            
+            .volume-right {
+                right: 25%;
+                top: 200px;
+            }
+            
+            .node-icon {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Special Animation for Volume Badges */
+        .volume-right {
+            animation: fadeInRight 0.5s ease-out 0.4s forwards;
+            opacity: 0;
         }
         
         @keyframes fadeInRight {
             from {
                 opacity: 0;
-                transform: translateX(20px);
+                transform: translateY(10px) translateX(50%);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0) translateX(50%);
             }
         }
         
-        @keyframes pulseNode {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+        /* Example Section Styles */
+        .example-section {
+            margin-top: 60px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .summary-box {
+        .example-title {
+            color: var(--accent-color);
             text-align: center;
-            padding: 1rem;
-            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            width: 150px;
-            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
         }
         
-        .summary-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         
-        .node-main, .volume-badge {
-            animation: pulseNode 2s infinite ease-in-out;
+        .example-box {
+            background: rgba(0, 209, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .example-box-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .example-box-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .bonus-value {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            background: rgba(0, 209, 255, 0.1);
+            border-radius: 8px;
+            padding: 8px 15px;
+            display: inline-block;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -256,155 +369,128 @@
             <h2 class="section-title premium-text">Community Binary Bonus</h2>
             <p class="section-description">Earn 10% on matching leg volume <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 2 OF 4)</span></p>
             
-            <div style="display: flex; margin-top: 3rem; gap: 3rem; flex-wrap: wrap;">
-                <!-- Binary Tree Visualization -->
-                <div style="flex: 1.2; position: relative; min-width: 300px;">
-                    <div class="binary-tree">
-                        <!-- Top node (you) -->
-                        <div class="node node-main">
-                            <i class="fas fa-user" style="font-size: 2.5rem; color: var(--accent-color);"></i>
-                            <div style="position: absolute; top: 110%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-weight: bold;">YOU</div>
-                        </div>
-                        
-                        <!-- Lines to level 1 -->
-                        <div class="connector connector-main-left"></div>
-                        <div class="connector connector-main-right"></div>
-                        
-                        <!-- Level 1 left -->
-                        <div class="node node-level1 node-level1-left">
-                            <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
-                        </div>
-                        
-                        <!-- Level 1 right -->
-                        <div class="node node-level1 node-level1-right">
-                            <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
-                        </div>
-                        
-                        <!-- Lines to level 2 left -->
-                        <div class="connector connector-level1-left-1"></div>
-                        <div class="connector connector-level1-left-2"></div>
-                        
-                        <!-- Lines to level 2 right -->
-                        <div class="connector connector-level1-right-1"></div>
-                        <div class="connector connector-level1-right-2"></div>
-                        
-                        <!-- Level 2 nodes (4 small) -->
-                        <div class="node node-level2 node-level2-1">
-                            <i class="fas fa-user" style="font-size: 1.5rem; color: rgba(255, 255, 255, 0.7);"></i>
-                        </div>
-                        <div class="node node-level2 node-level2-2">
-                            <i class="fas fa-user" style="font-size: 1.5rem; color: rgba(255, 255, 255, 0.7);"></i>
-                        </div>
-                        <div class="node node-level2 node-level2-3">
-                            <i class="fas fa-user" style="font-size: 1.5rem; color: rgba(255, 255, 255, 0.7);"></i>
-                        </div>
-                        <div class="node node-level2 node-level2-4">
-                            <i class="fas fa-user" style="font-size: 1.5rem; color: rgba(255, 255, 255, 0.7);"></i>
-                        </div>
-                        
-                        <!-- LEFT label -->
-                        <div class="leg-label leg-label-left">LEFT</div>
-                        
-                        <!-- RIGHT label -->
-                        <div class="leg-label leg-label-right">RIGHT</div>
-                        
-                        <!-- Volume indicators -->
-                        <div class="volume-badge volume-badge-left">$8,000</div>
-                        <div class="volume-badge volume-badge-right">$5,000</div>
+            <!-- Binary Tree Container -->
+            <div class="binary-container">
+                <!-- Binary Tree Structure -->
+                <div class="binary-tree">
+                    <!-- YOU Node -->
+                    <div class="node node-you">
+                        <i class="fas fa-user-circle node-icon"></i>
+                        <div class="node-label">YOU</div>
                     </div>
                     
-                    <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
-                        <div class="summary-box">
-                            <h4 style="margin-bottom: 0.5rem; color: var(--accent-color);">Weaker Leg</h4>
-                            <p style="font-size: 1.2rem; font-weight: bold;">$5,000</p>
+                    <!-- Left Node -->
+                    <div class="node node-left">
+                        <i class="fas fa-user node-icon" style="font-size: 2rem;"></i>
+                    </div>
+                    
+                    <!-- Right Node -->
+                    <div class="node node-right">
+                        <i class="fas fa-user node-icon" style="font-size: 2rem;"></i>
+                    </div>
+                    
+                    <!-- Connector Lines -->
+                    <div class="connector connector-left"></div>
+                    <div class="connector connector-right"></div>
+                    
+                    <!-- Leg Labels -->
+                    <div class="leg-label leg-left">LEFT</div>
+                    <div class="leg-label leg-right">RIGHT</div>
+                    
+                    <!-- Volume Badges -->
+                    <div class="volume-badge volume-left">$8,000</div>
+                    <div class="volume-badge volume-right">$5,000</div>
+                </div>
+                
+                <!-- Result Boxes -->
+                <div class="result-boxes">
+                    <div class="result-box">
+                        <div class="result-title">Weaker Leg</div>
+                        <div class="result-value">$5,000</div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-title">Your Bonus</div>
+                        <div class="result-value">$500</div>
+                    </div>
+                </div>
+                
+                <!-- Bonus Features -->
+                <div class="bonus-details">
+                    <div class="detail-card shine-container">
+                        <div class="detail-title">
+                            <i class="fas fa-percentage"></i>
+                            Matching 10% Bonus
                         </div>
-                        
-                        <div class="summary-box">
-                            <h4 style="margin-bottom: 0.5rem; color: var(--accent-color);">Your Bonus</h4>
-                            <p style="font-size: 1.2rem; font-weight: bold;">$500</p>
+                        <div class="detail-text">
+                            Earn 10% of the volume in your weaker leg
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card shine-container">
+                        <div class="detail-title">
+                            <i class="fas fa-recycle"></i>
+                            Volume Clearing
+                        </div>
+                        <div class="detail-text">
+                            After paying bonus, matching volume is cleared from both legs
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card shine-container">
+                        <div class="detail-title">
+                            <i class="fas fa-forward"></i>
+                            Excess Carryover
+                        </div>
+                        <div class="detail-text">
+                            Excess volume on stronger leg carries over to next calculation period
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card shine-container">
+                        <div class="detail-title">
+                            <i class="fas fa-users"></i>
+                            Spillover Advantage
+                        </div>
+                        <div class="detail-text">
+                            Upline can place new members in your downline automatically
                         </div>
                     </div>
                 </div>
                 
-                <!-- Description and features -->
-                <div style="flex: 1; display: flex; flex-direction: column; gap: 1rem; min-width: 300px;">
-                    <div class="feature-box premium-card shine-container">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
-                            <i class="fas fa-percentage" style="margin-right: 0.5rem;"></i>
-                            Matching 10% Bonus
-                        </h3>
-                        <p>Earn 10% of the volume in your weaker leg</p>
-                    </div>
+                <!-- Example Section -->
+                <div class="example-section shine-container">
+                    <h3 class="example-title">How Binary Bonus Works - Example</h3>
                     
-                    <div class="feature-box premium-card shine-container">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
-                            <i class="fas fa-recycle" style="margin-right: 0.5rem;"></i>
-                            Volume Clearing
-                        </h3>
-                        <p>After paying bonus, matching volume is cleared from both legs</p>
-                    </div>
-                    
-                    <div class="feature-box premium-card shine-container">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
-                            <i class="fas fa-forward" style="margin-right: 0.5rem;"></i>
-                            Excess Carryover
-                        </h3>
-                        <p>Excess volume on stronger leg carries over to next calculation period</p>
-                    </div>
-                    
-                    <div class="feature-box premium-card shine-container">
-                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.5rem;" class="premium-text">
-                            <i class="fas fa-users" style="margin-right: 0.5rem;"></i>
-                            Spillover Advantage
-                        </h3>
-                        <p>Upline can place new members in your downline automatically</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Binary Bonus Example -->
-            <div style="max-width: 800px; margin: 3rem auto 1rem;">
-                <div class="premium-card shine-container" style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--accent-color); text-align: center;" class="premium-text">How Binary Bonus Works - Example</h3>
-                    
-                    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem;">
-                        <div style="flex: 1; min-width: 300px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                <div style="text-align: center;">
-                                    <div style="font-weight: bold; margin-bottom: 0.5rem;">LEFT LEG</div>
-                                    <div style="padding: 0.5rem 1rem; background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); display: inline-block;">
-                                        $8,000
-                                    </div>
-                                </div>
-                                
-                                <div style="text-align: center;">
-                                    <div style="font-weight: bold; margin-bottom: 0.5rem;">RIGHT LEG</div>
-                                    <div style="padding: 0.5rem 1rem; background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); display: inline-block;">
-                                        $5,000
-                                    </div>
-                                </div>
+                    <div class="example-grid">
+                        <div>
+                            <div class="example-box">
+                                <div class="example-box-title">LEFT LEG</div>
+                                <div class="example-box-value">$8,000</div>
                             </div>
                             
-                            <div style="text-align: center; margin-top: 1.5rem;">
-                                <div style="color: var(--accent-color); font-weight: bold; margin-bottom: 0.5rem;">MATCHING VOLUME</div>
-                                <div style="padding: 0.5rem 1.5rem; background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); display: inline-block;">
-                                    $5,000
-                                </div>
+                            <div class="example-box" style="margin-top: 20px;">
+                                <div class="example-box-title">RIGHT LEG</div>
+                                <div class="example-box-value">$5,000</div>
+                            </div>
+                            
+                            <div class="example-box" style="margin-top: 20px;">
+                                <div class="example-box-title">MATCHING VOLUME</div>
+                                <div class="example-box-value">$5,000</div>
                             </div>
                         </div>
                         
-                        <div style="flex: 1; min-width: 300px;">
-                            <div style="margin-bottom: 1rem;">
-                                <div style="font-weight: bold; margin-bottom: 0.5rem; color: var(--accent-color);">YOUR BINARY BONUS</div>
-                                <div style="padding: 0.5rem 1rem; background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius); text-align: center; font-size: 1.2rem; font-weight: bold;">
-                                    $500 (10% of $5,000)
-                                </div>
+                        <div>
+                            <div class="example-box">
+                                <div class="example-box-title">YOUR BINARY BONUS</div>
+                                <div class="bonus-value">$500 (10% of $5,000)</div>
                             </div>
                             
-                            <div style="margin-top: 1.5rem;">
-                                <div style="font-weight: bold; margin-bottom: 0.5rem; color: var(--accent-color);">CARRYOVER VOLUME</div>
-                                <div style="padding: 0.5rem 1rem; background: rgba(0, 209, 255, 0.1); border-radius: var(--border-radius); text-align: center;">
-                                    Left Leg: $3,000 (excess carried to next cycle)
+                            <div class="example-box" style="margin-top: 20px;">
+                                <div class="example-box-title">CARRYOVER VOLUME</div>
+                                <div class="example-box-value">
+                                    Left Leg: $3,000<br>
+                                    <small>(excess carried to next cycle)</small>
                                 </div>
                             </div>
                         </div>
