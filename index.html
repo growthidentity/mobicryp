@@ -2686,127 +2686,245 @@
                 </div>
             </div>
             
-            <!-- Slide 16: RANK PROGRESSION -->
+            <!-- Slide 16: RANK OVERVIEW -->
             <div class="swiper-slide">
                 <div class="circuit-background"></div>
                 <div class="slide-container">
                     <div class="slide-content fade-in">
-                        <h2 class="section-title">Rank Progression</h2>
-                        <p class="section-description">Begin your journey from Beginner and progress through the full rank hierarchy</p>
+                        <h2 class="section-title">Rank Overview</h2>
+                        <p class="section-description">Understand the MobiCryp rank system and advancement opportunities</p>
                         
-                        <div style="display: flex; margin-top: 2rem; gap: 3rem;">
-                            <!-- Lower Ranks (No Royalty Bonus) -->
-                            <div style="flex: 1; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3);">
-                                <h3 style="text-align: center; font-size: 1.3rem; color: var(--accent-color); margin-bottom: 1.5rem;">
-                                    <i class="fas fa-level-up-alt" style="margin-right: 0.5rem;"></i>
-                                    Growth Ranks
-                                </h3>
+                        <!-- Rank progression visualization -->
+                        <div style="position: relative; max-width: 1000px; margin: 2rem auto 3rem;">
+                            <div style="position: absolute; top: 50%; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #8a8a8a, var(--secondary-color)); border-radius: 2px; transform: translateY(-50%); z-index: 0;"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; position: relative; z-index: 1;">
+                                <!-- Beginner -->
+                                <div style="text-align: center; position: relative;">
+                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #8a8a8a, #4a4a4a); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; box-shadow: 0 5px 15px rgba(138, 138, 138, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                        <i class="fas fa-seedling" style="color: white; font-size: 1.2rem;"></i>
+                                    </div>
+                                    <h3 style="font-size: 0.9rem; font-weight: 700; margin: 0;">Beginner</h3>
+                                </div>
                                 
-                                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                                    <!-- Beginner -->
-                                    <div style="display: flex; align-items: center; padding: 0.8rem; border-radius: var(--border-radius); background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 209, 255, 0.2);">
-                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(145deg, #8a8a8a, #4a4a4a); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                                            <i class="fas fa-seedling" style="color: white;"></i>
-                                        </div>
-                                        <div style="flex-grow: 1;">
-                                            <div style="font-weight: bold;">Beginner</div>
-                                        </div>
-                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem;">$50</div>
+                                <!-- Star -->
+                                <div style="text-align: center; position: relative;">
+                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #9e9e9e, #5e5e5e); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; box-shadow: 0 5px 15px rgba(158, 158, 158, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                        <i class="fas fa-star" style="color: white; font-size: 1.2rem;"></i>
                                     </div>
+                                    <h3 style="font-size: 0.9rem; font-weight: 700; margin: 0;">Star</h3>
+                                </div>
+                                
+                                <!-- Iron -->
+                                <div style="text-align: center; position: relative;">
+                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #4f4f4f, #2f2f2f); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; box-shadow: 0 5px 15px rgba(79, 79, 79, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                        <i class="fas fa-bolt" style="color: white; font-size: 1.2rem;"></i>
+                                    </div>
+                                    <h3 style="font-size: 0.9rem; font-weight: 700; margin: 0;">Iron</h3>
+                                </div>
+                                
+                                <!-- Bronze -->
+                                <div style="text-align: center; position: relative;">
+                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #CD7F32, #E1A16B); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; box-shadow: 0 5px 15px rgba(205, 127, 50, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                        <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
+                                    </div>
+                                    <h3 style="font-size: 0.9rem; font-weight: 700; margin: 0;">Bronze</h3>
+                                </div>
+                                
+                                <!-- Copper -->
+                                <div style="text-align: center; position: relative;">
+                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #B87333, #DA9860); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; box-shadow: 0 5px 15px rgba(184, 115, 51, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                        <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
+                                    </div>
+                                    <h3 style="font-size: 0.9rem; font-weight: 700; margin: 0;">Copper</h3>
+                                </div>
+                                
+                                <!-- Silver -->
+                                <div style="text-align: center; position: relative;">
+                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #C0C0C0, #E5E4E2); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; box-shadow: 0 5px 15px rgba(192, 192, 192, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                        <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
+                                    </div>
+                                    <h3 style="font-size: 0.9rem; font-weight: 700; margin: 0;">Silver</h3>
+                                </div>
+                                
+                                <!-- Gold -->
+                                <div style="text-align: center; position: relative;">
+                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #FFD700, #FFC000); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                        <i class="fas fa-medal" style="color: white; font-size: 1.2rem;"></i>
+                                    </div>
+                                    <h3 style="font-size: 0.9rem; font-weight: 700; margin: 0;">Gold</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
+                            <!-- Rank Achievement Bonuses -->
+                            <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3); max-width: 400px;">
+                                <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem; text-align: center;">
+                                    <i class="fas fa-award" style="margin-right: 0.5rem;"></i>
+                                    Rank Achievement Bonuses
+                                </h3>
+                                <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem 1.5rem; align-items: center;">
+                                    <div style="font-weight: bold;">Beginner</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">$50</div>
                                     
-                                    <!-- Star -->
-                                    <div style="display: flex; align-items: center; padding: 0.8rem; border-radius: var(--border-radius); background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 209, 255, 0.2);">
-                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(145deg, #9e9e9e, #5e5e5e); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                                            <i class="fas fa-star" style="color: white;"></i>
-                                        </div>
-                                        <div style="flex-grow: 1;">
-                                            <div style="font-weight: bold;">Star</div>
-                                        </div>
-                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem;">$100</div>
-                                    </div>
+                                    <div style="font-weight: bold;">Star</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">$100</div>
                                     
-                                    <!-- Iron -->
-                                    <div style="display: flex; align-items: center; padding: 0.8rem; border-radius: var(--border-radius); background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 209, 255, 0.2);">
-                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(145deg, #4f4f4f, #2f2f2f); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                                            <i class="fas fa-bolt" style="color: white;"></i>
-                                        </div>
-                                        <div style="flex-grow: 1;">
-                                            <div style="font-weight: bold;">Iron</div>
-                                        </div>
-                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem;">$200</div>
-                                    </div>
+                                    <div style="font-weight: bold;">Iron</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">$200</div>
                                     
-                                    <!-- Bronze -->
-                                    <div style="display: flex; align-items: center; padding: 0.8rem; border-radius: var(--border-radius); background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 209, 255, 0.2);">
-                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(145deg, #CD7F32, #E1A16B); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                                            <i class="fas fa-medal" style="color: white;"></i>
-                                        </div>
-                                        <div style="flex-grow: 1;">
-                                            <div style="font-weight: bold;">Bronze</div>
-                                        </div>
-                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem;">$500</div>
-                                    </div>
+                                    <div style="font-weight: bold;">Bronze</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">$500</div>
                                     
-                                    <!-- Copper -->
-                                    <div style="display: flex; align-items: center; padding: 0.8rem; border-radius: var(--border-radius); background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 209, 255, 0.2);">
-                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(145deg, #B87333, #DA9860); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                                            <i class="fas fa-medal" style="color: white;"></i>
-                                        </div>
-                                        <div style="flex-grow: 1;">
-                                            <div style="font-weight: bold;">Copper</div>
-                                        </div>
-                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem;">$1,000</div>
-                                    </div>
+                                    <div style="font-weight: bold;">Copper</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">$1,000</div>
                                     
-                                    <!-- Silver -->
-                                    <div style="display: flex; align-items: center; padding: 0.8rem; border-radius: var(--border-radius); background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 209, 255, 0.2);">
-                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(145deg, #C0C0C0, #E5E4E2); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                                            <i class="fas fa-medal" style="color: white;"></i>
-                                        </div>
-                                        <div style="flex-grow: 1;">
-                                            <div style="font-weight: bold;">Silver</div>
-                                        </div>
-                                        <div style="font-weight: bold; color: var(--accent-color); font-size: 1.2rem;">$2,000</div>
-                                    </div>
+                                    <div style="font-weight: bold;">Silver</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">$2,000</div>
                                 </div>
                             </div>
                             
-                            <!-- Rank Benefits -->
-                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
-                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
-                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
-                                        <i class="fas fa-route" style="margin-right: 0.5rem;"></i>
-                                        Your Path to Success
-                                    </h3>
-                                    <p>Each rank in MobiCryp provides one-time achievement bonuses as you progress through the early ranks.</p>
-                                    <p style="margin-top: 0.5rem; font-style: italic;">From Gold rank and above, you qualify for the Royalty Bonus program with percentage-based commissions.</p>
+                            <!-- Royalty Bonuses -->
+                            <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3); max-width: 400px;">
+                                <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem; text-align: center;">
+                                    <i class="fas fa-crown" style="margin-right: 0.5rem;"></i>
+                                    Royalty Bonuses (From Gold)
+                                </h3>
+                                <div style="display: grid; grid-template-columns: auto 1fr auto; gap: 1rem 1.5rem; align-items: center;">
+                                    <div style="font-weight: bold;">Gold</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">10%</div>
+                                    
+                                    <div style="font-weight: bold;">Platinum</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">12%</div>
+                                    
+                                    <div style="font-weight: bold;">Titanium</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">14%</div>
+                                    
+                                    <div style="font-weight: bold;">Diamond</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">16%</div>
+                                    
+                                    <div style="font-weight: bold;">Solitaire</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">18%</div>
+                                    
+                                    <div style="font-weight: bold;">Immortal</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">20%</div>
+                                    
+                                    <div style="font-weight: bold;">Emperor</div>
+                                    <div style="height: 2px; background: rgba(255,255,255,0.1);"></div>
+                                    <div style="font-weight: bold; color: var(--accent-color);">22%</div>
                                 </div>
-                                
+                            </div>
+                        </div>
+                        
+                        <!-- Coming Up Next -->
+                        <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5); text-align: center; max-width: 600px; margin: 0 auto;">
+                            <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                <i class="fas fa-arrow-right" style="margin-right: 0.5rem;"></i>
+                                Detailed Rank Requirements
+                            </h3>
+                            <p style="margin: 0;">
+                                The following slides detail specific requirements and benefits for each rank
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 17: BEGINNER RANK -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Beginner Rank</h2>
+                        <p class="section-description">Entry point into the MobiCryp ecosystem</p>
+                        
+                        <div style="display: flex; gap: 3rem; margin-top: 2rem;">
+                            <!-- Rank Icon and Info -->
+                            <div style="flex: 0 0 250px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); text-align: center;">
+                                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #8a8a8a, #4a4a4a); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(138, 138, 138, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                    <i class="fas fa-seedling" style="color: white; font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.5rem;">Beginner</h3>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 1rem 0;">$50</div>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">One-time rank achievement bonus</p>
+                            </div>
+                            
+                            <!-- Requirements and Benefits -->
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <!-- Requirements -->
                                 <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
                                     <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
-                                        <i class="fas fa-award" style="margin-right: 0.5rem;"></i>
+                                        <i class="fas fa-tasks" style="margin-right: 0.5rem;"></i>
                                         Rank Requirements
                                     </h3>
-                                    <p>Progress through ranks by meeting key milestones:</p>
-                                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                                        <li>Personal Hub activation</li>
-                                        <li>Direct referrals</li>
-                                        <li>Team structure development</li>
-                                        <li>Business volume thresholds</li>
-                                        <li>Leadership development</li>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Sign up for MobiCryp platform
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Activate a minimum Hub
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Start minting with your Hub
+                                        </li>
                                     </ul>
                                 </div>
                                 
+                                <!-- Benefits -->
                                 <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
                                     <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
-                                        <i class="fas fa-bolt" style="margin-right: 0.5rem;"></i>
-                                        Bonus Structure
+                                        <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
+                                        Rank Benefits
                                     </h3>
-                                    <p>Rank advancement incentives in the MobiCryp compensation plan:</p>
-                                    <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 0.8rem; margin-top: 0.8rem; border: 1px solid rgba(0, 209, 255, 0.2);">
-                                        <p style="margin: 0 0 0.5rem;"><span style="font-weight: bold; color: var(--accent-color);">Beginner - Silver:</span> One-time rank achievement bonuses</p>
-                                        <p style="margin: 0;"><span style="font-weight: bold; color: var(--accent-color);">Gold and above:</span> Royalty bonuses starting at 10% of organization volume</p>
-                                    </div>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            $50 one-time rank achievement bonus
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Access to Self or Auto minting
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Access to Direct Bonus (10% from direct referrals)
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Access to Community Binary Bonus (10% on matching leg)
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Participation in Level Minting Bonus
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Next Rank -->
+                                <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5);">
+                                    <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-arrow-circle-up" style="margin-right: 0.5rem;"></i>
+                                        Next Rank: Star
+                                    </h3>
+                                    <p style="margin: 0;">
+                                        Achieve Star rank by building your first team members and increasing your business volume.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -2814,7 +2932,541 @@
                 </div>
             </div>
             
-            <!-- Slide 17: ROYALTY BONUS -->
+            <!-- Slide 18: STAR RANK -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Star Rank</h2>
+                        <p class="section-description">Build your initial team and establish your MobiCryp presence</p>
+                        
+                        <div style="display: flex; gap: 3rem; margin-top: 2rem;">
+                            <!-- Rank Icon and Info -->
+                            <div style="flex: 0 0 250px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); text-align: center;">
+                                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #9e9e9e, #5e5e5e); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(158, 158, 158, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                    <i class="fas fa-star" style="color: white; font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.5rem;">Star</h3>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 1rem 0;">$100</div>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">One-time rank achievement bonus</p>
+                            </div>
+                            
+                            <!-- Requirements and Benefits -->
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <!-- Requirements -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-tasks" style="margin-right: 0.5rem;"></i>
+                                        Rank Requirements
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum 3 direct referrals
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Personal Hub activation (minimum tier)
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum $2,000 total team business volume
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Benefits -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
+                                        Rank Benefits
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            $100 one-time rank achievement bonus
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Increased minting speed
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            All previous rank benefits
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Enhanced team dashboard access
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Next Rank -->
+                                <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5);">
+                                    <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-arrow-circle-up" style="margin-right: 0.5rem;"></i>
+                                        Next Rank: Iron
+                                    </h3>
+                                    <p style="margin: 0;">
+                                        Achieve Iron rank by expanding your team and increasing your business volume.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 19: IRON RANK -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Iron Rank</h2>
+                        <p class="section-description">Strengthen your team structure and leadership abilities</p>
+                        
+                        <div style="display: flex; gap: 3rem; margin-top: 2rem;">
+                            <!-- Rank Icon and Info -->
+                            <div style="flex: 0 0 250px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); text-align: center;">
+                                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #4f4f4f, #2f2f2f); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(79, 79, 79, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                    <i class="fas fa-bolt" style="color: white; font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.5rem;">Iron</h3>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 1rem 0;">$200</div>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">One-time rank achievement bonus</p>
+                            </div>
+                            
+                            <!-- Requirements and Benefits -->
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <!-- Requirements -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-tasks" style="margin-right: 0.5rem;"></i>
+                                        Rank Requirements
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum 5 direct referrals
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Personal Hub activation (minimum tier)
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum $5,000 total team business volume
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Benefits -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
+                                        Rank Benefits
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            $200 one-time rank achievement bonus
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Further increased minting speed
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            All previous rank benefits
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Team performance analytics
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Next Rank -->
+                                <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5);">
+                                    <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-arrow-circle-up" style="margin-right: 0.5rem;"></i>
+                                        Next Rank: Bronze
+                                    </h3>
+                                    <p style="margin: 0;">
+                                        Progress to Bronze rank by developing team leadership and increasing organization volume.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 20: BRONZE RANK -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Bronze Rank</h2>
+                        <p class="section-description">Establish yourself as an emerging leader within MobiCryp</p>
+                        
+                        <div style="display: flex; gap: 3rem; margin-top: 2rem;">
+                            <!-- Rank Icon and Info -->
+                            <div style="flex: 0 0 250px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); text-align: center;">
+                                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #CD7F32, #E1A16B); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(205, 127, 50, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                    <i class="fas fa-medal" style="color: white; font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.5rem;">Bronze</h3>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 1rem 0;">$500</div>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">One-time rank achievement bonus</p>
+                            </div>
+                            
+                            <!-- Requirements and Benefits -->
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <!-- Requirements -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-tasks" style="margin-right: 0.5rem;"></i>
+                                        Rank Requirements
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum 7 direct referrals
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Two Star rank team members on separate legs
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Standard Hub activation or higher
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum $10,000 total team business volume
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Benefits -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
+                                        Rank Benefits
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            $500 one-time rank achievement bonus
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Significantly increased minting speed
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            All previous rank benefits
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Leadership training materials access
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Next Rank -->
+                                <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5);">
+                                    <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-arrow-circle-up" style="margin-right: 0.5rem;"></i>
+                                        Next Rank: Copper
+                                    </h3>
+                                    <p style="margin: 0;">
+                                        Advance to Copper rank by developing multiple team members and expanding your business volume.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 21: COPPER RANK -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Copper Rank</h2>
+                        <p class="section-description">Build a strong foundation for your MobiCryp organization</p>
+                        
+                        <div style="display: flex; gap: 3rem; margin-top: 2rem;">
+                            <!-- Rank Icon and Info -->
+                            <div style="flex: 0 0 250px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); text-align: center;">
+                                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #B87333, #DA9860); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(184, 115, 51, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                    <i class="fas fa-medal" style="color: white; font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.5rem;">Copper</h3>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 1rem 0;">$1,000</div>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">One-time rank achievement bonus</p>
+                            </div>
+                            
+                            <!-- Requirements and Benefits -->
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <!-- Requirements -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-tasks" style="margin-right: 0.5rem;"></i>
+                                        Rank Requirements
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum 10 direct referrals
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Two Bronze rank team members on separate legs
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Standard Hub activation or higher
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum $25,000 total team business volume
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Benefits -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
+                                        Rank Benefits
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            $1,000 one-time rank achievement bonus
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Maximum minting speed within tier
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            All previous rank benefits
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Recognition at regional events
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Next Rank -->
+                                <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5);">
+                                    <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-arrow-circle-up" style="margin-right: 0.5rem;"></i>
+                                        Next Rank: Silver
+                                    </h3>
+                                    <p style="margin: 0;">
+                                        Reach Silver rank by developing more team leaders and achieving significant organization volume.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 22: SILVER RANK -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Silver Rank</h2>
+                        <p class="section-description">Establish yourself as a respected leader within MobiCryp</p>
+                        
+                        <div style="display: flex; gap: 3rem; margin-top: 2rem;">
+                            <!-- Rank Icon and Info -->
+                            <div style="flex: 0 0 250px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); text-align: center;">
+                                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #C0C0C0, #E5E4E2); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(192, 192, 192, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                    <i class="fas fa-medal" style="color: white; font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.5rem;">Silver</h3>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 1rem 0;">$2,000</div>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">One-time rank achievement bonus</p>
+                            </div>
+                            
+                            <!-- Requirements and Benefits -->
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <!-- Requirements -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-tasks" style="margin-right: 0.5rem;"></i>
+                                        Rank Requirements
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum 12 direct referrals
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Two Copper rank team members on separate legs
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Premium Hub activation or higher
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum $50,000 total team business volume
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Benefits -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
+                                        Rank Benefits
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            $2,000 one-time rank achievement bonus
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Maximum minting speed boost
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            All previous rank benefits
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Recognition at national events
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Exclusive Silver rank training events
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Next Rank -->
+                                <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5);">
+                                    <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-arrow-circle-up" style="margin-right: 0.5rem;"></i>
+                                        Next Rank: Gold
+                                    </h3>
+                                    <p style="margin: 0;">
+                                        Advance to Gold rank to unlock percentage-based Royalty Bonuses (10%) on your entire organization's volume!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 23: GOLD RANK -->
+            <div class="swiper-slide">
+                <div class="circuit-background"></div>
+                <div class="slide-container">
+                    <div class="slide-content fade-in">
+                        <h2 class="section-title">Gold Rank</h2>
+                        <p class="section-description">Achieve elite status and unlock royalty commissions on your organization</p>
+                        
+                        <div style="display: flex; gap: 3rem; margin-top: 2rem;">
+                            <!-- Rank Icon and Info -->
+                            <div style="flex: 0 0 250px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); text-align: center;">
+                                <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #FFD700, #FFC000); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); border: 2px solid rgba(255, 255, 255, 0.2);">
+                                    <i class="fas fa-medal" style="color: white; font-size: 2.5rem;"></i>
+                                </div>
+                                <h3 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.5rem;">Gold</h3>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 1rem 0;">10%</div>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">Royalty commission on organization volume</p>
+                            </div>
+                            
+                            <!-- Requirements and Benefits -->
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem;">
+                                <!-- Requirements -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-tasks" style="margin-right: 0.5rem;"></i>
+                                        Rank Requirements
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum 15 direct referrals
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Two Silver rank team members on separate legs
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Premium Hub activation or higher
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Minimum $100,000 total team business volume
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Benefits -->
+                                <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.3);">
+                                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                        <i class="fas fa-gift" style="margin-right: 0.5rem;"></i>
+                                        Rank Benefits
+                                    </h3>
+                                    <ul style="margin: 0; padding-left: 1.5rem; list-style-type: none;">
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            10% Royalty Bonus on your entire organization volume
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Differential royalty bonuses from downline
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            All previous rank benefits
+                                        </li>
+                                        <li style="margin-bottom: 0.7rem; position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Recognition at international events
+                                        </li>
+                                        <li style="position: relative;">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-color); position: absolute; left: -1.5rem; top: 0.2rem;"></i>
+                                            Gold leadership retreat invitation
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Next Rank -->
+                                <div style="background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%); border-radius: var(--border-radius-lg); padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.5);">
+                                    <h3 style="font-size: 1.2rem; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-arrow-circle-up" style="margin-right: 0.5rem;"></i>
+                                        Continue Your Journey
+                                    </h3>
+                                    <p style="margin: 0;">
+                                        Progress through Platinum (12%), Titanium (14%), Diamond (16%), Solitaire (18%), Immortal (20%), and Emperor (22%) ranks for increasing royalty rates!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 24: ROYALTY BONUS -->
             <div class="swiper-slide">
                 <div class="circuit-background"></div>
                 <div class="slide-container">
