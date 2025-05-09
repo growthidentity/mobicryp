@@ -5613,8 +5613,28 @@
         <div class="swiper-pagination" style="position: absolute; bottom: 20px; width: 100%; z-index: 100;"></div>
 
         <!-- Add navigation arrows with enhanced styling -->
-        <div class="swiper-button-next" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; color: #00d1ff; background: rgba(0, 0, 0, 0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; box-shadow: 0 0 20px rgba(0, 209, 255, 0.5);"></div>
-        <div class="swiper-button-prev" style="position: fixed; left: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; color: #00d1ff; background: rgba(0, 0, 0, 0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; box-shadow: 0 0 20px rgba(0, 209, 255, 0.5);"></div>
+        <div class="swiper-button-next" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; color: #00d1ff; background: rgba(0, 0, 0, 0.5); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 22px; box-shadow: 0 0 20px rgba(0, 209, 255, 0.5); cursor: pointer;"></div>
+        <div class="swiper-button-prev" style="position: fixed; left: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; color: #00d1ff; background: rgba(0, 0, 0, 0.5); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 22px; box-shadow: 0 0 20px rgba(0, 209, 255, 0.5); cursor: pointer;"></div>
+
+        <!-- Fallback manual navigation buttons that will be shown if the standard navigation fails -->
+        <div id="fallback-nav" style="position: fixed; bottom: 60px; left: 0; right: 0; text-align: center; z-index: 2000; display: none;">
+            <button id="prev-slide" style="background: rgba(0, 0, 0, 0.7); color: #00d1ff; border: 1px solid #00d1ff; padding: 10px 20px; margin: 0 10px; cursor: pointer; border-radius: 5px; font-weight: bold;">← Previous</button>
+            <button id="next-slide" style="background: rgba(0, 0, 0, 0.7); color: #00d1ff; border: 1px solid #00d1ff; padding: 10px 20px; margin: 0 10px; cursor: pointer; border-radius: 5px; font-weight: bold;">Next →</button>
+            <div style="margin-top: 10px;">
+                <input type="number" id="slide-number" min="1" max="38" value="1" style="width: 60px; padding: 8px; background: rgba(0, 0, 0, 0.7); color: white; border: 1px solid #00d1ff; border-radius: 5px; text-align: center;">
+                <button id="go-to-slide" style="background: rgba(0, 0, 0, 0.7); color: #00d1ff; border: 1px solid #00d1ff; padding: 8px 15px; margin-left: 5px; cursor: pointer; border-radius: 5px; font-weight: bold;">Go</button>
+            </div>
+        </div>
+
+        <!-- Debug panel that appears in the corner when holding SHIFT key for 3 seconds -->
+        <div id="debug-panel" style="position: fixed; top: 10px; left: 10px; background: rgba(0, 0, 0, 0.8); padding: 15px; border-radius: 5px; z-index: 3000; display: none; color: white; border: 1px solid #00d1ff; font-size: 12px;">
+            <h4 style="margin: 0 0 10px; color: #00d1ff;">Debug Panel</h4>
+            <div>Total slides: <span id="debug-total-slides">-</span></div>
+            <div>Current slide: <span id="debug-current-slide">-</span></div>
+            <div>
+                <button id="debug-fix" style="margin-top: 10px; background: #00d1ff; color: black; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; font-weight: bold;">Force Reload</button>
+            </div>
+        </div>
     </div>
     
     <!-- Add Swiper JS -->
@@ -5705,11 +5725,14 @@
             
             // Initialize the slider
             const swiper = new Swiper('.swiper', {
-                // Basic settings
+                // Basic settings - adding observer to refresh the swiper
                 direction: 'horizontal',
                 loop: false,
-                effect: 'slide', // Changed from 'fade' to 'slide'
-                speed: 300, // Faster transitions
+                effect: 'slide',
+                speed: 300,
+                observer: true, // Enable dynamic checking
+                observeParents: true, // Watch for parent element changes
+                observeSlideChildren: true, // Watch for slide content changes
 
                 // Navigation arrows - improved visibility
                 navigation: {
@@ -5720,14 +5743,18 @@
                     lockClass: 'swiper-button-lock'
                 },
 
-                // Pagination - improved visibility and functionality
+                // Complete overhaul of pagination to fix navigation issues
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
-                    dynamicBullets: false, // Changed to show all pagination bullets
+                    dynamicBullets: false,
                     hideOnClick: false,
+                    type: 'bullets',
+                    bulletElement: 'span',
+                    bulletClass: 'swiper-pagination-bullet',
+                    bulletActiveClass: 'swiper-pagination-bullet-active',
                     renderBullet: function (index, className) {
-                        return '<span class="' + className + '" style="margin: 0 5px; width: 12px; height: 12px; opacity: 0.8;"></span>';
+                        return '<span class="' + className + '" style="margin: 0 5px; width: 12px; height: 12px; opacity: 0.8; cursor: pointer;" data-slide-index="' + index + '"></span>';
                     }
                 },
 
@@ -5754,7 +5781,7 @@
                 }
             });
             
-            // Simple keyboard navigation
+            // Enhanced keyboard navigation
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight') {
                     swiper.slideNext();
@@ -5762,6 +5789,107 @@
                     swiper.slidePrev();
                 }
             });
+
+            // Force slide reinitialization after a brief delay to ensure all slides are properly recognized
+            setTimeout(function() {
+                console.log("Forcing swiper update...");
+                swiper.update(); // Update swiper dimensions
+
+                // Manually check and log total number of slides
+                const totalSlides = document.querySelectorAll('.swiper-slide').length;
+                console.log("Total slides in DOM: " + totalSlides);
+                console.log("Total slides in swiper: " + swiper.slides.length);
+
+                // Add manual click handlers to navigation arrows as backup
+                document.querySelector('.swiper-button-next').addEventListener('click', function() {
+                    swiper.slideNext();
+                });
+                document.querySelector('.swiper-button-prev').addEventListener('click', function() {
+                    swiper.slidePrev();
+                });
+
+                // Setup fallback navigation
+                const fallbackNav = document.getElementById('fallback-nav');
+                const prevButton = document.getElementById('prev-slide');
+                const nextButton = document.getElementById('next-slide');
+
+                // Show fallback navigation if swiper shows incorrect slide count
+                if (swiper.slides.length < totalSlides) {
+                    fallbackNav.style.display = 'block';
+                    console.log("Activating fallback navigation - swiper not detecting all slides");
+                }
+
+                // Add event listeners to fallback buttons
+                prevButton.addEventListener('click', function() {
+                    swiper.slidePrev();
+                });
+
+                nextButton.addEventListener('click', function() {
+                    swiper.slideNext();
+                });
+
+                // Create direct access to slides via index for debugging
+                window.gotoSlide = function(index) {
+                    swiper.slideTo(index);
+                };
+
+                // Set up direct navigation via input
+                const slideNumberInput = document.getElementById('slide-number');
+                const goToSlideButton = document.getElementById('go-to-slide');
+
+                goToSlideButton.addEventListener('click', function() {
+                    const slideIndex = parseInt(slideNumberInput.value, 10) - 1; // Convert to 0-based index
+                    if (slideIndex >= 0 && slideIndex < totalSlides) {
+                        swiper.slideTo(slideIndex);
+                    }
+                });
+
+                // Set up debug panel
+                const debugPanel = document.getElementById('debug-panel');
+                const debugTotalSlides = document.getElementById('debug-total-slides');
+                const debugCurrentSlide = document.getElementById('debug-current-slide');
+                const debugFixButton = document.getElementById('debug-fix');
+
+                // Update debug info
+                function updateDebugInfo() {
+                    debugTotalSlides.textContent = totalSlides;
+                    debugCurrentSlide.textContent = (swiper.activeIndex + 1) + ' / ' + swiper.slides.length;
+                }
+
+                // Show debug panel when SHIFT key is held for 3 seconds
+                let shiftKeyTimeout;
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Shift') {
+                        shiftKeyTimeout = setTimeout(function() {
+                            debugPanel.style.display = 'block';
+                            updateDebugInfo();
+                        }, 3000);
+                    }
+                });
+
+                document.addEventListener('keyup', function(e) {
+                    if (e.key === 'Shift') {
+                        clearTimeout(shiftKeyTimeout);
+                    }
+                });
+
+                // Debug fix button - force display the fallback navigation
+                debugFixButton.addEventListener('click', function() {
+                    fallbackNav.style.display = 'block';
+                    swiper.update();
+                    updateDebugInfo();
+                });
+
+                // Always show fallback navigation in case of issues
+                fallbackNav.style.display = 'block';
+
+                // Additional safety measure - re-update after another second
+                setTimeout(function() {
+                    swiper.update();
+                    console.log("Final update - slides count: " + swiper.slides.length);
+                    updateDebugInfo();
+                }, 1000);
+            }, 500);
         });
     </script>
 </body>
