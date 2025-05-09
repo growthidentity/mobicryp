@@ -101,6 +101,9 @@
             position: relative;
             overflow: hidden;
             background: transparent;
+            width: 100%; /* Ensure slides take full width */
+            display: block; /* Ensure proper display */
+            flex-shrink: 0; /* Prevent shrinking */
         }
         
         .slide-container {
@@ -752,9 +755,9 @@
     <!-- Particles background -->
     <div id="particles-js"></div>
     
-    <!-- Slide Counter -->
-    <div class="slide-counter" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0, 0, 0, 0.6); padding: 8px 15px; border-radius: 20px; font-size: 1rem; z-index: 1000; color: var(--accent-color); font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-        <span id="currentSlide">1</span>/<span id="totalSlides">38</span>
+    <!-- Enhanced Slide Counter -->
+    <div class="slide-counter" style="position: fixed; top: 20px; right: 20px; background: rgba(0, 0, 0, 0.8); padding: 12px 20px; border-radius: 30px; font-size: 1.2rem; z-index: 1000; color: white; font-weight: bold; box-shadow: 0 0 20px rgba(0, 209, 255, 0.4); border: 1px solid rgba(0, 209, 255, 0.3);">
+        Slide <span id="currentSlide" style="color: var(--accent-color);">1</span> of <span id="totalSlides" style="color: var(--accent-color);">38</span>
     </div>
     
     <!-- Swiper Container -->
@@ -5614,9 +5617,9 @@
         <!-- Add pagination -->
         <div class="swiper-pagination" style="position: absolute; bottom: 20px; width: 100%; z-index: 100;"></div>
 
-        <!-- Add navigation arrows -->
-        <div class="swiper-button-next" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 100;"></div>
-        <div class="swiper-button-prev" style="position: fixed; left: 20px; top: 50%; transform: translateY(-50%); z-index: 100;"></div>
+        <!-- Add navigation arrows with enhanced styling -->
+        <div class="swiper-button-next" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; color: #00d1ff; background: rgba(0, 0, 0, 0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; box-shadow: 0 0 20px rgba(0, 209, 255, 0.5);"></div>
+        <div class="swiper-button-prev" style="position: fixed; left: 20px; top: 50%; transform: translateY(-50%); z-index: 1000; color: #00d1ff; background: rgba(0, 0, 0, 0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; box-shadow: 0 0 20px rgba(0, 209, 255, 0.5);"></div>
     </div>
     
     <!-- Add Swiper JS -->
@@ -5710,24 +5713,27 @@
                 // Basic settings
                 direction: 'horizontal',
                 loop: false,
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true
-                },
-                speed: 500,
+                effect: 'slide', // Changed from 'fade' to 'slide'
+                speed: 300, // Faster transitions
 
-                // Navigation arrows
+                // Navigation arrows - improved visibility
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
+                    hideOnClick: false,
+                    disabledClass: 'swiper-button-disabled',
+                    lockClass: 'swiper-button-lock'
                 },
 
-                // Pagination
+                // Pagination - improved visibility and functionality
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
-                    dynamicBullets: true,
-                    dynamicMainBullets: 5
+                    dynamicBullets: false, // Changed to show all pagination bullets
+                    hideOnClick: false,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '" style="margin: 0 5px; width: 12px; height: 12px; opacity: 0.8;"></span>';
+                    }
                 },
 
                 // Keyboard Navigation
@@ -5745,10 +5751,17 @@
                 // Update slide counter
                 on: {
                     slideChange: function() {
+                        console.log("Slide changed to index: " + this.activeIndex + " (slide " + (this.activeIndex + 1) + " of " + this.slides.length + ")");
                         document.getElementById('currentSlide').textContent = this.activeIndex + 1;
                     },
                     init: function() {
+                        console.log("Swiper initialized with " + this.slides.length + " slides");
                         document.getElementById('totalSlides').textContent = this.slides.length;
+
+                        // Check each slide
+                        for (let i = 0; i < this.slides.length; i++) {
+                            console.log("Slide " + (i+1) + " is found with class: " + this.slides[i].className);
+                        }
                     }
                 }
             });
