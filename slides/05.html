@@ -26,19 +26,14 @@
             <p class="section-description shine-container premium-float">Our journey from concept to global force in digital finance<div class="shine-effect"></div></p>
 
             <!-- Vertical Timeline -->
-            <div style="position: relative; max-width: 800px; margin: 3rem auto; padding-left: 2rem; min-height: 450px;">
-                <!-- Timeline Line -->
-                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--accent-color), var(--royal-purple), var(--gold-color)); border-radius: 4px; transform: translateX(36px);"></div>
+            <div style="position: relative; max-width: 800px; margin: 3rem auto; min-height: 450px;">
+                <!-- Timeline Line - Positioned in center -->
+                <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--accent-color), var(--royal-purple), var(--gold-color), var(--vibrant-green)); border-radius: 4px; transform: translateX(-2px);"></div>
 
                 <!-- 2021: Idea Formed -->
-                <div style="position: relative; margin-bottom: 4rem; padding-left: 5rem; opacity: 0.95;">
-                    <!-- Year Badge -->
-                    <div style="position: absolute; left: 0; top: 0; width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(0, 209, 255, 0.1) 100%); border: 2px solid rgba(0, 209, 255, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
-                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--accent-color);">2021</span>
-                    </div>
-
-                    <!-- Content -->
-                    <div class="premium-card premium-float" style="background: rgba(0, 209, 255, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.15);">
+                <div style="position: relative; margin-bottom: 4rem; display: flex; align-items: flex-start; opacity: 0.95;">
+                    <!-- Content - Left Side -->
+                    <div class="premium-card premium-float" style="flex: 1; margin-right: 1.5rem; background: rgba(0, 209, 255, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(0, 209, 255, 0.15); max-width: 330px; margin-left: auto;">
                         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                             <i class="fas fa-lightbulb" style="font-size: 1.8rem; color: var(--accent-color); margin-right: 1rem;"></i>
                             <h3 style="font-size: 1.4rem; margin: 0; color: white;">Idea Formation</h3>
@@ -49,17 +44,28 @@
                             <li>Team formation with top crypto experts</li>
                         </ul>
                     </div>
+
+                    <!-- Year Badge - Center -->
+                    <div style="position: relative; z-index: 2; margin: 0 1rem; width: 76px; height: 76px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(0, 209, 255, 0.1) 100%); border: 2px solid rgba(0, 209, 255, 0.3); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--accent-color);">2021</span>
+                    </div>
+
+                    <!-- Right Side - Empty for this row -->
+                    <div style="flex: 1; max-width: 330px;"></div>
                 </div>
 
                 <!-- 2022: Platform Live -->
-                <div style="position: relative; margin-bottom: 4rem; padding-left: 5rem; opacity: 0.95; margin-left: 1.5rem;">
-                    <!-- Year Badge -->
-                    <div style="position: absolute; left: 0; top: 0; width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(145deg, rgba(123, 77, 255, 0.2) 0%, rgba(123, 77, 255, 0.1) 100%); border: 2px solid rgba(123, 77, 255, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
+                <div style="position: relative; margin-bottom: 4rem; display: flex; align-items: flex-start; opacity: 0.95;">
+                    <!-- Left Side - Empty for this row -->
+                    <div style="flex: 1; max-width: 330px;"></div>
+
+                    <!-- Year Badge - Center -->
+                    <div style="position: relative; z-index: 2; margin: 0 1rem; width: 76px; height: 76px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, rgba(123, 77, 255, 0.2) 0%, rgba(123, 77, 255, 0.1) 100%); border: 2px solid rgba(123, 77, 255, 0.3); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
                         <span style="font-size: 1.5rem; font-weight: 700; color: var(--royal-purple);">2022</span>
                     </div>
 
-                    <!-- Content -->
-                    <div class="premium-card premium-float" style="background: rgba(123, 77, 255, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(123, 77, 255, 0.15);">
+                    <!-- Content - Right Side -->
+                    <div class="premium-card premium-float" style="flex: 1; margin-left: 1.5rem; background: rgba(123, 77, 255, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(123, 77, 255, 0.15); max-width: 330px;">
                         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                             <i class="fas fa-rocket" style="font-size: 1.8rem; color: var(--royal-purple); margin-right: 1rem;"></i>
                             <h3 style="font-size: 1.4rem; margin: 0; color: white;">Platform Launch</h3>
@@ -74,14 +80,9 @@
                 </div>
 
                 <!-- 2023: Expansion -->
-                <div style="position: relative; margin-bottom: 4rem; padding-left: 5rem; opacity: 0.95;">
-                    <!-- Year Badge -->
-                    <div style="position: absolute; left: 0; top: 0; width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(145deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 184, 0, 0.1) 100%); border: 2px solid rgba(255, 184, 0, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
-                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--gold-color);">2023</span>
-                    </div>
-
-                    <!-- Content -->
-                    <div class="premium-card premium-float" style="background: rgba(255, 184, 0, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 184, 0, 0.15);">
+                <div style="position: relative; margin-bottom: 4rem; display: flex; align-items: flex-start; opacity: 0.95;">
+                    <!-- Content - Left Side -->
+                    <div class="premium-card premium-float" style="flex: 1; margin-right: 1.5rem; background: rgba(255, 184, 0, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 184, 0, 0.15); max-width: 330px; margin-left: auto;">
                         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                             <i class="fas fa-expand-arrows-alt" style="font-size: 1.8rem; color: var(--gold-color); margin-right: 1rem;"></i>
                             <h3 style="font-size: 1.4rem; margin: 0; color: white;">Global Expansion</h3>
@@ -93,17 +94,28 @@
                             <li>50,000+ active users milestone reached</li>
                         </ul>
                     </div>
+
+                    <!-- Year Badge - Center -->
+                    <div style="position: relative; z-index: 2; margin: 0 1rem; width: 76px; height: 76px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 184, 0, 0.1) 100%); border: 2px solid rgba(255, 184, 0, 0.3); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--gold-color);">2023</span>
+                    </div>
+
+                    <!-- Right Side - Empty for this row -->
+                    <div style="flex: 1; max-width: 330px;"></div>
                 </div>
 
                 <!-- 2024: Now -->
-                <div style="position: relative; padding-left: 5rem; opacity: 0.95; margin-left: 1.5rem;">
-                    <!-- Year Badge -->
-                    <div style="position: absolute; left: 0; top: 0; width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(145deg, rgba(54, 241, 205, 0.2) 0%, rgba(54, 241, 205, 0.1) 100%); border: 2px solid rgba(54, 241, 205, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
+                <div style="position: relative; display: flex; align-items: flex-start; opacity: 0.95;">
+                    <!-- Left Side - Empty for this row -->
+                    <div style="flex: 1; max-width: 330px;"></div>
+
+                    <!-- Year Badge - Center -->
+                    <div style="position: relative; z-index: 2; margin: 0 1rem; width: 76px; height: 76px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(145deg, rgba(54, 241, 205, 0.2) 0%, rgba(54, 241, 205, 0.1) 100%); border: 2px solid rgba(54, 241, 205, 0.3); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
                         <span style="font-size: 1.5rem; font-weight: 700; color: var(--vibrant-green);">2024</span>
                     </div>
 
-                    <!-- Content -->
-                    <div class="premium-card premium-float" style="background: rgba(54, 241, 205, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(54, 241, 205, 0.15);">
+                    <!-- Content - Right Side -->
+                    <div class="premium-card premium-float" style="flex: 1; margin-left: 1.5rem; background: rgba(54, 241, 205, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(54, 241, 205, 0.15); max-width: 330px;">
                         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                             <i class="fas fa-chart-line" style="font-size: 1.8rem; color: var(--vibrant-green); margin-right: 1rem;"></i>
                             <h3 style="font-size: 1.4rem; margin: 0; color: white;">Explosive Growth</h3>
