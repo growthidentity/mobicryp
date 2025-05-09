@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - How the ROI Works</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .roi-option {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-line {
+            position: absolute;
+            bottom: 10px;
+            left: 50px;
+            height: 2px;
+            background: var(--accent-color);
+            transform-origin: left bottom;
+            animation: chartGrow 3s ease-out forwards;
+        }
+        
+        .chart-line-auto {
+            background: var(--gold-color);
+        }
+        
+        @keyframes chartGrow {
+            0% { width: 0; transform: rotate(0deg); }
+            100% { width: 85%; transform: rotate(40deg); }
+        }
+        
+        @keyframes chartGrowStep {
+            0% { width: 0; height: 0; }
+            100% { width: 85%; height: 150px; }
+        }
+        
+        .chart-line-step {
+            position: absolute;
+            bottom: 10px;
+            left: 50px;
+            border-left: 2px solid var(--gold-color);
+            border-top: 2px solid var(--gold-color);
+            animation: chartGrowStep 3s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 10 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2 class="section-title">HOW THE ROI WORKS</h2>
+            <p class="section-description">Understanding your return on investment options with real-time visualization</p>
+
+            <!-- ROI Animation Container -->
+            <div style="position: relative; max-width: 1000px; margin: 2rem auto; background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.2); overflow: hidden; min-height: 450px;">
+
+                <!-- Background Grid -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CiAgPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSJub25lIj48L3JlY3Q+CiAgPHBhdGggZD0iTTAgMEw0MCAwTDQwIDQwTDAgNDBaIiBzdHJva2U9InJnYmEoMCwgMjA5LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPjwvcGF0aD4KPC9zdmc+'); opacity: 0.5; z-index: 0;"></div>
+
+                <!-- Two ROI Options Side by Side -->
+                <div style="display: flex; flex-wrap: wrap; gap: 3rem; position: relative; z-index: 1;">
+
+                    <!-- Left: Self Minting -->
+                    <div class="roi-option">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <div style="display: inline-block; background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(0, 150, 200, 0.1) 100%); padding: 0.7rem 2rem; border-radius: 50px; border: 1px solid rgba(0, 209, 255, 0.2);">
+                                <h3 style="margin: 0; color: var(--accent-color); font-size: 1.4rem; font-weight: 700;">SELF MINTING</h3>
+                            </div>
+                        </div>
+
+                        <!-- Self Minting Animation -->
+                        <div style="position: relative; height: 220px; margin-bottom: 1.5rem;">
+                            <!-- Chart Background -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 209, 255, 0.1); border-radius: 10px;"></div>
+
+                            <!-- Y-Axis -->
+                            <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 40px; display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">250%</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">125%</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">0%</div>
+                            </div>
+
+                            <!-- X-Axis -->
+                            <div style="position: absolute; bottom: -20px; left: 40px; right: 0; display: flex; justify-content: space-between;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Day 1</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Month 12</div>
+                            </div>
+
+                            <!-- Line Chart -->
+                            <div class="chart-line"></div>
+
+                            <!-- Chart Dots -->
+                            <div style="position: absolute; bottom: 10px; left: 50px; width: 6px; height: 6px; background: var(--accent-color); border-radius: 50%;"></div>
+                            <div style="position: absolute; bottom: 170px; right: 30px; width: 6px; height: 6px; background: var(--accent-color); border-radius: 50%;"></div>
+                        </div>
+
+                        <!-- Key Points -->
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--accent-color); margin-right: 0.8rem; font-size: 0.9rem;"></i>
+                                <span style="font-size: 0.9rem;">Daily returns of 0.5-1.0%</span>
+                            </li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--accent-color); margin-right: 0.8rem; font-size: 0.9rem;"></i>
+                                <span style="font-size: 0.9rem;">Requires daily minting action</span>
+                            </li>
+                            <li style="display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--accent-color); margin-right: 0.8rem; font-size: 0.9rem;"></i>
+                                <span style="font-size: 0.9rem;">250% ROI potential</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right: Auto Minting -->
+                    <div class="roi-option">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <div style="display: inline-block; background: linear-gradient(145deg, rgba(255, 184, 0, 0.15) 0%, rgba(200, 150, 0, 0.1) 100%); padding: 0.7rem 2rem; border-radius: 50px; border: 1px solid rgba(255, 184, 0, 0.2);">
+                                <h3 style="margin: 0; color: var(--gold-color); font-size: 1.4rem; font-weight: 700;">AUTO MINTING</h3>
+                            </div>
+                        </div>
+
+                        <!-- Auto Minting Animation -->
+                        <div style="position: relative; height: 220px; margin-bottom: 1.5rem;">
+                            <!-- Chart Background -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 184, 0, 0.1); border-radius: 10px;"></div>
+
+                            <!-- Y-Axis -->
+                            <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 40px; display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">250%</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">125%</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">0%</div>
+                            </div>
+
+                            <!-- X-Axis -->
+                            <div style="position: absolute; bottom: -20px; left: 40px; right: 0; display: flex; justify-content: space-between;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Month 1</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Month 36</div>
+                            </div>
+
+                            <!-- Step Chart -->
+                            <div class="chart-line-step"></div>
+
+                            <!-- Chart Dots -->
+                            <div style="position: absolute; bottom: 10px; left: 50px; width: 6px; height: 6px; background: var(--gold-color); border-radius: 50%;"></div>
+                            <div style="position: absolute; bottom: 60px; left: 50%; width: 6px; height: 6px; background: var(--gold-color); border-radius: 50%;"></div>
+                            <div style="position: absolute; bottom: 110px; left: 70%; width: 6px; height: 6px; background: var(--gold-color); border-radius: 50%;"></div>
+                            <div style="position: absolute; bottom: 160px; right: 30px; width: 6px; height: 6px; background: var(--gold-color); border-radius: 50%;"></div>
+                        </div>
+
+                        <!-- Key Points -->
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold-color); margin-right: 0.8rem; font-size: 0.9rem;"></i>
+                                <span style="font-size: 0.9rem;">Monthly returns of 10-20%</span>
+                            </li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold-color); margin-right: 0.8rem; font-size: 0.9rem;"></i>
+                                <span style="font-size: 0.9rem;">Fully automated - no daily action required</span>
+                            </li>
+                            <li style="display: flex; align-items: center;">
+                                <i class="fas fa-check" style="color: var(--gold-color); margin-right: 0.8rem; font-size: 0.9rem;"></i>
+                                <span style="font-size: 0.9rem;">250% ROI over 36 months</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ROI Key Points -->
+                <div style="margin-top: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div style="display: inline-block; background: rgba(0, 0, 0, 0.3); padding: 1rem 2rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <p style="margin: 0; color: var(--text-secondary); font-size: 1.1rem;">
+                            <span style="color: white; font-weight: 600;">Both options offer the same 250% ROI</span> - choose based on your preference for speed vs. convenience
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Script for animation control -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Restart animations when this slide comes into view
+                    function restartAnimations() {
+                        const chartElements = document.querySelectorAll('.chart-line, .chart-line-step');
+                        chartElements.forEach(el => {
+                            el.style.animation = 'none';
+                            setTimeout(() => {
+                                el.style.animation = '';
+                            }, 10);
+                        });
+                    }
+                    
+                    // Call on page load
+                    restartAnimations();
+                    
+                    // Add click handler to restart button if present
+                    const restartButton = document.getElementById('restart-animation');
+                    if (restartButton) {
+                        restartButton.addEventListener('click', restartAnimations);
+                    }
+                });
+            </script>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="09.html" class="nav-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="11.html" class="nav-button" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Achievement System</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .rank-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .rank-container {
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .rank-container:hover .rank-icon {
+            transform: scale(1.1);
+        }
+        
+        .rank-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 0.3rem;
+        }
+        
+        .rank-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            transition: all 0.3s ease;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(0) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            border-radius: 2px;
+            transform: translateY(-50%);
+            z-index: 0;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .bronze-bg {
+            background: linear-gradient(135deg, #CD7F32, #E1A16B);
+        }
+        
+        .silver-bg {
+            background: linear-gradient(135deg, #C0C0C0, #E5E4E2);
+        }
+        
+        .gold-bg {
+            background: linear-gradient(135deg, #FFD700, #FFC000);
+        }
+        
+        .platinum-bg {
+            background: linear-gradient(135deg, #E5E4E2, #bebdbb);
+        }
+        
+        .diamond-bg {
+            background: linear-gradient(135deg, #B9F2FF, #89C6D7);
+        }
+        
+        .crown-bg {
+            background: linear-gradient(135deg, #FFD700, #FF5500);
+        }
+        
+        .animate-rank {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+        .delay-6 { animation-delay: 1.2s; }
+        
+        @media (max-width: 768px) {
+            .rank-progression {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            
+            .progress-line {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 19 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2 class="section-title">Achievement System</h2>
+            <p class="section-description">MobiCryp rewards your dedication and leadership with a comprehensive rank advancement system</p>
+            
+            <!-- Rank progression visualization -->
+            <div style="position: relative; max-width: 1000px; margin: 0 auto 2rem;">
+                <div class="progress-line" id="progress-line"></div>
+                
+                <div style="display: flex; justify-content: space-between; position: relative; z-index: 1;" class="rank-progression">
+                    <!-- Bronze -->
+                    <div class="rank-container animate-rank delay-1">
+                        <div class="rank-icon bronze-bg">
+                            <i class="fas fa-medal" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 class="rank-title">Bronze</h3>
+                        <span class="rank-subtitle">Starting Rank</span>
+                    </div>
+                    
+                    <!-- Silver -->
+                    <div class="rank-container animate-rank delay-2">
+                        <div class="rank-icon silver-bg">
+                            <i class="fas fa-medal" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 class="rank-title">Silver</h3>
+                        <span class="rank-subtitle">Emerging Leader</span>
+                    </div>
+                    
+                    <!-- Gold -->
+                    <div class="rank-container animate-rank delay-3">
+                        <div class="rank-icon gold-bg">
+                            <i class="fas fa-medal" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 class="rank-title">Gold</h3>
+                        <span class="rank-subtitle">Team Builder</span>
+                    </div>
+                    
+                    <!-- Platinum -->
+                    <div class="rank-container animate-rank delay-4">
+                        <div class="rank-icon platinum-bg">
+                            <i class="fas fa-medal" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 class="rank-title">Platinum</h3>
+                        <span class="rank-subtitle">Organization Leader</span>
+                    </div>
+                    
+                    <!-- Diamond -->
+                    <div class="rank-container animate-rank delay-5">
+                        <div class="rank-icon diamond-bg">
+                            <i class="fas fa-gem" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 class="rank-title">Diamond</h3>
+                        <span class="rank-subtitle">Network Developer</span>
+                    </div>
+                    
+                    <!-- Crown -->
+                    <div class="rank-container animate-rank delay-6">
+                        <div class="rank-icon crown-bg">
+                            <i class="fas fa-crown" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 class="rank-title">Crown</h3>
+                        <span class="rank-subtitle">Global Leader</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rank advantages -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2rem;">
+                <div class="feature-card" id="feature-1">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line" style="font-size: 1.3rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.2rem; margin: 0; color: var(--accent-color);">Increased Commissions</h3>
+                    </div>
+                    <p>Each rank unlocks higher commission rates across all bonus types</p>
+                </div>
+                
+                <div class="feature-card" id="feature-2">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy" style="font-size: 1.3rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.2rem; margin: 0; color: var(--accent-color);">Exclusive Rewards</h3>
+                    </div>
+                    <p>Special recognition and rewards at each achievement level</p>
+                </div>
+                
+                <div class="feature-card" id="feature-3">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div class="feature-icon">
+                            <i class="fas fa-users" style="font-size: 1.3rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.2rem; margin: 0; color: var(--accent-color);">Team Development</h3>
+                    </div>
+                    <p>Structured system for building and expanding your organization</p>
+                </div>
+            </div>
+            
+            <!-- Additional Info Box -->
+            <div style="max-width: 800px; margin: 3rem auto 1rem; background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);" id="info-box">
+                <h3 style="margin-top: 0; color: var(--accent-color); text-align: center; margin-bottom: 1rem;">Rank Advancement Benefits</h3>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="min-width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 209, 255, 0.15); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem;">
+                                <i class="fas fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
+                            </div>
+                            <span>Increased income potential at each rank</span>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 200px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="min-width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 209, 255, 0.15); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem;">
+                                <i class="fas fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
+                            </div>
+                            <span>Recognition at global events and online</span>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 200px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="min-width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 209, 255, 0.15); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem;">
+                                <i class="fas fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
+                            </div>
+                            <span>Access to exclusive leadership groups</span>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 200px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="min-width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 209, 255, 0.15); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem;">
+                                <i class="fas fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
+                            </div>
+                            <span>Special training and development resources</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="18.html" class="nav-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="20.html" class="nav-button" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress line
+            setTimeout(() => {
+                document.getElementById('progress-line').style.width = '100%';
+            }, 500);
+            
+            // Animate feature cards
+            setTimeout(() => {
+                const featureCards = document.querySelectorAll('.feature-card');
+                featureCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 1400 + (index * 200));
+                });
+            }, 1000);
+            
+            // Animate info box
+            setTimeout(() => {
+                const infoBox = document.getElementById('info-box');
+                infoBox.style.animation = 'fadeInUp 0.5s ease forwards';
+            }, 2000);
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset rank animations
+                    const rankContainers = document.querySelectorAll('.rank-container');
+                    rankContainers.forEach(container => {
+                        container.style.opacity = '0';
+                        container.style.transform = 'translateY(20px)';
+                    });
+                    
+                    // Reset progress line
+                    const progressLine = document.getElementById('progress-line');
+                    progressLine.style.width = '0';
+                    
+                    // Reset feature cards
+                    const featureCards = document.querySelectorAll('.feature-card');
+                    featureCards.forEach(card => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                    });
+                    
+                    // Reset info box
+                    const infoBox = document.getElementById('info-box');
+                    infoBox.style.animation = 'none';
+                    
+                    // Re-trigger animations
+                    setTimeout(() => {
+                        rankContainers.forEach((container, index) => {
+                            setTimeout(() => {
+                                container.style.animation = 'fadeInUp 0.5s ease forwards';
+                            }, index * 200);
+                        });
+                        
+                        setTimeout(() => {
+                            progressLine.style.width = '100%';
+                        }, 500);
+                        
+                        setTimeout(() => {
+                            featureCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 1400 + (index * 200));
+                            });
+                        }, 1000);
+                        
+                        setTimeout(() => {
+                            infoBox.style.animation = 'fadeInUp 0.5s ease forwards';
+                        }, 2000);
+                    }, 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Direct Bonus</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .network-diagram {
+            position: relative;
+            width: 700px;
+            height: 320px;
+            margin: 0 auto;
+        }
+        
+        .user-icon {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+        
+        .central-user {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.2) 100%);
+            border: 2px solid rgba(0, 209, 255, 0.5);
+            z-index: 2;
+        }
+        
+        .referral-user {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 209, 255, 0.1);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            z-index: 1;
+        }
+        
+        .user-badge {
+            position: absolute;
+            width: 50px;
+            text-align: center;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 2;
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        .connector-line {
+            position: absolute;
+            width: 80px;
+            height: 1px;
+            background: rgba(0, 209, 255, 0.5);
+            z-index: 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Positions */
+        .referral-1 {
+            top: 10%;
+            left: 20%;
+        }
+        
+        .badge-1 {
+            top: 30%;
+            left: 30%;
+        }
+        
+        .line-1 {
+            top: 20%;
+            left: 35%;
+            transform: rotate(45deg);
+        }
+        
+        .referral-2 {
+            top: 10%;
+            right: 20%;
+        }
+        
+        .badge-2 {
+            top: 30%;
+            right: 30%;
+        }
+        
+        .line-2 {
+            top: 20%;
+            right: 35%;
+            transform: rotate(-45deg);
+        }
+        
+        .referral-3 {
+            bottom: 10%;
+            left: 20%;
+        }
+        
+        .badge-3 {
+            bottom: 30%;
+            left: 30%;
+        }
+        
+        .line-3 {
+            bottom: 20%;
+            left: 35%;
+            transform: rotate(-45deg);
+        }
+        
+        .referral-4 {
+            bottom: 10%;
+            right: 20%;
+        }
+        
+        .badge-4 {
+            bottom: 30%;
+            right: 30%;
+        }
+        
+        .line-4 {
+            bottom: 20%;
+            right: 35%;
+            transform: rotate(45deg);
+        }
+        
+        .feature-box {
+            flex: 1;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Animation classes for delayed appearance */
+        .referral-1, .badge-1, .line-1 {
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+        
+        .referral-2, .badge-2, .line-2 {
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+        
+        .referral-3, .badge-3, .line-3 {
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 0.9s;
+            opacity: 0;
+        }
+        
+        .referral-4, .badge-4, .line-4 {
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 1.2s;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 14 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2 class="section-title">Direct Bonus</h2>
+            <p class="section-description">Earn 10% from every direct referral <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 1 OF 4)</span></p>
+            
+            <div style="display: flex; justify-content: center; margin: 3rem 0;">
+                <div class="network-diagram">
+                    <!-- Central user icon -->
+                    <div class="user-icon central-user">
+                        <i class="fas fa-user" style="font-size: 3rem; color: var(--accent-color);"></i>
+                    </div>
+                    
+                    <!-- Referral 1 -->
+                    <div class="user-icon referral-user referral-1">
+                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    <div class="user-badge badge-1">10%</div>
+                    <div class="connector-line line-1"></div>
+                    
+                    <!-- Referral 2 -->
+                    <div class="user-icon referral-user referral-2">
+                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    <div class="user-badge badge-2">10%</div>
+                    <div class="connector-line line-2"></div>
+                    
+                    <!-- Referral 3 -->
+                    <div class="user-icon referral-user referral-3">
+                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    <div class="user-badge badge-3">10%</div>
+                    <div class="connector-line line-3"></div>
+                    
+                    <!-- Referral 4 -->
+                    <div class="user-icon referral-user referral-4">
+                        <i class="fas fa-user" style="font-size: 2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    <div class="user-badge badge-4">10%</div>
+                    <div class="connector-line line-4"></div>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                <div class="feature-box">
+                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                        <i class="fas fa-money-bill-wave" style="margin-right: 0.5rem;"></i>
+                        Immediate 10% Commission
+                    </h3>
+                    <p>For every person directly referred who purchases a hub</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                        <i class="fas fa-calculator" style="margin-right: 0.5rem;"></i>
+                        Example Calculation
+                    </h3>
+                    <p>When referral buys a $1,000 Hub, you receive $100 commission (10%)</p>
+                </div>
+                
+                <div class="feature-box">
+                    <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                        <i class="fas fa-infinity" style="margin-right: 0.5rem;"></i>
+                        Unlimited Potential
+                    </h3>
+                    <p>No limit to the number of direct referrals</p>
+                </div>
+            </div>
+            
+            <!-- Additional Benefits Box -->
+            <div style="max-width: 800px; margin: 3rem auto 0;">
+                <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: white;">Key Benefits of Direct Bonus</h3>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                <div style="min-width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 209, 255, 0.15); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem; margin-top: 2px;">
+                                    <i class="fas fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 0.3rem; font-size: 1rem; color: var(--accent-color);">Instant Payout</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Commissions paid immediately after referral purchases</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                <div style="min-width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 209, 255, 0.15); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem; margin-top: 2px;">
+                                    <i class="fas fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 0.3rem; font-size: 1rem; color: var(--accent-color);">Paid in USDT</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">All commissions are paid in stable USDT, not volatile tokens</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px;">
+                            <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                <div style="min-width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 209, 255, 0.15); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem; margin-top: 2px;">
+                                    <i class="fas fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin: 0 0 0.3rem; font-size: 1rem; color: var(--accent-color);">Compounding Potential</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Use commissions to purchase more HUBs or mint USDT</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="13.html" class="nav-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="15.html" class="nav-button" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const restartAnimations = () => {
+                const elements = document.querySelectorAll('.referral-1, .badge-1, .line-1, .referral-2, .badge-2, .line-2, .referral-3, .badge-3, .line-3, .referral-4, .badge-4, .line-4');
+                
+                elements.forEach(el => {
+                    el.style.animation = 'none';
+                    void el.offsetWidth; // Trigger reflow
+                    
+                    if (el.classList.contains('referral-1') || el.classList.contains('badge-1') || el.classList.contains('line-1')) {
+                        el.style.animation = 'fadeIn 0.5s ease forwards 0.3s';
+                    } else if (el.classList.contains('referral-2') || el.classList.contains('badge-2') || el.classList.contains('line-2')) {
+                        el.style.animation = 'fadeIn 0.5s ease forwards 0.6s';
+                    } else if (el.classList.contains('referral-3') || el.classList.contains('badge-3') || el.classList.contains('line-3')) {
+                        el.style.animation = 'fadeIn 0.5s ease forwards 0.9s';
+                    } else if (el.classList.contains('referral-4') || el.classList.contains('badge-4') || el.classList.contains('line-4')) {
+                        el.style.animation = 'fadeIn 0.5s ease forwards 1.2s';
+                    }
+                    
+                    el.style.opacity = '0';
+                });
+            };
+            
+            // Run animation on page load
+            restartAnimations();
+        });
+    </script>
+</body>
+</html>

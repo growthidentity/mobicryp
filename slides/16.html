@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Level Minting Bonus</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .level-bar {
+            flex-grow: 1;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 15px;
+        }
+        
+        .level-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1s ease-out;
+        }
+        
+        .progress-1 { width: 100%; }
+        .progress-2 { width: 70%; }
+        .progress-3 { width: 50%; }
+        .progress-4 { width: 30%; }
+        .progress-5 { width: 20%; }
+        .progress-6 { width: 10%; }
+        
+        .feature-box {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .animate-bars {
+            animation: animateBars 1s ease-out forwards;
+        }
+        
+        @keyframes animateBars {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 16 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2 class="section-title">Level Minting Bonus</h2>
+            <p class="section-description">Earn up to 30% across 10 levels as your network expands <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 3 OF 4)</span></p>
+            
+            <div style="display: flex; margin-top: 2rem; gap: 3rem; flex-wrap: wrap;">
+                <!-- Level structure visualization -->
+                <div style="flex: 1.3; background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.3); min-width: 300px;">
+                    <h3 style="text-align: center; font-size: 1.3rem; color: var(--accent-color); margin-bottom: 1.5rem;">10 Levels of Earnings</h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <!-- Level 1 -->
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 80px; text-align: center; font-weight: bold;">Level 1</div>
+                            <div class="level-bar">
+                                <div class="level-progress progress-1"></div>
+                            </div>
+                            <div style="width: 60px; text-align: center; font-weight: bold; color: var(--accent-color);">10%</div>
+                        </div>
+                        
+                        <!-- Level 2 -->
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 80px; text-align: center; font-weight: bold;">Level 2</div>
+                            <div class="level-bar">
+                                <div class="level-progress progress-2"></div>
+                            </div>
+                            <div style="width: 60px; text-align: center; font-weight: bold; color: var(--accent-color);">7%</div>
+                        </div>
+                        
+                        <!-- Level 3 -->
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 80px; text-align: center; font-weight: bold;">Level 3</div>
+                            <div class="level-bar">
+                                <div class="level-progress progress-3"></div>
+                            </div>
+                            <div style="width: 60px; text-align: center; font-weight: bold; color: var(--accent-color);">5%</div>
+                        </div>
+                        
+                        <!-- Level 4 -->
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 80px; text-align: center; font-weight: bold;">Level 4</div>
+                            <div class="level-bar">
+                                <div class="level-progress progress-4"></div>
+                            </div>
+                            <div style="width: 60px; text-align: center; font-weight: bold; color: var(--accent-color);">3%</div>
+                        </div>
+                        
+                        <!-- Level 5 -->
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 80px; text-align: center; font-weight: bold;">Level 5</div>
+                            <div class="level-bar">
+                                <div class="level-progress progress-5"></div>
+                            </div>
+                            <div style="width: 60px; text-align: center; font-weight: bold; color: var(--accent-color);">2%</div>
+                        </div>
+                        
+                        <!-- Levels 6-10 -->
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 80px; text-align: center; font-weight: bold;">Level 6-10</div>
+                            <div class="level-bar">
+                                <div class="level-progress progress-6"></div>
+                            </div>
+                            <div style="width: 60px; text-align: center; font-weight: bold; color: var(--accent-color);">0.5-1%</div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem; text-align: center; font-size: 1.2rem; color: var(--accent-color); font-weight: bold;">
+                            Total: 30% Combined
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Network Expansion Benefits -->
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 1.5rem; min-width: 300px;">
+                    <div class="feature-box">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem;">
+                            <i class="fas fa-network-wired" style="margin-right: 0.5rem;"></i>
+                            Network Expansion Benefits
+                        </h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Level 1:</span>
+                            <span>5 people</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Level 2:</span>
+                            <span>25 people</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Level 3:</span>
+                            <span>125 people</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Level 5:</span>
+                            <span>3,125 people</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Level 10:</span>
+                            <span>9,765,625 people</span>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; font-style: italic; opacity: 0.7;">
+                            * Assumes each person recruits 5 people
+                        </p>
+                    </div>
+                    
+                    <div class="feature-box" style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
+                        <h3 style="font-size: 1.2rem; color: var(--accent-color); margin-bottom: 1rem; text-align: center;">
+                            <i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i>
+                            Compounding Power
+                        </h3>
+                        <p style="text-align: center; margin-bottom: 1.5rem;">
+                            As your network grows, your earnings compound exponentially through multiple levels of your organization.
+                        </p>
+                        <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1rem; text-align: center; border: 1px solid rgba(0, 209, 255, 0.2);">
+                            <span style="font-weight: bold; color: var(--accent-color);">The Power of Exponential Growth:</span>
+                            <br>
+                            You teach 5 who each teach 5 more...
+                            <br>
+                            By Level 10: <span style="font-weight: bold; color: var(--accent-color);">9,765,625 team members</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Example Calculation -->
+            <div style="max-width: 800px; margin: 3rem auto 1rem;">
+                <div style="background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(0, 209, 255, 0.2);">
+                    <h3 style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: var(--accent-color);">Level Bonus Example</h3>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+                        <!-- Example Network -->
+                        <div style="flex: 1; min-width: 250px;">
+                            <h4 style="color: white; margin-bottom: 1rem; font-size: 1.1rem;">Your Network:</h4>
+                            
+                            <div style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                <div style="width: 30px; height: 30px; border-radius: 50%; background: rgba(0, 209, 255, 0.1); border: 1px solid rgba(0, 209, 255, 0.3); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem;">
+                                    <span style="font-size: 0.9rem; font-weight: bold;">L1</span>
+                                </div>
+                                <span>3 direct referrals, each with 1,000 USDT</span>
+                            </div>
+                            
+                            <div style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                <div style="width: 30px; height: 30px; border-radius: 50%; background: rgba(0, 209, 255, 0.1); border: 1px solid rgba(0, 209, 255, 0.3); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem;">
+                                    <span style="font-size: 0.9rem; font-weight: bold;">L2</span>
+                                </div>
+                                <span>10 level 2 members, each with 500 USDT</span>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 30px; height: 30px; border-radius: 50%; background: rgba(0, 209, 255, 0.1); border: 1px solid rgba(0, 209, 255, 0.3); display: flex; align-items: center; justify-content: center; margin-right: 0.8rem;">
+                                    <span style="font-size: 0.9rem; font-weight: bold;">L3</span>
+                                </div>
+                                <span>20 level 3 members, each with 300 USDT</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Calculation -->
+                        <div style="flex: 1; min-width: 250px;">
+                            <h4 style="color: white; margin-bottom: 1rem; font-size: 1.1rem;">Your Earnings:</h4>
+                            
+                            <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between; background: rgba(0, 209, 255, 0.05); padding: 0.5rem 1rem; border-radius: var(--border-radius); border: 1px solid rgba(0, 209, 255, 0.1);">
+                                <span>Level 1: 3,000 × 10%</span>
+                                <span style="font-weight: bold; color: var(--accent-color);">300 USDT</span>
+                            </div>
+                            
+                            <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between; background: rgba(0, 209, 255, 0.05); padding: 0.5rem 1rem; border-radius: var(--border-radius); border: 1px solid rgba(0, 209, 255, 0.1);">
+                                <span>Level 2: 5,000 × 7%</span>
+                                <span style="font-weight: bold; color: var(--accent-color);">350 USDT</span>
+                            </div>
+                            
+                            <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between; background: rgba(0, 209, 255, 0.05); padding: 0.5rem 1rem; border-radius: var(--border-radius); border: 1px solid rgba(0, 209, 255, 0.1);">
+                                <span>Level 3: 6,000 × 5%</span>
+                                <span style="font-weight: bold; color: var(--accent-color);">300 USDT</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; background: rgba(0, 209, 255, 0.15); padding: 0.8rem 1rem; border-radius: var(--border-radius); border: 1px solid rgba(0, 209, 255, 0.2); margin-top: 1.5rem; font-weight: bold;">
+                                <span>Total Monthly Bonus:</span>
+                                <span style="color: var(--accent-color);">950 USDT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="15.html" class="nav-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="17.html" class="nav-button" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.level-progress');
+            
+            // Animation function to trigger animation
+            const animateBars = () => {
+                progressBars.forEach(bar => {
+                    bar.classList.add('animate-bars');
+                });
+            };
+            
+            // Reset animation
+            const resetAnimation = () => {
+                progressBars.forEach(bar => {
+                    bar.classList.remove('animate-bars');
+                    void bar.offsetWidth; // Trigger reflow
+                });
+            };
+            
+            // Initial animation
+            setTimeout(() => {
+                animateBars();
+            }, 500);
+            
+            // For future animation reset/replay
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    resetAnimation();
+                    setTimeout(() => {
+                        animateBars();
+                    }, 500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

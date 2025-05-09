@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Organization Leader</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .platinum-color {
+            color: #E5E4E2;
+        }
+        
+        .platinum-bg {
+            background: linear-gradient(135deg, #E5E4E2, #bebdbb);
+        }
+        
+        .platinum-bg-light {
+            background: rgba(229, 228, 226, 0.2);
+        }
+        
+        .platinum-bg-medium {
+            background: linear-gradient(135deg, rgba(229, 228, 226, 0.7), rgba(190, 189, 187, 0.7));
+        }
+        
+        .platinum-border {
+            border: 1px solid rgba(229, 228, 226, 0.3);
+        }
+        
+        .platinum-border-bottom {
+            border-bottom: 1px solid rgba(229, 228, 226, 0.2);
+        }
+        
+        .medal-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .medal-icon:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+        }
+        
+        .requirement-icon {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .benefit-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border: 1px solid rgba(229, 228, 226, 0.2);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .benefit-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .benefit-icon {
+            min-width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .progress-upgrade {
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            width: 0;
+            border-radius: 5px;
+            transition: width 1.5s ease-out;
+        }
+        
+        .team-chart {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .team-node {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .team-connector {
+            position: absolute;
+            height: 2px;
+            background: rgba(229, 228, 226, 0.5);
+            transform-origin: 0 0;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-left {
+            animation: fadeInLeft 0.5s ease forwards;
+        }
+        
+        .animate-right {
+            animation: fadeInRight 0.5s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+        .delay-6 { animation-delay: 1.2s; }
+        
+        @media (max-width: 768px) {
+            .content-flex {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 23 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <h2 class="section-title">Organization Leader</h2>
+            <p class="section-description">The <span style="color: #E5E4E2; font-weight: 700;">Platinum Rank</span> recognizes significant organizational growth</p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1000px; margin: 2rem auto 0;" class="content-flex">
+                <!-- Left column: Platinum requirements -->
+                <div style="flex: 1; min-width: 300px;">
+                    <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(229, 228, 226, 0.3); height: 100%;">
+                        
+                        <!-- Platinum medal icon -->
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div class="medal-icon platinum-bg">
+                                <i class="fas fa-medal" style="color: white; font-size: 3rem;"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Platinum requirements -->
+                        <div>
+                            <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div class="section-icon platinum-bg-medium">
+                                    <i class="fas fa-list-check" style="font-size: 1.6rem; color: white;"></i>
+                                </div>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; margin: 0; color: #E5E4E2;">Platinum Requirements</h3>
+                            </div>
+                            
+                            <!-- Requirements list -->
+                            <div>
+                                <div class="requirement-item platinum-border-bottom animate-left delay-1">
+                                    <div class="requirement-icon platinum-bg-light">
+                                        <i class="fas fa-user" style="color: #E5E4E2; font-size: 1rem;"></i>
+                                    </div>
+                                    <div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 600; color: #E5E4E2; margin: 0 0 0.4rem;">Personal Volume</h4>
+                                        <p style="margin: 0; line-height: 1.5;"><span style="font-weight: 700;">500 PV</span> (Personal Volume) monthly minimum</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="requirement-item platinum-border-bottom animate-left delay-2">
+                                    <div class="requirement-icon platinum-bg-light">
+                                        <i class="fas fa-sitemap" style="color: #E5E4E2; font-size: 1rem;"></i>
+                                    </div>
+                                    <div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 600; color: #E5E4E2; margin: 0 0 0.4rem;">Group Volume</h4>
+                                        <p style="margin: 0; line-height: 1.5;"><span style="font-weight: 700;">50,000 GV</span> (Group Volume) monthly from your entire organization</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="requirement-item animate-left delay-3">
+                                    <div class="requirement-icon platinum-bg-light">
+                                        <i class="fas fa-users" style="color: #E5E4E2; font-size: 1rem;"></i>
+                                    </div>
+                                    <div>
+                                        <h4 style="font-size: 1.1rem; font-weight: 600; color: #E5E4E2; margin: 0 0 0.4rem;">Team Structure</h4>
+                                        <p style="margin: 0; line-height: 1.5;"><span style="font-weight: 700;">8 Personally Sponsored</span> active affiliates (min. 4 on each leg with at least 2 Gold and 2 Silver members overall)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right column: Platinum benefits -->
+                <div style="flex: 1; min-width: 300px;">
+                    <div style="background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%); border-radius: var(--border-radius-lg); padding: 2rem; border: 1px solid rgba(229, 228, 226, 0.3); height: 100%;">
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <div class="section-icon platinum-bg-medium">
+                                <i class="fas fa-gift" style="font-size: 1.6rem; color: white;"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin: 0; color: #E5E4E2;">Platinum Benefits</h3>
+                        </div>
+                        
+                        <!-- Benefits list -->
+                        <div style="display: flex; flex-direction: column;">
+                            <div class="benefit-card animate-right delay-1">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                                    <div class="benefit-icon platinum-bg-light">
+                                        <i class="fas fa-percentage" style="color: #E5E4E2; font-size: 0.9rem;"></i>
+                                    </div>
+                                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0; color: #E5E4E2;">12% Royalty Bonus</h4>
+                                </div>
+                                
+                                <div style="margin-left: 3.5rem;">
+                                    <p style="margin: 0 0 0.5rem; line-height: 1.5;">Increased from 8% to 12% commission on your entire organization's volume</p>
+                                    
+                                    <!-- Progress bar showing 8% to 12% increase -->
+                                    <div style="display: flex; align-items: center; margin-top: 0.5rem;">
+                                        <div style="min-width: 35px; text-align: right; margin-right: 0.8rem; font-size: 0.9rem; opacity: 0.7;">8%</div>
+                                        <div style="flex-grow: 1; height: 8px; background: rgba(0, 0, 0, 0.2); border-radius: 4px; overflow: hidden; position: relative;">
+                                            <div id="royalty-upgrade" class="progress-upgrade"></div>
+                                        </div>
+                                        <div style="min-width: 35px; text-align: left; margin-left: 0.8rem; font-size: 0.9rem; color: #E5E4E2; font-weight: bold;">12%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="benefit-card animate-right delay-2">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                                    <div class="benefit-icon platinum-bg-light">
+                                        <i class="fas fa-arrow-trend-up" style="color: #E5E4E2; font-size: 0.9rem;"></i>
+                                    </div>
+                                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0; color: #E5E4E2;">3x Minting Speed</h4>
+                                </div>
+                                
+                                <div style="margin-left: 3.5rem;">
+                                    <p style="margin: 0 0 0.5rem; line-height: 1.5;">Triple the standard minting rate for both Self and Auto Minting</p>
+                                    
+                                    <!-- Progress bar showing minting speed increase -->
+                                    <div style="display: flex; align-items: center; margin-top: 0.5rem;">
+                                        <div style="min-width: 35px; text-align: right; margin-right: 0.8rem; font-size: 0.9rem; opacity: 0.7;">1x</div>
+                                        <div style="flex-grow: 1; height: 8px; background: rgba(0, 0, 0, 0.2); border-radius: 4px; overflow: hidden; position: relative;">
+                                            <div id="minting-upgrade" class="progress-upgrade"></div>
+                                        </div>
+                                        <div style="min-width: 35px; text-align: left; margin-left: 0.8rem; font-size: 0.9rem; color: #E5E4E2; font-weight: bold;">3x</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="benefit-card animate-right delay-3">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                                    <div class="benefit-icon platinum-bg-light">
+                                        <i class="fas fa-plane" style="color: #E5E4E2; font-size: 0.9rem;"></i>
+                                    </div>
+                                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0; color: #E5E4E2;">Travel Incentives</h4>
+                                </div>
+                                <p style="margin: 0 0 0 3.5rem; line-height: 1.5;">Qualify for annual leadership retreat with expenses covered</p>
+                            </div>
+                            
+                            <div class="benefit-card animate-right delay-4">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+                                    <div class="benefit-icon platinum-bg-light">
+                                        <i class="fas fa-user-tie" style="color: #E5E4E2; font-size: 0.9rem;"></i>
+                                    </div>
+                                    <h4 style="font-size: 1.1rem; font-weight: 600; margin: 0; color: #E5E4E2;">Executive Status</h4>
+                                </div>
+                                <p style="margin: 0 0 0 3.5rem; line-height: 1.5;">Access to company leadership and involvement in strategic planning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Structure Visualization -->
+            <div style="max-width: 800px; margin: 3rem auto 1rem; background: rgba(0, 0, 0, 0.2); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(229, 228, 226, 0.2);" id="team-box">
+                <h3 style="text-align: center; color: #E5E4E2; margin-top: 0; margin-bottom: 1.5rem;">Platinum Rank Team Structure</h3>
+                
+                <!-- Team Structure Visualization -->
+                <div class="team-chart">
+                    <!-- You -->
+                    <div id="you-node" class="team-node" style="top: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 70px; background: linear-gradient(135deg, #E5E4E2, #bebdbb); z-index: 3; border: 2px solid rgba(255, 255, 255, 0.2);">
+                        <i class="fas fa-user" style="font-size: 1.8rem; color: white;"></i>
+                    </div>
+                    
+                    <!-- Level 1 - Left Side -->
+                    <div id="left-side-label" style="position: absolute; top: 60px; left: 20%; transform: translateX(-50%); font-weight: bold; color: #E5E4E2; opacity: 0; transition: opacity 0.5s ease;">LEFT SIDE</div>
+                    
+                    <!-- Level 1 - Right Side -->
+                    <div id="right-side-label" style="position: absolute; top: 60px; right: 20%; transform: translateX(50%); font-weight: bold; color: #E5E4E2; opacity: 0; transition: opacity 0.5s ease;">RIGHT SIDE</div>
+                    
+                    <!-- Level 1 - Left (Gold) -->
+                    <div id="l1-1" class="team-node" style="top: 100px; left: 25%; transform: translateX(-50%); width: 60px; height: 60px; background: linear-gradient(135deg, #FFD700, #FFC000); border: 1px solid rgba(255, 255, 255, 0.3); z-index: 2;">
+                        <i class="fas fa-user" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    
+                    <div id="con-you-l1-1" class="team-connector" style="top: 35px; left: 50%; width: 120px; transform: translateX(-100%) rotate(45deg);"></div>
+                    
+                    <!-- Level 1 - Left (Silver) -->
+                    <div id="l1-2" class="team-node" style="top: 100px; left: 40%; transform: translateX(-50%); width: 60px; height: 60px; background: linear-gradient(135deg, #C0C0C0, #E5E4E2); border: 1px solid rgba(255, 255, 255, 0.3); z-index: 2;">
+                        <i class="fas fa-user" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    
+                    <div id="con-you-l1-2" class="team-connector" style="top: 35px; left: 50%; width: 60px; transform: translateX(-60%) rotate(70deg);"></div>
+                    
+                    <!-- Level 1 - Right (Silver) -->
+                    <div id="l1-3" class="team-node" style="top: 100px; left: 60%; transform: translateX(-50%); width: 60px; height: 60px; background: linear-gradient(135deg, #C0C0C0, #E5E4E2); border: 1px solid rgba(255, 255, 255, 0.3); z-index: 2;">
+                        <i class="fas fa-user" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    
+                    <div id="con-you-l1-3" class="team-connector" style="top: 35px; left: 50%; width: 60px; transform: rotate(-70deg);"></div>
+                    
+                    <!-- Level 1 - Right (Gold) -->
+                    <div id="l1-4" class="team-node" style="top: 100px; left: 75%; transform: translateX(-50%); width: 60px; height: 60px; background: linear-gradient(135deg, #FFD700, #FFC000); border: 1px solid rgba(255, 255, 255, 0.3); z-index: 2;">
+                        <i class="fas fa-user" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    
+                    <div id="con-you-l1-4" class="team-connector" style="top: 35px; left: 50%; width: 120px; transform: rotate(-45deg);"></div>
+                    
+                    <!-- Additional team members -->
+                    <div id="l1-5" class="team-node" style="top: 140px; left: 15%; transform: translateX(-50%); width: 50px; height: 50px; background: rgba(0, 209, 255, 0.1); border: 1px solid rgba(0, 209, 255, 0.3); z-index: 1;">
+                        <i class="fas fa-user" style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    
+                    <div id="con-l1-1-l1-5" class="team-connector" style="top: 130px; left: 25%; width: 50px; transform: translateX(-100%) rotate(15deg);"></div>
+                    
+                    <div id="l1-6" class="team-node" style="top: 140px; left: 35%; transform: translateX(-50%); width: 50px; height: 50px; background: rgba(0, 209, 255, 0.1); border: 1px solid rgba(0, 209, 255, 0.3); z-index: 1;">
+                        <i class="fas fa-user" style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    
+                    <div id="con-l1-2-l1-6" class="team-connector" style="top: 130px; left: 40%; width: 30px; transform: translateX(-60%) rotate(70deg);"></div>
+                    
+                    <div id="l1-7" class="team-node" style="top: 140px; left: 65%; transform: translateX(-50%); width: 50px; height: 50px; background: rgba(0, 209, 255, 0.1); border: 1px solid rgba(0, 209, 255, 0.3); z-index: 1;">
+                        <i class="fas fa-user" style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    
+                    <div id="con-l1-3-l1-7" class="team-connector" style="top: 130px; left: 60%; width: 30px; transform: rotate(-70deg);"></div>
+                    
+                    <div id="l1-8" class="team-node" style="top: 140px; left: 85%; transform: translateX(-50%); width: 50px; height: 50px; background: rgba(0, 209, 255, 0.1); border: 1px solid rgba(0, 209, 255, 0.3); z-index: 1;">
+                        <i class="fas fa-user" style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.7);"></i>
+                    </div>
+                    
+                    <div id="con-l1-4-l1-8" class="team-connector" style="top: 130px; left: 75%; width: 50px; transform: rotate(-15deg);"></div>
+                    
+                    <!-- Team Count Badge -->
+                    <div id="team-count" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)); color: white; border-radius: 30px; padding: 8px 20px; font-weight: bold; opacity: 0; transition: opacity 0.5s ease;">
+                        8+ Personal Referrals Required
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="22.html" class="nav-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="24.html" class="nav-button" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bars
+            setTimeout(() => {
+                document.getElementById('royalty-upgrade').style.width = '100%';
+                document.getElementById('minting-upgrade').style.width = '100%';
+            }, 1000);
+            
+            // Animate team visualization
+            setTimeout(() => {
+                // Show center node
+                document.getElementById('you-node').style.opacity = '1';
+                document.getElementById('you-node').style.transform = 'translateX(-50%) scale(1)';
+                
+                // Show side labels
+                setTimeout(() => {
+                    document.getElementById('left-side-label').style.opacity = '1';
+                    document.getElementById('right-side-label').style.opacity = '1';
+                }, 300);
+                
+                // Show level 1 nodes
+                setTimeout(() => {
+                    document.getElementById('l1-1').style.opacity = '1';
+                    document.getElementById('l1-1').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-you-l1-1').style.opacity = '1';
+                }, 600);
+                
+                setTimeout(() => {
+                    document.getElementById('l1-2').style.opacity = '1';
+                    document.getElementById('l1-2').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-you-l1-2').style.opacity = '1';
+                }, 800);
+                
+                setTimeout(() => {
+                    document.getElementById('l1-3').style.opacity = '1';
+                    document.getElementById('l1-3').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-you-l1-3').style.opacity = '1';
+                }, 1000);
+                
+                setTimeout(() => {
+                    document.getElementById('l1-4').style.opacity = '1';
+                    document.getElementById('l1-4').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-you-l1-4').style.opacity = '1';
+                }, 1200);
+                
+                // Show level 2 nodes
+                setTimeout(() => {
+                    document.getElementById('l1-5').style.opacity = '1';
+                    document.getElementById('l1-5').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-l1-1-l1-5').style.opacity = '1';
+                }, 1400);
+                
+                setTimeout(() => {
+                    document.getElementById('l1-6').style.opacity = '1';
+                    document.getElementById('l1-6').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-l1-2-l1-6').style.opacity = '1';
+                }, 1500);
+                
+                setTimeout(() => {
+                    document.getElementById('l1-7').style.opacity = '1';
+                    document.getElementById('l1-7').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-l1-3-l1-7').style.opacity = '1';
+                }, 1600);
+                
+                setTimeout(() => {
+                    document.getElementById('l1-8').style.opacity = '1';
+                    document.getElementById('l1-8').style.transform = 'translateX(-50%) scale(1)';
+                    document.getElementById('con-l1-4-l1-8').style.opacity = '1';
+                }, 1700);
+                
+                // Show team count
+                setTimeout(() => {
+                    document.getElementById('team-count').style.opacity = '1';
+                }, 1800);
+                
+            }, 500);
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset requirement items
+                    const reqItems = document.querySelectorAll('.requirement-item');
+                    reqItems.forEach(item => {
+                        const originalClass = item.className;
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateX(-20px)';
+                        // Remove animation class
+                        item.classList.remove('animate-left');
+                        
+                        // Force reflow
+                        void item.offsetWidth;
+                        
+                        // Re-apply class
+                        item.className = originalClass;
+                    });
+                    
+                    // Reset benefit cards
+                    const benefitCards = document.querySelectorAll('.benefit-card');
+                    benefitCards.forEach(card => {
+                        const originalClass = card.className;
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateX(20px)';
+                        // Remove animation class
+                        card.classList.remove('animate-right');
+                        
+                        // Force reflow
+                        void card.offsetWidth;
+                        
+                        // Re-apply class
+                        card.className = originalClass;
+                    });
+                    
+                    // Reset progress bars
+                    document.getElementById('royalty-upgrade').style.width = '0';
+                    document.getElementById('minting-upgrade').style.width = '0';
+                    
+                    // Reset team visualization
+                    const teamNodes = document.querySelectorAll('.team-node');
+                    teamNodes.forEach(node => {
+                        node.style.opacity = '0';
+                        node.style.transform = node.id === 'you-node' ? 
+                            'translateX(-50%) scale(0)' : 'translateX(-50%) scale(0)';
+                    });
+                    
+                    const teamConnectors = document.querySelectorAll('.team-connector');
+                    teamConnectors.forEach(connector => {
+                        connector.style.opacity = '0';
+                    });
+                    
+                    document.getElementById('left-side-label').style.opacity = '0';
+                    document.getElementById('right-side-label').style.opacity = '0';
+                    document.getElementById('team-count').style.opacity = '0';
+                    
+                    // Re-trigger animations with delay
+                    setTimeout(() => {
+                        document.getElementById('royalty-upgrade').style.width = '100%';
+                        document.getElementById('minting-upgrade').style.width = '100%';
+                    }, 1000);
+                    
+                    // Re-animate team visualization
+                    setTimeout(() => {
+                        // Show center node
+                        document.getElementById('you-node').style.opacity = '1';
+                        document.getElementById('you-node').style.transform = 'translateX(-50%) scale(1)';
+                        
+                        // Show side labels
+                        setTimeout(() => {
+                            document.getElementById('left-side-label').style.opacity = '1';
+                            document.getElementById('right-side-label').style.opacity = '1';
+                        }, 300);
+                        
+                        // Show level 1 nodes
+                        setTimeout(() => {
+                            document.getElementById('l1-1').style.opacity = '1';
+                            document.getElementById('l1-1').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-you-l1-1').style.opacity = '1';
+                        }, 600);
+                        
+                        setTimeout(() => {
+                            document.getElementById('l1-2').style.opacity = '1';
+                            document.getElementById('l1-2').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-you-l1-2').style.opacity = '1';
+                        }, 800);
+                        
+                        setTimeout(() => {
+                            document.getElementById('l1-3').style.opacity = '1';
+                            document.getElementById('l1-3').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-you-l1-3').style.opacity = '1';
+                        }, 1000);
+                        
+                        setTimeout(() => {
+                            document.getElementById('l1-4').style.opacity = '1';
+                            document.getElementById('l1-4').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-you-l1-4').style.opacity = '1';
+                        }, 1200);
+                        
+                        // Show level 2 nodes
+                        setTimeout(() => {
+                            document.getElementById('l1-5').style.opacity = '1';
+                            document.getElementById('l1-5').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-l1-1-l1-5').style.opacity = '1';
+                        }, 1400);
+                        
+                        setTimeout(() => {
+                            document.getElementById('l1-6').style.opacity = '1';
+                            document.getElementById('l1-6').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-l1-2-l1-6').style.opacity = '1';
+                        }, 1500);
+                        
+                        setTimeout(() => {
+                            document.getElementById('l1-7').style.opacity = '1';
+                            document.getElementById('l1-7').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-l1-3-l1-7').style.opacity = '1';
+                        }, 1600);
+                        
+                        setTimeout(() => {
+                            document.getElementById('l1-8').style.opacity = '1';
+                            document.getElementById('l1-8').style.transform = 'translateX(-50%) scale(1)';
+                            document.getElementById('con-l1-4-l1-8').style.opacity = '1';
+                        }, 1700);
+                        
+                        // Show team count
+                        setTimeout(() => {
+                            document.getElementById('team-count').style.opacity = '1';
+                        }, 1800);
+                        
+                    }, 500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
