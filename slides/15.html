@@ -9,347 +9,298 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Binary Tree Structure Styles */
-        .binary-container {
-            max-width: 1000px;
+        .binary-section {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 1rem;
         }
         
+        /* Simple, clean binary tree */
         .binary-tree {
             position: relative;
-            height: 380px;
-            margin-bottom: 40px;
+            width: 100%;
+            height: 280px;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
         }
         
-        /* User Node Styles */
-        .node {
+        /* User node at the top */
+        .user-node {
             position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
             background: rgba(0, 209, 255, 0.15);
             border: 2px solid rgba(0, 209, 255, 0.4);
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            box-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
+            justify-content: center;
             z-index: 10;
-            transition: all 0.3s ease;
         }
         
-        .node:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 209, 255, 0.4);
-        }
-        
-        .node-you {
-            width: 100px;
-            height: 100px;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .node-left, .node-right {
-            width: 80px;
-            height: 80px;
-            top: 200px;
-        }
-        
-        .node-left {
-            left: 30%;
-            transform: translateX(-50%);
-        }
-        
-        .node-right {
-            right: 30%;
-            transform: translateX(50%);
-        }
-        
-        /* Node Icons and Labels */
-        .node-icon {
-            font-size: 2.5rem;
-            color: rgba(0, 209, 255, 0.9);
-        }
-        
-        .node-label {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: 600;
-            color: white;
-            white-space: nowrap;
-        }
-        
-        /* Connector Lines */
-        .connector {
-            position: absolute;
-            background: rgba(0, 209, 255, 0.4);
-            height: 2px;
-            z-index: 5;
-        }
-        
-        .connector-left {
-            width: 150px;
-            top: 70px;
-            left: 40%;
-            transform: rotate(45deg);
-            transform-origin: left;
-        }
-        
-        .connector-right {
-            width: 150px;
-            top: 70px;
-            right: 40%;
-            transform: rotate(-45deg);
-            transform-origin: right;
-        }
-        
-        /* Leg Labels */
-        .leg-label {
-            position: absolute;
-            top: 120px;
-            font-weight: 700;
-            font-size: 1.2rem;
+        .user-icon {
+            font-size: 2.2rem;
             color: var(--accent-color);
         }
         
-        .leg-left {
+        .user-label {
+            position: absolute;
+            top: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--accent-color);
+        }
+        
+        /* Branch labels */
+        .branch-label {
+            position: absolute;
+            top: 135px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            z-index: 5;
+        }
+        
+        .left-label {
             left: 25%;
+            transform: translateX(-50%);
         }
         
-        .leg-right {
+        .right-label {
             right: 25%;
+            transform: translateX(50%);
         }
         
-        /* Volume Badges */
+        /* Branch nodes */
+        .branch-node {
+            position: absolute;
+            top: 180px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 209, 255, 0.1);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .left-node {
+            left: 25%;
+            transform: translateX(-50%);
+        }
+        
+        .right-node {
+            right: 25%;
+            transform: translateX(50%);
+        }
+        
+        .branch-icon {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Connecting lines */
+        .connector {
+            position: absolute;
+            background: rgba(0, 209, 255, 0.3);
+            height: 2px;
+            z-index: 1;
+        }
+        
+        .left-line {
+            width: 22%;
+            top: 40px;
+            left: 38%;
+            transform: rotate(45deg);
+            transform-origin: left center;
+        }
+        
+        .right-line {
+            width: 22%;
+            top: 40px;
+            right: 38%;
+            transform: rotate(-45deg);
+            transform-origin: right center;
+        }
+        
+        /* Volume badges */
         .volume-badge {
             position: absolute;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            top: 250px;
+            background: rgba(0, 209, 255, 0.8);
             color: white;
-            border-radius: 20px;
-            padding: 8px 16px;
+            padding: 6px 12px;
+            border-radius: 15px;
             font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 15;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 5;
         }
         
-        .volume-left {
-            left: 28%;
-            top: 250px;
+        .left-volume {
+            left: 25%;
             transform: translateX(-50%);
-            animation: fadeInSlide 0.5s ease-out 0.2s forwards;
-            opacity: 0;
         }
         
-        .volume-right {
-            right: 28%;
-            top: 250px;
+        .right-volume {
+            right: 25%;
             transform: translateX(50%);
-            animation: fadeInSlide 0.5s ease-out 0.4s forwards;
-            opacity: 0;
         }
         
-        /* Result Boxes */
+        /* Result boxes */
         .result-boxes {
             display: flex;
             justify-content: center;
             gap: 40px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
         
         .result-box {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            border-radius: 12px;
-            padding: 15px 25px;
-            min-width: 160px;
+            width: 180px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px 20px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .result-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border-color: rgba(0, 209, 255, 0.5);
         }
         
         .result-title {
             color: var(--accent-color);
             font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .result-value {
             font-size: 1.5rem;
             font-weight: 700;
-            color: white;
         }
         
-        /* Bonus Details Section */
-        .bonus-details {
-            margin-top: 60px;
+        /* Information cards */
+        .info-cards {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
+            margin-top: 2rem;
         }
         
-        .detail-card {
+        .info-card {
             flex: 1;
-            min-width: 260px;
+            min-width: 200px;
             max-width: 400px;
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(0, 209, 255, 0.2);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 15px;
         }
         
-        .detail-title {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .info-header {
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 10px;
         }
         
-        .detail-text {
-            color: var(--text-primary);
-            line-height: 1.6;
+        .info-icon {
+            color: var(--accent-color);
         }
         
-        /* Animations */
-        @keyframes fadeInSlide {
-            from {
-                opacity: 0;
-                transform: translateY(10px) translateX(-50%);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) translateX(-50%);
-            }
+        .info-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1) translateX(-50%); }
-            50% { transform: scale(1.05) translateX(-50%); }
-            100% { transform: scale(1) translateX(-50%); }
+        .info-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
         
-        .node-you {
-            animation: pulse 3s infinite ease-in-out;
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .binary-tree {
-                height: 300px;
-            }
-            
-            .node-you {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .node-left, .node-right {
-                width: 60px;
-                height: 60px;
-                top: 160px;
-            }
-            
-            .connector-left, .connector-right {
-                width: 100px;
-            }
-            
-            .volume-left {
-                left: 25%;
-                top: 200px;
-            }
-            
-            .volume-right {
-                right: 25%;
-                top: 200px;
-            }
-            
-            .node-icon {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Special Animation for Volume Badges */
-        .volume-right {
-            animation: fadeInRight 0.5s ease-out 0.4s forwards;
-            opacity: 0;
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateY(10px) translateX(50%);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) translateX(50%);
-            }
-        }
-        
-        /* Example Section Styles */
+        /* Example section */
         .example-section {
-            margin-top: 60px;
+            max-width: 800px;
+            margin: 3rem auto 1rem;
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(0, 209, 255, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            border-radius: 10px;
+            padding: 20px;
         }
         
         .example-title {
             color: var(--accent-color);
+            font-size: 1.2rem;
             text-align: center;
-            font-size: 1.3rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
-        .example-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        .example-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         
-        .example-box {
+        .example-column {
+            flex: 1;
+            min-width: 220px;
+        }
+        
+        .example-data {
             background: rgba(0, 209, 255, 0.05);
             border-radius: 8px;
-            padding: 15px;
+            padding: 12px;
+            margin-bottom: 15px;
             text-align: center;
         }
         
-        .example-box-title {
-            color: var(--accent-color);
+        .data-label {
             font-weight: 600;
-            margin-bottom: 10px;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
         }
         
-        .example-box-value {
-            font-size: 1.2rem;
+        .data-value {
             font-weight: 600;
+            font-size: 1.1rem;
         }
         
-        .bonus-value {
-            font-size: 1.4rem;
-            color: var(--accent-color);
-            font-weight: 700;
-            background: rgba(0, 209, 255, 0.1);
-            border-radius: 8px;
-            padding: 8px 15px;
-            display: inline-block;
-            margin-top: 10px;
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .binary-tree {
+                height: 250px;
+            }
+            
+            .user-node {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .branch-node {
+                width: 50px;
+                height: 50px;
+                top: 160px;
+            }
+            
+            .volume-badge {
+                top: 220px;
+            }
+            
+            .result-boxes {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .result-box {
+                width: 80%;
+            }
         }
     </style>
 </head>
@@ -369,37 +320,34 @@
             <h2 class="section-title premium-text">Community Binary Bonus</h2>
             <p class="section-description">Earn 10% on matching leg volume <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 2 OF 4)</span></p>
             
-            <!-- Binary Tree Container -->
-            <div class="binary-container">
-                <!-- Binary Tree Structure -->
+            <div class="binary-section">
+                <!-- Simple Binary Tree -->
                 <div class="binary-tree">
-                    <!-- YOU Node -->
-                    <div class="node node-you">
-                        <i class="fas fa-user-circle node-icon"></i>
-                        <div class="node-label">YOU</div>
+                    <!-- YOU node -->
+                    <div class="user-node">
+                        <i class="fas fa-user user-icon"></i>
+                    </div>
+                    <div class="user-label">YOU</div>
+                    
+                    <!-- Branch labels -->
+                    <div class="branch-label left-label">LEFT</div>
+                    <div class="branch-label right-label">RIGHT</div>
+                    
+                    <!-- Branch nodes -->
+                    <div class="branch-node left-node">
+                        <i class="fas fa-user branch-icon"></i>
+                    </div>
+                    <div class="branch-node right-node">
+                        <i class="fas fa-user branch-icon"></i>
                     </div>
                     
-                    <!-- Left Node -->
-                    <div class="node node-left">
-                        <i class="fas fa-user node-icon" style="font-size: 2rem;"></i>
-                    </div>
+                    <!-- Connecting lines -->
+                    <div class="connector left-line"></div>
+                    <div class="connector right-line"></div>
                     
-                    <!-- Right Node -->
-                    <div class="node node-right">
-                        <i class="fas fa-user node-icon" style="font-size: 2rem;"></i>
-                    </div>
-                    
-                    <!-- Connector Lines -->
-                    <div class="connector connector-left"></div>
-                    <div class="connector connector-right"></div>
-                    
-                    <!-- Leg Labels -->
-                    <div class="leg-label leg-left">LEFT</div>
-                    <div class="leg-label leg-right">RIGHT</div>
-                    
-                    <!-- Volume Badges -->
-                    <div class="volume-badge volume-left">$8,000</div>
-                    <div class="volume-badge volume-right">$5,000</div>
+                    <!-- Volume badges -->
+                    <div class="volume-badge left-volume">$8,000</div>
+                    <div class="volume-badge right-volume">$5,000</div>
                 </div>
                 
                 <!-- Result Boxes -->
@@ -415,44 +363,44 @@
                     </div>
                 </div>
                 
-                <!-- Bonus Features -->
-                <div class="bonus-details">
-                    <div class="detail-card shine-container">
-                        <div class="detail-title">
-                            <i class="fas fa-percentage"></i>
-                            Matching 10% Bonus
+                <!-- Information Cards -->
+                <div class="info-cards">
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-percentage info-icon"></i>
+                            <div class="info-title">Matching 10% Bonus</div>
                         </div>
-                        <div class="detail-text">
+                        <div class="info-text">
                             Earn 10% of the volume in your weaker leg
                         </div>
                     </div>
                     
-                    <div class="detail-card shine-container">
-                        <div class="detail-title">
-                            <i class="fas fa-recycle"></i>
-                            Volume Clearing
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-recycle info-icon"></i>
+                            <div class="info-title">Volume Clearing</div>
                         </div>
-                        <div class="detail-text">
+                        <div class="info-text">
                             After paying bonus, matching volume is cleared from both legs
                         </div>
                     </div>
                     
-                    <div class="detail-card shine-container">
-                        <div class="detail-title">
-                            <i class="fas fa-forward"></i>
-                            Excess Carryover
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-forward info-icon"></i>
+                            <div class="info-title">Excess Carryover</div>
                         </div>
-                        <div class="detail-text">
+                        <div class="info-text">
                             Excess volume on stronger leg carries over to next calculation period
                         </div>
                     </div>
                     
-                    <div class="detail-card shine-container">
-                        <div class="detail-title">
-                            <i class="fas fa-users"></i>
-                            Spillover Advantage
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-users info-icon"></i>
+                            <div class="info-title">Spillover Advantage</div>
                         </div>
-                        <div class="detail-text">
+                        <div class="info-text">
                             Upline can place new members in your downline automatically
                         </div>
                     </div>
@@ -460,35 +408,35 @@
                 
                 <!-- Example Section -->
                 <div class="example-section shine-container">
-                    <h3 class="example-title">How Binary Bonus Works - Example</h3>
+                    <div class="example-title">How Binary Bonus Works - Example</div>
                     
-                    <div class="example-grid">
-                        <div>
-                            <div class="example-box">
-                                <div class="example-box-title">LEFT LEG</div>
-                                <div class="example-box-value">$8,000</div>
+                    <div class="example-content">
+                        <div class="example-column">
+                            <div class="example-data">
+                                <div class="data-label">LEFT LEG</div>
+                                <div class="data-value">$8,000</div>
                             </div>
                             
-                            <div class="example-box" style="margin-top: 20px;">
-                                <div class="example-box-title">RIGHT LEG</div>
-                                <div class="example-box-value">$5,000</div>
+                            <div class="example-data">
+                                <div class="data-label">RIGHT LEG</div>
+                                <div class="data-value">$5,000</div>
                             </div>
                             
-                            <div class="example-box" style="margin-top: 20px;">
-                                <div class="example-box-title">MATCHING VOLUME</div>
-                                <div class="example-box-value">$5,000</div>
+                            <div class="example-data">
+                                <div class="data-label">MATCHING VOLUME</div>
+                                <div class="data-value">$5,000</div>
                             </div>
                         </div>
                         
-                        <div>
-                            <div class="example-box">
-                                <div class="example-box-title">YOUR BINARY BONUS</div>
-                                <div class="bonus-value">$500 (10% of $5,000)</div>
+                        <div class="example-column">
+                            <div class="example-data" style="background: rgba(0, 209, 255, 0.1);">
+                                <div class="data-label">YOUR BINARY BONUS</div>
+                                <div class="data-value" style="color: var(--accent-color);">$500 (10% of $5,000)</div>
                             </div>
                             
-                            <div class="example-box" style="margin-top: 20px;">
-                                <div class="example-box-title">CARRYOVER VOLUME</div>
-                                <div class="example-box-value">
+                            <div class="example-data">
+                                <div class="data-label">CARRYOVER VOLUME</div>
+                                <div class="data-value">
                                     Left Leg: $3,000<br>
                                     <small>(excess carried to next cycle)</small>
                                 </div>
