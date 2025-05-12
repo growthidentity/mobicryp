@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Royalty Bonus</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Slide 18 Styles with single-screen fit */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slide-container {
+            padding: 0 !important;
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            height: 100%;
+            max-height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0 !important;
+            padding-bottom: 60px !important; /* Space for fixed navigation */
+        }
+
+        .royalty-container {
+            position: relative;
+            flex: 1;
+            overflow-y: visible;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            padding: 1rem 1.5rem;
+        }
+
+        .royalty-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00254a 0%, #000e1c 100%);
+            z-index: -1;
+            overflow: hidden;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Premium background gradients */
+        .royalty-background-gradients {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(0, 209, 255, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.18) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(0, 30, 60, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 60% 20%, rgba(123, 77, 255, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 30% 65%, rgba(255, 85, 0, 0.12) 0%, transparent 22%),
+                radial-gradient(circle at 70% 40%, rgba(0, 209, 255, 0.1) 0%, transparent 30%);
+            background-position: 0 0;
+            z-index: -1;
+            animation: shiftBackground 30s ease infinite alternate;
+            opacity: 0.85;
+            mix-blend-mode: screen;
+        }
+
+
+        /* Add enhanced grid lines with subtle glow */
+        .royalty-background::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(0deg, transparent 24%, rgba(0, 209, 255, 0.07) 25%, rgba(0, 209, 255, 0.07) 26%, transparent 27%, transparent 74%, rgba(0, 209, 255, 0.07) 75%, rgba(0, 209, 255, 0.07) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 209, 255, 0.07) 25%, rgba(0, 209, 255, 0.07) 26%, transparent 27%, transparent 74%, rgba(0, 209, 255, 0.07) 75%, rgba(0, 209, 255, 0.07) 76%, transparent 77%, transparent),
+                linear-gradient(45deg, rgba(255, 215, 0, 0.03) 0%, transparent 10%),
+                linear-gradient(135deg, rgba(0, 209, 255, 0.03) 0%, transparent 10%);
+            background-size: 50px 50px, 50px 50px, 150px 150px, 150px 150px;
+            z-index: -1;
+            filter: drop-shadow(0 0 5px rgba(0, 209, 255, 0.1));
+            animation: fadeGrid 8s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1.1); }
+            50% { transform: scale(1.15); filter: brightness(1.05); }
+            100% { transform: scale(1.2); }
+        }
+
+        @keyframes shiftBackground {
+            0% {
+                background-position: 0% 0%;
+                opacity: 0.85;
+            }
+            50% {
+                opacity: 0.95;
+            }
+            100% {
+                background-position: 10% 10%;
+                opacity: 0.85;
+            }
+        }
+
+        @keyframes fadeGrid {
+            0% {
+                opacity: 0.7;
+                filter: drop-shadow(0 0 5px rgba(0, 209, 255, 0.1));
+            }
+            50% {
+                opacity: 0.9;
+                filter: drop-shadow(0 0 8px rgba(0, 209, 255, 0.15));
+            }
+            100% {
+                opacity: 0.8;
+                filter: drop-shadow(0 0 6px rgba(0, 209, 255, 0.12));
+            }
+        }
+
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3)); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .slide-header {
+            position: relative;
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-title-enhanced {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.7rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #00d1ff, #FFB800, #00d1ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientTitle 10s ease infinite;
+        }
+
+        @keyframes gradientTitle {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .royalty-content {
+            display: flex;
+            gap: 2rem;
+            flex: 1;
+            margin-top: 1rem;
+        }
+
+        .ranks-column {
+            flex: 1;
+            background: rgba(0, 20, 40, 0.7);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .ranks-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            z-index: -1;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            border-radius: 3px;
+        }
+
+        .rank-row {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInRow 0.5s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fadeInRow {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .rank-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+
+        .rank-row:hover {
+            transform: translateX(0) scale(1.02);
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 209, 255, 0.4);
+        }
+
+        .rank-row:hover::before {
+            left: 100%;
+            transition: all 1s ease;
+        }
+
+        .rank-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .rank-row:hover .rank-icon {
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .rank-name {
+            flex-grow: 1;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rank-percent {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefits-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .benefit-card {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 209, 255, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 209, 255, 0.5);
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .benefit-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+            border-radius: 1px;
+        }
+
+        .calculation-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .calculation-box div {
+            margin-bottom: 0.5rem;
+        }
+
+        .calculation-result {
+            font-weight: bold;
+            color: var(--accent-color);
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-top: 0.5rem;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
+        }
+
+        .differential-example {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+
+        .royalty-power {
+            max-width: 800px;
+            margin: 2rem auto 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .royalty-power h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .royalty-power h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            border-radius: 1px;
+        }
+
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .benefit-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .benefit-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .check-circle {
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.8rem;
+            margin-top: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .check-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 209, 255, 0.3), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .benefit-item:hover .check-circle::before {
+            opacity: 1;
+        }
+
+        .check-icon {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+
+        .benefit-heading {
+            margin: 0 0 0.3rem;
+            font-size: 1rem;
+            color: var(--accent-color);
+        }
+
+        .benefit-text {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Specific rank styles */
+        .gold-icon {
+            background: linear-gradient(145deg, #ffd700, #ccac00);
+        }
+        .platinum-icon {
+            background: linear-gradient(145deg, #e5e4e2, #bebdbb);
+        }
+        .titanium-icon {
+            background: linear-gradient(145deg, #878681, #565652);
+        }
+        .diamond-icon {
+            background: linear-gradient(145deg, #b9f2ff, #89c6d7);
+        }
+        .solitaire-icon {
+            background: linear-gradient(145deg, #00c3ff, #0080ff);
+        }
+        .immortal-icon {
+            background: linear-gradient(145deg, #9932cc, #800080);
+        }
+        .emperor-icon {
+            background: linear-gradient(145deg, #ff5500, #ff0000);
+        }
+
+        /* Animation delays */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.4s; }
+        .delay-4 { animation-delay: 0.5s; }
+        .delay-5 { animation-delay: 0.6s; }
+        .delay-6 { animation-delay: 0.7s; }
+        .delay-7 { animation-delay: 0.8s; }
+        .delay-8 { animation-delay: 1.0s; }
+
+        /* Particle animation */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.6);
+            box-shadow: 0 0 10px 2px rgba(0, 209, 255, 0.3);
+            animation: particleAnimation 15s infinite linear;
+        }
+
+        .gold-particle {
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 215, 0, 0.7);
+            box-shadow: 0 0 15px 3px rgba(255, 215, 0, 0.4);
+            z-index: 0;
+            position: relative;
+        }
+
+        .gold-particle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(0.5px);
+        }
+
+        .silver-particle {
+            width: 3px;
+            height: 3px;
+            background: rgba(229, 228, 226, 0.7);
+            box-shadow: 0 0 12px 2px rgba(229, 228, 226, 0.3);
+        }
+
+        @keyframes particleAnimation {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(calc(var(--move-y, -700px) * 0.5)) translateX(calc(var(--move-x, 300px) * 0.5));
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(var(--move-y, -700px)) translateX(var(--move-x, 300px));
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced sparkling effect for gold particles */
+        @keyframes sparkle {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+                box-shadow: 0 0 12px 2px rgba(255, 215, 0, 0.3);
+            }
+            25% {
+                opacity: 0.9;
+                transform: scale(1.1);
+                box-shadow: 0 0 16px 3px rgba(255, 215, 0, 0.45);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
+                box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.5);
+            }
+            75% {
+                opacity: 0.9;
+                transform: scale(1.1);
+                box-shadow: 0 0 16px 4px rgba(255, 215, 0, 0.4);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+                box-shadow: 0 0 12px 2px rgba(255, 215, 0, 0.3);
+            }
+        }
+
+        /* Responsive adjustments */
+        /* Navigation styling */
+        .navigation {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            background: rgba(0,0,0,0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            border-top: 1px solid rgba(255,255,255,0.1) !important;
+            padding: 0.8rem 1.5rem !important;
+            margin: 0 !important;
+            z-index: 9999 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3) !important;
+            transform: translateY(0) !important;
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+        }
+
+        .premium-button {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%) !important;
+            border: 1px solid rgba(0, 209, 255, 0.3) !important;
+            color: white !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .premium-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+        }
+
+        .premium-cta {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+            box-shadow: none !important;
+        }
+
+        @media (max-width: 1024px) {
+            .royalty-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .ranks-column, .benefits-column {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide-title-enhanced {
+                font-size: 1.8rem;
+            }
+            
+            .benefits-grid {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .benefit-item {
+                width: 100%;
+            }
+            
+            .rank-row {
+                padding: 0.8rem;
+            }
+            
+            .rank-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .rank-percent {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-height: 800px) {
+            .royalty-content {
+                margin-top: 0.5rem;
+                gap: 1rem;
+            }
+            
+            .rank-row {
+                padding: 0.7rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .rank-icon {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .benefit-card {
+                padding: 1rem;
+            }
+            
+            .benefit-title {
+                font-size: 1rem;
+                margin-bottom: 0.7rem;
+            }
+            
+            .royalty-power {
+                margin: 1rem auto 0.5rem;
+                padding: 1rem;
+            }
+            
+            .royalty-power h3 {
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            .benefits-grid {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 18 of 30</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+    
+    <!-- Premium Particle Effects -->
+    <div class="particles-container">
+        <!-- Blue particles -->
+        <div class="particle" style="top: 20%; left: 10%; --move-x: 400px; --move-y: -300px;"></div>
+        <div class="particle" style="top: 80%; left: 30%; --move-x: 200px; --move-y: -500px;"></div>
+        <div class="particle" style="top: 40%; left: 70%; --move-x: -300px; --move-y: -400px;"></div>
+        <div class="particle" style="top: 65%; left: 80%; --move-x: -250px; --move-y: -350px;"></div>
+        <div class="particle" style="top: 15%; left: 40%; --move-x: 350px; --move-y: -200px;"></div>
+        <div class="particle" style="top: 90%; left: 60%; --move-x: -150px; --move-y: -600px;"></div>
+        <div class="particle" style="top: 30%; left: 20%; --move-x: 300px; --move-y: -250px;"></div>
+        <div class="particle" style="top: 70%; left: 10%; --move-x: 400px; --move-y: -450px;"></div>
+        <div class="particle" style="top: 50%; left: 90%; --move-x: -400px; --move-y: -300px;"></div>
+
+        <!-- Enhanced Gold particles with sparkle animation -->
+        <div class="particle gold-particle" style="top: 50%; left: 90%; --move-x: -400px; --move-y: -300px; animation: particleAnimation 15s infinite linear, sparkle 3s infinite;"></div>
+        <div class="particle gold-particle" style="top: 25%; left: 75%; --move-x: -350px; --move-y: -250px; animation: particleAnimation 18s infinite linear, sparkle 4s infinite;"></div>
+        <div class="particle gold-particle" style="top: 85%; left: 40%; --move-x: 200px; --move-y: -500px; animation: particleAnimation 20s infinite linear, sparkle 3.5s infinite;"></div>
+        <div class="particle gold-particle" style="top: 35%; left: 55%; --move-x: -280px; --move-y: -320px; animation: particleAnimation 17s infinite linear, sparkle 2.8s infinite;"></div>
+        <div class="particle gold-particle" style="top: 15%; left: 85%; --move-x: -300px; --move-y: -200px; animation: particleAnimation 19s infinite linear, sparkle 4.5s infinite;"></div>
+        <div class="particle gold-particle" style="top: 75%; left: 15%; --move-x: 380px; --move-y: -400px; animation: particleAnimation 23s infinite linear, sparkle 2s infinite;"></div>
+        <div class="particle gold-particle" style="top: 60%; left: 45%; --move-x: 250px; --move-y: -350px; animation: particleAnimation 21s infinite linear, sparkle 3.2s infinite;"></div>
+        <div class="particle gold-particle" style="top: 55%; left: 25%; --move-x: 320px; --move-y: -280px; animation: particleAnimation 16s infinite linear, sparkle 2.5s infinite;"></div>
+
+        <!-- Additional gold particles for premium effect -->
+        <div class="particle gold-particle" style="top: 10%; left: 20%; --move-x: 280px; --move-y: -180px; animation: particleAnimation 17s infinite linear, sparkle 3.8s infinite; width: 5px; height: 5px; box-shadow: 0 0 18px 4px rgba(255, 215, 0, 0.5);"></div>
+        <div class="particle gold-particle" style="top: 40%; left: 10%; --move-x: 350px; --move-y: -280px; animation: particleAnimation 22s infinite linear, sparkle 4.2s infinite;"></div>
+        <div class="particle gold-particle" style="top: 70%; left: 95%; --move-x: -420px; --move-y: -380px; animation: particleAnimation 24s infinite linear, sparkle 3.7s infinite;"></div>
+        <div class="particle gold-particle" style="top: 22%; left: 38%; --move-x: 180px; --move-y: -220px; animation: particleAnimation 18s infinite linear, sparkle 2.9s infinite;"></div>
+        <div class="particle gold-particle" style="top: 88%; left: 63%; --move-x: -250px; --move-y: -420px; animation: particleAnimation 19s infinite linear, sparkle 3.4s infinite;"></div>
+        <div class="particle gold-particle" style="top: 47%; left: 72%; --move-x: -300px; --move-y: -350px; animation: particleAnimation 21s infinite linear, sparkle 4s infinite; width: 5px; height: 5px; box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.55);"></div>
+        <div class="particle gold-particle" style="top: 30%; left: 88%; --move-x: -380px; --move-y: -240px; animation: particleAnimation 23s infinite linear, sparkle 3.1s infinite;"></div>
+        <div class="particle gold-particle" style="top: 65%; left: 32%; --move-x: 280px; --move-y: -340px; animation: particleAnimation 20s infinite linear, sparkle 3.6s infinite;"></div>
+
+        <!-- Silver particles -->
+        <div class="particle silver-particle" style="top: 45%; left: 5%; --move-x: 350px; --move-y: -280px; animation: particleAnimation 22s infinite linear;"></div>
+        <div class="particle silver-particle" style="top: 12%; left: 30%; --move-x: 300px; --move-y: -200px; animation: particleAnimation 19s infinite linear;"></div>
+        <div class="particle silver-particle" style="top: 82%; left: 85%; --move-x: -250px; --move-y: -500px; animation: particleAnimation 24s infinite linear;"></div>
+        <div class="particle silver-particle" style="top: 67%; left: 65%; --move-x: -150px; --move-y: -420px; animation: particleAnimation 20s infinite linear;"></div>
+    </div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <div class="royalty-container">
+                <!-- Enhanced Premium Background -->
+                <div class="royalty-background">
+                    <!-- Premium background elements -->
+                    <div class="royalty-background-gradients"></div>
+
+                    <!-- Floating Financial Icons -->
+                    <i class="fas fa-crown" style="position: absolute; top: 15%; left: 10%; font-size: 2.5rem; color: rgba(255, 215, 0, 0.25); animation: float 15s infinite ease-in-out, pulse 8s infinite alternate; filter: blur(1px); text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);"></i>
+                    <i class="fas fa-percentage" style="position: absolute; top: 25%; left: 25%; font-size: 2rem; color: rgba(0, 209, 255, 0.22); animation: float 18s infinite ease-in-out, pulse 7s infinite alternate; animation-delay: 2s; filter: blur(1px); text-shadow: 0 0 12px rgba(0, 209, 255, 0.6);"></i>
+                    <i class="fas fa-money-bill-wave" style="position: absolute; top: 10%; left: 75%; font-size: 2.8rem; color: rgba(255, 215, 0, 0.2); animation: float 20s infinite ease-in-out, pulse 9s infinite alternate; animation-delay: 1s; filter: blur(1px); text-shadow: 0 0 18px rgba(255, 215, 0, 0.4);"></i>
+                    <i class="fas fa-chart-line" style="position: absolute; top: 70%; left: 85%; font-size: 2.6rem; color: rgba(0, 209, 255, 0.22); animation: float 25s infinite ease-in-out, pulse 10s infinite alternate; animation-delay: 3s; filter: blur(1px); text-shadow: 0 0 16px rgba(0, 209, 255, 0.5);"></i>
+                    <i class="fas fa-coins" style="position: absolute; top: 80%; left: 20%; font-size: 2.2rem; color: rgba(255, 215, 0, 0.24); animation: float 22s infinite ease-in-out, pulse 8s infinite alternate; animation-delay: 1.5s; filter: blur(1px); text-shadow: 0 0 14px rgba(255, 215, 0, 0.5);"></i>
+                    <i class="fas fa-hand-holding-usd" style="position: absolute; top: 60%; left: 40%; font-size: 2.4rem; color: rgba(0, 209, 255, 0.2); animation: float 19s infinite ease-in-out, pulse 9s infinite alternate; animation-delay: 4s; filter: blur(1px); text-shadow: 0 0 15px rgba(0, 209, 255, 0.5);"></i>
+                    <i class="fas fa-users" style="position: absolute; top: 40%; left: 60%; font-size: 2.6rem; color: rgba(123, 77, 255, 0.18); animation: float 23s infinite ease-in-out, pulse 7s infinite alternate; animation-delay: 2.5s; filter: blur(1px); text-shadow: 0 0 15px rgba(123, 77, 255, 0.4);"></i>
+                    <i class="fas fa-gem" style="position: absolute; top: 50%; left: 15%; font-size: 2.3rem; color: rgba(255, 215, 0, 0.19); animation: float 21s infinite ease-in-out, pulse 8s infinite alternate; animation-delay: 3.5s; filter: blur(1px); text-shadow: 0 0 14px rgba(255, 215, 0, 0.5);"></i>
+                </div>
+                
+                <!-- Slide Header -->
+                <div class="slide-header">
+                    <h2 class="slide-title-enhanced">ROYALTY BONUS</h2>
+                    <p class="section-description">Earn up to 22% additional commission based on rank achievements <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 4 OF 4)</span></p>
+                </div>
+                
+                <!-- Royalty Content -->
+                <div class="royalty-content">
+                    <!-- Rank-Based Royalties Column -->
+                    <div class="ranks-column">
+                        <div class="section-title">
+                            <i class="fas fa-crown" style="margin-right: 0.5rem;"></i>
+                            Rank-Based Royalties
+                        </div>
+                        
+                        <!-- Gold -->
+                        <div class="rank-row delay-1">
+                            <div class="rank-icon gold-icon">
+                                <i class="fas fa-medal" style="color: white;"></i>
+                            </div>
+                            <div class="rank-name">Gold</div>
+                            <div class="rank-percent">10%</div>
+                        </div>
+                        
+                        <!-- Platinum -->
+                        <div class="rank-row delay-2">
+                            <div class="rank-icon platinum-icon">
+                                <i class="fas fa-medal" style="color: white;"></i>
+                            </div>
+                            <div class="rank-name">Platinum</div>
+                            <div class="rank-percent">12%</div>
+                        </div>
+                        
+                        <!-- Titanium -->
+                        <div class="rank-row delay-3">
+                            <div class="rank-icon titanium-icon">
+                                <i class="fas fa-medal" style="color: white;"></i>
+                            </div>
+                            <div class="rank-name">Titanium</div>
+                            <div class="rank-percent">14%</div>
+                        </div>
+                        
+                        <!-- Diamond -->
+                        <div class="rank-row delay-4">
+                            <div class="rank-icon diamond-icon">
+                                <i class="fas fa-gem" style="color: white;"></i>
+                            </div>
+                            <div class="rank-name">Diamond</div>
+                            <div class="rank-percent">16%</div>
+                        </div>
+                        
+                        <!-- Solitaire -->
+                        <div class="rank-row delay-5">
+                            <div class="rank-icon solitaire-icon">
+                                <i class="fas fa-gem" style="color: white;"></i>
+                            </div>
+                            <div class="rank-name">Solitaire</div>
+                            <div class="rank-percent">18%</div>
+                        </div>
+                        
+                        <!-- Immortal -->
+                        <div class="rank-row delay-6">
+                            <div class="rank-icon immortal-icon">
+                                <i class="fas fa-atom" style="color: white;"></i>
+                            </div>
+                            <div class="rank-name">Immortal</div>
+                            <div class="rank-percent">20%</div>
+                        </div>
+                        
+                        <!-- Emperor -->
+                        <div class="rank-row delay-7">
+                            <div class="rank-icon emperor-icon">
+                                <i class="fas fa-crown" style="color: white;"></i>
+                            </div>
+                            <div class="rank-name">Emperor</div>
+                            <div class="rank-percent">22%</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Leadership Benefits Column -->
+                    <div class="benefits-column">
+                        <!-- Leadership Rewards -->
+                        <div class="benefit-card delay-1">
+                            <div class="benefit-title">
+                                <i class="fas fa-users" style="margin-right: 0.5rem;"></i>
+                                Leadership Rewards
+                            </div>
+                            <p>Earn royalty commission from your entire organization's volume</p>
+                        </div>
+                        
+                        <!-- Example Calculation -->
+                        <div class="benefit-card delay-3">
+                            <div class="benefit-title">
+                                <i class="fas fa-calculator" style="margin-right: 0.5rem;"></i>
+                                Gold Rank Example (Achievable)
+                            </div>
+                            
+                            <div class="calculation-box">
+                                <div>$100,000 Network Volume</div>
+                                <div>× 10% Royalty Rate (Gold)</div>
+                                <div class="calculation-result">= $10,000 Royalty Commission</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Differential Logic -->
+                        <div class="benefit-card delay-5">
+                            <div class="benefit-title">
+                                <i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i>
+                                Differential Rewards (All Levels)
+                            </div>
+                            <p>You earn the % difference between your rank and your downline's rank</p>
+                            
+                            <div class="differential-example">
+                                <p style="margin: 0; text-align: center;">You (Gold 10%) - Downline (Bronze 0%) = <span style="font-weight: bold; color: var(--accent-color);">10% Commission</span></p>
+                            </div>
+                            <div class="differential-example" style="margin-top: 0.8rem;">
+                                <p style="margin: 0; text-align: center;">You (Platinum 12%) - Downline (Gold 10%) = <span style="font-weight: bold; color: var(--accent-color);">2% Commission</span></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Additional Information Box -->
+                <div class="royalty-power">
+                    <h3>The Power of Royalty Commission</h3>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-header">
+                                <div class="check-circle">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                                <div>
+                                    <h4 class="benefit-heading">Recurring Commission</h4>
+                                    <p class="benefit-text">Royalty commissions are paid on your entire organization's volume</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-header">
+                                <div class="check-circle">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                                <div>
+                                    <h4 class="benefit-heading">Unlimited Depth</h4>
+                                    <p class="benefit-text">Earn from your entire organization, no matter how deep</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-header">
+                                <div class="check-circle">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                                <div>
+                                    <h4 class="benefit-heading">Incentivized Growth</h4>
+                                    <p class="benefit-text">Higher ranks = Higher royalty percentages</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Extra space at the bottom for better scrolling -->
+            <div style="margin-bottom: 2rem;"></div>
+        </div>
+    </div>
+
+    <!-- Navigation buttons moved outside the slide-content for fixed position -->
+    <div class="navigation">
+        <a href="index.html" class="nav-button premium-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="17_enhanced.html" class="nav-button premium-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="25.html" class="nav-button premium-button premium-cta" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stagger entrance animations for rank rows
+            const rankRows = document.querySelectorAll('.rank-row');
+            
+            rankRows.forEach((row, index) => {
+                row.style.animationDelay = `${0.2 + (index * 0.1)}s`;
+            });
+            
+            // Reset and restart animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset row animations
+                    rankRows.forEach((el, index) => {
+                        // Store the original animation details
+                        const originalAnimation = `fadeInRow 0.5s ease-out forwards ${0.2 + (index * 0.1)}s`;
+                        
+                        // Reset animation
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateX(-20px)';
+                        el.style.animation = 'none';
+                        
+                        // Force reflow
+                        void el.offsetWidth;
+                        
+                        // Re-apply animation
+                        el.style.animation = originalAnimation;
+                    });
+                    
+                    // Reset benefit card and emperor reward animations
+                    const benefitCards = document.querySelectorAll('.benefit-card');
+                    const emperorReward = document.querySelector('.emperor-reward');
+                    const royaltyPower = document.querySelector('.royalty-power');
+                    const header = document.querySelector('.slide-header');
+                    const ranksColumn = document.querySelector('.ranks-column');
+                    
+                    const animatedElements = [...benefitCards, emperorReward, royaltyPower, header, ranksColumn];
+                    
+                    animatedElements.forEach(el => {
+                        if (!el) return;
+                        
+                        // Get existing animation details
+                        const style = window.getComputedStyle(el);
+                        const animationName = style.animationName;
+                        const animationDuration = style.animationDuration;
+                        const animationDelay = style.animationDelay;
+                        const animationFillMode = style.animationFillMode;
+                        
+                        // Reset animation
+                        el.style.animation = 'none';
+                        if (animationName.includes('fadeInUp')) {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(20px)';
+                        } else if (animationName.includes('fadeInLeft')) {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateX(-50px)';
+                        } else if (animationName.includes('fadeInDown')) {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(-20px)';
+                        }
+                        
+                        // Force reflow
+                        void el.offsetWidth;
+                        
+                        // Restore animation
+                        el.style.animation = `${animationName} ${animationDuration} ${animationDelay} ${animationFillMode}`;
+                    });
+                }
+            });
+            
+            // Hover effect for rank rows
+            rankRows.forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.querySelector('.rank-percent').style.transform = 'scale(1.1)';
+                    this.querySelector('.rank-percent').style.textShadow = '0 0 15px rgba(0, 209, 255, 0.5)';
+                });
+                
+                row.addEventListener('mouseleave', function() {
+                    this.querySelector('.rank-percent').style.transform = 'scale(1)';
+                    this.querySelector('.rank-percent').style.textShadow = '0 0 10px rgba(0, 209, 255, 0.3)';
+                });
+            });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>
