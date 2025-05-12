@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobiCryp - Enhanced Slide 32</title>
+    <title>MobiCryp - Start Your Journey Today</title>
     <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="../assets/css/premium.css">
     <link rel="stylesheet" href="../assets/css/enhanced.css">
@@ -235,7 +235,7 @@
     <!-- Header with navigation -->
     <header class="header">
         <div class="logo">MobiCryp</div>
-        <div class="slide-counter">Slide 32 of 38</div>
+        <div class="slide-counter">Slide 32 of 32</div>
     </header>
 
     <!-- Enhanced Background Elements -->
@@ -247,12 +247,29 @@
     <div class="slide-container">
         <div class="slide-content premium-slide">
             <div class="main-container">
-                <h2 class="section-title">Slide 32 Title</h2>
-                <p class="section-description">Slide 32 description goes here</p>
-                
+                <h2 class="section-title">START YOUR JOURNEY TODAY</h2>
+                <p class="section-description">Join thousands who are building financial freedom</p>
+
                 <div class="content-card" id="main-content">
-                    <!-- Content from original slide will go here -->
-                    <p>Replace this with content from slide 32</p>
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; color: #00d1ff;">
+                            Your Future Starts Now
+                        </div>
+
+                        <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                            Take the first step toward financial freedom with MobiCryp. Our proven system has already helped thousands of members worldwide transform their financial futures.
+                        </p>
+
+                        <div style="margin: 3rem 0; display: flex; justify-content: center;">
+                            <a href="#" class="premium-button" style="font-size: 1.2rem; padding: 1rem 2rem; text-decoration: none; display: inline-block; border-radius: 50px; background: linear-gradient(145deg, rgba(0, 209, 255, 0.3) 0%, rgba(123, 77, 255, 0.3) 100%); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border: 2px solid rgba(0, 209, 255, 0.5); transition: all 0.3s ease;">
+                                <i class="fas fa-rocket" style="margin-right: 0.8rem;"></i> Join MobiCryp Today
+                            </a>
+                        </div>
+
+                        <p style="font-size: 1.1rem; opacity: 0.8; font-style: italic;">
+                            "The best time to start was yesterday. The second best time is now."
+                        </p>
+                    </div>
                 </div>
             </div>
             
@@ -265,23 +282,23 @@
                     <a href="31_enhanced.html" class="nav-button premium-button" id="prev-button">
                         <i class="fas fa-arrow-left"></i> Previous
                     </a>
-                    <a href="33_enhanced.html" class="nav-button premium-button premium-cta" id="next-button">
-                        Next <i class="fas fa-arrow-right"></i>
+                    <a href="../index.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Home <i class="fas fa-home"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     
-    <script src="enhanced.js"></script>
-    <script src="particles_enhanced.js"></script>
+    <script src="../assets/js/enhanced.js"></script>
+    <script src="../assets/js/particles_enhanced.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Animate main content card
             setTimeout(() => {
                 document.getElementById('main-content').classList.add('card-visible');
             }, 400);
-            
+
             // Reset animations when page visibility changes
             document.addEventListener('visibilitychange', () => {
                 if (document.visibilityState === 'visible') {
@@ -289,7 +306,7 @@
                     const mainContent = document.getElementById('main-content');
                     mainContent.classList.remove('card-visible');
                     void mainContent.offsetWidth; // Force reflow
-                    
+
                     // Re-animate content card
                     setTimeout(() => {
                         mainContent.classList.add('card-visible');
