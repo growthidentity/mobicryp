@@ -3,850 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobiCryp Presentation Dashboard</title>
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="stylesheet" href="assets/css/premium.css">
-    <link rel="stylesheet" href="assets/css/enhanced.css">
+    <title>MobiCryp Presentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global styles */
+        /* Simple, clean styles */
         :root {
-            --primary-bg: #000e1c;
-            --card-bg: rgba(4, 27, 54, 0.85);
-            --card-hover-bg: rgba(7, 40, 73, 0.9);
-            --accent-blue: #00d1ff;
-            --accent-purple: #7b4dff;
-            --text-light: rgba(255, 255, 255, 0.85);
-            --text-dim: rgba(255, 255, 255, 0.6);
-            --border-radius: 12px;
-            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            --card-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.3);
-            --transition-normal: all 0.3s ease;
-            --transition-slow: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --grid-columns-desktop: 4;
-            --grid-columns-laptop: 3;
-            --grid-columns-tablet: 2;
-            --grid-columns-mobile: 1;
+            --primary-bg: #0a1522;
+            --secondary-bg: #132337;
+            --card-bg: #1e3451;
+            --accent-color: #00a8ff;
+            --text-color: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --border-radius: 8px;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
+        
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        
+        body {
             font-family: 'Inter', sans-serif;
-            background: var(--primary-bg);
-            color: white;
-            overflow-x: hidden;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
             line-height: 1.6;
+            padding: 0;
+            margin: 0;
         }
-
-        /* Scrollbar customization */
-        ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 209, 255, 0.3);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 209, 255, 0.5);
-        }
-
-        /* Background elements */
-        .background-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2574&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.15) saturate(1.3);
-            z-index: 0;
-            animation: slowZoom 60s infinite alternate ease-in-out;
-        }
-
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        .gradient-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, 
-                rgba(0, 15, 30, 0.85) 0%, 
-                rgba(0, 10, 20, 0.95) 100%);
-            z-index: 1;
-        }
-
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 209, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 209, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 1;
-            opacity: 0.3;
-        }
-
-        .glow-spots {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.5;
-        }
-
-        .glow-spot {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-
-        .glow-spot:nth-child(1) {
-            top: 10%;
-            left: 15%;
-            width: 40vw;
-            height: 40vw;
-            background: rgba(0, 209, 255, 0.03);
-            animation: floatAnimation 60s infinite alternate ease-in-out;
-        }
-
-        .glow-spot:nth-child(2) {
-            bottom: 20%;
-            right: 10%;
-            width: 35vw;
-            height: 35vw;
-            background: rgba(123, 77, 255, 0.03);
-            animation: floatAnimation 70s infinite alternate-reverse ease-in-out;
-        }
-
-        @keyframes floatAnimation {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(-5%, 5%); }
-            100% { transform: translate(5%, -5%); }
-        }
-
-        /* Particles effect */
-        .particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(0, 209, 255, 0.6);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 209, 255, 0.4);
-            opacity: 0;
-            animation: particleAnimation 15s infinite linear;
-        }
-
-        .particle-purple {
-            background: rgba(123, 77, 255, 0.6);
-            box-shadow: 0 0 10px rgba(123, 77, 255, 0.4);
-        }
-
-        @keyframes particleAnimation {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(var(--move-y, -700px)) translateX(var(--move-x, 300px));
-                opacity: 0;
-            }
-        }
-
-        /* Main container styles */
-        .app-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            position: relative;
-            z-index: 10;
-            padding-bottom: 50px;
-        }
-
-        /* Header styles */
+        
         .header {
-            padding: 2rem 2rem 0;
             text-align: center;
-            position: relative;
-        }
-
-        .logo-container {
-            margin-bottom: 0.5rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .logo-icon {
-            font-size: 2.5rem;
-            color: var(--accent-blue);
-            margin-right: 1rem;
-            filter: drop-shadow(0 0 15px rgba(0, 209, 255, 0.5));
-            animation: pulseLogo 3s infinite alternate;
-        }
-
-        @keyframes pulseLogo {
-            0% { filter: drop-shadow(0 0 15px rgba(0, 209, 255, 0.5)); }
-            100% { filter: drop-shadow(0 0 25px rgba(0, 209, 255, 0.8)); }
-        }
-
-        .main-title {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin: 0 0 1rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 30px rgba(0, 150, 255, 0.7);
-            background: linear-gradient(90deg, #00d1ff, #7b4dff, #00d1ff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientTitle 10s ease infinite;
-            line-height: 1.2;
-        }
-
-        @keyframes gradientTitle {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .main-description {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            font-size: 1.3rem;
-            line-height: 1.5;
-            color: var(--text-dim);
-            font-weight: 400;
-        }
-
-        /* Navigation and filtering */
-        .content-controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
             margin-bottom: 3rem;
-            padding: 0 2rem;
         }
-
-        .version-toggle {
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .categories {
             display: flex;
+            justify-content: center;
             gap: 1rem;
-        }
-
-        .version-button {
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            background: rgba(7, 40, 73, 0.5);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            font-size: 0.95rem;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .version-button.active {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.25) 0%, rgba(123, 77, 255, 0.25) 100%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border-color: rgba(0, 209, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .version-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .version-button:hover::after {
-            left: 100%;
-        }
-
-        .filter-controls {
-            display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .filter-button {
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 209, 255, 0.15);
-            background: rgba(7, 40, 73, 0.4);
-            color: var(--text-light);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            font-size: 0.85rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filter-button:hover, .filter-button.active {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(123, 77, 255, 0.2) 100%);
-            border-color: rgba(0, 209, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .filter-button i {
-            margin-right: 0.5rem;
-            color: var(--accent-blue);
-        }
-
-        /* Main content */
-        .main-content {
-            flex: 1;
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            width: 100%;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        /* Section titles */
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 3rem 0 1.5rem;
-            position: relative;
-            color: white;
-            display: inline-block;
-            padding-right: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            border-radius: 3px;
-        }
-
-        /* Grid layout */
-        .slides-grid {
-            display: grid;
-            grid-template-columns: repeat(var(--grid-columns-desktop), 1fr);
-            gap: 1.5rem;
             margin-bottom: 2rem;
-            transform-style: preserve-3d;
-            perspective: 1000px;
         }
-
-        /* Card styles */
-        .slide-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(0, 209, 255, 0.15);
-            overflow: hidden;
-            transition: var(--transition-slow);
-            position: relative;
-            box-shadow: var(--card-shadow);
-            height: 100%;
-            transform: translateZ(0);
-            opacity: 0;
-            animation: cardFadeIn 0.6s forwards;
-        }
-
-        .slide-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: var(--card-shadow-hover);
-            border-color: rgba(0, 209, 255, 0.4);
-            z-index: 1;
-            background: var(--card-hover-bg);
-        }
-
-        .slide-card a {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            text-decoration: none;
-            color: var(--text-light);
-            padding: 1.5rem;
-        }
-
-        .slide-card-header {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.2rem;
-        }
-
-        .slide-number {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.15) 0%, rgba(123, 77, 255, 0.15) 100%);
-            color: var(--accent-blue);
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 0.3rem 0.7rem;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            transition: var(--transition-normal);
-        }
-
-        .slide-card:hover .slide-number {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.25) 0%, rgba(123, 77, 255, 0.25) 100%);
-            box-shadow: 0 4px 12px rgba(0, 209, 255, 0.2);
-        }
-
-        .slide-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.1) 0%, rgba(123, 77, 255, 0.1) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0, 209, 255, 0.15);
-            transition: var(--transition-normal);
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-
-        .slide-card:hover .slide-icon {
-            transform: scale(1.1) translateY(-2px);
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.15) 0%, rgba(123, 77, 255, 0.15) 100%);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            border-color: rgba(0, 209, 255, 0.3);
-        }
-
-        .slide-icon i {
-            font-size: 1.6rem;
-            color: var(--accent-blue);
-            filter: drop-shadow(0 0 5px rgba(0, 209, 255, 0.3));
-            transition: var(--transition-normal);
-        }
-
-        .slide-card:hover .slide-icon i {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(0, 209, 255, 0.5));
-        }
-
-        .slide-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.8rem;
-            transition: var(--transition-normal);
-            line-height: 1.3;
-        }
-
-        .slide-description {
+        
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            background: var(--secondary-bg);
+            border: 1px solid #344863;
+            color: var(--text-color);
+            border-radius: 50px;
+            cursor: pointer;
             font-size: 0.9rem;
-            color: var(--text-dim);
-            line-height: 1.5;
-            transition: var(--transition-normal);
-            flex-grow: 1;
+            transition: background-color 0.2s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--card-bg);
+            border-color: var(--accent-color);
+        }
+        
+        .category-btn i {
+            margin-right: 6px;
+            color: var(--accent-color);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--secondary-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid #2a4060;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 1.2rem;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
             margin-bottom: 1rem;
         }
-
-        .slide-card:hover .slide-description {
-            color: var(--text-light);
-        }
-
-        .slide-tags {
+        
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
             display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            margin-top: auto;
-        }
-
-        .slide-tag {
-            font-size: 0.75rem;
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.1) 0%, rgba(123, 77, 255, 0.1) 100%);
-            border-radius: 10px;
-            padding: 0.3rem 0.6rem;
-            color: var(--accent-blue);
-            border: 1px solid rgba(0, 209, 255, 0.15);
-            transition: var(--transition-normal);
-            white-space: nowrap;
-        }
-
-        .slide-card:hover .slide-tag {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(123, 77, 255, 0.2) 100%);
-            border-color: rgba(0, 209, 255, 0.25);
-        }
-
-        /* Jump to sections */
-        .jump-sections {
-            position: sticky;
-            top: 1rem;
-            margin-bottom: 2rem;
-            z-index: 100;
-            display: flex;
+            align-items: center;
             justify-content: center;
-            padding: 1rem;
+            margin-right: 1rem;
+            color: var(--accent-color);
         }
-
-        .jump-container {
-            display: flex;
-            background: rgba(4, 27, 54, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            overflow-x: auto;
-            max-width: 100%;
-            scrollbar-width: none; /* Firefox */
+        
+        .card-icon i {
+            font-size: 1.4rem;
         }
-
-        .jump-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Edge */
-        }
-
-        .jump-link {
-            padding: 0.5rem 1rem;
-            white-space: nowrap;
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-radius: 50px;
-            transition: var(--transition-normal);
-        }
-
-        .jump-link:hover, .jump-link.active {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.15) 0%, rgba(123, 77, 255, 0.15) 100%);
-            color: white;
-        }
-
-        .jump-link i {
-            margin-right: 0.5rem;
-            color: var(--accent-blue);
-        }
-
-        /* Search bar */
-        .search-container {
-            position: relative;
-            max-width: 500px;
-            width: 100%;
-            margin: 0 auto 1rem;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.8rem 1rem 0.8rem 3rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            background: rgba(7, 40, 73, 0.5);
-            color: white;
-            font-size: 1rem;
-            backdrop-filter: blur(10px);
-            transition: var(--transition-normal);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: rgba(0, 209, 255, 0.4);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .search-icon {
+        
+        .card-number {
             position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent-blue);
-            font-size: 1.1rem;
+            top: 1.2rem;
+            right: 1.2rem;
+            font-size: 0.8rem;
+            background-color: var(--card-bg);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            color: var(--accent-color);
         }
-
-        /* Footer */
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-right: 3rem;
+        }
+        
+        .card-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            margin: 2.5rem 0 1.5rem;
+            color: var(--accent-color);
+            border-bottom: 1px solid #2a4060;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title:first-child {
+            margin-top: 0;
+        }
+        
+        .card-tag {
+            display: inline-block;
+            background-color: var(--card-bg);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            color: var(--text-muted);
+        }
+        
         .footer {
             text-align: center;
-            padding: 2rem 0;
             margin-top: 3rem;
-            color: var(--text-dim);
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a4060;
+            color: var(--text-muted);
             font-size: 0.9rem;
-            position: relative;
-            z-index: 10;
         }
-
-        .footer a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            transition: var(--transition-normal);
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Animations */
-        @keyframes cardFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive styles */
-        @media (max-width: 1800px) {
-            .slides-grid {
-                grid-template-columns: repeat(var(--grid-columns-laptop), 1fr);
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .slides-grid {
-                grid-template-columns: repeat(var(--grid-columns-tablet), 1fr);
-            }
-            
-            .main-title {
-                font-size: 2.8rem;
-            }
-            
-            .main-description {
-                font-size: 1.1rem;
-            }
-        }
-
+        
+        /* Simple responsive styles */
         @media (max-width: 768px) {
-            .slides-grid {
-                grid-template-columns: repeat(var(--grid-columns-mobile), 1fr);
+            .container {
+                padding: 1.5rem;
             }
             
-            .main-title {
-                font-size: 2.2rem;
+            .title {
+                font-size: 2rem;
             }
             
-            .main-description {
-                font-size: 1rem;
-                padding: 0 1rem;
+            .grid {
+                grid-template-columns: 1fr;
             }
             
-            .main-content {
-                padding: 0 1rem;
-            }
-            
-            .header {
-                padding: 1.5rem 1rem 0;
-            }
-            
-            .filter-controls {
-                flex-wrap: nowrap;
+            .categories {
                 overflow-x: auto;
-                justify-content: flex-start;
                 padding-bottom: 0.5rem;
-                scroll-padding: 0 1rem;
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;  /* Firefox */
+                justify-content: flex-start;
             }
             
-            .filter-controls::-webkit-scrollbar {
-                display: none; /* Chrome, Safari, Edge */
-            }
-            
-            .filter-button {
-                flex-shrink: 0;
-            }
-            
-            .slide-card {
-                min-height: 180px;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-                margin: 2rem 0 1rem;
+            .category-btn {
+                white-space: nowrap;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background elements -->
-    <div class="background-wrapper">
-        <div class="background-image"></div>
-        <div class="gradient-overlay"></div>
-        <div class="grid-overlay"></div>
-        <div class="glow-spots">
-            <div class="glow-spot"></div>
-            <div class="glow-spot"></div>
-        </div>
-    </div>
-    
-    <!-- Particle effects -->
-    <div class="particles-container">
-        <!-- Blue particles -->
-        <div class="particle" style="top: 20%; left: 10%; --move-x: 400px; --move-y: -300px;"></div>
-        <div class="particle" style="top: 80%; left: 30%; --move-x: 200px; --move-y: -500px;"></div>
-        <div class="particle" style="top: 40%; left: 70%; --move-x: -300px; --move-y: -400px;"></div>
-        <div class="particle" style="top: 65%; left: 80%; --move-x: -250px; --move-y: -350px;"></div>
-        <div class="particle" style="top: 15%; left: 40%; --move-x: 350px; --move-y: -200px;"></div>
-        
-        <!-- Purple particles -->
-        <div class="particle particle-purple" style="top: 30%; left: 20%; --move-x: 300px; --move-y: -250px;"></div>
-        <div class="particle particle-purple" style="top: 70%; left: 10%; --move-x: 400px; --move-y: -450px;"></div>
-        <div class="particle particle-purple" style="top: 50%; left: 90%; --move-x: -400px; --move-y: -300px;"></div>
-    </div>
-
-    <!-- Main application container -->
-    <div class="app-container">
-        <!-- Header section -->
+    <div class="container">
         <header class="header">
-            <div class="logo-container">
-                <i class="fas fa-gem logo-icon"></i>
-                <h1 class="main-title">MobiCryp Presentation</h1>
+            <h1 class="title">MobiCryp Presentation</h1>
+            <p class="subtitle">A comprehensive guide to the future of crypto minting</p>
+            
+            <div class="categories">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th"></i>All Slides
+                </button>
+                <button class="category-btn" data-category="intro">
+                    <i class="fas fa-globe"></i>Introduction
+                </button>
+                <button class="category-btn" data-category="platform">
+                    <i class="fas fa-cogs"></i>Platform
+                </button>
+                <button class="category-btn" data-category="earnings">
+                    <i class="fas fa-chart-line"></i>Earnings
+                </button>
+                <button class="category-btn" data-category="bonuses">
+                    <i class="fas fa-gift"></i>Bonuses
+                </button>
+                <button class="category-btn" data-category="info">
+                    <i class="fas fa-info-circle"></i>Information
+                </button>
+                <button class="category-btn" data-category="next">
+                    <i class="fas fa-rocket"></i>Next Steps
+                </button>
             </div>
-            <p class="main-description">A premium visual experience showcasing the future of crypto minting</p>
         </header>
 
-        <!-- Jump to sections navigation -->
-        <div class="jump-sections">
-            <div class="jump-container">
-                <a href="#intro" class="jump-link active"><i class="fas fa-globe"></i>Introduction</a>
-                <a href="#platform" class="jump-link"><i class="fas fa-building"></i>Platform</a>
-                <a href="#earnings" class="jump-link"><i class="fas fa-coins"></i>Earnings</a>
-                <a href="#bonuses" class="jump-link"><i class="fas fa-gift"></i>Bonuses</a>
-                <a href="#info" class="jump-link"><i class="fas fa-info-circle"></i>Information</a>
-                <a href="#next" class="jump-link"><i class="fas fa-rocket"></i>Next Steps</a>
-            </div>
-        </div>
-
-        <!-- Content controls -->
-        <div class="content-controls">
-            <!-- Search bar -->
-            <div class="search-container">
-                <input type="text" id="search-input" class="search-input" placeholder="Search slides...">
-                <i class="fas fa-search search-icon"></i>
-            </div>
-
-            <!-- Version toggle -->
-            <div class="version-toggle">
-                <button id="standard-button" class="version-button">Standard Version</button>
-                <button id="enhanced-button" class="version-button active">Enhanced Version</button>
-            </div>
-
-            <!-- Filter controls -->
-            <div class="filter-controls">
-                <button class="filter-button active" data-filter="all"><i class="fas fa-th-large"></i>All Slides</button>
-                <button class="filter-button" data-filter="intro"><i class="fas fa-globe"></i>Introduction</button>
-                <button class="filter-button" data-filter="platform"><i class="fas fa-cogs"></i>Platform</button>
-                <button class="filter-button" data-filter="earnings"><i class="fas fa-chart-line"></i>Earnings</button>
-                <button class="filter-button" data-filter="bonus"><i class="fas fa-award"></i>Bonuses</button>
-                <button class="filter-button" data-filter="guide"><i class="fas fa-map-signs"></i>Guides</button>
-                <button class="filter-button" data-filter="info"><i class="fas fa-info-circle"></i>Information</button>
-            </div>
-        </div>
-
-        <!-- Main content -->
-        <main class="main-content">
-            <!-- Introduction section -->
-            <h2 class="section-title" id="intro">Introduction & Vision</h2>
-            <div class="slides-grid intro-grid">
-                <!-- Will be populated by JavaScript -->
-            </div>
-
-            <!-- Platform section -->
-            <h2 class="section-title" id="platform">Platform & Structure</h2>
-            <div class="slides-grid platform-grid">
-                <!-- Will be populated by JavaScript -->
-            </div>
-
-            <!-- Earnings section -->
+        <main>
+            <h2 class="section-title" id="intro">Introduction & Overview</h2>
+            <div class="grid" id="intro-grid"></div>
+            
+            <h2 class="section-title" id="platform">Platform & Features</h2>
+            <div class="grid" id="platform-grid"></div>
+            
             <h2 class="section-title" id="earnings">Earnings & Calculations</h2>
-            <div class="slides-grid earnings-grid">
-                <!-- Will be populated by JavaScript -->
-            </div>
-
-            <!-- Bonuses section -->
+            <div class="grid" id="earnings-grid"></div>
+            
             <h2 class="section-title" id="bonuses">Bonuses & Rewards</h2>
-            <div class="slides-grid bonuses-grid">
-                <!-- Will be populated by JavaScript -->
-            </div>
-
-            <!-- Information section -->
+            <div class="grid" id="bonuses-grid"></div>
+            
             <h2 class="section-title" id="info">Information & Guidelines</h2>
-            <div class="slides-grid info-grid">
-                <!-- Will be populated by JavaScript -->
-            </div>
-
-            <!-- Next Steps section -->
-            <h2 class="section-title" id="next">Next Steps & Join Us</h2>
-            <div class="slides-grid next-steps-grid">
-                <!-- Will be populated by JavaScript -->
-            </div>
+            <div class="grid" id="info-grid"></div>
+            
+            <h2 class="section-title" id="next">Next Steps</h2>
+            <div class="grid" id="next-grid"></div>
         </main>
-
-        <!-- Footer -->
+        
         <footer class="footer">
-            <p>© 2025 MobiCryp. All rights reserved. Premium presentation experience.</p>
+            <p>© 2025 MobiCryp. All rights reserved.</p>
         </footer>
     </div>
 
@@ -855,507 +281,363 @@
             // Define slide categories
             const categories = {
                 intro: ['01', '02', '03', '04', '05', '06'],
-                platform: ['07', '08', '09', '10', '11', '12'],
-                earnings: ['13', '10', '11'],
+                platform: ['07', '08', '09', '12'],
+                earnings: ['10', '11', '13'],
                 bonuses: ['14', '15', '16', '17', '18'],
                 info: ['19', '25', '26', '27', '31'],
                 next: ['20', '21', '22', '23', '24', '28', '29', '30', '32']
             };
 
-            // Define slides data with additional tags and categories
+            // Define slides data
             const slidesData = [
                 { 
                     number: '01', 
                     title: "THE WORLD HAS CHANGED", 
-                    description: "Introduction to the changing financial landscape and emergence of new opportunities",
+                    description: "Introduction to the changing financial landscape",
                     icon: "fas fa-globe-americas",
                     category: "intro",
-                    tags: ["Introduction", "Overview"]
+                    tags: ["Introduction"]
                 },
                 { 
                     number: '02', 
                     title: "THE PROBLEM WITH TRADITIONAL WEALTH", 
-                    description: "Examining the limitations and challenges with conventional financial systems",
+                    description: "Challenges with conventional financial systems",
                     icon: "fas fa-exclamation-triangle",
                     category: "intro",
-                    tags: ["Challenges", "Analysis"]
+                    tags: ["Challenges"]
                 },
                 { 
                     number: '03', 
                     title: "THE NEW WEALTH MOVEMENT", 
-                    description: "Emerging opportunities in digital finance and decentralized systems",
+                    description: "Emerging opportunities in digital finance",
                     icon: "fas fa-money-bill-wave",
                     category: "intro",
-                    tags: ["Opportunity", "Innovation"]
+                    tags: ["Opportunity"]
                 },
                 { 
                     number: '04', 
                     title: "WHO WE ARE", 
-                    description: "Introduction to MobiCryp, our team, and our core mission in the market",
+                    description: "Introduction to MobiCryp and our mission",
                     icon: "fas fa-users",
                     category: "intro",
-                    tags: ["Company", "Team"]
+                    tags: ["Company"]
                 },
                 { 
                     number: '05', 
                     title: "TIMELINE OF TRUST", 
-                    description: "Our journey, milestones, and track record of successful development",
+                    description: "Our journey and milestones",
                     icon: "fas fa-history",
                     category: "intro",
-                    tags: ["History", "Milestones"]
+                    tags: ["History"]
                 },
                 { 
                     number: '06', 
                     title: "OUR MISSION", 
-                    description: "Core values, vision for the future, and how we're transforming finance",
+                    description: "Core values and vision for the future",
                     icon: "fas fa-bullseye",
                     category: "intro",
-                    tags: ["Vision", "Values"]
+                    tags: ["Vision"]
                 },
                 { 
                     number: '07', 
                     title: "WHY MOBICRYP WORKS", 
-                    description: "Our solution to financial challenges through innovative technology",
+                    description: "Our solution to financial challenges",
                     icon: "fas fa-cogs",
                     category: "platform",
-                    tags: ["Technology", "Solutions"]
+                    tags: ["Solution"]
                 },
                 { 
                     number: '08', 
                     title: "CHOOSE YOUR PATH", 
-                    description: "Different ways to leverage the platform based on your goals and resources",
+                    description: "Different ways to leverage the platform",
                     icon: "fas fa-route",
                     category: "platform",
-                    tags: ["Options", "Strategy"]
+                    tags: ["Options"]
                 },
                 { 
                     number: '09', 
                     title: "WHAT YOU'RE BUYING", 
-                    description: "Understanding the MobiCryp components and value proposition in detail",
+                    description: "Understanding the MobiCryp components",
                     icon: "fas fa-shopping-cart",
                     category: "platform",
-                    tags: ["Products", "Features"]
+                    tags: ["Products"]
                 },
                 { 
                     number: '10', 
                     title: "HOW THE ROI WORKS", 
-                    description: "Return on investment explained with practical examples and timeframes",
+                    description: "Return on investment explained",
                     icon: "fas fa-chart-line",
                     category: "earnings",
-                    tags: ["ROI", "Returns"]
+                    tags: ["ROI"]
                 },
                 { 
                     number: '11', 
                     title: "HUB CALCULATOR", 
-                    description: "Calculate your potential earnings based on different investment levels",
+                    description: "Calculate your potential earnings",
                     icon: "fas fa-calculator",
                     category: "earnings",
-                    tags: ["Calculator", "Tools"]
+                    tags: ["Calculator"]
                 },
                 { 
                     number: '12', 
                     title: "SELF VS AUTO MINTING", 
-                    description: "Choose your minting approach and understand the benefits of each option",
+                    description: "Choose your minting approach",
                     icon: "fas fa-balance-scale",
                     category: "platform",
-                    tags: ["Options", "Comparison"]
+                    tags: ["Comparison"]
                 },
                 { 
                     number: '13', 
                     title: "BOOST YOUR MINTING SPEED", 
-                    description: "Optimize your earnings with strategies to increase your minting velocity",
+                    description: "Optimize your earnings",
                     icon: "fas fa-tachometer-alt",
                     category: "earnings",
-                    tags: ["Optimization", "Strategy"]
+                    tags: ["Optimization"]
                 },
                 { 
                     number: '14', 
                     title: "DIRECT BONUS", 
-                    description: "Earn 10% from every direct referral - how it works and how to maximize it",
+                    description: "Earn 10% from every direct referral",
                     icon: "fas fa-hand-holding-usd",
                     category: "bonuses",
-                    tags: ["Referrals", "Commissions"]
+                    tags: ["Referrals"]
                 },
                 { 
                     number: '15', 
                     title: "COMMUNITY BINARY BONUS", 
-                    description: "Earn 10% on matching leg volume with our binary compensation structure",
+                    description: "Earn 10% on matching leg volume",
                     icon: "fas fa-sitemap",
                     category: "bonuses",
-                    tags: ["Community", "Network"]
+                    tags: ["Community"]
                 },
                 { 
                     number: '16', 
                     title: "LEVEL MINTING BONUS", 
-                    description: "Earn up to 30% across 10 levels of your organization with this powerful bonus",
+                    description: "Earn up to 30% across 10 levels",
                     icon: "fas fa-layer-group",
                     category: "bonuses",
-                    tags: ["Multi-level", "Network"]
+                    tags: ["Network"]
                 },
                 { 
                     number: '17', 
                     title: "RANK SYSTEM", 
-                    description: "Hub Business Volume Based Achievement Ranks and their qualifications",
+                    description: "Hub Business Volume Based Achievement Ranks",
                     icon: "fas fa-trophy",
                     category: "bonuses",
-                    tags: ["Achievements", "Recognition"]
+                    tags: ["Achievements"]
                 },
                 { 
                     number: '18', 
                     title: "ROYALTY BONUS", 
-                    description: "Earn up to 22% additional commission based on your rank achievements",
+                    description: "Earn up to 22% additional commission",
                     icon: "fas fa-crown",
                     category: "bonuses",
-                    tags: ["Leadership", "Rewards"]
+                    tags: ["Leadership"]
                 },
                 { 
                     number: '19', 
                     title: "TERMS & CONDITIONS", 
-                    description: "Important guidelines and policies for your MobiCryp journey and success",
+                    description: "Important guidelines for your MobiCryp journey",
                     icon: "fas fa-file-contract",
                     category: "info",
-                    tags: ["Rules", "Guidelines"]
+                    tags: ["Rules"]
                 },
                 { 
                     number: '20', 
                     title: "UPCOMING PRODUCTS", 
-                    description: "The MobiCryp ecosystem continues to expand with these upcoming features",
+                    description: "The MobiCryp ecosystem continues to expand",
                     icon: "fas fa-rocket",
                     category: "next",
-                    tags: ["Roadmap", "Future"]
+                    tags: ["Future"]
                 },
                 { 
                     number: '21', 
                     title: "HOW TO START", 
-                    description: "Step-by-step guide to begin your MobiCryp journey with confidence",
+                    description: "Step-by-step guide to begin your MobiCryp journey",
                     icon: "fas fa-play-circle",
                     category: "next",
-                    tags: ["Guide", "Steps"]
+                    tags: ["Guide"]
                 },
                 { 
                     number: '22', 
                     title: "JOIN MOBICRYP TODAY", 
-                    description: "Your gateway to the future of crypto minting with clear onboarding",
+                    description: "Your gateway to the future of crypto minting",
                     icon: "fas fa-sign-in-alt",
                     category: "next",
-                    tags: ["Signup", "Action"]
+                    tags: ["Signup"]
                 },
                 { 
                     number: '23', 
                     title: "BENEFITS SHOWCASE", 
-                    description: "What makes MobiCryp the premier choice for your financial future",
+                    description: "What makes MobiCryp the premier choice",
                     icon: "fas fa-gift",
                     category: "next",
-                    tags: ["Benefits", "Value"]
+                    tags: ["Benefits"]
                 },
                 { 
                     number: '24', 
                     title: "SUCCESS STORIES", 
-                    description: "Real people who have transformed their financial future with MobiCryp",
+                    description: "Real people who have transformed their financial future",
                     icon: "fas fa-star",
                     category: "next",
-                    tags: ["Testimonials", "Results"]
+                    tags: ["Testimonials"]
                 },
                 { 
                     number: '25', 
                     title: "FREQUENTLY ASKED QUESTIONS", 
-                    description: "Answers to common questions about MobiCryp's platform and offerings",
+                    description: "Answers to common questions about MobiCryp",
                     icon: "fas fa-question-circle",
                     category: "info",
-                    tags: ["FAQ", "Help"]
+                    tags: ["FAQ"]
                 },
                 { 
                     number: '26', 
                     title: "YOUR FIRST STEPS", 
-                    description: "Begin your MobiCryp journey in 4 simple steps to financial freedom",
+                    description: "Begin your MobiCryp journey in 4 simple steps",
                     icon: "fas fa-shoe-prints",
                     category: "info",
-                    tags: ["Guide", "Steps"]
+                    tags: ["Steps"]
                 },
                 { 
                     number: '27', 
                     title: "WHY CHOOSE MOBICRYP", 
-                    description: "How we compare to traditional investment options and other platforms",
+                    description: "How we compare to traditional investment options",
                     icon: "fas fa-check-circle",
                     category: "info",
-                    tags: ["Comparison", "Value"]
+                    tags: ["Comparison"]
                 },
                 { 
                     number: '28', 
                     title: "LIMITED TIME OFFER", 
-                    description: "Special bonuses and promotions available for early adopters of MobiCryp",
+                    description: "Special bonuses available for early adopters",
                     icon: "fas fa-hourglass-half",
                     category: "next",
-                    tags: ["Promotion", "Special"]
+                    tags: ["Special"]
                 },
                 { 
                     number: '29', 
                     title: "JOIN OUR GLOBAL COMMUNITY", 
-                    description: "Connect with a worldwide network of MobiCryp minters and entrepreneurs",
+                    description: "Connect with a worldwide network of MobiCryp minters",
                     icon: "fas fa-globe",
                     category: "next",
-                    tags: ["Community", "Network"]
+                    tags: ["Community"]
                 },
                 { 
                     number: '30', 
                     title: "BUILT FOR SECURITY", 
-                    description: "Your investment protected by advanced security measures and protocols",
+                    description: "Your investment protected by advanced security measures",
                     icon: "fas fa-shield-alt",
                     category: "next",
-                    tags: ["Security", "Trust"]
+                    tags: ["Security"]
                 },
                 { 
                     number: '31', 
                     title: "OUR VISION & ROADMAP", 
-                    description: "Building the future of digital finance together with clear milestones",
+                    description: "Building the future of digital finance together",
                     icon: "fas fa-road",
                     category: "info",
-                    tags: ["Vision", "Roadmap"]
+                    tags: ["Roadmap"]
                 },
                 { 
                     number: '32', 
                     title: "START YOUR JOURNEY TODAY", 
-                    description: "Join thousands who are building financial freedom with MobiCryp",
+                    description: "Join thousands who are building financial freedom",
                     icon: "fas fa-flag-checkered",
                     category: "next",
-                    tags: ["Action", "Begin"]
+                    tags: ["Begin"]
                 }
             ];
             
-            // Current version
-            let currentVersion = 'enhanced';
-            let currentFilter = 'all';
-            
-            // Generate slide card HTML
-            function createSlideCard(slide, version) {
-                const slideNumber = slide.number;
-                const slideUrl = version === 'enhanced' ?
-                    `enhanced_slides/${slideNumber}_enhanced.html` :
-                    `enhanced_slides/${slideNumber}_enhanced.html`;
+            // Create slide card HTML
+            function createSlideCard(slide) {
+                const slideUrl = `enhanced_slides/${slide.number}_enhanced.html`;
                 
                 return `
-                    <div class="slide-card" data-category="${slide.category}" style="animation-delay: ${parseInt(slideNumber) * 0.05}s;">
+                    <div class="card" data-category="${slide.category}">
                         <a href="${slideUrl}">
-                            <div class="slide-card-header">
-                                <div class="slide-icon">
+                            <div class="card-number">${slide.number}</div>
+                            <div class="card-header">
+                                <div class="card-icon">
                                     <i class="${slide.icon}"></i>
                                 </div>
-                                <h3 class="slide-title">${slide.title}</h3>
-                                <div class="slide-number">${slideNumber}</div>
+                                <h3 class="card-title">${slide.title}</h3>
                             </div>
-                            <p class="slide-description">${slide.description}</p>
-                            <div class="slide-tags">
-                                ${slide.tags.map(tag => `<span class="slide-tag">${tag}</span>`).join('')}
+                            <p class="card-description">${slide.description}</p>
+                            <div class="card-tags">
+                                ${slide.tags.map(tag => `<span class="card-tag">${tag}</span>`).join('')}
                             </div>
                         </a>
                     </div>
                 `;
             }
             
-            // Populate slide grids by category
-            function populateGrids(version, filter = 'all') {
-                // Clear all grids
-                document.querySelectorAll('.slides-grid').forEach(grid => {
+            // Populate grids by category
+            function populateGrids() {
+                // Clear all grids first
+                document.querySelectorAll('.grid').forEach(grid => {
                     grid.innerHTML = '';
                 });
                 
-                // Filter slides if needed
-                let filteredSlides = slidesData;
-                if (filter !== 'all') {
-                    filteredSlides = slidesData.filter(slide => slide.category === filter || slide.tags.includes(filter));
-                }
+                // Populate each category grid
+                slidesData.filter(slide => slide.category === 'intro').forEach(slide => {
+                    document.getElementById('intro-grid').innerHTML += createSlideCard(slide);
+                });
                 
-                // If we're filtering, show all in one grid
-                if (filter !== 'all') {
-                    const introGrid = document.querySelector('.intro-grid');
-                    filteredSlides.forEach(slide => {
-                        introGrid.innerHTML += createSlideCard(slide, version);
-                    });
-                    
-                    // Hide other section titles and grids
-                    document.querySelectorAll('.section-title:not(#intro), .slides-grid:not(.intro-grid)').forEach(el => {
-                        el.style.display = 'none';
-                    });
-                    
-                    // Change first section title
-                    document.querySelector('#intro').textContent = `Filtered Results: ${filter.charAt(0).toUpperCase() + filter.slice(1)}`;
-                    document.querySelector('#intro').style.display = 'block';
-                    document.querySelector('.intro-grid').style.display = 'grid';
-                } else {
-                    // Show all section titles and grids
-                    document.querySelectorAll('.section-title, .slides-grid').forEach(el => {
-                        el.style.display = '';
-                    });
-                    
-                    // Reset first section title
-                    document.querySelector('#intro').textContent = 'Introduction & Vision';
-                    
-                    // Populate each category grid
-                    const introSlides = slidesData.filter(slide => slide.category === 'intro');
-                    const platformSlides = slidesData.filter(slide => slide.category === 'platform');
-                    const earningsSlides = slidesData.filter(slide => slide.category === 'earnings');
-                    const bonusesSlides = slidesData.filter(slide => slide.category === 'bonuses');
-                    const infoSlides = slidesData.filter(slide => slide.category === 'info');
-                    const nextSlides = slidesData.filter(slide => slide.category === 'next');
-                    
-                    introSlides.forEach(slide => {
-                        document.querySelector('.intro-grid').innerHTML += createSlideCard(slide, version);
-                    });
-                    
-                    platformSlides.forEach(slide => {
-                        document.querySelector('.platform-grid').innerHTML += createSlideCard(slide, version);
-                    });
-                    
-                    earningsSlides.forEach(slide => {
-                        document.querySelector('.earnings-grid').innerHTML += createSlideCard(slide, version);
-                    });
-                    
-                    bonusesSlides.forEach(slide => {
-                        document.querySelector('.bonuses-grid').innerHTML += createSlideCard(slide, version);
-                    });
-                    
-                    infoSlides.forEach(slide => {
-                        document.querySelector('.info-grid').innerHTML += createSlideCard(slide, version);
-                    });
-                    
-                    nextSlides.forEach(slide => {
-                        document.querySelector('.next-steps-grid').innerHTML += createSlideCard(slide, version);
-                    });
-                }
+                slidesData.filter(slide => slide.category === 'platform').forEach(slide => {
+                    document.getElementById('platform-grid').innerHTML += createSlideCard(slide);
+                });
+                
+                slidesData.filter(slide => slide.category === 'earnings').forEach(slide => {
+                    document.getElementById('earnings-grid').innerHTML += createSlideCard(slide);
+                });
+                
+                slidesData.filter(slide => slide.category === 'bonuses').forEach(slide => {
+                    document.getElementById('bonuses-grid').innerHTML += createSlideCard(slide);
+                });
+                
+                slidesData.filter(slide => slide.category === 'info').forEach(slide => {
+                    document.getElementById('info-grid').innerHTML += createSlideCard(slide);
+                });
+                
+                slidesData.filter(slide => slide.category === 'next').forEach(slide => {
+                    document.getElementById('next-grid').innerHTML += createSlideCard(slide);
+                });
             }
             
-            // Initialize slide rendering
-            populateGrids(currentVersion);
+            // Initialize
+            populateGrids();
             
-            // Toggle between standard and enhanced versions
-            document.getElementById('standard-button').addEventListener('click', function() {
-                if (currentVersion !== 'standard') {
-                    currentVersion = 'standard';
-                    this.classList.add('active');
-                    document.getElementById('enhanced-button').classList.remove('active');
-                    populateGrids(currentVersion, currentFilter);
-                }
-            });
-            
-            document.getElementById('enhanced-button').addEventListener('click', function() {
-                if (currentVersion !== 'enhanced') {
-                    currentVersion = 'enhanced';
-                    this.classList.add('active');
-                    document.getElementById('standard-button').classList.remove('active');
-                    populateGrids(currentVersion, currentFilter);
-                }
-            });
-            
-            // Handle filter buttons
-            document.querySelectorAll('.filter-button').forEach(button => {
+            // Handle category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-                    currentFilter = filter;
-                    
                     // Update active state
-                    document.querySelectorAll('.filter-button').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    populateGrids(currentVersion, filter);
+                    const category = this.getAttribute('data-category');
                     
-                    // Scroll to top of results
-                    document.querySelector('#intro').scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-            
-            // Handle jump links
-            document.querySelectorAll('.jump-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        // Update active state
-                        document.querySelectorAll('.jump-link').forEach(l => {
-                            l.classList.remove('active');
+                    // Show/hide sections based on category
+                    if (category === 'all') {
+                        document.querySelectorAll('.section-title, .grid').forEach(el => {
+                            el.style.display = '';
                         });
-                        this.classList.add('active');
-                        
-                        // Scroll to section
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-            
-            // Handle search functionality
-            const searchInput = document.getElementById('search-input');
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                
-                if (searchTerm.length >= 2) {
-                    // Filter slides that match the search term
-                    const searchResults = slidesData.filter(slide => 
-                        slide.title.toLowerCase().includes(searchTerm) || 
-                        slide.description.toLowerCase().includes(searchTerm) ||
-                        slide.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-                    );
-                    
-                    // Clear all grids
-                    document.querySelectorAll('.slides-grid').forEach(grid => {
-                        grid.innerHTML = '';
-                    });
-                    
-                    // Show search results in intro grid
-                    const introGrid = document.querySelector('.intro-grid');
-                    if (searchResults.length > 0) {
-                        searchResults.forEach(slide => {
-                            introGrid.innerHTML += createSlideCard(slide, currentVersion);
-                        });
+                        populateGrids();
                     } else {
-                        introGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-dim);">
-                            <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; color: var(--accent-blue);"></i>
-                            <p>No slides found matching "${this.value}"</p>
-                        </div>`;
-                    }
-                    
-                    // Hide other section titles and grids
-                    document.querySelectorAll('.section-title:not(#intro), .slides-grid:not(.intro-grid)').forEach(el => {
-                        el.style.display = 'none';
-                    });
-                    
-                    // Change first section title
-                    document.querySelector('#intro').textContent = `Search Results: "${this.value}"`;
-                    document.querySelector('#intro').style.display = 'block';
-                    document.querySelector('.intro-grid').style.display = 'grid';
-                    
-                    // Reset filter buttons
-                    document.querySelectorAll('.filter-button').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    document.querySelector('.filter-button[data-filter="all"]').classList.add('active');
-                    currentFilter = 'all';
-                } else if (searchTerm.length === 0) {
-                    // Reset to default view
-                    populateGrids(currentVersion, currentFilter);
-                }
-            });
-            
-            // Handle scroll for sticky nav highlighting
-            window.addEventListener('scroll', function() {
-                const sections = document.querySelectorAll('.section-title');
-                let currentSection = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    
-                    if (pageYOffset >= (sectionTop - 100)) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-                
-                document.querySelectorAll('.jump-link').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active');
+                        document.querySelectorAll('.section-title, .grid').forEach(el => {
+                            el.style.display = 'none';
+                        });
+                        
+                        // Show only the selected category
+                        document.querySelector(`#${category}`).style.display = '';
+                        document.querySelector(`#${category}-grid`).style.display = 'grid';
+                        
+                        // Populate only the selected grid
+                        const grid = document.querySelector(`#${category}-grid`);
+                        grid.innerHTML = '';
+                        slidesData.filter(slide => slide.category === category).forEach(slide => {
+                            grid.innerHTML += createSlideCard(slide);
+                        });
                     }
                 });
             });
