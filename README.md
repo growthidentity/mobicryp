@@ -10,6 +10,22 @@ A premium, visually-stunning slideshow presentation for MobiCryp designed with m
 - Smooth transitions and modern UI elements
 - Complete presentation with 38 slides
 
+## Repository Structure
+
+```
+/
+├── index.html             # Main entry point for the presentation
+├── assets/                # All static assets
+│   ├── css/               # CSS stylesheets
+│   ├── js/                # JavaScript files
+│   └── images/            # Image assets
+├── enhanced_slides/       # All presentation slides
+│   ├── 01_enhanced.html
+│   ├── 02_enhanced.html
+│   └── ...
+└── scripts/              # Utility scripts for slide management
+```
+
 ## Technologies
 
 - HTML5
