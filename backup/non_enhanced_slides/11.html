@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - HUBs Calculator</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tab styles */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tab {
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tab:hover {
+            background: rgba(0, 209, 255, 0.1);
+            border-color: rgba(0, 209, 255, 0.2);
+        }
+        
+        .tab.active {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-color: rgba(0, 209, 255, 0.3);
+            color: var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Minting types styles */
+        .minting-types {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .minting-type-card {
+            width: 350px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 209, 255, 0.1);
+        }
+        
+        .minting-type-card.auto-card {
+            border-color: rgba(123, 77, 255, 0.1);
+        }
+        
+        .minting-type-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .minting-type-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .self-icon {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(0, 150, 200, 0.1) 100%);
+            color: var(--accent-color);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+        }
+        
+        .auto-icon {
+            background: linear-gradient(145deg, rgba(123, 77, 255, 0.15) 0%, rgba(90, 40, 200, 0.1) 100%);
+            color: var(--royal-purple);
+            border: 1px solid rgba(123, 77, 255, 0.3);
+        }
+        
+        .minting-type-title {
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .minting-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+        }
+        
+        .minting-feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .minting-feature-icon {
+            color: var(--accent-color);
+            margin-right: 0.8rem;
+            min-width: 16px;
+            margin-top: 4px;
+        }
+        
+        .auto-card .minting-feature-icon {
+            color: var(--royal-purple);
+        }
+        
+        .boost-info {
+            background: rgba(0, 209, 255, 0.05);
+            border: 1px solid rgba(0, 209, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .auto-boost {
+            background: rgba(123, 77, 255, 0.05);
+            border-color: rgba(123, 77, 255, 0.1);
+        }
+        
+        .boost-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        .auto-boost .boost-title {
+            color: var(--royal-purple);
+        }
+        
+        .boost-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .boost-info p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        /* Hub Table Styles */
+        .hub-info-box {
+            display: flex;
+            align-items: flex-start;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 209, 255, 0.1);
+        }
+        
+        .hub-info-box i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-right: 1.5rem;
+            margin-top: 0.2rem;
+        }
+        
+        .hub-info-box-content h4 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+        
+        .hub-info-box-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .hub-table-container {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+        
+        .hub-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        .hub-table th {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%);
+            color: var(--accent-color);
+            font-weight: 600;
+            text-align: left;
+            padding: 1rem;
+            border: 1px solid rgba(0, 209, 255, 0.2);
+        }
+        
+        .hub-table td {
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .hub-table tr:hover td {
+            background: rgba(0, 209, 255, 0.05);
+        }
+        
+        .hub-name {
+            font-weight: 600;
+        }
+        
+        .hub-capacity {
+            color: var(--accent-color);
+        }
+        
+        .check-mark {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+        
+        /* Calculator Styles */
+        .minting-toggle {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .toggle-slider {
+            position: relative;
+            display: inline-flex;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            padding: 4px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .toggle-option {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            z-index: 1;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .toggle-icon {
+            margin-right: 8px;
+        }
+        
+        .toggle-option.self {
+            color: var(--accent-color);
+        }
+        
+        .toggle-option.auto {
+            color: var(--text-primary);
+        }
+        
+        input[type="checkbox"] {
+            display: none;
+        }
+        
+        input[type="checkbox"] + .toggle-slider::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            height: calc(100% - 8px);
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="checkbox"]:checked + .toggle-slider::before {
+            left: calc(50% + 0px);
+            background: linear-gradient(145deg, rgba(123, 77, 255, 0.15) 0%, rgba(90, 40, 200, 0.1) 100%);
+        }
+        
+        input[type="checkbox"]:checked + .toggle-slider .toggle-option.self {
+            color: var(--text-primary);
+        }
+        
+        input[type="checkbox"]:checked + .toggle-slider .toggle-option.auto {
+            color: var(--royal-purple);
+        }
+        
+        .calculator-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .input-card, .results-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 209, 255, 0.1);
+        }
+        
+        .card-title, .results-title {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .dropdown-wrapper {
+            position: relative;
+        }
+        
+        .custom-select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            border-radius: var(--border-radius);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            appearance: none;
+            cursor: pointer;
+        }
+        
+        .select-arrow {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            pointer-events: none;
+        }
+        
+        .slider-container {
+            margin-top: 0.5rem;
+        }
+        
+        .amount-slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+            outline: none;
+            margin: 1rem 0;
+        }
+        
+        .amount-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            border: 3px solid rgba(0, 0, 0, 0.5);
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .hub-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: rgba(0, 209, 255, 0.05);
+            border: 1px solid rgba(0, 209, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .hub-info-item {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .hub-info-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .hub-info-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        #autoMintingInfo .hub-info-value {
+            color: var(--royal-purple);
+        }
+        
+        .result-group {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .result-group:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .accent {
+            color: var(--accent-color);
+        }
+        
+        #autoMintingResults .accent {
+            color: var(--royal-purple);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 11 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">MobiCryp HUBs Calculator</h2>
+            <p class="section-description">Choose your hub package and minting type</p>
+
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <div class="tab" data-tab="info">Minting Types</div>
+                <div class="tab active" data-tab="packages">HUB Packages</div>
+                <div class="tab" data-tab="calculator">ROI Calculator</div>
+            </div>
+            
+            <!-- Minting Types Info -->
+            <div class="tab-content" id="info-content">
+                <div class="minting-types">
+                    <!-- Self Minting Card -->
+                    <div class="minting-type-card self-card premium-card shine-container">
+                        <div class="minting-type-header">
+                            <div class="minting-type-icon self-icon">
+                                <i class="fas fa-hand-point-right"></i>
+                            </div>
+                            <h3 class="minting-type-title">Self Minting (Manual)</h3>
+                        </div>
+                        
+                        <ul class="minting-feature-list">
+                            <li class="minting-feature-item">
+                                <i class="fas fa-clock minting-feature-icon"></i>
+                                <span>You must click every 12 hours to mint</span>
+                            </li>
+                            <li class="minting-feature-item">
+                                <i class="fas fa-percentage minting-feature-icon"></i>
+                                <span>Minting per day: 0.33%</span>
+                            </li>
+                            <li class="minting-feature-item">
+                                <i class="fas fa-calendar-alt minting-feature-icon"></i>
+                                <span>Total monthly: ~10%</span>
+                            </li>
+                            <li class="minting-feature-item">
+                                <i class="fas fa-hourglass-half minting-feature-icon"></i>
+                                <span>Duration: 25 months</span>
+                            </li>
+                            <li class="minting-feature-item">
+                                <i class="fas fa-wallet minting-feature-icon"></i>
+                                <span>Total Return: 250% (100% principal + 150% profit)</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="boost-info self-boost">
+                            <div class="boost-title">
+                                <i class="fas fa-rocket"></i>
+                                <span>ROI Booster</span>
+                            </div>
+                            <p>Can boost ROI up to 10%/day by increasing your direct business (referrals)</p>
+                        </div>
+                        
+                        <p style="text-align: center; margin-top: 20px; font-weight: 600; color: var(--accent-color);">
+                            ✅ Higher earning potential, but you must stay active every 12 hours
+                        </p>
+                    </div>
+                    
+                    <!-- Auto Minting Card -->
+                    <div class="minting-type-card auto-card premium-card shine-container premium-float">
+                        <div class="minting-type-header">
+                            <div class="minting-type-icon auto-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 class="minting-type-title">Auto Minting</h3>
+                        </div>
+                        
+                        <ul class="minting-feature-list">
+                            <li class="minting-feature-item">
+                                <i class="fas fa-clock minting-feature-icon"></i>
+                                <span>Requires claiming rewards once every 30 days</span>
+                            </li>
+                            <li class="minting-feature-item">
+                                <i class="fas fa-percentage minting-feature-icon"></i>
+                                <span>Minting per month: 8%</span>
+                            </li>
+                            <li class="minting-feature-item">
+                                <i class="fas fa-hourglass-half minting-feature-icon"></i>
+                                <span>Duration: 31.24 months</span>
+                            </li>
+                            <li class="minting-feature-item">
+                                <i class="fas fa-wallet minting-feature-icon"></i>
+                                <span>Total Return: 250% (100% principal + 150% profit)</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="boost-info auto-boost">
+                            <div class="boost-title">
+                                <i class="fas fa-rocket"></i>
+                                <span>ROI Booster</span>
+                            </div>
+                            <p>Can boost ROI up to 100%/month through high direct business volume</p>
+                        </div>
+                        
+                        <p style="text-align: center; margin-top: 20px; font-weight: 600; color: var(--royal-purple);">
+                            ✅ More passive, but slightly lower ROI by default
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Packages View -->
+            <div class="tab-content active" id="packages-content">
+                <!-- Hub explanation -->
+                <div class="hub-info-box premium-card">
+                    <i class="fas fa-server"></i>
+                    <div class="hub-info-box-content">
+                        <h4 class="premium-text">What is a MobiCryp HUB?</h4>
+                        <p>A HUB is your personal crypto minting node that runs on MobiCryp's infrastructure. Think of it as your digital money factory that generates returns through stablecoin minting and arbitrage. The HUB price (in TRDO) is a one-time subscription fee that determines your USDT capacity.</p>
+                        <p style="margin-top: 10px; font-style: italic; color: rgba(255, 255, 255, 0.7);">Important: The HUB itself is an expense (subscription). Your ROI is generated only from the USDT amount you mint, not from the HUB price.</p>
+                        <p style="margin-top: 10px; background: rgba(0, 209, 255, 0.1); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(0, 209, 255, 0.2);">
+                            <strong style="color: var(--accent-color);"><i class="fas fa-exclamation-circle"></i> Activation Requirement:</strong> To activate a HUB, you must mint a minimum of 3x the HUB price. For example, a 55 USDT HUB requires at least 165 USDT of minting.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="hub-table-container">
+                    <table class="hub-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-check-circle check-mark"></i>Hub Price (TRDO)</th>
+                                <th>Min Minting Required (3x)</th>
+                                <th>Max USDT Capacity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hub-name">55 USDT</td>
+                                <td style="color: var(--accent-color);">165 USDT</td>
+                                <td class="hub-capacity">300 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">110 USDT</td>
+                                <td style="color: var(--accent-color);">330 USDT</td>
+                                <td class="hub-capacity">600 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">275 USDT</td>
+                                <td style="color: var(--accent-color);">825 USDT</td>
+                                <td class="hub-capacity">1,500 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">550 USDT</td>
+                                <td style="color: var(--accent-color);">1,650 USDT</td>
+                                <td class="hub-capacity">3,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">1,100 USDT</td>
+                                <td style="color: var(--accent-color);">3,300 USDT</td>
+                                <td class="hub-capacity">6,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">2,750 USDT</td>
+                                <td style="color: var(--accent-color);">8,250 USDT</td>
+                                <td class="hub-capacity">15,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">5,500 USDT</td>
+                                <td style="color: var(--accent-color);">16,500 USDT</td>
+                                <td class="hub-capacity">30,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">11,000 USDT</td>
+                                <td style="color: var(--accent-color);">33,000 USDT</td>
+                                <td class="hub-capacity">60,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">27,500 USDT</td>
+                                <td style="color: var(--accent-color);">82,500 USDT</td>
+                                <td class="hub-capacity">150,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">55,000 USDT</td>
+                                <td style="color: var(--accent-color);">165,000 USDT</td>
+                                <td class="hub-capacity">300,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">110,000 USDT</td>
+                                <td style="color: var(--accent-color);">330,000 USDT</td>
+                                <td class="hub-capacity">600,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">550,000 USDT</td>
+                                <td style="color: var(--accent-color);">1,650,000 USDT</td>
+                                <td class="hub-capacity">5,000,000 USDT</td>
+                            </tr>
+                            <tr>
+                                <td class="hub-name">1,100,000 USDT</td>
+                                <td style="color: var(--accent-color);">3,300,000 USDT</td>
+                                <td class="hub-capacity">10,000,000 USDT</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Calculator View -->
+            <div class="tab-content" id="calculator-content">
+                <!-- Minting Type Toggle -->
+                <div class="minting-toggle">
+                    <label>
+                        <input type="checkbox" id="minting-type-toggle">
+                        <span class="toggle-slider">
+                            <span class="toggle-option self">
+                                <i class="fas fa-hand-point-right toggle-icon"></i>Self
+                            </span>
+                            <span class="toggle-option auto">
+                                <i class="fas fa-robot toggle-icon"></i>Auto
+                            </span>
+                        </span>
+                    </label>
+                </div>
+                
+                <div class="calculator-container">
+                    <!-- Input Card -->
+                    <div class="input-card premium-card shine-container">
+                        <h3 class="card-title premium-text">Calculate Your Returns</h3>
+                        
+                        <div style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem;">
+                            <p><strong style="color: var(--gold-color);">Remember:</strong> HUB price is a one-time subscription expense. Your ROI is calculated only on the USDT amount you mint, not on the HUB purchase price.</p>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="hub-select">Select Hub Type</label>
+                            <div class="dropdown-wrapper">
+                                <select id="hub-select" class="custom-select">
+                                    <option value="hub1">55 USDT - 300 USDT Capacity</option>
+                                    <option value="hub2">110 USDT - 600 USDT Capacity</option>
+                                    <option value="hub3">275 USDT - 1,500 USDT Capacity</option>
+                                    <option value="hub4">550 USDT - 3,000 USDT Capacity</option>
+                                    <option value="hub5">1,100 USDT - 6,000 USDT Capacity</option>
+                                    <option value="hub6">2,750 USDT - 15,000 USDT Capacity</option>
+                                    <option value="hub7">5,500 USDT - 30,000 USDT Capacity</option>
+                                    <option value="hub8">11,000 USDT - 60,000 USDT Capacity</option>
+                                    <option value="hub9">27,500 USDT - 150,000 USDT Capacity</option>
+                                    <option value="hub10">55,000 USDT - 300,000 USDT Capacity</option>
+                                    <option value="hub11">110,000 USDT - 600,000 USDT Capacity</option>
+                                    <option value="hub12">550,000 USDT - 5,000,000 USDT Capacity</option>
+                                    <option value="hub13">1,100,000 USDT - 10,000,000 USDT Capacity</option>
+                                </select>
+                                <div class="select-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="amount-slider">Minting Amount: <span id="amount-display">300</span> USDT</label>
+                            <div class="slider-container">
+                                <input type="range" id="amount-slider" class="amount-slider" min="165" value="300" max="300" step="10">
+                                <div class="slider-labels">
+                                    <span class="slider-min">Min: 165</span>
+                                    <span class="slider-max">Max: <span id="slider-max-value">300</span></span>
+                                </div>
+                                <div style="margin-top: 8px; font-size: 0.85rem; color: var(--accent-color); text-align: center;">
+                                    <i class="fas fa-info-circle"></i> Minimum minting amount is 3x your HUB price
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="selfMintingInfo" class="hub-info">
+                            <div class="hub-info-item">
+                                <div class="hub-info-value" id="hub-price">55</div>
+                                <div class="hub-info-label">Hub Price (USDT)</div>
+                            </div>
+                            <div class="hub-info-item">
+                                <div class="hub-info-value" id="max-capacity">300</div>
+                                <div class="hub-info-label">Max Capacity (USDT)</div>
+                            </div>
+                            <div class="hub-info-item">
+                                <div class="hub-info-value">0.33%</div>
+                                <div class="hub-info-label">Daily ROI</div>
+                            </div>
+                            <div class="hub-info-item">
+                                <div class="hub-info-value">25</div>
+                                <div class="hub-info-label">Months</div>
+                            </div>
+                        </div>
+                        
+                        <div id="autoMintingInfo" class="hub-info" style="display: none; border-color: rgba(123, 77, 255, 0.1); background-color: rgba(123, 77, 255, 0.05);">
+                            <div class="hub-info-item">
+                                <div class="hub-info-value" id="hub-price-auto">55</div>
+                                <div class="hub-info-label">Hub Price (USDT)</div>
+                            </div>
+                            <div class="hub-info-item">
+                                <div class="hub-info-value" id="max-capacity-auto">300</div>
+                                <div class="hub-info-label">Max Capacity (USDT)</div>
+                            </div>
+                            <div class="hub-info-item">
+                                <div class="hub-info-value">8%</div>
+                                <div class="hub-info-label">Monthly ROI</div>
+                            </div>
+                            <div class="hub-info-item">
+                                <div class="hub-info-value">31.24</div>
+                                <div class="hub-info-label">Months</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Results Card -->
+                    <div class="results-card premium-card shine-container">
+                        <h3 class="results-title premium-text">Estimated Returns</h3>
+                        
+                        <div id="selfMintingResults">
+                            <div class="result-group">
+                                <div class="result-label">Daily Earnings</div>
+                                <div class="result-value"><span class="accent" id="daily-usdt">0.99</span> USDT</div>
+                            </div>
+                            
+                            <div class="result-group">
+                                <div class="result-label">Monthly Earnings (30 days)</div>
+                                <div class="result-value"><span class="accent" id="monthly-usdt">29.70</span> USDT</div>
+                            </div>
+                            
+                            <div class="result-group">
+                                <div class="result-label">Annual Earnings (365 days)</div>
+                                <div class="result-value"><span class="accent" id="annual-usdt">361.35</span> USDT</div>
+                            </div>
+                            
+                            <div class="result-group">
+                                <div class="result-label">Total ROI Period</div>
+                                <div class="result-value"><span class="accent" id="total-months">25</span> months</div>
+                            </div>
+                            
+                            <div class="result-group">
+                                <div class="result-label">Total Profit (150%)</div>
+                                <div class="result-value"><span class="accent" id="total-profit">450</span> USDT</div>
+                            </div>
+                        </div>
+                        
+                        <div id="autoMintingResults" style="display: none;">
+                            <div class="result-group">
+                                <div class="result-label">Monthly Earnings</div>
+                                <div class="result-value"><span class="accent" id="monthly-usdt-auto">24.00</span> USDT</div>
+                            </div>
+                            
+                            <div class="result-group">
+                                <div class="result-label">Annual Earnings (12 months)</div>
+                                <div class="result-value"><span class="accent" id="annual-usdt-auto">288.00</span> USDT</div>
+                            </div>
+                            
+                            <div class="result-group">
+                                <div class="result-label">Total ROI Period</div>
+                                <div class="result-value"><span class="accent" id="total-months-auto">31.24</span> months</div>
+                            </div>
+                            
+                            <div class="result-group">
+                                <div class="result-label">Total Profit (150%)</div>
+                                <div class="result-value"><span class="accent" id="total-profit-auto">450</span> USDT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Script for tab switching and calculator functionality -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Tab switching functionality
+                    const tabs = document.querySelectorAll('.tab');
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    
+                    tabs.forEach(tab => {
+                        tab.addEventListener('click', function() {
+                            const tabId = this.getAttribute('data-tab');
+                            
+                            // Deactivate all tabs and contents
+                            tabs.forEach(t => t.classList.remove('active'));
+                            tabContents.forEach(c => c.classList.remove('active'));
+                            
+                            // Activate the clicked tab and corresponding content
+                            this.classList.add('active');
+                            document.getElementById(tabId + '-content').classList.add('active');
+                        });
+                    });
+                    
+                    // Minting type toggle functionality
+                    const mintingToggle = document.getElementById('minting-type-toggle');
+                    const selfMintingInfo = document.getElementById('selfMintingInfo');
+                    const autoMintingInfo = document.getElementById('autoMintingInfo');
+                    const selfMintingResults = document.getElementById('selfMintingResults');
+                    const autoMintingResults = document.getElementById('autoMintingResults');
+                    
+                    mintingToggle.addEventListener('change', function() {
+                        if (this.checked) {
+                            // Auto minting selected
+                            selfMintingInfo.style.display = 'none';
+                            autoMintingInfo.style.display = 'flex';
+                            selfMintingResults.style.display = 'none';
+                            autoMintingResults.style.display = 'block';
+                        } else {
+                            // Self minting selected
+                            selfMintingInfo.style.display = 'flex';
+                            autoMintingInfo.style.display = 'none';
+                            selfMintingResults.style.display = 'block';
+                            autoMintingResults.style.display = 'none';
+                        }
+                        updateCalculations();
+                    });
+                    
+                    // HUB selection functionality
+                    const hubSelect = document.getElementById('hub-select');
+                    const hubPrice = document.getElementById('hub-price');
+                    const hubPriceAuto = document.getElementById('hub-price-auto');
+                    const maxCapacity = document.getElementById('max-capacity');
+                    const maxCapacityAuto = document.getElementById('max-capacity-auto');
+                    const amountSlider = document.getElementById('amount-slider');
+                    const amountDisplay = document.getElementById('amount-display');
+                    const sliderMaxValue = document.getElementById('slider-max-value');
+                    
+                    // Array of hub prices and capacities [price, capacity]
+                    const hubData = [
+                        [55, 300],
+                        [110, 600],
+                        [275, 1500],
+                        [550, 3000],
+                        [1100, 6000],
+                        [2750, 15000],
+                        [5500, 30000],
+                        [11000, 60000],
+                        [27500, 150000],
+                        [55000, 300000],
+                        [110000, 600000],
+                        [550000, 5000000],
+                        [1100000, 10000000]
+                    ];
+                    
+                    hubSelect.addEventListener('change', function() {
+                        const hubIndex = parseInt(this.value.replace('hub', '')) - 1;
+                        const [price, capacity] = hubData[hubIndex];
+
+                        // Update HUB info
+                        hubPrice.textContent = price;
+                        hubPriceAuto.textContent = price;
+                        maxCapacity.textContent = capacity;
+                        maxCapacityAuto.textContent = capacity;
+
+                        // Calculate minimum minting amount (3x hub price)
+                        const minMintingAmount = price * 3;
+                        // Ensure minimum amount doesn't exceed capacity
+                        const actualMinAmount = Math.min(minMintingAmount, capacity);
+
+                        // Update slider min and max values
+                        amountSlider.min = actualMinAmount;
+                        amountSlider.max = capacity;
+
+                        // Set slider to minimum if current value is less than minimum
+                        if (parseInt(amountSlider.value) < actualMinAmount) {
+                            amountSlider.value = actualMinAmount;
+                            amountDisplay.textContent = actualMinAmount;
+                        } else {
+                            amountSlider.value = capacity;
+                            amountDisplay.textContent = capacity;
+                        }
+
+                        // Update slider min-max display
+                        document.querySelector('.slider-min').textContent = `Min: ${actualMinAmount}`;
+                        sliderMaxValue.textContent = capacity;
+
+                        updateCalculations();
+                    });
+                    
+                    // Amount slider functionality
+                    amountSlider.addEventListener('input', function() {
+                        amountDisplay.textContent = this.value;
+                        updateCalculations();
+                    });
+                    
+                    // Calculator functionality
+                    function updateCalculations() {
+                        const mintingAmount = parseInt(amountSlider.value);
+                        
+                        // Self minting calculations
+                        const dailyRoi = 0.0033; // 0.33%
+                        const dailyUsdt = mintingAmount * dailyRoi;
+                        const monthlyUsdt = dailyUsdt * 30;
+                        const annualUsdt = dailyUsdt * 365;
+                        const totalProfit = mintingAmount * 1.5;
+                        
+                        document.getElementById('daily-usdt').textContent = dailyUsdt.toFixed(2);
+                        document.getElementById('monthly-usdt').textContent = monthlyUsdt.toFixed(2);
+                        document.getElementById('annual-usdt').textContent = annualUsdt.toFixed(2);
+                        document.getElementById('total-profit').textContent = totalProfit.toFixed(0);
+                        
+                        // Auto minting calculations
+                        const monthlyRoi = 0.08; // 8%
+                        const monthlyUsdtAuto = mintingAmount * monthlyRoi;
+                        const annualUsdtAuto = monthlyUsdtAuto * 12;
+                        
+                        document.getElementById('monthly-usdt-auto').textContent = monthlyUsdtAuto.toFixed(2);
+                        document.getElementById('annual-usdt-auto').textContent = annualUsdtAuto.toFixed(2);
+                        document.getElementById('total-profit-auto').textContent = totalProfit.toFixed(0);
+                    }
+                    
+                    // Set initial minimum amount based on selected hub
+                    const initialHubIndex = parseInt(hubSelect.value.replace('hub', '')) - 1;
+                    const [initialPrice, initialCapacity] = hubData[initialHubIndex];
+                    const initialMinAmount = Math.min(initialPrice * 3, initialCapacity);
+
+                    // Update slider min value and min display
+                    amountSlider.min = initialMinAmount;
+                    document.querySelector('.slider-min').textContent = `Min: ${initialMinAmount}`;
+
+                    // Initialize calculations
+                    updateCalculations();
+                });
+            </script>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="10.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="12.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="premium.js"></script>
+</body>
+</html>

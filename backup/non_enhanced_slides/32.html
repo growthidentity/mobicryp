@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Your First Steps</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .timeline-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+        
+        .timeline-connector {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: calc(100% - 80px);
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), rgba(0, 209, 255, 0.3));
+            border-radius: 2px;
+            z-index: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1s ease-out;
+        }
+        
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 220px;
+            text-align: center;
+            padding: 0 10px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .step-icon-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.1);
+            border: 2px solid rgba(0, 209, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition-delay: 0.3s;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
+            transform: scale(0);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition-delay: 0.5s;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            color: var(--accent-color);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            transition-delay: 0.6s;
+        }
+        
+        .step-description {
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            transition-delay: 0.7s;
+        }
+        
+        .step-appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .icon-appear {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .number-appear {
+            transform: scale(1);
+        }
+        
+        .text-appear {
+            opacity: 0.8;
+            transform: translateY(0);
+        }
+        
+        .connector-appear {
+            transform: scaleX(1);
+        }
+        
+        @media (max-width: 768px) {
+            .steps-container {
+                justify-content: center;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 32 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">YOUR FIRST STEPS</h2>
+            <p class="section-description">How to begin your MobiCryp journey in just 4 simple steps</p>
+
+            <div class="timeline-container">
+                <!-- Timeline Connector -->
+                <div class="timeline-connector" id="timeline-connector"></div>
+
+                <div class="steps-container">
+                    <!-- Step 1: Register -->
+                    <div class="step-item" id="step-1">
+                        <div class="step-icon-container" id="icon-1">
+                            <i class="fas fa-user-plus" style="font-size: 2rem; color: var(--accent-color);"></i>
+                            <div class="step-number" id="number-1">1</div>
+                        </div>
+                        <h3 class="step-title" id="title-1">Register</h3>
+                        <p class="step-description" id="desc-1">Create your MobiCryp account with email and password</p>
+                    </div>
+
+                    <!-- Step 2: Verify -->
+                    <div class="step-item" id="step-2">
+                        <div class="step-icon-container" id="icon-2">
+                            <i class="fas fa-id-card" style="font-size: 2rem; color: var(--accent-color);"></i>
+                            <div class="step-number" id="number-2">2</div>
+                        </div>
+                        <h3 class="step-title" id="title-2">Verify</h3>
+                        <p class="step-description" id="desc-2">Complete KYC verification for your account security</p>
+                    </div>
+
+                    <!-- Step 3: Activate -->
+                    <div class="step-item" id="step-3">
+                        <div class="step-icon-container" id="icon-3">
+                            <i class="fas fa-wallet" style="font-size: 2rem; color: var(--accent-color);"></i>
+                            <div class="step-number" id="number-3">3</div>
+                        </div>
+                        <h3 class="step-title" id="title-3">Activate</h3>
+                        <p class="step-description" id="desc-3">Select and fund your minting package with USDT</p>
+                    </div>
+
+                    <!-- Step 4: Start Minting -->
+                    <div class="step-item" id="step-4">
+                        <div class="step-icon-container" id="icon-4">
+                            <i class="fas fa-coins" style="font-size: 2rem; color: var(--accent-color);"></i>
+                            <div class="step-number" id="number-4">4</div>
+                        </div>
+                        <h3 class="step-title" id="title-4">Start Minting</h3>
+                        <p class="step-description" id="desc-4">Begin earning daily returns with self or auto minting</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="31.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="33.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create step data structure
+            const steps = [
+                {
+                    step: document.getElementById('step-1'),
+                    icon: document.getElementById('icon-1'),
+                    number: document.getElementById('number-1'),
+                    title: document.getElementById('title-1'),
+                    desc: document.getElementById('desc-1')
+                },
+                {
+                    step: document.getElementById('step-2'),
+                    icon: document.getElementById('icon-2'),
+                    number: document.getElementById('number-2'),
+                    title: document.getElementById('title-2'),
+                    desc: document.getElementById('desc-2')
+                },
+                {
+                    step: document.getElementById('step-3'),
+                    icon: document.getElementById('icon-3'),
+                    number: document.getElementById('number-3'),
+                    title: document.getElementById('title-3'),
+                    desc: document.getElementById('desc-3')
+                },
+                {
+                    step: document.getElementById('step-4'),
+                    icon: document.getElementById('icon-4'),
+                    number: document.getElementById('number-4'),
+                    title: document.getElementById('title-4'),
+                    desc: document.getElementById('desc-4')
+                }
+            ];
+            
+            // Timeline connector animation
+            setTimeout(() => {
+                document.getElementById('timeline-connector').classList.add('connector-appear');
+            }, 300);
+            
+            // Animate each step with delay
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.step.classList.add('step-appear');
+                    
+                    // Animate step contents (these will use their own delays defined in CSS)
+                    setTimeout(() => {
+                        step.icon.classList.add('icon-appear');
+                        step.number.classList.add('number-appear');
+                        step.title.classList.add('text-appear');
+                        step.desc.classList.add('text-appear');
+                    }, 200);
+                }, 500 + (300 * index));
+            });
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset timeline connector
+                    const timelineConnector = document.getElementById('timeline-connector');
+                    timelineConnector.classList.remove('connector-appear');
+                    void timelineConnector.offsetWidth;
+                    
+                    // Reset all steps and their contents
+                    steps.forEach(step => {
+                        step.step.classList.remove('step-appear');
+                        step.icon.classList.remove('icon-appear');
+                        step.number.classList.remove('number-appear');
+                        step.title.classList.remove('text-appear');
+                        step.desc.classList.remove('text-appear');
+                        
+                        // Force reflow
+                        void step.step.offsetWidth;
+                        void step.icon.offsetWidth;
+                        void step.number.offsetWidth;
+                        void step.title.offsetWidth;
+                        void step.desc.offsetWidth;
+                    });
+                    
+                    // Re-animate timeline
+                    setTimeout(() => {
+                        timelineConnector.classList.add('connector-appear');
+                    }, 300);
+                    
+                    // Re-animate steps with delay
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.step.classList.add('step-appear');
+                            
+                            setTimeout(() => {
+                                step.icon.classList.add('icon-appear');
+                                step.number.classList.add('number-appear');
+                                step.title.classList.add('text-appear');
+                                step.desc.classList.add('text-appear');
+                            }, 200);
+                        }, 500 + (300 * index));
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>

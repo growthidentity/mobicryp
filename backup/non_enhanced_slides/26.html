@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Upcoming Products</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .product-card {
+            flex: 1;
+            min-width: 260px;
+            max-width: 330px;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            transform: perspective(1000px) rotateY(0deg);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .product-card:hover {
+            transform: perspective(1000px) rotateY(0deg) translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 209, 255, 0.1);
+            border: 2px solid rgba(0, 209, 255, 0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .product-icon {
+            background: rgba(0, 209, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .call-to-action {
+            display: inline-block;
+            background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.2rem 2rem;
+            border: 1px solid rgba(0, 209, 255, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .card-1 { transform: perspective(1000px) rotateY(-5deg); }
+        .card-2 { transform: perspective(1000px) rotateY(0deg); }
+        .card-3 { transform: perspective(1000px) rotateY(5deg); }
+        .card-4 { transform: perspective(1000px) rotateY(-5deg); }
+        .card-5 { transform: perspective(1000px) rotateY(0deg); }
+        .card-6 { transform: perspective(1000px) rotateY(5deg); }
+        
+        .card-show {
+            opacity: 1;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .card-show.card-1 { transform: perspective(1000px) rotateY(-5deg); }
+        .card-show.card-3 { transform: perspective(1000px) rotateY(5deg); }
+        .card-show.card-4 { transform: perspective(1000px) rotateY(-5deg); }
+        .card-show.card-6 { transform: perspective(1000px) rotateY(5deg); }
+        
+        .call-to-action-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 26 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">Upcoming Products</h2>
+            <p class="section-description">The MobiCryp ecosystem continues to expand</p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2.5rem;" class="product-grid">
+                <!-- NFT Marketplace -->
+                <div class="product-card card-1" id="card-1">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="product-icon">
+                            <i class="fas fa-paint-brush" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-top: 1rem; color: var(--accent-color);">NFT Marketplace</h3>
+                    </div>
+                    <p style="text-align: center; margin: 0;">Buy, sell, and trade digital collectibles with our secure NFT marketplace integrated with the MobiCryp ecosystem</p>
+                </div>
+                
+                <!-- Crypto Exchange -->
+                <div class="product-card card-2" id="card-2">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="product-icon">
+                            <i class="fas fa-exchange-alt" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-top: 1rem; color: var(--accent-color);">Crypto Exchange</h3>
+                    </div>
+                    <p style="text-align: center; margin: 0;">Trade cryptocurrencies with low fees and high liquidity on our secure and user-friendly exchange platform</p>
+                </div>
+                
+                <!-- Blockchain POS -->
+                <div class="product-card card-3" id="card-3">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="product-icon">
+                            <i class="fas fa-cash-register" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-top: 1rem; color: var(--accent-color);">Blockchain POS</h3>
+                    </div>
+                    <p style="text-align: center; margin: 0;">Revolutionary point-of-sale system for merchants to accept crypto payments with real-time settlement</p>
+                </div>
+                
+                <!-- Staking Platform -->
+                <div class="product-card card-4" id="card-4">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="product-icon">
+                            <i class="fas fa-piggy-bank" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-top: 1rem; color: var(--accent-color);">Staking Platform</h3>
+                    </div>
+                    <p style="text-align: center; margin: 0;">Earn passive income by staking your crypto assets with competitive yield rates and flexible lock-up periods</p>
+                </div>
+                
+                <!-- Gaming Platform -->
+                <div class="product-card card-5" id="card-5">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="product-icon">
+                            <i class="fas fa-gamepad" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-top: 1rem; color: var(--accent-color);">Gaming Platform</h3>
+                    </div>
+                    <p style="text-align: center; margin: 0;">Play-to-earn games with blockchain-based rewards and tradable in-game assets</p>
+                </div>
+                
+                <!-- E-commerce Platform -->
+                <div class="product-card card-6" id="card-6">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="product-icon">
+                            <i class="fas fa-shopping-cart" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-top: 1rem; color: var(--accent-color);">E-commerce Platform</h3>
+                    </div>
+                    <p style="text-align: center; margin: 0;">Shop with crypto on our decentralized marketplace with global sellers and seamless payments</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2.5rem; text-align: center;">
+                <div class="call-to-action" id="cta">
+                    <h3 style="font-size: 1.2rem; color: white; margin: 0;">
+                        <i class="fas fa-rocket" style="margin-right: 0.8rem;"></i>
+                        Be the first to access these exciting products by becoming a MobiCryp member today!
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="25.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="27.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate product cards with delay
+            setTimeout(() => {
+                document.getElementById('card-1').classList.add('card-show');
+            }, 300);
+            
+            setTimeout(() => {
+                document.getElementById('card-2').classList.add('card-show');
+            }, 500);
+            
+            setTimeout(() => {
+                document.getElementById('card-3').classList.add('card-show');
+            }, 700);
+            
+            setTimeout(() => {
+                document.getElementById('card-4').classList.add('card-show');
+            }, 900);
+            
+            setTimeout(() => {
+                document.getElementById('card-5').classList.add('card-show');
+            }, 1100);
+            
+            setTimeout(() => {
+                document.getElementById('card-6').classList.add('card-show');
+            }, 1300);
+            
+            // Animate call to action
+            setTimeout(() => {
+                document.getElementById('cta').classList.add('call-to-action-show');
+            }, 1500);
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset all product cards
+                    const cards = document.querySelectorAll('.product-card');
+                    cards.forEach(card => {
+                        card.classList.remove('card-show');
+                        void card.offsetWidth; // Force reflow
+                    });
+                    
+                    // Reset call to action
+                    const cta = document.getElementById('cta');
+                    cta.classList.remove('call-to-action-show');
+                    void cta.offsetWidth; // Force reflow
+                    
+                    // Re-animate with delay
+                    setTimeout(() => {
+                        document.getElementById('card-1').classList.add('card-show');
+                    }, 300);
+                    
+                    setTimeout(() => {
+                        document.getElementById('card-2').classList.add('card-show');
+                    }, 500);
+                    
+                    setTimeout(() => {
+                        document.getElementById('card-3').classList.add('card-show');
+                    }, 700);
+                    
+                    setTimeout(() => {
+                        document.getElementById('card-4').classList.add('card-show');
+                    }, 900);
+                    
+                    setTimeout(() => {
+                        document.getElementById('card-5').classList.add('card-show');
+                    }, 1100);
+                    
+                    setTimeout(() => {
+                        document.getElementById('card-6').classList.add('card-show');
+                    }, 1300);
+                    
+                    // Animate call to action
+                    setTimeout(() => {
+                        document.getElementById('cta').classList.add('call-to-action-show');
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>

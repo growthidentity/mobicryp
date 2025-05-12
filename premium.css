@@ -1,0 +1,380 @@
+/* MobiCryp Premium Enhancements */
+
+/* === Premium Effects and Animations === */
+
+/* Slide transitions */
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth shine effect for cards and important elements */
+@keyframes shine {
+    0%, 75% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* Floating animation for emphasis */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Pulse animation for call-to-action elements */
+@keyframes premium-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 209, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 209, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 209, 255, 0); }
+}
+
+/* Subtle background animation */
+@keyframes backgroundPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Typing effect for text focus */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Cursor blink for typing effect */
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+/* === Premium Classes === */
+
+/* Apply to slide-content for enhanced look */
+.premium-slide {
+    animation: fadeInSlide 0.7s ease-out;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(0, 209, 255, 0.3) !important;
+    background: linear-gradient(145deg, rgba(0, 20, 40, 0.85) 0%, rgba(0, 10, 30, 0.95) 100%) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Enhanced text shadow for headers */
+.premium-text {
+    text-shadow: 0 2px 10px rgba(0, 209, 255, 0.3);
+}
+
+/* Shine effect container */
+.shine-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shine effect element */
+.shine-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.05),
+                transparent);
+    transform: skewX(-20deg);
+    z-index: 1;
+    animation: shine 12s infinite;
+    animation-delay: var(--shine-delay, 0s);
+}
+
+/* Premium button styling */
+.premium-button {
+    background: linear-gradient(145deg, rgba(0, 209, 255, 0.3) 0%, rgba(30, 84, 229, 0.3) 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.premium-button:hover {
+    background: linear-gradient(145deg, rgba(0, 209, 255, 0.5) 0%, rgba(30, 84, 229, 0.5) 100%);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.premium-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Call-to-action pulse effect */
+.premium-cta {
+    animation: premium-pulse 2s infinite;
+}
+
+/* Premium card styling */
+.premium-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(0, 209, 255, 0.15);
+    padding: 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 209, 255, 0.3);
+}
+
+/* Animated section divider */
+.premium-divider {
+    height: 4px;
+    background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent-color), 
+                transparent);
+    margin: 2rem auto;
+    width: 150px;
+    border-radius: 2px;
+    animation: backgroundPulse 3s ease infinite;
+    background-size: 200% 200%;
+}
+
+/* Premium gold divider variant */
+.premium-divider-gold {
+    background: linear-gradient(90deg, 
+                transparent, 
+                var(--gold-color), 
+                transparent);
+}
+
+/* Premium icon containers */
+.premium-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(0, 150, 200, 0.1) 100%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.2);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0, 209, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-icon i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.premium-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    border-color: rgba(0, 209, 255, 0.4);
+}
+
+/* Enhanced content areas */
+.premium-content-area {
+    background: linear-gradient(145deg, rgba(0, 40, 80, 0.4) 0%, rgba(0, 20, 40, 0.4) 100%);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    border: 1px solid rgba(0, 209, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating animation class */
+.premium-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Typing text effect container */
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid var(--accent-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: 
+        typing 3.5s steps(30, end),
+        blink .75s step-end infinite;
+}
+
+/* Premium badge for highlights */
+.premium-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.2) 100%);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-left: 0.5rem;
+    border: 1px solid rgba(0, 209, 255, 0.3);
+}
+
+/* Premium gold badge variant */
+.premium-badge-gold {
+    background: linear-gradient(145deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 124, 0, 0.2) 100%);
+    color: var(--gold-color);
+    border: 1px solid rgba(255, 184, 0, 0.3);
+}
+
+/* Enhanced progress bars */
+.premium-progress-container {
+    height: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+}
+
+.premium-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), var(--royal-purple));
+    border-radius: 5px;
+    width: 0;
+    transition: width 1.5s ease-out;
+}
+
+/* Enhanced background with premium effect */
+.premium-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center 30%, rgba(0, 209, 255, 0.1), transparent 70%);
+    z-index: 0;
+}
+
+/* Glass effect background overlay */
+.premium-glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 30, 60, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium list styling */
+.premium-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.premium-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.premium-list li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(0, 150, 200, 0.1) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.premium-list li:after {
+    content: '✓';
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    font-size: 0.8rem;
+}
+
+/* Gold variant of the premium list */
+.premium-list-gold li:before {
+    background: linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(200, 150, 0, 0.1) 100%);
+}
+
+.premium-list-gold li:after {
+    color: var(--gold-color);
+}
+
+/* Enhanced section titles */
+.premium-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.premium-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Gradient text for emphasis */
+.premium-gradient-text {
+    background: linear-gradient(to right, var(--accent-color), var(--royal-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Gold variant of gradient text */
+.premium-gradient-text-gold {
+    background: linear-gradient(to right, var(--gold-color), #FFC700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Apply this to the circuit background to enhance it */
+.premium-circuit-background {
+    animation: backgroundPulse 30s ease infinite;
+    background-size: 600px 600px !important;
+    opacity: 0.2 !important;
+}
+
+/* Enhanced image styling */
+.premium-image {
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 209, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.premium-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 209, 255, 0.4);
+}

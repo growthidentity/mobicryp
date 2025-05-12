@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - How to Start</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .step-card {
+            flex: 1;
+            min-width: 260px;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 160, 204, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition-delay: 0.2s;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 209, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.5s ease;
+            transition-delay: 0.4s;
+        }
+        
+        .step-title {
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            transition-delay: 0.6s;
+        }
+        
+        .step-description {
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            transition-delay: 0.8s;
+        }
+        
+        .step-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .step-card.show .step-number {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+        
+        .step-card.show .step-icon {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .step-card.show .step-title,
+        .step-card.show .step-description {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .support-message {
+            display: inline-block;
+            background: linear-gradient(145deg, rgba(30, 84, 229, 0.2) 0%, rgba(0, 209, 255, 0.2) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 1.2rem 2rem;
+            border: 1px solid rgba(0, 209, 255, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .support-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .step-grid {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 27 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">How to Start</h2>
+            <p class="section-description">Your step-by-step guide to begin your MobiCryp journey</p>
+            
+            <div style="margin: 3rem auto; max-width: 900px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center;" class="step-grid">
+                    <!-- Step 1 -->
+                    <div class="step-card" id="step-1">
+                        <div class="step-number">
+                            <span style="color: white; font-weight: bold; font-size: 1.5rem;">1</span>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <div class="step-icon">
+                                <i class="fas fa-user-plus" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h3 class="step-title" style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-color);">Sign Up</h3>
+                            <p class="step-description" style="margin: 0;">Create your account via a referral link from an existing MobiCryp member</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="step-card" id="step-2">
+                        <div class="step-number">
+                            <span style="color: white; font-weight: bold; font-size: 1.5rem;">2</span>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <div class="step-icon">
+                                <i class="fas fa-shopping-bag" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h3 class="step-title" style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-color);">Buy TRDO & HUB</h3>
+                            <p class="step-description" style="margin: 0;">Purchase TRDO tokens and activate your hub in your MobiCryp dashboard</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="step-card" id="step-3">
+                        <div class="step-number">
+                            <span style="color: white; font-weight: bold; font-size: 1.5rem;">3</span>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <div class="step-icon">
+                                <i class="fas fa-wallet" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h3 class="step-title" style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-color);">Add USDT</h3>
+                            <p class="step-description" style="margin: 0;">Fund your account with USDT to begin minting operations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; margin-top: 3rem;" class="step-grid">
+                    <!-- Step 4 -->
+                    <div class="step-card" id="step-4">
+                        <div class="step-number">
+                            <span style="color: white; font-weight: bold; font-size: 1.5rem;">4</span>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <div class="step-icon">
+                                <i class="fas fa-sliders-h" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h3 class="step-title" style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-color);">Choose Minting Type</h3>
+                            <p class="step-description" style="margin: 0;">Select between Self Minting (daily) or Auto Minting (monthly) based on your preference</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="step-card" id="step-5">
+                        <div class="step-number">
+                            <span style="color: white; font-weight: bold; font-size: 1.5rem;">5</span>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <div class="step-icon">
+                                <i class="fas fa-play-circle" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h3 class="step-title" style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-color);">Start Minting</h3>
+                            <p class="step-description" style="margin: 0;">Begin your minting journey and watch your USDT grow over time</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 6 -->
+                    <div class="step-card" id="step-6">
+                        <div class="step-number">
+                            <span style="color: white; font-weight: bold; font-size: 1.5rem;">6</span>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <div class="step-icon">
+                                <i class="fas fa-users" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            </div>
+                            <h3 class="step-title" style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-color);">Grow Your Team</h3>
+                            <p class="step-description" style="margin: 0;">Refer others to MobiCryp and build your network to boost your earnings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 1rem; text-align: center;">
+                <div class="support-message" id="support-message">
+                    <h3 style="font-size: 1.2rem; color: white; margin: 0;">
+                        <i class="fas fa-headset" style="margin-right: 0.8rem;"></i>
+                        Our support team is available 24/7 to help you get started
+                    </h3>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="26.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="28.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate step cards in sequence
+            const steps = [
+                document.getElementById('step-1'),
+                document.getElementById('step-2'),
+                document.getElementById('step-3'),
+                document.getElementById('step-4'),
+                document.getElementById('step-5'),
+                document.getElementById('step-6')
+            ];
+            
+            // Show steps with a delay between each
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.classList.add('show');
+                }, 300 * index + 300);
+            });
+            
+            // Show support message after all steps are shown
+            setTimeout(() => {
+                document.getElementById('support-message').classList.add('show');
+            }, 300 * steps.length + 600);
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset step cards
+                    steps.forEach(step => {
+                        step.classList.remove('show');
+                        void step.offsetWidth; // Force reflow
+                    });
+                    
+                    // Reset support message
+                    const supportMessage = document.getElementById('support-message');
+                    supportMessage.classList.remove('show');
+                    void supportMessage.offsetWidth; // Force reflow
+                    
+                    // Re-animate with delay
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.classList.add('show');
+                        }, 300 * index + 300);
+                    });
+                    
+                    // Show support message after all steps are shown
+                    setTimeout(() => {
+                        supportMessage.classList.add('show');
+                    }, 300 * steps.length + 600);
+                }
+            });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>

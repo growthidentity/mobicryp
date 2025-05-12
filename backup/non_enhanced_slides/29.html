@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Benefits Showcase</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .benefit-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.1) 0%, rgba(30, 84, 229, 0.1) 100%);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(0, 209, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(15px);
+        }
+        
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.1);
+            border: 2px solid rgba(0, 209, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.5s ease;
+            transition-delay: 0.2s;
+        }
+        
+        .benefit-title {
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            transition-delay: 0.3s;
+        }
+        
+        .benefit-description {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease;
+            transition-delay: 0.4s;
+        }
+        
+        .card-appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .icon-appear {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .text-appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-grid {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 29 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">BENEFITS SHOWCASE</h2>
+            <p class="section-description">What makes MobiCryp the premier choice for your financial future</p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem; justify-content: center;" class="benefits-grid">
+                <!-- Benefit 1: Security First -->
+                <div class="benefit-card" id="benefit-1">
+                    <div class="glow-effect"></div>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="benefit-icon" id="icon-1">
+                            <i class="fas fa-shield-alt" style="font-size: 1.8rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 class="benefit-title" id="title-1">Security First</h3>
+                    </div>
+                    <p class="benefit-description" id="desc-1">Built on blockchain technology with transparent operations and secure smart contracts</p>
+                </div>
+
+                <!-- Benefit 2: Stable Growth -->
+                <div class="benefit-card" id="benefit-2">
+                    <div class="glow-effect"></div>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="benefit-icon" id="icon-2">
+                            <i class="fas fa-chart-line" style="font-size: 1.8rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 class="benefit-title" id="title-2">Stable Growth</h3>
+                    </div>
+                    <p class="benefit-description" id="desc-2">Predictable daily returns in USDT with no price volatility or market dependency</p>
+                </div>
+
+                <!-- Benefit 3: Community Power -->
+                <div class="benefit-card" id="benefit-3">
+                    <div class="glow-effect"></div>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="benefit-icon" id="icon-3">
+                            <i class="fas fa-users" style="font-size: 1.8rem; color: var(--accent-color);"></i>
+                        </div>
+                        <h3 class="benefit-title" id="title-3">Community Power</h3>
+                    </div>
+                    <p class="benefit-description" id="desc-3">Global network of like-minded individuals with dedicated support and training</p>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="28.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="30.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate benefit cards in sequence
+            const benefitCards = [
+                {
+                    card: document.getElementById('benefit-1'),
+                    icon: document.getElementById('icon-1'),
+                    title: document.getElementById('title-1'),
+                    desc: document.getElementById('desc-1')
+                },
+                {
+                    card: document.getElementById('benefit-2'),
+                    icon: document.getElementById('icon-2'),
+                    title: document.getElementById('title-2'),
+                    desc: document.getElementById('desc-2')
+                },
+                {
+                    card: document.getElementById('benefit-3'),
+                    icon: document.getElementById('icon-3'),
+                    title: document.getElementById('title-3'),
+                    desc: document.getElementById('desc-3')
+                }
+            ];
+            
+            // Animate each card with a delay
+            benefitCards.forEach((benefit, index) => {
+                setTimeout(() => {
+                    benefit.card.classList.add('card-appear');
+                    
+                    // Animate card contents
+                    setTimeout(() => {
+                        benefit.icon.classList.add('icon-appear');
+                        benefit.title.classList.add('text-appear');
+                        benefit.desc.classList.add('text-appear');
+                    }, 200);
+                }, 300 * (index + 1));
+            });
+            
+            // Reset animations when page visibility changes
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    // Reset all cards and their contents
+                    benefitCards.forEach(benefit => {
+                        benefit.card.classList.remove('card-appear');
+                        benefit.icon.classList.remove('icon-appear');
+                        benefit.title.classList.remove('text-appear');
+                        benefit.desc.classList.remove('text-appear');
+                        
+                        // Force reflow
+                        void benefit.card.offsetWidth;
+                        void benefit.icon.offsetWidth;
+                        void benefit.title.offsetWidth;
+                        void benefit.desc.offsetWidth;
+                    });
+                    
+                    // Re-animate with delay
+                    benefitCards.forEach((benefit, index) => {
+                        setTimeout(() => {
+                            benefit.card.classList.add('card-appear');
+                            
+                            // Animate card contents
+                            setTimeout(() => {
+                                benefit.icon.classList.add('icon-appear');
+                                benefit.title.classList.add('text-appear');
+                                benefit.desc.classList.add('text-appear');
+                            }, 200);
+                        }, 300 * (index + 1));
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>

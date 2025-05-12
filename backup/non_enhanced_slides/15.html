@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Community Binary Bonus</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Main container styles */
+        .mlm-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Binary Tree Section */
+        .binary-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-top: 20px;
+        }
+        
+        /* Top node (YOU) */
+        .node-you {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 209, 255, 0.15);
+            border: 2px solid rgba(0, 209, 255, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .node-label {
+            position: absolute;
+            bottom: -30px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .node-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+        
+        /* Branch container */
+        .branches {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+        }
+        
+        /* Connector lines */
+        .connector-lines {
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: -1;
+        }
+        
+        .connector-line {
+            position: absolute;
+            background: rgba(0, 209, 255, 0.3);
+            width: 2px;
+            height: 30px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .connector-left, .connector-right {
+            position: absolute;
+            background: rgba(0, 209, 255, 0.3);
+            height: 2px;
+            bottom: 0;
+            width: 38%;
+        }
+        
+        .connector-left {
+            right: 50%;
+        }
+        
+        .connector-right {
+            left: 50%;
+        }
+        
+        /* Branch nodes */
+        .branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 40px;
+            width: 180px;
+        }
+        
+        .branch-label {
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .branch-node {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 209, 255, 0.1);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .branch-amount {
+            background: rgba(0, 209, 255, 0.8);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        /* Stats boxes */
+        .stats-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px 20px;
+            width: 180px;
+            text-align: center;
+        }
+        
+        .stat-title {
+            color: var(--accent-color);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        /* Info cards */
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .info-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            flex: 1;
+            min-width: 200px;
+            max-width: 400px;
+        }
+        
+        .info-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+        
+        .info-icon {
+            color: var(--accent-color);
+        }
+        
+        .info-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .info-text {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+        
+        /* Example section */
+        .example-section {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 40px 0;
+        }
+        
+        .example-title {
+            text-align: center;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .example-cell {
+            background: rgba(0, 209, 255, 0.05);
+            border: 1px solid rgba(0, 209, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .cell-highlight {
+            background: rgba(0, 209, 255, 0.1);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+        }
+        
+        .cell-label {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .cell-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .cell-note {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .branches {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .connector-lines {
+                display: none;
+            }
+            
+            .branch {
+                margin: 0;
+            }
+            
+            .stats-boxes {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .stat-box {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 15 of 39</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <h2 class="section-title premium-text">Community Binary Bonus</h2>
+            <p class="section-description">Earn 10% on matching leg volume <span style="font-size: 0.9em; opacity: 0.8;">(BONUS 2 OF 4)</span></p>
+            
+            <div class="mlm-container">
+                <!-- Binary Tree Structure -->
+                <div class="binary-tree">
+                    <!-- YOU Node -->
+                    <div class="node-you">
+                        <i class="fas fa-user-circle node-icon"></i>
+                        <div class="node-label">YOU</div>
+                    </div>
+                    
+                    <!-- Connector lines -->
+                    <div class="connector-lines">
+                        <div class="connector-line"></div>
+                        <div class="connector-left"></div>
+                        <div class="connector-right"></div>
+                    </div>
+                    
+                    <!-- Branch sections -->
+                    <div class="branches">
+                        <!-- Left Branch -->
+                        <div class="branch">
+                            <div class="branch-label">LEFT</div>
+                            <div class="branch-node">
+                                <i class="fas fa-user node-icon" style="font-size: 1.5rem; opacity: 0.7;"></i>
+                            </div>
+                            <div class="branch-amount">$8,000</div>
+                        </div>
+                        
+                        <!-- Right Branch -->
+                        <div class="branch">
+                            <div class="branch-label">RIGHT</div>
+                            <div class="branch-node">
+                                <i class="fas fa-user node-icon" style="font-size: 1.5rem; opacity: 0.7;"></i>
+                            </div>
+                            <div class="branch-amount">$5,000</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Statistics Boxes -->
+                <div class="stats-boxes">
+                    <div class="stat-box shine-container">
+                        <div class="stat-title">Weaker Leg</div>
+                        <div class="stat-value">$5,000</div>
+                    </div>
+                    
+                    <div class="stat-box shine-container">
+                        <div class="stat-title">Your Bonus</div>
+                        <div class="stat-value">$500</div>
+                    </div>
+                </div>
+                
+                <!-- Information Cards -->
+                <div class="info-cards">
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-percentage info-icon"></i>
+                            <div class="info-title">Matching 10% Bonus</div>
+                        </div>
+                        <div class="info-text">
+                            Earn 10% of the volume in your weaker leg
+                        </div>
+                    </div>
+                    
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-recycle info-icon"></i>
+                            <div class="info-title">Volume Clearing</div>
+                        </div>
+                        <div class="info-text">
+                            After paying bonus, matching volume is cleared from both legs
+                        </div>
+                    </div>
+                    
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-forward info-icon"></i>
+                            <div class="info-title">Excess Carryover</div>
+                        </div>
+                        <div class="info-text">
+                            Excess volume on stronger leg carries over to next calculation period
+                        </div>
+                    </div>
+                    
+                    <div class="info-card shine-container">
+                        <div class="info-header">
+                            <i class="fas fa-users info-icon"></i>
+                            <div class="info-title">Spillover Advantage</div>
+                        </div>
+                        <div class="info-text">
+                            Upline can place new members in your downline automatically
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Example Section -->
+                <div class="example-section shine-container">
+                    <div class="example-title">How Binary Bonus Works - Example</div>
+                    
+                    <div class="example-grid">
+                        <div class="example-cell">
+                            <div class="cell-label">LEFT LEG</div>
+                            <div class="cell-value">$8,000</div>
+                        </div>
+                        
+                        <div class="example-cell">
+                            <div class="cell-label">RIGHT LEG</div>
+                            <div class="cell-value">$5,000</div>
+                        </div>
+                        
+                        <div class="example-cell">
+                            <div class="cell-label">MATCHING VOLUME</div>
+                            <div class="cell-value">$5,000</div>
+                        </div>
+                        
+                        <div class="example-cell cell-highlight">
+                            <div class="cell-label">YOUR BINARY BONUS</div>
+                            <div class="cell-value" style="color: var(--accent-color);">$500</div>
+                            <div class="cell-note">(10% of $5,000)</div>
+                        </div>
+                        
+                        <div class="example-cell">
+                            <div class="cell-label">CARRYOVER VOLUME</div>
+                            <div class="cell-value">$3,000</div>
+                        </div>
+                        
+                        <div class="example-cell">
+                            <div class="cell-label">LEFT LEG (CARRYOVER)</div>
+                            <div class="cell-value">$3,000</div>
+                            <div class="cell-note">(excess carried to next cycle)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <a href="index.html" class="nav-button premium-button home-button">
+                    <i class="fas fa-home"></i> All Slides
+                </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="14.html" class="nav-button premium-button" id="prev-button">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                    <a href="16.html" class="nav-button premium-button premium-cta" id="next-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="premium.js"></script>
+</body>
+</html>
