@@ -1,0 +1,17 @@
+{
+  "name": "mobicryp-slides-translation",
+  "version": "1.0.0",
+  "description": "Translation tools for MobiCryp presentation slides",
+  "main": "translate.js",
+  "scripts": {
+    "translate": "node translate.js",
+    "apply": "node apply_translations.js"
+  },
+  "dependencies": {
+    "jsdom": "^26.1.0",
+    "openai": "^4.0.0"
+  },
+  "author": "MobiCryp",
+  "license": "UNLICENSED",
+  "private": true
+}

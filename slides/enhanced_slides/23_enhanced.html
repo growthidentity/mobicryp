@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Benefits Showcase</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/premium.css">
+    <link rel="stylesheet" href="../assets/css/enhanced.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced slide-specific styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--primary-color);
+        }
+
+        .slide-container {
+            height: calc(100vh - 60px);
+            margin-top: 60px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 1rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00172b 0%, #001a33 100%);
+            z-index: 0;
+        }
+
+        /* Header */
+        .slide-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .slide-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(90deg, #FFB800, #70E1FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .slide-subtitle {
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Benefits grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-card {
+            background: rgba(0, 20, 40, 0.8);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 140, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform: translateY(0);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 140, 255, 0.4);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 209, 255, 0.3), transparent);
+        }
+
+        /* Benefit icon */
+        .benefit-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #4191FF 0%, #1565c0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 15px rgba(65, 145, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Benefit content */
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4191FF;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2px;
+        }
+
+        .benefit-description {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Support message */
+        .support-message {
+            background: rgba(65, 45, 140, 0.3);
+            border-radius: 16px;
+            border: 1px solid rgba(100, 85, 180, 0.5);
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            width: fit-content;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 20px rgba(65, 45, 140, 0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        .support-message:hover {
+            background: rgba(65, 45, 140, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 0 30px rgba(65, 45, 140, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .support-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, rgba(100, 85, 180, 0.7) 0%, rgba(65, 45, 140, 0.7) 100%);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(100, 85, 180, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .support-text {
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Navigation styling */
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(0, 15, 30, 0.75);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(65, 145, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            margin: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            position: relative;
+            overflow: hidden;
+            background: rgba(65, 145, 255, 0.15);
+            border: 1px solid rgba(65, 145, 255, 0.3);
+            border-radius: 6px;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            background: rgba(65, 145, 255, 0.25);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(65, 145, 255, 0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1100px) {
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+            }
+
+            .slide-title {
+                font-size: 2.8rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2.2rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .benefit-title {
+                font-size: 1.3rem;
+            }
+
+            .benefit-card {
+                padding: 1.2rem;
+            }
+
+            .support-message {
+                padding: 1rem 1.5rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        /* Navigation buttons */
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 209, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .nav-button.premium-button {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%) !important;
+            border: 1px solid rgba(0, 209, 255, 0.3) !important;
+            color: white !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-button.premium-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+        }
+
+        .nav-button.premium-cta {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.2) !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 23 of 32</div>
+    </header>
+
+    <!-- Background -->
+    <div class="background"></div>
+
+    <div class="slide-container">
+        <div class="content-wrapper">
+            <!-- Header -->
+            <div class="slide-header">
+                <h1 class="slide-title">Benefits Showcase</h1>
+                <p class="slide-subtitle">What makes MobiCryp the premier choice for your financial future</p>
+            </div>
+
+            <!-- Benefits grid -->
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card" id="benefit-1">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Security First</h3>
+                    <p class="benefit-description">Built on blockchain technology with transparent operations and secure smart contracts</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card" id="benefit-2">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Stable Growth</h3>
+                    <p class="benefit-description">Predictable daily returns in USDT with no price volatility or market dependency</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card" id="benefit-3">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Community Power</h3>
+                    <p class="benefit-description">Global network of like-minded individuals with dedicated support and training</p>
+                </div>
+            </div>
+
+            <!-- Support message -->
+            <div class="support-message" id="support-message">
+                <div class="support-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="support-text">
+                    Our dedicated team is available 24/7 to answer your questions
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="../index.html" class="nav-button premium-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="22_enhanced.html" class="nav-button premium-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="24_enhanced.html" class="nav-button premium-button premium-cta" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="enhanced.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation for benefit cards
+            const benefitCards = document.querySelectorAll('.benefit-card');
+            benefitCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + (index * 100)); // Staggered animation
+            });
+
+            // Animate support message
+            const supportMessage = document.getElementById('support-message');
+            supportMessage.style.opacity = '0';
+            supportMessage.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                supportMessage.style.transition = 'all 0.5s ease';
+                supportMessage.style.opacity = '1';
+                supportMessage.style.transform = 'translateY(0)';
+            }, 700);
+
+            // Simple hover effect for support message
+            supportMessage.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+
+            supportMessage.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+
+            // Simple hover effect for benefit cards
+            benefitCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+    <script src="../assets/js/premium.js"></script>
+</body>
+</html>

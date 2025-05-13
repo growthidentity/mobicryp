@@ -1,0 +1,70 @@
+{
+  "01": {
+    "The rules of wealth have changed — the question is, have you?": "กฎของความมั่งคั่งได้เปลี่ยนไปแล้ว - คำถามคือ คุณเปลี่ยนไปหรือยัง?"
+  },
+  "02": {
+    "BANKS & SAVINGS": "ธนาคารและการออมเงิน",
+    "Historically low interest rates on savings": "อัตราดอกเบี้ยที่ต่ำเป็นประวัติการณ์สำหรับการออมเงิน",
+    "Hidden fees eroding your wealth": "ค่าธรรมเนียมที่ซ่อนอยู่กินกำลังทรัพย์สินของคุณ",
+    "Capital restricted by outdated policies": "ทุนถูกจำกัดโดยนโยบายที่ล้าสมัย",
+    "Average interest rate while inflation exceeds 4%": "อัตราดอกเบี้ยเฉลี่ยในขณะที่เงินเฟ้อเกิน 4%",
+    "TRADITIONAL JOBS": "งานแบบดั้งเดิม",
+    "Limited by time-for-money constraints": "ถูกจำกัดโดยข้อจำกัดเวลาสำหรับการทำเงิน",
+    "Salaries failing to keep pace with inflation": "เงินเดือนไม่สามารถตามทันอัตราเงินเฟ้อ",
+    "Job security increasingly uncertain": "ความมั่นคงในงานเพิ่มขึ้นอย่างไม่แน่นอน",
+    "Of workers feel underpaid in their current role": "จำนวนผู้ทำงานที่รู้สึกว่าได้รับค่าตอบแทนน้อยกว่าที่ควรในบทบาทปัจจุบัน",
+    "TRADITIONAL INVESTING": "การลงทุนแบบดั้งเดิม",
+    "Unpredictable market volatility": "ความผันผวนของตลาดที่ไม่สามารถคาดเดาได้",
+    "High barriers to entry for average people": "อุปสรรคสูงในการเข้าสู่ตลาดสำหรับคนทั่วไป",
+    "Complicated tax and regulatory issues": "ปัญหาภาษีและกฎระเบียบที่ซับซ้อน",
+    "Of adults find traditional investing too complex": "จำนวนผู้ใหญ่ที่พบว่าการลงทุนแบบดั้งเดิมยากเกินไป"
+  },
+  "03": {
+    "THE NEW WEALTH MOVEMENT HAS BEGUN": "เคลื่อนไหวทางความมั่งคั่งใหม่ได้เริ่มขึ้นแล้ว",
+    "A transformative financial revolution that's reshaping how people build and grow wealth in the digital age": "การปฏิวัติทางการเงินที่เปลี่ยนแปลงแนวทางการสร้างและเติบโตทรัพย์สินในยุคดิจิทัล",
+    "CRYPTO": "คริปโต",
+    "PASSIVE": "รายได้",
+    "INCOME": "เฉื่อย",
+    "People earning daily passive income": "ผู้ที่ทำรายได้เฉื่อยทุกวัน",
+    "Daily trading volume": "ปริมาณการซื้อขายในแต่ละวัน",
+    "Countries with active minters": "ประเทศที่มีผู้ผลิตที่ทำงานอยู่",
+    "The world of finance is evolving, and a select few are positioned to capitalize on the extraordinary opportunity before us. MobiCryp offers a proven system for the new wealth movement.": "โลกของการเงินกำลังเปลี่ยนแปลง และมีกลุ่มเล็ก ๆ ที่อยู่ในตำแหน่งที่จะทำกำไรจากโอกาสที่น่าทึ่งที่อยู่หน้าหนาวเรา MobiCryp นำเสนอระบบที่ผ่านการพิสูจน์แล้วสำหรับการเคลื่อนไหวทางความมั่งคั่งใหม่",
+    "Join The Movement": "เข้าร่วมในการเคลื่อนไหวนี้"
+  },
+  "04": {
+    "Our company ethos: Transparency. Reliability. Compliance.": "คุณภาพหลักของบริษัทของเรา: ความโปร่งใส ความน่าเชื่อถือ การปฏิบัติตามกฎหมาย"
+  },
+  "05": {
+    "TIMELINE OF TRUST": "เส้นทางของความเชื่อถือ",
+    "Our journey from concept to global force in digital finance": "การเดินทางของเราจากแนวคิดสู่กำลังที่มีอิทธิพลระดับโลกในการเงินดิจิทัล",
+    "Idea Formation": "การรูปร่างของไอเดีย",
+    "Platform Launch": "การเปิดตัวแพลตฟอร์ม",
+    "Global Expansion": "การขยายขอบเขตระดับโลก",
+    "Explosive Growth": "การเติบโตอย่างรุนแรง",
+    "Initial concept developed": "การพัฒนาแนวคิดเริ่มต้น",
+    "Core team assembled": "ทีมหลักถูกสรรหา",
+    "Whitepaper creation": "การสร้าง Whitepaper",
+    "Seed funding secured": "การรักษาเงินทุนเมล็ด",
+    "Alpha platform released": "แพลตฟอร์ม Alpha ถูกปล่อย",
+    "First 1,000 minters": "1,000 คนแรกที่ทำการสกัด",
+    "Key partnerships formed": "การสร้างความสัมพันธ์ที่สำคัญ",
+    "Expansion to 10+ countries": "การขยายไปยัง 10+ ประเทศ",
+    "ISO certification": "การรับรอง ISO",
+    "Global team of 50+": "ทีมทั่วโลกของ 50+ คน",
+    "Present in 50+ countries": "มีอยู่ใน 50+ ประเทศ",
+    "Active community of 10K+": "ชุมชนที่มีการทำงานอยู่ 10K+"
+  },
+  "06": {
+    "The Mission Is Clear": "ภารกิจชัดเจน",
+    "To help everyday people build a passive income stream with crypto — without needing to be tech experts, traders, or influencers.": "เพื่อช่วยให้คนทั่วไปสร้างกระแสรายได้แบบเรื่อยเปื่อยด้วยคริปโต - โดยไม่จำเป็นต้องเป็นผู้เชี่ยวชาญด้านเทคโนโลยี, นักซื้อขาย, หรือผู้มีอิทธิพล",
+    "Passive Income": "รายได้แบบเรื่อยเปื่อย",
+    "Real earnings while you sleep": "รายได้จริงในขณะที่คุณนอนหลับ",
+    "User Friendly": "เป็นมิตรกับผู้ใช้",
+    "No technical knowledge needed": "ไม่ต้องมีความรู้ทางเทคนิค",
+    "Global Access": "การเข้าถึงระดับโลก",
+    "Available in 50+ countries": "มีให้บริการใน 50+ ประเทศ",
+    "Financial Freedom": "อิสรภาพทางการเงิน",
+    "Control your financial future": "ควบคุมอนาคตการเงินของคุณ",
+    "A vision of financial freedom for all": "วิสัยทัศน์เรื่องอิสรภาพทางการเงินสำหรับทุกคน"
+  }
+}

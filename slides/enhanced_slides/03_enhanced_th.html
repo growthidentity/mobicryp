@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - The New Wealth Movement</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Slide 3 Styles - Single Screen Version */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slide-container {
+            padding: 0 !important;
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            height: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0 !important;
+        }
+
+        .movement-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .parallax-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1634704784915-aacf363b021f?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) saturate(1.2) hue-rotate(200deg);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        .overlay-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 20, 100, 0.8) 0%, rgba(90, 0, 120, 0.8) 100%);
+            z-index: -1;
+        }
+
+        .hero-section {
+            text-align: center;
+            position: relative;
+            padding: 1.5rem 1rem;
+        }
+
+        .movement-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #00d1ff, #7b4dff, #36f1cd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 8s ease infinite;
+            text-shadow: 0 0 30px rgba(0, 209, 255, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .movement-subtitle {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+
+        .keyword-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 0 auto;
+        }
+
+        .keyword-card {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            z-index: 1;
+        }
+
+        .keyword-card:hover {
+            transform: translateY(-10px) rotate(3deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .keyword-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent 30%
+            );
+            animation: rotateGradient 8s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotateGradient {
+            100% { transform: rotate(360deg); }
+        }
+
+        .keyword-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .keyword-card:hover .keyword-icon {
+            transform: scale(1.2) translateZ(20px);
+        }
+
+        .crypto-theme {
+            background: linear-gradient(135deg, rgba(0, 209, 255, 0.1) 0%, rgba(0, 209, 255, 0.05) 100%);
+            border-color: rgba(0, 209, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 209, 255, 0.1);
+        }
+
+        .crypto-theme:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 30px rgba(0, 209, 255, 0.2);
+        }
+
+        .crypto-theme .keyword-icon {
+            color: var(--accent-color);
+        }
+
+        .passive-theme {
+            background: linear-gradient(135deg, rgba(123, 77, 255, 0.1) 0%, rgba(123, 77, 255, 0.05) 100%);
+            border-color: rgba(123, 77, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(123, 77, 255, 0.1);
+        }
+
+        .passive-theme:hover {
+            border-color: var(--royal-purple);
+            box-shadow: 0 15px 30px rgba(123, 77, 255, 0.2);
+        }
+
+        .passive-theme .keyword-icon {
+            color: var(--royal-purple);
+        }
+
+        .income-theme {
+            background: linear-gradient(135deg, rgba(54, 241, 205, 0.1) 0%, rgba(54, 241, 205, 0.05) 100%);
+            border-color: rgba(54, 241, 205, 0.3);
+            box-shadow: 0 10px 20px rgba(54, 241, 205, 0.1);
+        }
+
+        .income-theme:hover {
+            border-color: var(--vibrant-green);
+            box-shadow: 0 15px 30px rgba(54, 241, 205, 0.2);
+        }
+
+        .income-theme .keyword-icon {
+            color: var(--vibrant-green);
+        }
+
+        .keyword-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .crypto-theme .keyword-text {
+            color: var(--accent-color);
+        }
+
+        .passive-theme .keyword-text {
+            color: var(--royal-purple);
+        }
+
+        .income-theme .keyword-text {
+            color: var(--vibrant-green);
+        }
+
+        .keyword-divider {
+            width: 40px;
+            height: 3px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .keyword-card:hover .keyword-divider {
+            width: 60px;
+        }
+
+        .crypto-theme .keyword-divider {
+            background: var(--accent-color);
+        }
+
+        .passive-theme .keyword-divider {
+            background: var(--royal-purple);
+        }
+
+        .income-theme .keyword-divider {
+            background: var(--vibrant-green);
+        }
+
+        .stats-section {
+            position: relative;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin: 1rem auto;
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1639322537504-6427a16b0a28?q=80&w=2832&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 0;
+            height: 60%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .stat-item:last-child::after {
+            display: none;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #00d1ff, #7b4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 200px;
+            margin: 0 auto;
+            line-height: 1.3;
+        }
+
+        .conclusion-section {
+            text-align: center;
+            margin: 1rem auto;
+            position: relative;
+            padding: 1rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(0, 209, 255, 0.05) 0%, rgba(123, 77, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 209, 255, 0.1);
+        }
+
+        .conclusion-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-text {
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: 1px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .highlight-accent {
+            color: var(--accent-color);
+        }
+
+        .highlight-accent::after {
+            background: var(--accent-color);
+        }
+
+        .highlight-purple {
+            color: var(--royal-purple);
+        }
+
+        .highlight-purple::after {
+            background: var(--royal-purple);
+        }
+
+        .highlight-green {
+            color: var(--vibrant-green);
+        }
+
+        .highlight-green::after {
+            background: var(--vibrant-green);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--royal-purple));
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0, 209, 255, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 209, 255, 0.5);
+        }
+
+        .navigation {
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+        }
+
+        @media (min-height: 800px) {
+            .movement-title {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .movement-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .keyword-card {
+                width: 180px;
+                height: 180px;
+            }
+
+            .keyword-icon {
+                font-size: 2.5rem;
+            }
+
+            .keyword-text {
+                font-size: 1.4rem;
+            }
+
+            .stat-value {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.95rem;
+            }
+
+            .conclusion-text {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .movement-title {
+                font-size: 2rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .movement-subtitle {
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .keyword-card {
+                width: 120px;
+                height: 120px;
+            }
+
+            .keyword-icon {
+                font-size: 1.8rem;
+                margin-bottom: 0.7rem;
+            }
+
+            .keyword-text {
+                font-size: 1rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .keyword-divider {
+                height: 2px;
+            }
+
+            .stats-section {
+                padding: 0.7rem;
+            }
+
+            .stat-value {
+                font-size: 1.8rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .conclusion-text {
+                font-size: 0.8rem;
+            }
+
+            .cta-button {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .keyword-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .keyword-card {
+                width: 140px;
+                height: 140px;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .stat-item::after {
+                display: none;
+            }
+
+            .movement-title {
+                font-size: 2rem;
+            }
+        }
+    
+        /* Navigation buttons */
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 209, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .nav-button.premium-button {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%) !important;
+            border: 1px solid rgba(0, 209, 255, 0.3) !important;
+            color: white !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-button.premium-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+        }
+
+        .nav-button.premium-cta {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.2) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 03 of 32</div>
+    </header>
+
+    <!-- Background elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide" style="padding: 0; overflow: hidden;">
+            <div class="movement-container">
+                <!-- Parallax Background with Overlay -->
+                <div class="parallax-background"></div>
+                <div class="overlay-gradient"></div>
+                
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <h2 class="movement-title">เคลื่อนไหวทางความมั่งคั่งใหม่ได้เริ่มขึ้นแล้ว</h2>
+                    <p class="movement-subtitle">การปฏิวัติทางการเงินที่เปลี่ยนแปลงแนวทางการสร้างและเติบโตทรัพย์สินในยุคดิจิทัล</p>
+                </div>
+
+                <div class="content-wrapper">
+                    <!-- Keywords Section -->
+                    <div class="keyword-container">
+                        <!-- Crypto Keyword -->
+                        <div class="keyword-card crypto-theme">
+                            <i class="fab fa-bitcoin keyword-icon"></i>
+                            <div class="keyword-text">คริปโต</div>
+                            <div class="keyword-divider"></div>
+                        </div>
+
+                        <!-- Passive Keyword -->
+                        <div class="keyword-card passive-theme">
+                            <i class="fas fa-sync-alt keyword-icon"></i>
+                            <div class="keyword-text">รายได้</div>
+                            <div class="keyword-divider"></div>
+                        </div>
+
+                        <!-- Income Keyword -->
+                        <div class="keyword-card income-theme">
+                            <i class="fas fa-coins keyword-icon"></i>
+                            <div class="keyword-text">เฉื่อย</div>
+                            <div class="keyword-divider"></div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Section -->
+                    <div class="stats-section">
+                        <!-- Stat Item 1 -->
+                        <div class="stat-item">
+                            <div class="stat-value" data-value="100000">100,000+</div>
+                            <div class="stat-label">ผู้ที่ทำรายได้เฉื่อยทุกวัน</div>
+                        </div>
+
+                        <!-- Stat Item 2 -->
+                        <div class="stat-item">
+                            <div class="stat-value" data-value="2000">$2.9M</div>
+                            <div class="stat-label">ปริมาณการซื้อขายในแต่ละวัน</div>
+                        </div>
+
+                        <!-- Stat Item 3 -->
+                        <div class="stat-item">
+                            <div class="stat-value" data-value="180">180+</div>
+                            <div class="stat-label">ประเทศที่มีผู้ผลิตที่ทำงานอยู่</div>
+                        </div>
+                    </div>
+
+                    <!-- Conclusion Section -->
+                    <div class="conclusion-section">
+                        <p class="conclusion-text">
+                            The world of finance is evolving, and a <span class="highlight-text highlight-accent">select few</span> are positioned to capitalize on the <span class="highlight-text highlight-purple">extraordinary opportunity</span> before us. MobiCryp offers a <span class="highlight-text highlight-green">proven system</span> for the new wealth movement.
+                        </p>
+                        <a href="#" class="cta-button">
+                            เข้าร่วมในการเคลื่อนไหวนี้ <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="index_enhanced_th.html" class="nav-button premium-button home-button">
+            <i class="fas fa-home"></i> สไลด์ทั้งหมด
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="02_enhanced_th.html" class="nav-button premium-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> ก่อนหน้า
+            </a>
+            <a href="04_enhanced_th.html" class="nav-button premium-button premium-cta" id="next-button">
+                ถัดไป <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="../assets/js/premium.js"></script>
+    <script>
+        // Animation for counting up stats
+        document.addEventListener('DOMContentLoaded', function() {
+            const statValues = document.querySelectorAll('.stat-value');
+            
+            statValues.forEach(function(stat) {
+                const finalValue = stat.getAttribute('data-value');
+                const duration = 2000; // 2 seconds
+                const step = 30; // Update every 30ms
+                const increment = finalValue / (duration / step);
+                let current = 0;
+                
+                const format = stat.textContent;
+                
+                const timer = setInterval(function() {
+                    current += increment;
+                    if (current >= finalValue) {
+                        clearInterval(timer);
+                        current = finalValue;
+                    }
+                    
+                    // Keep the original formatting (like + sign, $ symbol)
+                    stat.textContent = format.replace(/[\d,]+/, Math.floor(current).toLocaleString());
+                }, step);
+            });
+        });
+    </script>
+</body>
+</html>
