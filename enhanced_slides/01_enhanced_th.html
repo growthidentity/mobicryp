@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - The World Has Changed</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Slide-specific styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slide-container {
+            padding: 0 !important;
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            height: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            padding: 0 1rem;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.3) saturate(1.5) blur(3px);
+            z-index: -1;
+            transform: scale(1.1);
+            animation: slowZoom 30s infinite alternate ease-in-out;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .slide-title {
+            font-size: 4rem !important;
+            font-weight: 800 !important;
+            margin-bottom: 1.5rem !important;
+            letter-spacing: 2px !important;
+            text-shadow: 0 0 30px rgba(0, 150, 255, 0.7) !important;
+            background: linear-gradient(90deg, #00d1ff, #7b4dff, #00d1ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientTitle 10s ease infinite, fadeInDown 1.5s !important;
+        }
+
+        @keyframes gradientTitle {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tagline {
+            font-size: 1.5rem !important;
+            font-weight: 500 !important;
+            margin-top: 0.5rem !important;
+            letter-spacing: 1px !important;
+            animation: fadeIn 2s ease-out 0.5s forwards;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.5;
+            filter: drop-shadow(0 0 15px rgba(0, 209, 255, 0.6));
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .floating-coin-1 {
+            top: 15%;
+            left: 15%;
+            font-size: 2.5rem;
+            color: #f7931a;
+            animation-delay: 0s;
+            animation-duration: 12s;
+        }
+
+        .floating-coin-2 {
+            top: 70%;
+            left: 75%;
+            font-size: 2rem;
+            color: #b9f2ff;
+            animation-delay: 2s;
+            animation-duration: 8s;
+        }
+
+        .floating-coin-3 {
+            top: 25%;
+            right: 20%;
+            font-size: 3rem;
+            color: #FFB800;
+            animation-delay: 1s;
+            animation-duration: 10s;
+        }
+
+        .floating-icon-1 {
+            bottom: 25%;
+            left: 10%;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            animation-delay: 3s;
+            animation-duration: 9s;
+        }
+
+        .floating-icon-2 {
+            top: 60%;
+            left: 30%;
+            font-size: 2rem;
+            color: var(--royal-purple);
+            animation-delay: 2s;
+            animation-duration: 11s;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(0, 209, 255, 0.3);
+            animation: moveParticle 15s infinite linear;
+        }
+
+        @keyframes moveParticle {
+            0% { transform: translate(0, 0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(var(--move-x, 100px), var(--move-y, 100px)); opacity: 0; }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, rgba(0, 209, 255, 0.9), rgba(30, 84, 229, 0.9));
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 209, 255, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 209, 255, 0.6);
+        }
+
+        .cta-secondary {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(0, 209, 255, 0.1);
+            border-color: rgba(0, 209, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* For particles with different properties */
+        .particle:nth-child(1) { top: 20%; left: 10%; --move-x: 200px; --move-y: 150px; animation-duration: 20s; }
+        .particle:nth-child(2) { top: 70%; left: 80%; --move-x: -150px; --move-y: -100px; animation-duration: 18s; }
+        .particle:nth-child(3) { top: 40%; left: 30%; --move-x: 100px; --move-y: -200px; animation-duration: 16s; }
+        .particle:nth-child(4) { top: 80%; left: 20%; --move-x: 180px; --move-y: -120px; animation-duration: 22s; }
+        .particle:nth-child(5) { top: 10%; left: 50%; --move-x: -200px; --move-y: 120px; animation-duration: 21s; }
+        .particle:nth-child(6) { top: 90%; left: 40%; --move-x: 120px; --move-y: -180px; animation-duration: 19s; }
+        .particle:nth-child(7) { top: 30%; left: 70%; --move-x: -150px; --move-y: 100px; animation-duration: 15s; }
+        .particle:nth-child(8) { top: 60%; left: 85%; --move-x: -200px; --move-y: -150px; animation-duration: 17s; }
+        .particle:nth-child(9) { top: 50%; left: 15%; --move-x: 180px; --move-y: 120px; animation-duration: 23s; }
+        .particle:nth-child(10) { top: 75%; left: 60%; --move-x: -170px; --move-y: -130px; animation-duration: 14s; }
+
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            z-index: 10;
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+        }
+
+        @media (min-height: 800px) {
+            .slide-title {
+                font-size: 4.5rem !important;
+            }
+
+            .tagline {
+                font-size: 1.8rem !important;
+            }
+
+            .cta-buttons {
+                margin-top: 2rem;
+            }
+
+            .cta-primary, .cta-secondary {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .slide-title {
+                font-size: 3rem !important;
+                margin-bottom: 0.7rem !important;
+            }
+
+            .tagline {
+                font-size: 1.2rem !important;
+            }
+
+            .cta-buttons {
+                margin-top: 1rem;
+            }
+
+            .floating-coin-1, .floating-icon-1 {
+                font-size: 2rem;
+            }
+
+            .floating-coin-2, .floating-icon-2 {
+                font-size: 1.5rem;
+            }
+
+            .floating-coin-3 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2.5rem !important;
+            }
+
+            .tagline {
+                font-size: 1.1rem !important;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    
+        /* Navigation buttons */
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 209, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .nav-button.premium-button {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%) !important;
+            border: 1px solid rgba(0, 209, 255, 0.3) !important;
+            color: white !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-button.premium-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+        }
+
+        .nav-button.premium-cta {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.2) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 01 of 32</div>
+    </header>
+
+    <!-- Enhanced Background Elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide" style="background: rgba(0,10,20,0.7) !important; border: none !important;">
+
+            <!-- Hero Section with Background Image -->
+            <div class="hero-container">
+                <!-- Background Image -->
+                <div class="background-image"></div>
+
+                <!-- Floating Elements -->
+                <div class="floating-elements">
+                    <i class="fab fa-bitcoin floating-element floating-coin-1"></i>
+                    <i class="fas fa-coins floating-element floating-coin-2"></i>
+                    <i class="fab fa-ethereum floating-element floating-coin-3"></i>
+                    <i class="fas fa-chart-line floating-element floating-icon-1"></i>
+                    <i class="fas fa-globe floating-element floating-icon-2"></i>
+                </div>
+
+                <!-- Particles -->
+                <div class="particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+
+                <!-- MobiCryp Logo -->
+                <div style="margin-bottom: 2rem; animation: fadeIn 2s ease-out forwards;">
+                    <img src="https://www.mobicryp.io/wp-content/uploads/2022/10/Mobi-Cryp-Logo.png" alt="MobiCryp Logo" style="width: 250px; max-width: 80%; filter: drop-shadow(0 0 15px rgba(0, 209, 255, 0.5));">
+                </div>
+
+                <!-- Main Content -->
+                <h1 class="section-title premium-text slide-title">โลกได้เปลี่ยนแปลงไปแล้ว</h1>
+
+                <p class="section-description tagline">
+                    The rules of wealth have changed — <span style="color: var(--accent-color); font-weight: 700;">the question is, have you?</span>
+                </p>
+            </div>
+
+            
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="../index.html" class="nav-button premium-button home-button">
+            <i class="fas fa-home"></i> สไลด์ทั้งหมด
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="01_enhanced.html" class="nav-button premium-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> ก่อนหน้า
+            </a>
+            <a href="02_enhanced.html" class="nav-button premium-button premium-cta" id="next-button">
+                ถัดไป <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="../assets/js/premium.js"></script>
+</body>
+</html>

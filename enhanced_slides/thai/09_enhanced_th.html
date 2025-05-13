@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - What You're Buying</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Slide-specific styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slide-container {
+            padding: 0 !important;
+            margin-top: 60px;
+            height: calc(100vh - 60px);
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            height: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0 2rem;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.25) saturate(1.2);
+            z-index: -1;
+            transform: scale(1.1);
+            animation: slowZoom 30s infinite alternate ease-in-out;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* Title styling */
+        .header-section {
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 3.2rem !important;
+            font-weight: 800 !important;
+            margin-bottom: 0.5rem !important;
+            letter-spacing: 2px !important;
+            text-shadow: 0 0 30px rgba(0, 150, 255, 0.7) !important;
+            background: linear-gradient(90deg, #00d1ff, #7b4dff, #00d1ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientTitle 10s ease infinite, fadeInDown 1.5s !important;
+        }
+
+        @keyframes gradientTitle {
+            0% { background-position: a 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-description {
+            max-width: 800px;
+            margin: 0 auto !important;
+            font-size: 1.2rem !important;
+            line-height: 1.4 !important;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Components section */
+        .components-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .components-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 0 auto;
+            position: relative;
+            max-width: 1200px;
+        }
+
+        /* Component cards */
+        .component-card {
+            flex: 1;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 209, 255, 0.2);
+        }
+
+        .hub-card {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(0, 150, 200, 0.05) 100%);
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            animation-delay: 0.2s;
+        }
+
+        .capacity-card {
+            background: linear-gradient(145deg, rgba(255, 184, 0, 0.15) 0%, rgba(200, 150, 0, 0.05) 100%);
+            border: 1px solid rgba(255, 184, 0, 0.3);
+            animation-delay: 0.4s;
+        }
+
+        .card-inner {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Component icon styling */
+        .component-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .icon-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .icon-border {
+            position: absolute;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border-radius: 50%;
+            z-index: 0;
+            border: 2px solid transparent;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hub-icon-bg {
+            background: radial-gradient(circle, rgba(0, 209, 255, 0.3) 0%, rgba(0, 209, 255, 0.05) 70%);
+            box-shadow: 0 0 30px rgba(0, 209, 255, 0.3);
+        }
+
+        .hub-icon-border {
+            border-color: rgba(0, 209, 255, 0.3);
+            background: conic-gradient(transparent, rgba(0, 209, 255, 0.5), transparent, transparent);
+        }
+
+        .capacity-icon-bg {
+            background: radial-gradient(circle, rgba(255, 184, 0, 0.3) 0%, rgba(255, 184, 0, 0.05) 70%);
+            box-shadow: 0 0 30px rgba(255, 184, 0, 0.3);
+        }
+
+        .capacity-icon-border {
+            border-color: rgba(255, 184, 0, 0.3);
+            background: conic-gradient(transparent, rgba(255, 184, 0, 0.5), transparent, transparent);
+        }
+
+        .component-icon {
+            font-size: 2.8rem;
+            z-index: 1;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hub-icon {
+            color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(0, 209, 255, 0.6);
+        }
+
+        .capacity-icon {
+            color: var(--gold-color);
+            text-shadow: 0 0 20px rgba(255, 184, 0, 0.6);
+        }
+
+        /* Component header styling */
+        .component-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .component-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .hub-title {
+            color: var(--accent-color);
+        }
+
+        .capacity-title {
+            color: var(--gold-color);
+        }
+
+        .component-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.8;
+            margin: 0.5rem 0;
+        }
+
+        .divider {
+            width: 50px;
+            height: 3px;
+            margin: 0.5rem auto;
+        }
+
+        .hub-divider {
+            background: var(--accent-color);
+            box-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+        }
+
+        .capacity-divider {
+            background: var(--gold-color);
+            box-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+        }
+
+        /* Feature list styling */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem;
+        }
+
+        .feature-item {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 0.9rem;
+            margin: 0.25rem 0.7rem 0 0;
+            flex-shrink: 0;
+        }
+
+        .hub-feature-icon {
+            color: var(--accent-color);
+        }
+
+        .capacity-feature-icon {
+            color: var(--gold-color);
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-description {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        /* Example box styling */
+        .example-box {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            border-radius: var(--border-radius);
+            padding: 0.8rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .hub-example-box:hover {
+            border-color: rgba(0, 209, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
+        }
+
+        .capacity-example-box:hover {
+            border-color: rgba(255, 184, 0, 0.3);
+            box-shadow: 0 0 20px rgba(255, 184, 0, 0.2);
+        }
+
+        .example-label {
+            margin: 0 0 0.3rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .example-value {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .hub-example-value {
+            color: var(--accent-color);
+        }
+
+        .capacity-example-value {
+            color: var(--gold-color);
+        }
+
+        /* Formula section styling */
+        .formula-section {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .formula-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(0, 40, 80, 0.7) 0%, rgba(0, 20, 40, 0.7) 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 209, 255, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .formula-elements {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .formula-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .formula-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .formula-hub-icon {
+            background: rgba(0, 209, 255, 0.2);
+            border: 2px solid rgba(0, 209, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.3);
+        }
+
+        .formula-capacity-icon {
+            background: rgba(255, 184, 0, 0.2);
+            border: 2px solid rgba(255, 184, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 184, 0, 0.3);
+        }
+
+        .formula-icon span {
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .formula-hub-icon span {
+            color: var(--accent-color);
+        }
+
+        .formula-capacity-icon span {
+            color: var(--gold-color);
+        }
+
+        .formula-operator {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .formula-result {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1.5rem;
+            height: 50px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.3) 0%, rgba(30, 84, 229, 0.3) 100%);
+            border: 2px solid rgba(0, 209, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 209, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .formula-result:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 209, 255, 0.5);
+        }
+
+        .formula-result span {
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+        }
+
+        .formula-description {
+            margin-top: 1rem;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        /* Floating elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.15;
+            filter: blur(1px);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(var(--float-x, 20px), var(--float-y, 20px)) rotate(var(--rotate, 10deg)); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .floating-server {
+            top: 15%;
+            left: 15%;
+            font-size: 3rem;
+            color: var(--accent-color);
+            --float-x: 30px;
+            --float-y: -20px;
+            --rotate: 15deg;
+            animation-duration: 20s;
+        }
+
+        .floating-coins-1 {
+            top: 70%;
+            left: 20%;
+            font-size: 2.5rem;
+            color: var(--gold-color);
+            --float-x: 25px;
+            --float-y: -30px;
+            --rotate: -10deg;
+            animation-duration: 18s;
+        }
+
+        .floating-coins-2 {
+            top: 20%;
+            right: 15%;
+            font-size: 3.5rem;
+            color: var(--gold-color);
+            --float-x: -35px;
+            --float-y: 25px;
+            --rotate: 20deg;
+            animation-duration: 25s;
+        }
+
+        .floating-circuit {
+            bottom: 25%;
+            right: 20%;
+            font-size: 3rem;
+            color: var(--accent-color);
+            --float-x: -30px;
+            --float-y: -25px;
+            --rotate: -15deg;
+            animation-duration: 22s;
+        }
+
+        /* Navigation styling */
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            z-index: 10;
+        }
+        
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-height: 800px) {
+            .section-title {
+                font-size: 2.8rem !important;
+                margin-bottom: 0.3rem !important;
+            }
+            
+            .section-description {
+                font-size: 1rem !important;
+            }
+            
+            .component-icon-wrapper {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 0.7rem;
+            }
+            
+            .component-icon {
+                font-size: 2.4rem;
+            }
+            
+            .component-title {
+                font-size: 1.6rem;
+            }
+            
+            .feature-item {
+                margin-bottom: 0.6rem;
+            }
+            
+            .formula-icon {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .formula-result {
+                height: 45px;
+            }
+            
+            .formula-icon span, .formula-result span {
+                font-size: 1.3rem;
+            }
+            
+            .formula-operator {
+                font-size: 1.8rem;
+            }
+            
+            .formula-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            
+            .components-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            
+            .component-card {
+                max-width: 100%;
+            }
+            
+            .formula-elements {
+                gap: 0.7rem;
+            }
+            
+            .formula-icon, .formula-result {
+                transform: scale(0.9);
+            }
+        }
+    
+        /* Navigation buttons */
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 209, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .nav-button.premium-button {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%) !important;
+            border: 1px solid rgba(0, 209, 255, 0.3) !important;
+            color: white !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-button.premium-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+        }
+
+        .nav-button.premium-cta {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.2) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="logo">MobiCryp</div>
+        <div class="slide-counter">Slide 09 of 32</div>
+    </header>
+
+    <!-- Enhanced Background Elements -->
+    <div class="circuit-background premium-circuit-background"></div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content premium-slide">
+            <div class="content-wrapper">
+                <!-- Background Image -->
+                <div class="background-image"></div>
+                
+                <!-- Floating Elements -->
+                <div class="floating-elements">
+                    <i class="fas fa-server floating-element floating-server"></i>
+                    <i class="fas fa-coins floating-element floating-coins-1"></i>
+                    <i class="fas fa-coins floating-element floating-coins-2"></i>
+                    <i class="fas fa-microchip floating-element floating-circuit"></i>
+                </div>
+
+                <!-- Header Section -->
+                <div class="header-section">
+                    <h2 class="section-title premium-text">WHAT YOU'RE BUYING</h2>
+                    <p class="section-description">
+                        Understanding the two key components of the MobiCryp system
+                    </p>
+                </div>
+
+                <!-- Components Section -->
+                <div class="components-section">
+                    <div class="components-container">
+                        <!-- Left Component: HUB -->
+                        <div class="component-card hub-card">
+                            <div class="card-inner">
+                                <!-- Header -->
+                                <div class="component-header">
+                                    <div class="component-icon-wrapper">
+                                        <div class="icon-bg hub-icon-bg"></div>
+                                        <div class="icon-border hub-icon-border"></div>
+                                        <i class="fas fa-server component-icon hub-icon"></i>
+                                    </div>
+                                    <h3 class="component-title hub-title">HUB</h3>
+                                    <div class="divider hub-divider"></div>
+                                    <p class="component-subtitle">Your Access Point to the Platform</p>
+                                </div>
+
+                                <!-- Details -->
+                                <ul class="feature-list">
+                                    <li class="feature-item">
+                                        <i class="fas fa-check feature-icon hub-feature-icon"></i>
+                                        <div class="feature-content">
+                                            <div class="feature-title">One-time TRDO fee</div>
+                                            <p class="feature-description">
+                                                This is the system access fee (not part of your ROI calculation)
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="feature-item">
+                                        <i class="fas fa-check feature-icon hub-feature-icon"></i>
+                                        <div class="feature-content">
+                                            <div class="feature-title">Range from $55 to $1.1M</div>
+                                            <p class="feature-description">
+                                                Different hub levels have different capacity limits
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="feature-item">
+                                        <i class="fas fa-check feature-icon hub-feature-icon"></i>
+                                        <div class="feature-content">
+                                            <div class="feature-title">Unlocks platform features</div>
+                                            <p class="feature-description">
+                                                Required to participate in both investing and team building
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <!-- Example -->
+                                <div class="example-box hub-example-box">
+                                    <p class="example-label">Entry Example:</p>
+                                    <p class="example-value hub-example-value">$55 Hub Fee</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Component: CAPACITY -->
+                        <div class="component-card capacity-card">
+                            <div class="card-inner">
+                                <!-- Header -->
+                                <div class="component-header">
+                                    <div class="component-icon-wrapper">
+                                        <div class="icon-bg capacity-icon-bg"></div>
+                                        <div class="icon-border capacity-icon-border"></div>
+                                        <i class="fas fa-coins component-icon capacity-icon"></i>
+                                    </div>
+                                    <h3 class="component-title capacity-title">CAPACITY</h3>
+                                    <div class="divider capacity-divider"></div>
+                                    <p class="component-subtitle">Your Earning Potential</p>
+                                </div>
+
+                                <!-- Details -->
+                                <ul class="feature-list">
+                                    <li class="feature-item">
+                                        <i class="fas fa-check feature-icon capacity-feature-icon"></i>
+                                        <div class="feature-content">
+                                            <div class="feature-title">USDT deposited to earn</div>
+                                            <p class="feature-description">
+                                                This is the investment amount that earns 250% ROI
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="feature-item">
+                                        <i class="fas fa-check feature-icon capacity-feature-icon"></i>
+                                        <div class="feature-content">
+                                            <div class="feature-title">Limited by hub size</div>
+                                            <p class="feature-description">
+                                                Each hub has a maximum capacity it can hold
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="feature-item">
+                                        <i class="fas fa-check feature-icon capacity-feature-icon"></i>
+                                        <div class="feature-content">
+                                            <div class="feature-title">Can be added gradually</div>
+                                            <p class="feature-description">
+                                                Start small and add capacity as your confidence grows
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <!-- Example -->
+                                <div class="example-box capacity-example-box">
+                                    <p class="example-label">Entry Example:</p>
+                                    <p class="example-value capacity-example-value">$165 - $330 USDT</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formula Section -->
+                <div class="formula-section">
+                    <div class="formula-card">
+                        <div class="formula-elements">
+                            <div class="formula-icon formula-hub-icon">
+                                <span>HUB</span>
+                            </div>
+                            <div class="formula-operator">+</div>
+                            <div class="formula-icon formula-capacity-icon">
+                                <span>$</span>
+                            </div>
+                            <div class="formula-operator">=</div>
+                            <div class="formula-result">
+                                <span>EARNING POWER</span>
+                            </div>
+                        </div>
+                        <p class="formula-description">
+                            Think of the HUB as the access node and CAPACITY as the fuel that powers your earnings
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="../index.html" class="nav-button premium-button home-button">
+            <i class="fas fa-home"></i> สไลด์ทั้งหมด
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="08_enhanced.html" class="nav-button premium-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> ก่อนหน้า
+            </a>
+            <a href="10_enhanced.html" class="nav-button premium-button premium-cta" id="next-button">
+                ถัดไป <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="../assets/js/premium.js"></script>
+</body>
+</html>

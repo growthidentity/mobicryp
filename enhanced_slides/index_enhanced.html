@@ -364,9 +364,31 @@
                 padding: 3rem 1.5rem;
             }
         }
-    </style>
+    
+  .language-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    color: #fff;
+  }
+  .language-switcher a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  .language-switcher a:hover {
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
+  <div class="language-switcher">
+    <a href="index_enhanced.html">English</a> | <a href="index_enhanced_th.html">ไทย</a>
+  </div>
     <!-- Enhanced Background Elements -->
     <div class="background-image"></div>
     <div class="gradient-overlay"></div>

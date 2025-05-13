@@ -229,6 +229,63 @@
                 padding: 0 1rem 2rem;
             }
         }
+    
+        /* Navigation buttons */
+        .navigation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            margin: 0 !important;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-button {
+            padding: 8px 15px !important;
+            font-size: 0.85rem !important;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 209, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .nav-button.premium-button {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.15) 0%, rgba(30, 84, 229, 0.1) 100%) !important;
+            border: 1px solid rgba(0, 209, 255, 0.3) !important;
+            color: white !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-button.premium-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+        }
+
+        .nav-button.premium-cta {
+            background: linear-gradient(145deg, rgba(0, 209, 255, 0.2) 0%, rgba(30, 84, 229, 0.15) 100%) !important;
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.2) !important;
+        }
     </style>
 </head>
 <body>
@@ -256,20 +313,22 @@
                 </div>
             </div>
             
-            <!-- Navigation buttons -->
-            <div class="navigation">
-                <a href="../index.html" class="nav-button premium-button home-button">
-                    <i class="fas fa-home"></i> All Slides
-                </a>
-                <div style="display: flex; gap: 10px;">
-                    <a href="30_enhanced.html" class="nav-button premium-button" id="prev-button">
-                        <i class="fas fa-arrow-left"></i> Previous
-                    </a>
-                    <a href="32_enhanced.html" class="nav-button premium-button premium-cta" id="next-button">
-                        Next <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="../index.html" class="nav-button premium-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="30_enhanced.html" class="nav-button premium-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="32_enhanced.html" class="nav-button premium-button premium-cta" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </div>
     

@@ -1,0 +1,20 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Generated temporary files
+tmp/translations.json.bak
+tmp/*.bak
+tmp/*.log
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
