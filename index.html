@@ -1,647 +1,239 @@
-<!DOCTYPE html>
+<\!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobiCryp Presentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Simple, clean styles */
-        :root {
-            --primary-bg: #0a1522;
-            --secondary-bg: #132337;
-            --card-bg: #1e3451;
-            --accent-color: #00a8ff;
-            --text-color: #f0f0f0;
-            --text-muted: #a0a0a0;
-            --border-radius: 8px;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        
-        .category-btn {
-            padding: 0.6rem 1.2rem;
-            background: var(--secondary-bg);
-            border: 1px solid #344863;
-            color: var(--text-color);
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
-        }
-        
-        .category-btn:hover, .category-btn.active {
-            background-color: var(--card-bg);
-            border-color: var(--accent-color);
-        }
-        
-        .category-btn i {
-            margin-right: 6px;
-            color: var(--accent-color);
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .card {
-            background-color: var(--secondary-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            border: 1px solid #2a4060;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: var(--accent-color);
-        }
-        
-        .card a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            padding: 1.2rem;
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .card-icon {
-            width: 45px;
-            height: 45px;
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: var(--accent-color);
-        }
-        
-        .card-icon i {
-            font-size: 1.4rem;
-        }
-        
-        .card-number {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.2rem;
-            font-size: 0.8rem;
-            background-color: var(--card-bg);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            color: var(--accent-color);
-        }
-        
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-right: 3rem;
-        }
-        
-        .card-description {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .section-title {
-            font-size: 1.4rem;
-            margin: 2.5rem 0 1.5rem;
-            color: var(--accent-color);
-            border-bottom: 1px solid #2a4060;
-            padding-bottom: 0.5rem;
-        }
-        
-        .section-title:first-child {
-            margin-top: 0;
-        }
-        
-        .card-tag {
-            display: inline-block;
-            background-color: var(--card-bg);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            color: var(--text-muted);
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #2a4060;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        /* Simple responsive styles */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-            
-            .title {
-                font-size: 2rem;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .categories {
-                overflow-x: auto;
-                padding-bottom: 0.5rem;
-                justify-content: flex-start;
-            }
-            
-            .category-btn {
-                white-space: nowrap;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MobiCryp Presentation - Language Selection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 1200px;
+      padding: 0 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      margin-bottom: 30px;
+      max-width: 240px;
+      filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #f7c033, #f7971e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(247, 151, 30, 0.2);
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .language-selector {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .language-option {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 30px 40px;
+      border-radius: 20px;
+      color: white;
+      text-decoration: none;
+      width: 250px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .language-option::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+      z-index: -1;
+      transition: all 0.3s ease;
+    }
+
+    .language-option:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .language-option:hover::before {
+      opacity: 0;
+    }
+
+    .lang-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .lang-name {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .lang-native {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      .language-selector {
+        flex-direction: column;
+        align-items: center;
+      }
+      .language-option {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="title">MobiCryp Presentation</h1>
-            <p class="subtitle">A comprehensive guide to the future of crypto minting</p>
-            
-            <div class="categories">
-                <button class="category-btn active" data-category="all">
-                    <i class="fas fa-th"></i>All Slides
-                </button>
-                <button class="category-btn" data-category="intro">
-                    <i class="fas fa-globe"></i>Introduction
-                </button>
-                <button class="category-btn" data-category="platform">
-                    <i class="fas fa-cogs"></i>Platform
-                </button>
-                <button class="category-btn" data-category="earnings">
-                    <i class="fas fa-chart-line"></i>Earnings
-                </button>
-                <button class="category-btn" data-category="bonuses">
-                    <i class="fas fa-gift"></i>Bonuses
-                </button>
-                <button class="category-btn" data-category="info">
-                    <i class="fas fa-info-circle"></i>Information
-                </button>
-                <button class="category-btn" data-category="next">
-                    <i class="fas fa-rocket"></i>Next Steps
-                </button>
-            </div>
-        </header>
-
-        <main>
-            <h2 class="section-title" id="intro">Introduction & Overview</h2>
-            <div class="grid" id="intro-grid"></div>
-            
-            <h2 class="section-title" id="platform">Platform & Features</h2>
-            <div class="grid" id="platform-grid"></div>
-            
-            <h2 class="section-title" id="earnings">Earnings & Calculations</h2>
-            <div class="grid" id="earnings-grid"></div>
-            
-            <h2 class="section-title" id="bonuses">Bonuses & Rewards</h2>
-            <div class="grid" id="bonuses-grid"></div>
-            
-            <h2 class="section-title" id="info">Information & Guidelines</h2>
-            <div class="grid" id="info-grid"></div>
-            
-            <h2 class="section-title" id="next">Next Steps</h2>
-            <div class="grid" id="next-grid"></div>
-        </main>
-        
-        <footer class="footer">
-            <p>© 2025 MobiCryp. All rights reserved.</p>
-        </footer>
+  <div class="particles" id="particles"></div>
+  
+  <div class="container">
+    <img src="enhanced_slides/assets/images/logo.png" alt="MobiCryp Logo" class="logo">
+    <h1>MobiCryp Presentation</h1>
+    <p>Welcome to the MobiCryp presentation. Please select your preferred language to continue.</p>
+    
+    <div class="language-selector">
+      <a href="enhanced_slides/index_enhanced.html" class="language-option">
+        <span class="lang-icon">🇬🇧</span>
+        <div class="lang-name">English</div>
+        <div class="lang-native">English</div>
+      </a>
+      
+      <a href="enhanced_slides/index_enhanced_th.html" class="language-option">
+        <span class="lang-icon">🇹🇭</span>
+        <div class="lang-name">Thai</div>
+        <div class="lang-native">ไทย</div>
+      </a>
     </div>
+  </div>
+  
+  <footer>
+    © 2023 MobiCryp. All rights reserved.
+  </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Define slide categories
-            const categories = {
-                intro: ['01', '02', '03', '04', '05', '06'],
-                platform: ['07', '08', '09', '12'],
-                earnings: ['10', '11', '13'],
-                bonuses: ['14', '15', '16', '17', '18'],
-                info: ['19', '25', '26', '27', '31'],
-                next: ['20', '21', '22', '23', '24', '28', '29', '30', '32']
-            };
-
-            // Define slides data
-            const slidesData = [
-                { 
-                    number: '01', 
-                    title: "THE WORLD HAS CHANGED", 
-                    description: "Introduction to the changing financial landscape",
-                    icon: "fas fa-globe-americas",
-                    category: "intro",
-                    tags: ["Introduction"]
-                },
-                { 
-                    number: '02', 
-                    title: "THE PROBLEM WITH TRADITIONAL WEALTH", 
-                    description: "Challenges with conventional financial systems",
-                    icon: "fas fa-exclamation-triangle",
-                    category: "intro",
-                    tags: ["Challenges"]
-                },
-                { 
-                    number: '03', 
-                    title: "THE NEW WEALTH MOVEMENT", 
-                    description: "Emerging opportunities in digital finance",
-                    icon: "fas fa-money-bill-wave",
-                    category: "intro",
-                    tags: ["Opportunity"]
-                },
-                { 
-                    number: '04', 
-                    title: "WHO WE ARE", 
-                    description: "Introduction to MobiCryp and our mission",
-                    icon: "fas fa-users",
-                    category: "intro",
-                    tags: ["Company"]
-                },
-                { 
-                    number: '05', 
-                    title: "TIMELINE OF TRUST", 
-                    description: "Our journey and milestones",
-                    icon: "fas fa-history",
-                    category: "intro",
-                    tags: ["History"]
-                },
-                { 
-                    number: '06', 
-                    title: "OUR MISSION", 
-                    description: "Core values and vision for the future",
-                    icon: "fas fa-bullseye",
-                    category: "intro",
-                    tags: ["Vision"]
-                },
-                { 
-                    number: '07', 
-                    title: "WHY MOBICRYP WORKS", 
-                    description: "Our solution to financial challenges",
-                    icon: "fas fa-cogs",
-                    category: "platform",
-                    tags: ["Solution"]
-                },
-                { 
-                    number: '08', 
-                    title: "CHOOSE YOUR PATH", 
-                    description: "Different ways to leverage the platform",
-                    icon: "fas fa-route",
-                    category: "platform",
-                    tags: ["Options"]
-                },
-                { 
-                    number: '09', 
-                    title: "WHAT YOU'RE BUYING", 
-                    description: "Understanding the MobiCryp components",
-                    icon: "fas fa-shopping-cart",
-                    category: "platform",
-                    tags: ["Products"]
-                },
-                { 
-                    number: '10', 
-                    title: "HOW THE ROI WORKS", 
-                    description: "Return on investment explained",
-                    icon: "fas fa-chart-line",
-                    category: "earnings",
-                    tags: ["ROI"]
-                },
-                { 
-                    number: '11', 
-                    title: "HUB CALCULATOR", 
-                    description: "Calculate your potential earnings",
-                    icon: "fas fa-calculator",
-                    category: "earnings",
-                    tags: ["Calculator"]
-                },
-                { 
-                    number: '12', 
-                    title: "SELF VS AUTO MINTING", 
-                    description: "Choose your minting approach",
-                    icon: "fas fa-balance-scale",
-                    category: "platform",
-                    tags: ["Comparison"]
-                },
-                { 
-                    number: '13', 
-                    title: "BOOST YOUR MINTING SPEED", 
-                    description: "Optimize your earnings",
-                    icon: "fas fa-tachometer-alt",
-                    category: "earnings",
-                    tags: ["Optimization"]
-                },
-                { 
-                    number: '14', 
-                    title: "DIRECT BONUS", 
-                    description: "Earn 10% from every direct referral",
-                    icon: "fas fa-hand-holding-usd",
-                    category: "bonuses",
-                    tags: ["Referrals"]
-                },
-                { 
-                    number: '15', 
-                    title: "COMMUNITY BINARY BONUS", 
-                    description: "Earn 10% on matching leg volume",
-                    icon: "fas fa-sitemap",
-                    category: "bonuses",
-                    tags: ["Community"]
-                },
-                { 
-                    number: '16', 
-                    title: "LEVEL MINTING BONUS", 
-                    description: "Earn up to 30% across 10 levels",
-                    icon: "fas fa-layer-group",
-                    category: "bonuses",
-                    tags: ["Network"]
-                },
-                { 
-                    number: '17', 
-                    title: "RANK SYSTEM", 
-                    description: "Hub Business Volume Based Achievement Ranks",
-                    icon: "fas fa-trophy",
-                    category: "bonuses",
-                    tags: ["Achievements"]
-                },
-                { 
-                    number: '18', 
-                    title: "ROYALTY BONUS", 
-                    description: "Earn up to 22% additional commission",
-                    icon: "fas fa-crown",
-                    category: "bonuses",
-                    tags: ["Leadership"]
-                },
-                { 
-                    number: '19', 
-                    title: "TERMS & CONDITIONS", 
-                    description: "Important guidelines for your MobiCryp journey",
-                    icon: "fas fa-file-contract",
-                    category: "info",
-                    tags: ["Rules"]
-                },
-                { 
-                    number: '20', 
-                    title: "UPCOMING PRODUCTS", 
-                    description: "The MobiCryp ecosystem continues to expand",
-                    icon: "fas fa-rocket",
-                    category: "next",
-                    tags: ["Future"]
-                },
-                { 
-                    number: '21', 
-                    title: "HOW TO START", 
-                    description: "Step-by-step guide to begin your MobiCryp journey",
-                    icon: "fas fa-play-circle",
-                    category: "next",
-                    tags: ["Guide"]
-                },
-                { 
-                    number: '22', 
-                    title: "JOIN MOBICRYP TODAY", 
-                    description: "Your gateway to the future of crypto minting",
-                    icon: "fas fa-sign-in-alt",
-                    category: "next",
-                    tags: ["Signup"]
-                },
-                { 
-                    number: '23', 
-                    title: "BENEFITS SHOWCASE", 
-                    description: "What makes MobiCryp the premier choice",
-                    icon: "fas fa-gift",
-                    category: "next",
-                    tags: ["Benefits"]
-                },
-                { 
-                    number: '24', 
-                    title: "SUCCESS STORIES", 
-                    description: "Real people who have transformed their financial future",
-                    icon: "fas fa-star",
-                    category: "next",
-                    tags: ["Testimonials"]
-                },
-                { 
-                    number: '25', 
-                    title: "FREQUENTLY ASKED QUESTIONS", 
-                    description: "Answers to common questions about MobiCryp",
-                    icon: "fas fa-question-circle",
-                    category: "info",
-                    tags: ["FAQ"]
-                },
-                { 
-                    number: '26', 
-                    title: "YOUR FIRST STEPS", 
-                    description: "Begin your MobiCryp journey in 4 simple steps",
-                    icon: "fas fa-shoe-prints",
-                    category: "info",
-                    tags: ["Steps"]
-                },
-                { 
-                    number: '27', 
-                    title: "WHY CHOOSE MOBICRYP", 
-                    description: "How we compare to traditional investment options",
-                    icon: "fas fa-check-circle",
-                    category: "info",
-                    tags: ["Comparison"]
-                },
-                { 
-                    number: '28', 
-                    title: "LIMITED TIME OFFER", 
-                    description: "Special bonuses available for early adopters",
-                    icon: "fas fa-hourglass-half",
-                    category: "next",
-                    tags: ["Special"]
-                },
-                { 
-                    number: '29', 
-                    title: "JOIN OUR GLOBAL COMMUNITY", 
-                    description: "Connect with a worldwide network of MobiCryp minters",
-                    icon: "fas fa-globe",
-                    category: "next",
-                    tags: ["Community"]
-                },
-                { 
-                    number: '30', 
-                    title: "BUILT FOR SECURITY", 
-                    description: "Your investment protected by advanced security measures",
-                    icon: "fas fa-shield-alt",
-                    category: "next",
-                    tags: ["Security"]
-                },
-                { 
-                    number: '31', 
-                    title: "OUR VISION & ROADMAP", 
-                    description: "Building the future of digital finance together",
-                    icon: "fas fa-road",
-                    category: "info",
-                    tags: ["Roadmap"]
-                },
-                { 
-                    number: '32', 
-                    title: "START YOUR JOURNEY TODAY", 
-                    description: "Join thousands who are building financial freedom",
-                    icon: "fas fa-flag-checkered",
-                    category: "next",
-                    tags: ["Begin"]
-                }
-            ];
-            
-            // Create slide card HTML
-            function createSlideCard(slide) {
-                const slideUrl = `enhanced_slides/${slide.number}_enhanced.html`;
-                
-                return `
-                    <div class="card" data-category="${slide.category}">
-                        <a href="${slideUrl}">
-                            <div class="card-number">${slide.number}</div>
-                            <div class="card-header">
-                                <div class="card-icon">
-                                    <i class="${slide.icon}"></i>
-                                </div>
-                                <h3 class="card-title">${slide.title}</h3>
-                            </div>
-                            <p class="card-description">${slide.description}</p>
-                            <div class="card-tags">
-                                ${slide.tags.map(tag => `<span class="card-tag">${tag}</span>`).join('')}
-                            </div>
-                        </a>
-                    </div>
-                `;
-            }
-            
-            // Populate grids by category
-            function populateGrids() {
-                // Clear all grids first
-                document.querySelectorAll('.grid').forEach(grid => {
-                    grid.innerHTML = '';
-                });
-                
-                // Populate each category grid
-                slidesData.filter(slide => slide.category === 'intro').forEach(slide => {
-                    document.getElementById('intro-grid').innerHTML += createSlideCard(slide);
-                });
-                
-                slidesData.filter(slide => slide.category === 'platform').forEach(slide => {
-                    document.getElementById('platform-grid').innerHTML += createSlideCard(slide);
-                });
-                
-                slidesData.filter(slide => slide.category === 'earnings').forEach(slide => {
-                    document.getElementById('earnings-grid').innerHTML += createSlideCard(slide);
-                });
-                
-                slidesData.filter(slide => slide.category === 'bonuses').forEach(slide => {
-                    document.getElementById('bonuses-grid').innerHTML += createSlideCard(slide);
-                });
-                
-                slidesData.filter(slide => slide.category === 'info').forEach(slide => {
-                    document.getElementById('info-grid').innerHTML += createSlideCard(slide);
-                });
-                
-                slidesData.filter(slide => slide.category === 'next').forEach(slide => {
-                    document.getElementById('next-grid').innerHTML += createSlideCard(slide);
-                });
-            }
-            
-            // Initialize
-            populateGrids();
-            
-            // Handle category filtering
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active state
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const category = this.getAttribute('data-category');
-                    
-                    // Show/hide sections based on category
-                    if (category === 'all') {
-                        document.querySelectorAll('.section-title, .grid').forEach(el => {
-                            el.style.display = '';
-                        });
-                        populateGrids();
-                    } else {
-                        document.querySelectorAll('.section-title, .grid').forEach(el => {
-                            el.style.display = 'none';
-                        });
-                        
-                        // Show only the selected category
-                        document.querySelector(`#${category}`).style.display = '';
-                        document.querySelector(`#${category}-grid`).style.display = 'grid';
-                        
-                        // Populate only the selected grid
-                        const grid = document.querySelector(`#${category}-grid`);
-                        grid.innerHTML = '';
-                        slidesData.filter(slide => slide.category === category).forEach(slide => {
-                            grid.innerHTML += createSlideCard(slide);
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+  <script>
+    // Create floating particles effect
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Random position
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      
+      // Random size
+      const size = Math.random() * 4 + 2;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Random opacity
+      particle.style.opacity = Math.random() * 0.5 + 0.1;
+      
+      // Random animation duration and delay
+      const duration = Math.random() * 20 + 10;
+      const delay = Math.random() * 10;
+      particle.style.animation = `float ${duration}s ${delay}s infinite linear`;
+      
+      particlesContainer.appendChild(particle);
+    }
+  </script>
 </body>
 </html>
+EOF < /dev/null
