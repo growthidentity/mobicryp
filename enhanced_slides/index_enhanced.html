@@ -4,330 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobiCryp Enhanced Presentation</title>
-    <link rel="stylesheet" href="../assets/css/common.css">
-    <link rel="stylesheet" href="../assets/css/premium.css">
-    <link rel="stylesheet" href="../assets/css/enhanced.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="positive-theme.css">
     <style>
-        /* Enhanced index-specific styles */
-        html, body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background: var(--primary-color);
-        }
-        
-        .background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1560221328-12fe60f83ab8?q=80&w=2574&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.15) saturate(1.2);
-            z-index: 0;
-        }
-        
-        .gradient-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(0deg, 
-                rgba(0, 20, 40, 0.9) 0%, 
-                rgba(0, 20, 40, 0.8) 50%, 
-                rgba(0, 20, 40, 0.7) 100%);
-            z-index: 1;
-        }
-        
-        .particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-        }
-        
-        .slide-container {
-            position: relative;
-            z-index: 10;
-            margin-top: 0;
-            padding: 0;
+        /* Index page specific styles */
+        .index-container {
             min-height: 100vh;
+            background: var(--gradient-bg);
+            position: relative;
         }
-        
         .main-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 4rem 2rem;
-            position: relative;
-            z-index: 5;
         }
         
         .header-content {
             text-align: center;
             margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards 0.5s;
+            animation: fadeInDown 0.8s ease-out;
         }
         
         .main-title {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 30px rgba(0, 150, 255, 0.7);
-            background: linear-gradient(90deg, #00d1ff, #7b4dff, #00d1ff);
-            background-size: 200% auto;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientTitle 10s ease infinite;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .main-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .main-description {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 800px;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
             margin: 0 auto;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.6;
         }
-        
         .slide-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
         
         .slide-card {
-            background: rgba(0, 20, 40, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 209, 255, 0.2);
+            background: var(--primary-bg);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-medium);
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
         }
         
-        .slide-card.card-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .slide-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, 
-                rgba(0, 0, 0, 0) 0%, 
-                rgba(0, 209, 255, 0.05) 50%, 
-                rgba(0, 0, 0, 0) 100%);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 20px;
+        .slide-card:nth-child(n) {
+            animation-delay: calc(0.1s * var(--index));
         }
         
         .slide-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(0, 209, 255, 0.4);
-            z-index: 1;
-        }
-        
-        .slide-card:hover::before {
-            opacity: 1;
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+            border-color: var(--primary-color);
         }
         
         .slide-card a {
             display: block;
-            padding: 1.8rem;
-            color: var(--text-color);
+            padding: 2rem;
+            color: var(--text-primary);
             text-decoration: none;
-        }
-        
-        .slide-number {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(123, 77, 255, 0.2) 100%);
-            color: var(--accent-color);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 5px 10px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .slide-card:hover .slide-number {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.3) 0%, rgba(123, 77, 255, 0.3) 100%);
-            box-shadow: 0 5px 15px rgba(0, 209, 255, 0.2);
-        }
-        
-        .slide-icon {
-            margin-bottom: 1.2rem;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.1) 0%, rgba(123, 77, 255, 0.1) 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .slide-card:hover .slide-icon {
-            transform: translateY(-5px);
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(123, 77, 255, 0.2) 100%);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .slide-icon i {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            filter: drop-shadow(0 0 5px rgba(0, 209, 255, 0.5));
-            transition: all 0.3s ease;
-        }
-        
-        .slide-card:hover .slide-icon i {
-            transform: scale(1.1);
-        }
-        
-        .slide-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.8rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding-bottom: 0.8rem;
-        }
-        
-        .slide-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--accent-color);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        
-        .slide-card:hover .slide-title::after {
-            width: 60px;
-            background: linear-gradient(90deg, var(--accent-color), var(--royal-purple));
-        }
-        
-        .slide-description {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            transition: all 0.3s ease;
-        }
-        
-        .slide-card:hover .slide-description {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .slide-type {
-            font-size: 0.8rem;
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.2) 0%, rgba(123, 77, 255, 0.2) 100%);
-            border-radius: 12px;
-            padding: 4px 8px;
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--accent-color);
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .slide-card:hover .slide-type {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.3) 0%, rgba(123, 77, 255, 0.3) 100%);
-        }
-        
-        .version-toggle {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 1rem;
-        }
-        
-        .version-button {
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 209, 255, 0.3);
-            background: rgba(0, 20, 40, 0.6);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-        
-        .version-button.active {
-            background: linear-gradient(135deg, rgba(0, 209, 255, 0.3) 0%, rgba(123, 77, 255, 0.3) 100%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border-color: rgba(0, 209, 255, 0.5);
-        }
-        
-        .version-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .version-button:hover::after {
-            left: 100%;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding: 2rem 0;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 10;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards 1.5s;
         }
         
         @keyframes fadeInUp {
@@ -340,55 +91,131 @@
                 transform: translateY(0);
             }
         }
-        
-        @keyframes gradientTitle {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .slide-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-bg);
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.375rem 0.75rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
         }
         
+        .slide-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-bg) 0%, var(--secondary-bg) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+        
+        .slide-card:hover .slide-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .slide-icon i {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+        }
+        .slide-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-card:hover .slide-title {
+            color: var(--primary-color);
+        }
+        
+        .slide-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .slide-type {
+            font-size: 0.75rem;
+            background: var(--secondary-bg);
+            color: var(--primary-color);
+            border-radius: 50px;
+            padding: 0.375rem 0.75rem;
+            display: inline-block;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+        .version-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 1rem;
+        }
+        
+        .version-button {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background: var(--secondary-bg);
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9375rem;
+        }
+        
+        .version-button:hover {
+            background: var(--accent-bg);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .version-button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-medium);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0 4rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+        }
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2.5rem;
             }
             
             .main-description {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .slide-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
             .main-content {
                 padding: 3rem 1.5rem;
             }
         }
-    
-  .language-switcher {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 5px 10px;
-    border-radius: 5px;
-    z-index: 1000;
-    color: #fff;
-  }
-  .language-switcher a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 5px;
-  }
-  .language-switcher a:hover {
-    text-decoration: underline;
-  }
 </style>
 </head>
 <body>
-  <div class="language-switcher">
-    <a href="index_enhanced.html">English</a> | <a href="index_enhanced_th.html">ไทย</a>
-  </div>
     <!-- Enhanced Background Elements -->
     <div class="background-image"></div>
     <div class="gradient-overlay"></div>
@@ -408,7 +235,7 @@
             </div>
             
             <div class="slide-grid" id="slide-grid">
-                <!-- Slides 25-38 will be generated with Javascript -->
+                <!-- Slides 1-30 will be generated with Javascript -->
             </div>
             
             <div class="footer">
@@ -432,35 +259,19 @@
                 { number: '07', title: "WHY MOBICRYP WORKS", description: "Our solution to financial challenges", icon: "fas fa-cogs" },
                 { number: '08', title: "CHOOSE YOUR PATH", description: "Different ways to leverage the platform", icon: "fas fa-route" },
                 { number: '09', title: "WHAT YOU'RE BUYING", description: "Understanding the MobiCryp components", icon: "fas fa-shopping-cart" },
-                { number: '10', title: "HOW THE ROI WORKS", description: "Return on investment explained", icon: "fas fa-chart-line" },
-                { number: '11', title: "HUB CALCULATOR", description: "Calculate your potential earnings", icon: "fas fa-calculator" },
-                { number: '12', title: "SELF VS AUTO MINTING", description: "Choose your minting approach", icon: "fas fa-balance-scale" },
-                { number: '13', title: "BOOST YOUR MINTING SPEED", description: "Optimize your earnings", icon: "fas fa-tachometer-alt" },
-                { number: '14', title: "DIRECT BONUS", description: "Earn 10% from every direct referral", icon: "fas fa-hand-holding-usd" },
-                { number: '15', title: "COMMUNITY BINARY BONUS", description: "Earn 10% on matching leg volume", icon: "fas fa-sitemap" },
-                { number: '16', title: "LEVEL MINTING BONUS", description: "Earn up to 30% across 10 levels", icon: "fas fa-layer-group" },
-                { number: '17', title: "RANK SYSTEM", description: "Hub Business Volume Based Achievement Ranks", icon: "fas fa-trophy" },
-                { number: '18', title: "ROYALTY BONUS", description: "Earn up to 22% additional commission", icon: "fas fa-crown" },
-                { number: '19', title: "ACHIEVEMENT SYSTEM", description: "A comprehensive rank advancement system", icon: "fas fa-award" },
-                { number: '20', title: "STARTING YOUR JOURNEY", description: "Bronze Rank - your entry point", icon: "fas fa-hiking" },
-                { number: '21', title: "EMERGING LEADER", description: "Silver Rank - growing team and leadership", icon: "fas fa-user-tie" },
-                { number: '22', title: "TEAM BUILDER", description: "Gold Rank - building a thriving team", icon: "fas fa-users-cog" },
-                { number: '23', title: "ORGANIZATION LEADER", description: "Platinum Rank - significant organizational growth", icon: "fas fa-user-chart" },
-                { number: '24', title: "NETWORK DEVELOPER", description: "Diamond Rank - building a large, sustainable network", icon: "fas fa-network-wired" },
-                { number: '25', title: "TERMS & CONDITIONS", description: "Important guidelines for your MobiCryp journey", icon: "fas fa-file-contract" },
-                { number: '26', title: "UPCOMING PRODUCTS", description: "The MobiCryp ecosystem continues to expand", icon: "fas fa-rocket" },
-                { number: '27', title: "HOW TO START", description: "Step-by-step guide to begin your MobiCryp journey", icon: "fas fa-play-circle" },
-                { number: '28', title: "JOIN MOBICRYP TODAY", description: "Your gateway to the future of crypto minting", icon: "fas fa-sign-in-alt" },
-                { number: '29', title: "BENEFITS SHOWCASE", description: "What makes MobiCryp the premier choice for your future", icon: "fas fa-gift" },
-                { number: '30', title: "SUCCESS STORIES", description: "Real people who have transformed their financial future", icon: "fas fa-star" },
-                { number: '31', title: "FREQUENTLY ASKED QUESTIONS", description: "Answers to common questions about MobiCryp", icon: "fas fa-question-circle" },
-                { number: '32', title: "YOUR FIRST STEPS", description: "Begin your MobiCryp journey in 4 simple steps", icon: "fas fa-shoe-prints" },
-                { number: '33', title: "WHY CHOOSE MOBICRYP", description: "How we compare to traditional investment options", icon: "fas fa-check-circle" },
-                { number: '34', title: "LIMITED TIME OFFER", description: "Special bonuses available for early adopters", icon: "fas fa-hourglass-half" },
-                { number: '35', title: "JOIN OUR GLOBAL COMMUNITY", description: "Connect with a worldwide network of MobiCryp minters", icon: "fas fa-globe" },
-                { number: '36', title: "BUILT FOR SECURITY", description: "Your investment protected by advanced security measures", icon: "fas fa-shield-alt" },
-                { number: '37', title: "OUR VISION & ROADMAP", description: "Building the future of digital finance together", icon: "fas fa-road" },
-                { number: '38', title: "START YOUR JOURNEY TODAY", description: "Join thousands who are building financial freedom", icon: "fas fa-flag-checkered" }
+                { number: '10', title: "MOBICRYP HUBS CALCULATOR", description: "Calculate your potential earnings", icon: "fas fa-calculator" },
+                { number: '11', title: "SELF VS AUTO MINTING", description: "Choose your minting approach", icon: "fas fa-balance-scale" },
+                { number: '12', title: "DIRECT BONUS", description: "Earn 10% from every direct referral", icon: "fas fa-hand-holding-usd" },
+                { number: '13', title: "COMMUNITY BINARY BONUS", description: "Earn 10% on matching leg volume", icon: "fas fa-sitemap" },
+                { number: '14', title: "LEVEL MINTING BONUS", description: "Earn up to 30% across 10 levels", icon: "fas fa-layer-group" },
+                { number: '15', title: "MOBICRYP RANK SYSTEM", description: "Hub Business Volume Based Achievement Ranks", icon: "fas fa-trophy" },
+                { number: '16', title: "ROYALTY BONUS", description: "Earn up to 22% additional commission", icon: "fas fa-crown" },
+                { number: '17', title: "TERMS & CONDITIONS", description: "Important guidelines for your MobiCryp journey", icon: "fas fa-file-contract" },
+                { number: '18', title: "UPCOMING PRODUCTS", description: "The MobiCryp ecosystem continues to expand", icon: "fas fa-rocket" },
+                { number: '19', title: "START EARNING CRYPTO REWARDS", description: "Begin your journey with MobiCryp", icon: "fas fa-coins" },
+                { number: '20', title: "JOIN MOBICRYP TODAY", description: "Your gateway to the future of crypto minting", icon: "fas fa-sign-in-alt" },
+                { number: '21', title: "BENEFITS SHOWCASE", description: "What makes MobiCryp the premier choice for your future", icon: "fas fa-gift" },
+                { number: '22', title: "START YOUR JOURNEY TODAY", description: "Join thousands who are building financial freedom", icon: "fas fa-flag-checkered" },
             ];
             
             // Generate slide cards
@@ -473,8 +284,32 @@
                 
                 slidesData.forEach((slide, index) => {
                     const slideNumber = slide.number;
+                    const slideFilenames = {
+                        '01': '01_the_world_has_changed.html',
+                        '02': '02_the_problem_with_traditional_wealth.html',
+                        '03': '03_the_new_wealth_movement.html',
+                        '04': '04_who_we_are.html',
+                        '05': '05_timeline_of_trust.html',
+                        '06': '06_our_mission.html',
+                        '07': '07_why_mobicryp_works.html',
+                        '08': '08_choose_your_path.html',
+                        '09': '09_what_youre_buying.html',
+                        '10': '10_mobicryp_hubs_calculator.html',
+                        '11': '11_self_vs_auto_minting.html',
+                        '12': '12_direct_bonus.html',
+                        '13': '13_community_binary_bonus.html',
+                        '14': '14_level_minting_bonus.html',
+                        '15': '15_mobicryp_rank_system.html',
+                        '16': '16_royalty_bonus.html',
+                        '17': '17_terms_and_conditions.html',
+                        '18': '18_upcoming_products.html',
+                        '19': '19_start_earning_crypto_rewards.html',
+                        '20': '20_starting_your_journey.html',
+                        '21': '21_emerging_leader.html',
+                        '22': '22_start_your_journey_today.html'
+                    };
                     const slideUrl = version === 'enhanced' ? 
-                        `${slideNumber}_enhanced.html` : 
+                        slideFilenames[slideNumber] : 
                         `${slideNumber}.html`;
                     
                     // Create slide card

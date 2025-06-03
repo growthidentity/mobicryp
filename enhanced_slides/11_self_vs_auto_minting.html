@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Self vs Auto Minting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="positive-theme.css">
+    <style>
+        /* Slide-specific styles for Self vs Auto Minting */
+        .minting-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-bottom: 5rem;
+        }
+
+        .minting-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .minting-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .minting-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Option Cards Layout */
+        .options-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-card {
+            background: var(--primary-bg);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-large);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .self-card {
+            animation-delay: 0.2s;
+        }
+
+        .auto-card {
+            animation-delay: 0.4s;
+        }
+
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Option Headers */
+        .option-header {
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(to bottom, var(--accent-bg), transparent);
+        }
+
+        .option-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .self-header::before {
+            background: linear-gradient(90deg, #3B82F6, #2563EB);
+        }
+
+        .auto-header::before {
+            background: linear-gradient(90deg, #8B5CF6, #7C3AED);
+        }
+
+        /* Icons */
+        .icon-wrapper {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.5rem;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-large);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .icon-wrapper:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .icon-wrapper i {
+            font-size: 2.5rem;
+        }
+
+        .self-icon-wrapper {
+            border: 3px solid #2563EB;
+        }
+
+        .self-icon {
+            color: #2563EB;
+        }
+
+        .auto-icon-wrapper {
+            border: 3px solid #8B5CF6;
+        }
+
+        .auto-icon {
+            color: #8B5CF6;
+        }
+
+        .option-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .self-title {
+            color: #2563EB;
+        }
+
+        .auto-title {
+            color: #8B5CF6;
+        }
+
+        .option-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        /* Features */
+        .features-section {
+            padding: 1.5rem 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--radius-lg);
+            background: var(--secondary-bg);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--accent-bg);
+            transform: translateX(8px);
+        }
+
+        .feature-icon {
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+
+        .self-feature-icon {
+            color: #2563EB;
+        }
+
+        .auto-feature-icon {
+            color: #8B5CF6;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 0 2rem 2rem;
+        }
+
+        .option-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 0.9375rem;
+        }
+
+        .self-badge {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .self-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .auto-badge {
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .auto-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        }
+        
+        /* Comparison Section */
+        .comparison-section {
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .comparison-card {
+            background: linear-gradient(135deg, var(--accent-bg) 0%, var(--primary-bg) 100%);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-large);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .choose-card {
+            background: var(--primary-bg);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .choose-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .self-choose {
+            border-top: 3px solid #2563EB;
+        }
+
+        .auto-choose {
+            border-top: 3px solid #8B5CF6;
+        }
+
+        .choose-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .self-choose-title {
+            color: #2563EB;
+        }
+
+        .auto-choose-title {
+            color: #8B5CF6;
+        }
+
+        .choose-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .choose-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0;
+        }
+
+        .choose-icon {
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .self-choose-icon {
+            color: #2563EB;
+        }
+
+        .auto-choose-icon {
+            color: #8B5CF6;
+        }
+
+        .choose-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .comparison-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .footer-highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* Floating Icons Background */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-hand {
+            top: 10%;
+            left: 10%;
+            font-size: 3rem;
+            color: #2563EB;
+            animation-delay: 0s;
+        }
+
+        .floating-robot {
+            top: 15%;
+            right: 15%;
+            font-size: 3.5rem;
+            color: #8B5CF6;
+            animation-delay: 5s;
+        }
+
+        .floating-clock-1 {
+            bottom: 20%;
+            left: 15%;
+            font-size: 2.5rem;
+            color: #2563EB;
+            animation-delay: 10s;
+        }
+
+        .floating-clock-2 {
+            bottom: 15%;
+            right: 10%;
+            font-size: 2.8rem;
+            color: #8B5CF6;
+            animation-delay: 15s;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .options-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .minting-title {
+                font-size: 2rem;
+            }
+
+            .minting-subtitle {
+                font-size: 1rem;
+            }
+
+            .option-title {
+                font-size: 1.5rem;
+            }
+
+            .feature-item {
+                padding: 0.75rem;
+            }
+
+            .comparison-card {
+                padding: 1.5rem;
+            }
+
+            .comparison-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="slide-counter">Slide 11 of 22</div>
+        <div class="logo-text">MobiCryp Presentation</div>
+    </div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <!-- Background decoration -->
+            <div class="bg-decoration">
+                <div class="bg-circle bg-circle-1"></div>
+                <div class="bg-circle bg-circle-2"></div>
+                <div class="bg-circle bg-circle-3"></div>
+            </div>
+
+            <!-- Floating Icons -->
+            <div class="floating-icons">
+                <i class="fas fa-hand-point-right floating-icon floating-hand"></i>
+                <i class="fas fa-robot floating-icon floating-robot"></i>
+                <i class="fas fa-clock floating-icon floating-clock-1"></i>
+                <i class="fas fa-calendar-check floating-icon floating-clock-2"></i>
+            </div>
+
+            <div class="minting-container">
+                <!-- Header Section -->
+                <div class="minting-header">
+                    <h1 class="minting-title">Self vs Auto Minting</h1>
+                    <p class="minting-subtitle">Choose the minting approach that best fits your lifestyle and investment goals</p>
+                </div>
+                <!-- Minting Options -->
+                <div class="options-wrapper">
+                    <!-- Self Minting Option -->
+                    <div class="option-card self-card">
+                        <div class="option-header self-header">
+                            <div class="icon-wrapper self-icon-wrapper">
+                                <i class="fas fa-hand-point-right self-icon"></i>
+                            </div>
+                            <h3 class="option-title self-title">SELF MINTING</h3>
+                            <p class="option-subtitle">Daily Returns for Active Participants</p>
+                        </div>
+
+                        <div class="features-section">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check-circle feature-icon self-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">Click Every 12 Hours</h4>
+                                        <p class="feature-description">
+                                            Maximize returns with twice-daily minting sessions
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-percentage feature-icon self-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">0.33% Daily Base Rate</h4>
+                                        <p class="feature-description">
+                                            Consistent daily earnings on your investment
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-rocket feature-icon self-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">Boost up to 10% Daily</h4>
+                                        <p class="feature-description">
+                                            Increase earnings through direct sales and team building
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-calendar-alt feature-icon self-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">~25 Months to 250% ROI</h4>
+                                        <p class="feature-description">
+                                            Reach your investment goal faster with active participation
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="cta-section">
+                                <span class="option-badge self-badge">
+                                    <i class="fas fa-clock"></i> Daily Commitment Required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Minting Option -->
+                    <div class="option-card auto-card">
+                        <div class="option-header auto-header">
+                            <div class="icon-wrapper auto-icon-wrapper">
+                                <i class="fas fa-robot auto-icon"></i>
+                            </div>
+                            <h3 class="option-title auto-title">AUTO MINTING</h3>
+                            <p class="option-subtitle">Monthly Returns for Passive Investors</p>
+                        </div>
+
+                        <div class="features-section">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check-circle feature-icon auto-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">Click Every 30 Days</h4>
+                                        <p class="feature-description">
+                                            Simple monthly check-in for hands-off investing
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-percentage feature-icon auto-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">8% Monthly Base Rate</h4>
+                                        <p class="feature-description">
+                                            Consistent monthly earnings without daily management
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-rocket feature-icon auto-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">Boost up to 100% Monthly</h4>
+                                        <p class="feature-description">
+                                            Increase earnings through direct sales and team building
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-calendar-alt feature-icon auto-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <h4 class="feature-title">~31 Months to 250% ROI</h4>
+                                        <p class="feature-description">
+                                            Steady returns with minimal time commitment
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="cta-section">
+                                <span class="option-badge auto-badge">
+                                    <i class="fas fa-robot"></i> Set & Forget Convenience
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Comparison Section -->
+                <div class="comparison-section">
+                    <div class="comparison-card">
+                        <h3 class="comparison-title">Which Option Is Right For You?</h3>
+                        
+                        <div class="comparison-grid">
+                            <div class="choose-card self-choose">
+                                <h4 class="choose-title self-choose-title">Choose Self Minting If You:</h4>
+                                <ul class="choose-list">
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon self-choose-icon"></i>
+                                        <span class="choose-text">Want to maximize your daily potential returns</span>
+                                    </li>
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon self-choose-icon"></i>
+                                        <span class="choose-text">Can log in consistently every 12 hours</span>
+                                    </li>
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon self-choose-icon"></i>
+                                        <span class="choose-text">Prefer active engagement with your investments</span>
+                                    </li>
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon self-choose-icon"></i>
+                                        <span class="choose-text">Want to reach your ROI goal faster</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="choose-card auto-choose">
+                                <h4 class="choose-title auto-choose-title">Choose Auto Minting If You:</h4>
+                                <ul class="choose-list">
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon auto-choose-icon"></i>
+                                        <span class="choose-text">Prefer a hands-off, passive investment</span>
+                                    </li>
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon auto-choose-icon"></i>
+                                        <span class="choose-text">Have a busy schedule or travel frequently</span>
+                                    </li>
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon auto-choose-icon"></i>
+                                        <span class="choose-text">Want consistent returns without daily management</span>
+                                    </li>
+                                    <li class="choose-item">
+                                        <i class="fas fa-check choose-icon auto-choose-icon"></i>
+                                        <span class="choose-text">Value convenience over speed of returns</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-footer">
+                            <p class="footer-text">
+                                <span class="footer-highlight">Remember:</span> Both options provide the same 250% total ROI, just with different timeframes and management requirements.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="index_enhanced.html" class="nav-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="10_mobicryp_hubs_calculator.html" class="nav-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="12_direct_bonus.html" class="nav-button" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

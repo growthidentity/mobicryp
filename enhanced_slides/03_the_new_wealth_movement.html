@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - The New Wealth Movement</title>
+    <link rel="stylesheet" href="positive-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Slide-specific styles for The New Wealth Movement */
+        .movement-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .movement-subtitle {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .keyword-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+        }
+
+        .keyword-card {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--radius-xl);
+            background: var(--primary-bg);
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .keyword-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-large);
+        }
+
+        .keyword-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .crypto-theme .keyword-icon {
+            color: var(--accent-color);
+        }
+
+        .passive-theme .keyword-icon {
+            color: var(--secondary-color);
+        }
+
+        .income-theme .keyword-icon {
+            color: var(--primary-color);
+        }
+
+        .keyword-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .keyword-divider {
+            width: 50px;
+            height: 3px;
+            margin-top: 0.5rem;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .crypto-theme .keyword-divider {
+            background: var(--accent-color);
+        }
+
+        .passive-theme .keyword-divider {
+            background: var(--secondary-color);
+        }
+
+        .income-theme .keyword-divider {
+            background: var(--primary-color);
+        }
+
+        .keyword-card:hover .keyword-divider {
+            width: 80px;
+        }
+
+        .stats-section {
+            background: var(--accent-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+            flex: 1;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background: var(--border-color);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .conclusion-section {
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .conclusion-text {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-large);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .keyword-container {
+                gap: 1rem;
+            }
+
+            .keyword-card {
+                width: 150px;
+                height: 150px;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .stat-item::after {
+                display: none;
+            }
+
+            .movement-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="slide-counter">Slide 3 of 22</div>
+        <div class="logo-text">MobiCryp</div>
+    </div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <!-- Background decoration -->
+            <div class="bg-decoration">
+                <div class="bg-circle bg-circle-1"></div>
+                <div class="bg-circle bg-circle-2"></div>
+                <div class="bg-circle bg-circle-3"></div>
+            </div>
+
+            <div class="main-container">
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <h1 class="section-title movement-title">THE NEW WEALTH MOVEMENT HAS BEGUN</h1>
+                    <p class="movement-subtitle">A transformative financial revolution that's reshaping how people build and grow wealth in the digital age</p>
+                </div>
+
+                <!-- Keywords Section -->
+                <div class="keyword-container">
+                    <!-- Crypto Keyword -->
+                    <div class="keyword-card crypto-theme">
+                        <i class="fab fa-bitcoin keyword-icon"></i>
+                        <div class="keyword-text">CRYPTO</div>
+                        <div class="keyword-divider"></div>
+                    </div>
+
+                    <!-- Passive Keyword -->
+                    <div class="keyword-card passive-theme">
+                        <i class="fas fa-chart-line keyword-icon"></i>
+                        <div class="keyword-text">PASSIVE</div>
+                        <div class="keyword-divider"></div>
+                    </div>
+
+                    <!-- Income Keyword -->
+                    <div class="keyword-card income-theme">
+                        <i class="fas fa-hand-holding-usd keyword-icon"></i>
+                        <div class="keyword-text">INCOME</div>
+                        <div class="keyword-divider"></div>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="stats-section">
+                    <div class="stat-item">
+                        <div class="stat-value">$3.5T</div>
+                        <div class="stat-label">Global Crypto Market Cap</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">420M+</div>
+                        <div class="stat-label">Crypto Users Worldwide</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">183%</div>
+                        <div class="stat-label">Average Annual Growth</div>
+                    </div>
+                </div>
+
+                <!-- Conclusion Section -->
+                <div class="conclusion-section">
+                    <p class="conclusion-text">
+                        The world is experiencing a financial paradigm shift. Traditional systems are being replaced by decentralized, transparent, and accessible alternatives. This is your opportunity to be part of the revolution.
+                    </p>
+                    <a href="#" class="cta-button">
+                        Discover How It Works <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="index_enhanced.html" class="nav-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="02_the_problem_with_traditional_wealth.html" class="nav-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="04_who_we_are.html" class="nav-button" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

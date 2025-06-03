@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - What You're Buying</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="positive-theme.css">
+    <style>
+        /* Slide-specific styles for What You're Buying */
+        .buying-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-bottom: 2rem;
+            min-height: calc(100vh - 160px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .buying-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .buying-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .buying-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Components Container */
+        .components-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .component-card {
+            background: var(--primary-bg);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-large);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .hub-card {
+            animation-delay: 0.2s;
+        }
+
+        .capacity-card {
+            animation-delay: 0.4s;
+        }
+
+        .component-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Component Headers */
+        .component-header {
+            padding: 1.5rem 1.5rem 1rem;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--accent-bg), transparent);
+        }
+
+        .component-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .hub-icon-bg {
+            background: var(--primary-color);
+        }
+
+        .capacity-icon-bg {
+            background: var(--accent-color);
+        }
+
+        .icon-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hub-icon-border {
+            border-color: var(--primary-color);
+        }
+
+        .capacity-icon-border {
+            border-color: var(--accent-color);
+        }
+
+        .component-icon {
+            font-size: 2.25rem;
+            z-index: 1;
+        }
+
+        .hub-icon {
+            color: var(--primary-color);
+        }
+
+        .capacity-icon {
+            color: var(--accent-color);
+        }
+
+        .component-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hub-title {
+            color: var(--primary-color);
+        }
+
+        .capacity-title {
+            color: var(--accent-color);
+        }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            margin: 0 auto 1rem;
+            border-radius: 2px;
+        }
+
+        .hub-divider {
+            background: var(--primary-color);
+        }
+
+        .capacity-divider {
+            background: var(--accent-color);
+        }
+
+        .component-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Feature Lists */
+        .card-content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-radius: var(--radius-lg);
+            background: var(--secondary-bg);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--accent-bg);
+            transform: translateX(4px);
+        }
+
+        .feature-icon {
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+
+        .hub-feature-icon {
+            color: var(--primary-color);
+        }
+
+        .capacity-feature-icon {
+            color: var(--accent-color);
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Example Boxes */
+        .example-box {
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .hub-example-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .capacity-example-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .example-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .example-value {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .hub-example-value {
+            color: var(--primary-color);
+        }
+
+        .capacity-example-value {
+            color: var(--accent-color);
+        }
+
+        /* Formula Section */
+        .formula-section {
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            margin-top: auto;
+            padding-bottom: 5rem;
+        }
+
+        .formula-card {
+            background: linear-gradient(135deg, var(--accent-bg) 0%, var(--primary-bg) 100%);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-large);
+            text-align: center;
+        }
+
+        .formula-elements {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .formula-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            background: var(--primary-bg);
+        }
+
+        .formula-hub-icon {
+            border: 2px solid var(--primary-color);
+        }
+
+        .formula-capacity-icon {
+            border: 2px solid var(--accent-color);
+        }
+
+        .formula-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .formula-icon span {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .formula-hub-icon span {
+            color: var(--primary-color);
+        }
+
+        .formula-capacity-icon span {
+            color: var(--accent-color);
+        }
+
+        .formula-operator {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .formula-result {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-large);
+            transition: all 0.3s ease;
+        }
+
+        .formula-result:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .formula-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-server {
+            top: 10%;
+            left: 10%;
+            font-size: 3rem;
+            color: var(--primary-color);
+            animation-delay: 0s;
+        }
+
+        .floating-coins {
+            top: 70%;
+            right: 15%;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            animation-delay: 5s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .components-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .buying-container {
+                padding: 1.5rem;
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .buying-title {
+                font-size: 2rem;
+            }
+
+            .buying-subtitle {
+                font-size: 1rem;
+            }
+
+            .component-title {
+                font-size: 1.5rem;
+            }
+
+            .formula-elements {
+                gap: 1rem;
+            }
+
+            .formula-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .formula-icon span {
+                font-size: 1.25rem;
+            }
+
+            .formula-result {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="slide-counter">Slide 9 of 22</div>
+        <div class="logo-text">MobiCryp Presentation</div>
+    </div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <!-- Background decoration -->
+            <div class="bg-decoration">
+                <div class="bg-circle bg-circle-1"></div>
+                <div class="bg-circle bg-circle-2"></div>
+                <div class="bg-circle bg-circle-3"></div>
+            </div>
+
+            <!-- Floating Elements -->
+            <div class="floating-elements">
+                <i class="fas fa-server floating-element floating-server"></i>
+                <i class="fas fa-coins floating-element floating-coins"></i>
+            </div>
+
+            <div class="buying-container">
+                <!-- Header Section -->
+                <div class="buying-header">
+                    <h1 class="buying-title">WHAT YOU'RE BUYING</h1>
+                    <p class="buying-subtitle">Understanding the two simple components of the MobiCryp system</p>
+                </div>
+
+                <!-- Components Section -->
+                <div class="components-container">
+                    <!-- HUB Component -->
+                    <div class="component-card hub-card">
+                        <!-- Header -->
+                        <div class="component-header">
+                            <div class="component-icon-wrapper">
+                                <div class="icon-bg hub-icon-bg"></div>
+                                <div class="icon-border hub-icon-border"></div>
+                                <i class="fas fa-server component-icon hub-icon"></i>
+                            </div>
+                            <h3 class="component-title hub-title">HUB</h3>
+                            <div class="divider hub-divider"></div>
+                            <p class="component-subtitle">Your Access Point to the Platform</p>
+                        </div>
+
+                        <!-- Details -->
+                        <div class="card-content">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon hub-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <div class="feature-title">One-time TRDO fee</div>
+                                        <p class="feature-description">
+                                            This is the system access fee (not part of your ROI calculation)
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon hub-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Range from $55 to $1.1M</div>
+                                        <p class="feature-description">
+                                            Different hub levels have different capacity limits
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon hub-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Unlocks platform features</div>
+                                        <p class="feature-description">
+                                            Required to participate in both investing and team building
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <!-- Example -->
+                            <div class="example-box hub-example-box">
+                                <p class="example-label">Entry Example:</p>
+                                <p class="example-value hub-example-value">$55 Hub Fee</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CAPACITY Component -->
+                    <div class="component-card capacity-card">
+                        <!-- Header -->
+                        <div class="component-header">
+                            <div class="component-icon-wrapper">
+                                <div class="icon-bg capacity-icon-bg"></div>
+                                <div class="icon-border capacity-icon-border"></div>
+                                <i class="fas fa-coins component-icon capacity-icon"></i>
+                            </div>
+                            <h3 class="component-title capacity-title">CAPACITY</h3>
+                            <div class="divider capacity-divider"></div>
+                            <p class="component-subtitle">Your Earning Potential</p>
+                        </div>
+
+                        <!-- Details -->
+                        <div class="card-content">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon capacity-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <div class="feature-title">USDT deposited to earn</div>
+                                        <p class="feature-description">
+                                            This is the investment amount that earns 250% ROI
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon capacity-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Limited by hub size</div>
+                                        <p class="feature-description">
+                                            Each hub has a maximum capacity it can hold
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check feature-icon capacity-feature-icon"></i>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Can be added gradually</div>
+                                        <p class="feature-description">
+                                            Start small and add capacity as your confidence grows
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <!-- Example -->
+                            <div class="example-box capacity-example-box">
+                                <p class="example-label">Entry Example:</p>
+                                <p class="example-value capacity-example-value">$165 - $330 USDT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formula Section -->
+                <div class="formula-section">
+                    <div class="formula-card">
+                        <div class="formula-elements">
+                            <div class="formula-icon formula-hub-icon">
+                                <span>HUB</span>
+                            </div>
+                            <div class="formula-operator">+</div>
+                            <div class="formula-icon formula-capacity-icon">
+                                <span>$$$</span>
+                            </div>
+                            <div class="formula-operator">=</div>
+                            <div class="formula-result">
+                                EARNING POWER
+                            </div>
+                        </div>
+                        <p class="formula-description">
+                            Think of the HUB as the access node and CAPACITY as the fuel that powers your earnings
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="index_enhanced.html" class="nav-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="08_choose_your_path.html" class="nav-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="10_mobicryp_hubs_calculator.html" class="nav-button" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

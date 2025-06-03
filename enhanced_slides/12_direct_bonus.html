@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Direct Bonus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="positive-theme.css">
+    <style>
+        /* Slide-specific styles for Direct Bonus */
+        .bonus-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-bottom: 5rem;
+        }
+
+        .bonus-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .bonus-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bonus-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            background: var(--accent-bg);
+            display: inline-block;
+            padding: 0.375rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .bonus-description {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Central Visual Section */
+        .visual-section {
+            text-align: center;
+            margin: 4rem 0;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .commission-showcase {
+            background: linear-gradient(135deg, var(--accent-bg) 0%, var(--primary-bg) 100%);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-large);
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commission-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .big-percentage {
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            line-height: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .commission-text {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .commission-subtext {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* How it Works Flow */
+        .flow-section {
+            margin: 4rem 0;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: var(--primary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .flow-step:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+            border-color: var(--primary-color);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--primary-color);
+            animation: slideRight 2s infinite;
+        }
+
+        @keyframes slideRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--primary-bg);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+            border-color: var(--primary-color);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-bg) 0%, var(--secondary-bg) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .feature-icon {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        /* Rules Section */
+        .rules-section {
+            max-width: 900px;
+            margin: 3rem auto;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .rules-card {
+            background: linear-gradient(135deg, var(--accent-bg) 0%, var(--primary-bg) 100%);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-large);
+        }
+
+        .rules-title {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .rules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .rule-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--primary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .rule-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-color);
+        }
+
+        .rule-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-bg) 0%, var(--secondary-bg) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .rule-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .rule-content {
+            flex: 1;
+        }
+
+        .rule-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .flow-container {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+            
+            @keyframes slideRight {
+                0%, 100% { transform: rotate(90deg) translateX(0); }
+                50% { transform: rotate(90deg) translateX(10px); }
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bonus-title {
+                font-size: 2rem;
+            }
+
+            .bonus-description {
+                font-size: 1rem;
+            }
+            
+            .big-percentage {
+                font-size: 4rem;
+            }
+            
+            .commission-text {
+                font-size: 1.25rem;
+            }
+            
+            .commission-showcase {
+                padding: 2rem;
+            }
+            
+            .flow-step {
+                min-width: 180px;
+                padding: 1.5rem;
+            }
+            
+            .step-icon {
+                font-size: 2rem;
+            }
+            
+            .step-title {
+                font-size: 1rem;
+            }
+
+            .rules-card {
+                padding: 1.5rem;
+            }
+
+            .rule-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="slide-counter">Slide 12 of 22</div>
+        <div class="logo-text">MobiCryp Presentation</div>
+    </div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <!-- Background decoration -->
+            <div class="bg-decoration">
+                <div class="bg-circle bg-circle-1"></div>
+                <div class="bg-circle bg-circle-2"></div>
+                <div class="bg-circle bg-circle-3"></div>
+            </div>
+
+            <div class="bonus-container">
+                <!-- Header Section -->
+                <div class="bonus-header">
+                    <h1 class="bonus-title">Direct Bonus</h1>
+                    <span class="bonus-subtitle">BONUS 1 OF 4</span>
+                    <p class="bonus-description">
+                        <i class="fas fa-hand-holding-usd"></i> Earn 10% commission on every HUB sale you make directly
+                    </p>
+                </div>
+
+                <!-- Central Visual Section -->
+                <div class="visual-section">
+                    <div class="commission-showcase">
+                        <h2 class="big-percentage">10%</h2>
+                        <p class="commission-text">Direct Commission</p>
+                        <p class="commission-subtext">on every HUB sale you make</p>
+                    </div>
+                </div>
+
+                <!-- How it Works Flow -->
+                <div class="flow-section">
+                    <div class="flow-container">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <i class="fas fa-user-plus step-icon"></i>
+                            <h3 class="step-title">Refer Someone</h3>
+                            <p class="step-description">Share MobiCryp with friends, family, or your network</p>
+                        </div>
+
+                        <i class="fas fa-arrow-right flow-arrow"></i>
+
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <i class="fas fa-shopping-cart step-icon"></i>
+                            <h3 class="step-title">They Buy a HUB</h3>
+                            <p class="step-description">Your referral purchases any HUB package</p>
+                        </div>
+
+                        <i class="fas fa-arrow-right flow-arrow"></i>
+
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <i class="fas fa-hand-holding-usd step-icon"></i>
+                            <h3 class="step-title">You Earn 10%</h3>
+                            <p class="step-description">Instantly receive 10% commission in USDT</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Important Rules Section -->
+                <div class="rules-section">
+                    <div class="rules-card">
+                        <h3 class="rules-title">Important Rules for Direct Bonus</h3>
+                        
+                        <div class="rules-list">
+                            <div class="rule-item">
+                                <div class="rule-icon-wrapper">
+                                    <i class="fas fa-bolt rule-icon"></i>
+                                </div>
+                                <div class="rule-content">
+                                    <h4 class="rule-title">Activation Requirement</h4>
+                                    <p class="rule-description">
+                                        Commission is paid when the HUB is activated. A HUB is activated when it has 3x minting capacity added (e.g., $165 minting for a $55 HUB)
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="rule-item">
+                                <div class="rule-icon-wrapper">
+                                    <i class="fas fa-dollar-sign rule-icon"></i>
+                                </div>
+                                <div class="rule-content">
+                                    <h4 class="rule-title">Payment in USDT</h4>
+                                    <p class="rule-description">
+                                        All direct bonus commissions are paid in USDT stablecoin for consistent value
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="rule-item">
+                                <div class="rule-icon-wrapper">
+                                    <i class="fas fa-users rule-icon"></i>
+                                </div>
+                                <div class="rule-content">
+                                    <h4 class="rule-title">No Referral Limits</h4>
+                                    <p class="rule-description">
+                                        Refer as many people as you want - there's no cap on your earning potential
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="index_enhanced.html" class="nav-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="11_self_vs_auto_minting.html" class="nav-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="13_community_binary_bonus.html" class="nav-button" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

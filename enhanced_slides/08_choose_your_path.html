@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiCryp - Choose Your Path</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="positive-theme.css">
+    <style>
+        /* Slide-specific styles for Choose Your Path */
+        .paths-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .paths-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .paths-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .paths-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Path Panels Layout */
+        .path-panels-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .path-panel {
+            background: var(--primary-bg);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-large);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .left-panel {
+            animation-delay: 0.2s;
+        }
+
+        .right-panel {
+            animation-delay: 0.4s;
+        }
+
+        .path-panel:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Path Headers */
+        .path-header {
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(to bottom, var(--accent-bg), transparent);
+        }
+
+        .path-badge {
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .investor-badge {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .builder-badge {
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Icons */
+        .icon-container {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.5rem;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-large);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .path-panel:hover .icon-container::before {
+            animation: shine 0.6s ease;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        .icon-container i {
+            font-size: 2.5rem;
+        }
+
+        .investor-icon i {
+            color: #2563EB;
+        }
+
+        .builder-icon i {
+            color: #7C3AED;
+        }
+
+        /* Path Quote */
+        .path-quote {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Benefits Section */
+        .path-benefits {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--radius-lg);
+            background: var(--secondary-bg);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: var(--accent-bg);
+            transform: translateX(8px);
+        }
+
+        .benefit-icon {
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+
+        .investor-benefit-icon {
+            color: #2563EB;
+        }
+
+        .builder-benefit-icon {
+            color: #7C3AED;
+        }
+
+        .benefit-content {
+            flex: 1;
+        }
+
+        .benefit-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 0.9375rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investor-cta {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .investor-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .builder-cta {
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .builder-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        .cta-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Footer Message */
+        .footer-message {
+            text-align: center;
+            margin: 2rem auto 2rem;
+            padding-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .footer-text {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            padding: 1.5rem 2rem;
+            background: var(--accent-bg);
+            border-radius: var(--radius-xl);
+            display: inline-block;
+            border: 1px solid var(--border-color);
+        }
+
+        .accent-text {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .purple-text {
+            color: #7C3AED;
+            font-weight: 600;
+        }
+
+        /* Decorative Elements */
+        .path-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .left-panel::before {
+            background: linear-gradient(90deg, #3B82F6, #2563EB);
+        }
+
+        .right-panel::before {
+            background: linear-gradient(90deg, #8B5CF6, #7C3AED);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .path-panels-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .paths-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .paths-title {
+                font-size: 2rem;
+            }
+
+            .paths-subtitle {
+                font-size: 1rem;
+            }
+
+            .path-header {
+                padding: 1.5rem 1.5rem 1rem;
+            }
+
+            .icon-container {
+                width: 70px;
+                height: 70px;
+            }
+
+            .icon-container i {
+                font-size: 2rem;
+            }
+
+            .path-quote {
+                font-size: 1rem;
+            }
+
+            .benefit-item {
+                padding: 0.75rem;
+            }
+
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="slide-counter">Slide 8 of 22</div>
+        <div class="logo-text">MobiCryp Presentation</div>
+    </div>
+
+    <!-- Main slide content -->
+    <div class="slide-container">
+        <div class="slide-content">
+            <!-- Background decoration -->
+            <div class="bg-decoration">
+                <div class="bg-circle bg-circle-1"></div>
+                <div class="bg-circle bg-circle-2"></div>
+                <div class="bg-circle bg-circle-3"></div>
+            </div>
+
+            <div class="paths-container">
+                <!-- Header Section -->
+                <div class="paths-header">
+                    <h1 class="paths-title">Choose Your Path</h1>
+                    <p class="paths-subtitle">Two powerful ways to leverage the MobiCryp platform based on your personal goals</p>
+                </div>
+
+                <!-- Path Panels -->
+                <div class="path-panels-wrapper">
+                    <!-- Investor Path Panel -->
+                    <div class="path-panel left-panel">
+                        <!-- Path Header -->
+                        <div class="path-header">
+                            <div class="path-badge investor-badge">INVESTOR</div>
+                            <div class="icon-container">
+                                <i class="fas fa-chart-pie investor-icon"></i>
+                            </div>
+                            <p class="path-quote">
+                                "I want passive income without referring others"
+                            </p>
+                        </div>
+
+                        <!-- Path Benefits -->
+                        <div class="path-benefits">
+                            <ul class="benefits-list">
+                                <li class="benefit-item">
+                                    <i class="fas fa-check-circle benefit-icon investor-benefit-icon"></i>
+                                    <div class="benefit-content">
+                                        <h3 class="benefit-title">Earn 250% ROI</h3>
+                                        <p class="benefit-description">
+                                            Get back 2.5x your investment through daily or monthly minting
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="benefit-item">
+                                    <i class="fas fa-check-circle benefit-icon investor-benefit-icon"></i>
+                                    <div class="benefit-content">
+                                        <h3 class="benefit-title">Self or Auto Minting</h3>
+                                        <p class="benefit-description">
+                                            Choose between daily self-minting or fully automated monthly minting
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="benefit-item">
+                                    <i class="fas fa-check-circle benefit-icon investor-benefit-icon"></i>
+                                    <div class="benefit-content">
+                                        <h3 class="benefit-title">USDT Stablecoin Returns</h3>
+                                        <p class="benefit-description">
+                                            All returns are paid in USDT stablecoin for stability and ease of use
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <!-- CTA Button -->
+                            <div class="cta-container">
+                                <a href="#" class="cta-button investor-cta">
+                                    Perfect for Passive Income <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Builder Path Panel -->
+                    <div class="path-panel right-panel">
+                        <!-- Path Header -->
+                        <div class="path-header">
+                            <div class="path-badge builder-badge">BUILDER</div>
+                            <div class="icon-container">
+                                <i class="fas fa-users builder-icon"></i>
+                            </div>
+                            <p class="path-quote">
+                                "I want to build a team and earn referral bonuses"
+                            </p>
+                        </div>
+
+                        <!-- Path Benefits -->
+                        <div class="path-benefits">
+                            <ul class="benefits-list">
+                                <li class="benefit-item">
+                                    <i class="fas fa-check-circle benefit-icon builder-benefit-icon"></i>
+                                    <div class="benefit-content">
+                                        <h3 class="benefit-title">Everything From Path 1</h3>
+                                        <p class="benefit-description">
+                                            All the investor benefits, plus team-building rewards
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="benefit-item">
+                                    <i class="fas fa-check-circle benefit-icon builder-benefit-icon"></i>
+                                    <div class="benefit-content">
+                                        <h3 class="benefit-title">Four Types of Bonuses</h3>
+                                        <p class="benefit-description">
+                                            Earn direct, binary, level, and matching bonuses from your team
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="benefit-item">
+                                    <i class="fas fa-check-circle benefit-icon builder-benefit-icon"></i>
+                                    <div class="benefit-content">
+                                        <h3 class="benefit-title">Rank & Achievement System</h3>
+                                        <p class="benefit-description">
+                                            Earn recognition, higher commissions, and luxury rewards as you progress
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <!-- CTA Button -->
+                            <div class="cta-container">
+                                <a href="#" class="cta-button builder-cta">
+                                    Perfect for Team Building <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Message -->
+                <div class="footer-message">
+                    <p class="footer-text">
+                        Whichever path you choose, you'll have access to our <span class="accent-text">support team</span> and <span class="purple-text">training materials</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="navigation">
+        <a href="index_enhanced.html" class="nav-button home-button">
+            <i class="fas fa-home"></i> All Slides
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="07_why_mobicryp_works.html" class="nav-button" id="prev-button">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="09_what_youre_buying.html" class="nav-button" id="next-button">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Add hover effect to animate benefits
+        document.addEventListener('DOMContentLoaded', function() {
+            const pathPanels = document.querySelectorAll('.path-panel');
+            
+            pathPanels.forEach(panel => {
+                const benefits = panel.querySelectorAll('.benefit-item');
+                
+                panel.addEventListener('mouseenter', function() {
+                    benefits.forEach((benefit, index) => {
+                        setTimeout(() => {
+                            benefit.style.transform = 'translateX(8px)';
+                        }, index * 100);
+                    });
+                });
+                
+                panel.addEventListener('mouseleave', function() {
+                    benefits.forEach((benefit) => {
+                        benefit.style.transform = 'translateX(0)';
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
